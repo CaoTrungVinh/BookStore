@@ -631,6 +631,7 @@ body {
   border-top: 1px solid #ddd;
   overflow: hidden;
   padding: 10px 0;
+  height: 120px;
 }
 .icolor {
   color: #32b5f3 !important;

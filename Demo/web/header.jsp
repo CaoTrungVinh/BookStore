@@ -1,3 +1,5 @@
+<%@ page import="controller.ListBook" %>
+<%@ page import="Util.Util" %>
 <!--Header Area Start-->
 <div class="header-area">
     <div class="container">
@@ -85,35 +87,36 @@
                     <nav>
                         <ul id="nav">
                             <li><a href="index.jsp">HOME</a></li>
-                            <li><a href="shop.jsp">FEATURED</a></li>
-<%--                            <li><a href="shop.jsp">REVIEW BOOK</a></li>--%>
+                            <li><a href="<%= Util.fullPath("ListBook")%>">LIST BOOK</a></li>
+                            <!--                                    <li><a href="shop.jsp">REVIEW BOOK</a></li>-->
                             <li><a href="about.jsp">ABOUT</a></li>
-<%--                            <li><a href="#">pages</a>--%>
-<%--                                <ul class="sub-menu">--%>
-<%--                                    <li><a href="about.jsp">About Us</a></li>--%>
-<%--                                    <li><a href="cart.jsp">Cart Page</a></li>--%>
-<%--                                    <li><a href="checkout.jsp">Check Out</a></li>--%>
-<%--                                    <li><a href="contact.jsp">Contact</a></li>--%>
-<%--                                    <li><a href="login.jsp">Login</a></li>--%>
-<%--                                    <li><a href="my-account.jsp">My Account</a></li>--%>
-<%--                                    <li><a href="shop.jsp">Shopping Page</a></li>--%>
-<%--                                    <li><a href="single-product.jsp">Single Shop Page</a></li>--%>
-<%--                                    <li><a href="wishlist.jsp">Wishlist Page</a></li>--%>
-<%--                                    <li><a href="404.jsp">404 Page</a></li>--%>
-<%--                                </ul>--%>
-<%--                            </li>--%>
+                            <!--                                    <li><a href="#">pages</a>-->
+                            <!--                                        <ul class="sub-menu">-->
+                            <!--                                            <li><a href="about.jsp">About Us</a></li>-->
+                            <!--                                            <li><a href="cart.jsp">Cart Page</a></li>-->
+                            <!--                                            <li><a href="checkout.jsp">Check Out</a></li>-->
+                            <!--                                            <li><a href="contact.jsp">Contact</a></li>-->
+                            <!--                                            <li><a href="login.jsp">Login</a></li>-->
+                            <!--                                            <li><a href="my-account.jsp">My Account</a></li>-->
+                            <!--                                            <li><a href="shop.jsp">Shopping Page</a></li>-->
+                            <!--                                            <li><a href="single-product.jsp">Single Shop Page</a></li>-->
+                            <!--                                            <li><a href="wishlist.jsp">Wishlist Page</a></li>-->
+                            <!--                                            <li><a href="404.jsp">404 Page</a></li>-->
+                            <!--                                        </ul>-->
+                            <!--                                    </li>-->
                             <li><a href="contact.jsp">CONTACT</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="col-md-1 hidden-sm">
-                <div class="header-right">
+                <div class="header-right" style="margin-left: -100px;">
                     <ul>
-                        <li>
-                            <a href="account.jsp"><i class="flaticon-people"></i></a>
+                        <li style="margin-right: 5px">
+                            <a href="my-account.jsp"><i class="flaticon-people"></i>
+                            </a>
                         </li>
-                        <li class="shoping-cart">
+                        <li class="shoping-cart" style="margin-right: 5px">
                             <a href="#">
                                 <i class="flaticon-shop"></i>
                                 <span>2</span>
@@ -174,6 +177,72 @@
                                     </a>
                                 </div>
                             </div>
+                        </li>
+                        <li class="shoping-cart" style="margin-right: 5px">
+                            <a href="#">
+                                <i class="fa fa-heartbeat"></i>
+                                <span>2</span>
+                            </a>
+                            <div class="add-to-cart-product">
+                                <div class="cart-product">
+                                    <div class="cart-product-image">
+                                        <a href="single-product.jsp">
+                                            <img src="img/shop/1.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="cart-product-info">
+                                        <p>
+                                            <span>1</span>
+                                            x
+                                            <a href="single-product.jsp">East of eden</a>
+                                        </p>
+                                        <a href="single-product.jsp">S, Orange</a>
+                                        <span class="cart-price">$ 140.00</span>
+                                    </div>
+                                    <div class="cart-product-remove">
+                                        <i class="fa fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="cart-product">
+                                    <div class="cart-product-image">
+                                        <a href="single-product.jsp">
+                                            <img src="img/shop/1.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="cart-product-info">
+                                        <p>
+                                            <span>1</span>
+                                            x
+                                            <a href="single-product.jsp">East of eden</a>
+                                        </p>
+                                        <a href="single-product.jsp">S, Orange</a>
+                                        <span class="cart-price">$ 140.00</span>
+                                    </div>
+                                    <div class="cart-product-remove">
+                                        <i class="fa fa-times"></i>
+                                    </div>
+                                </div>
+                                <div class="total-cart-price">
+                                    <div class="cart-product-line fast-line">
+                                        <span>Shipping</span>
+                                        <span class="free-shiping">$10.50</span>
+                                    </div>
+                                    <div class="cart-product-line">
+                                        <span>Total</span>
+                                        <span class="total">$ 140.00</span>
+                                    </div>
+                                </div>
+                                <div class="cart-checkout">
+                                    <a href="wishlist.jsp">
+                                        WISH LIST
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="search.jsp"><i class="fa fa-search"></i>
+                            </a>
                         </li>
                     </ul>
                 </div>

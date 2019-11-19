@@ -37,12 +37,12 @@
 						<a href="#" class="title-3">SEE MORE</a>
 					</div>
 					<!-- layer 4 -->
-					<div class="layer-4">
-                        <form action="#" class="title-4">
-                            <input type="text" placeholder="Enter your book title here">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-					</div>
+<%--					<div class="layer-4">--%>
+<%--                        <form action="#" class="title-4">--%>
+<%--                            <input type="text" placeholder="Enter your book title here">--%>
+<%--                            <button type="submit"><i class="fa fa-search"></i></button>--%>
+<%--                        </form>--%>
+<%--					</div>--%>
 				</div>
 				<!-- direction 2 -->
 				<div id="slider-direction-2" class="slider-direction">
