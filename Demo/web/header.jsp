@@ -1,7 +1,7 @@
 <%@ page import="controller.ListBook" %>
 <%@ page import="Util.Util" %>
 <!--Header Area Start-->
-<div class="header-area">
+<div class="header-area bg-white">
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
@@ -260,7 +260,7 @@
                     <nav id="dropdown">
                         <ul>
                             <li><a href="index.jsp">HOME</a></li>
-                            <li><a href="shop.jsp">FEATURED</a></li>
+                            <li><a href="<%= Util.fullPath("ListBook")%>">FEATURED</a></li>
                             <li><a href="shop.jsp">REVIEW BOOK</a></li>
                             <li><a href="about.jsp">ABOUT AUTHOR</a></li>
                             <li><a href="#">pages</a>

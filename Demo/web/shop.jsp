@@ -78,6 +78,7 @@
                             </div>
                         </aside>
                     </div>
+
                     <div class="shop-widget-bottom">
                         <aside class="widget widget-tag">
                             <h2 class="sidebar-title">POPULAR TAG</h2>
@@ -191,7 +192,7 @@
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
                                                 <img alt="" src="img/featured/1.jpg">
-                                                <div class="price"><span>$</span> <%= book.getInt(3)%>
+                                                <div class="price"><span><%= book.getInt(3)%>VND</span>
                                                 </div>
                                             </a>
                                             <div class="product-description">
@@ -202,8 +203,9 @@
                                                     <a href="#" title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
-                                                    <a href="#" title="Quick view" data-toggle="modal"
-                                                       data-target="#productModal">
+                                                    <a title="Quick view" data-toggle="modal"
+                                                       data-target="#preview<%= book.getInt(1)%>">
+ <%--Khai báo dòng này sẽ mở 1 cái modal có id là previewid, ví dụ book có ìd là 10 thì data-tagert là preview10, tức là mở modal có là preview10--%>
                                                         <i class="fa fa-compress"></i>
                                                     </a>
                                                 </div>
@@ -224,6 +226,80 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--Quickview Product Start -->
+                                <div id="quickview-wrapper">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="preview<%= book.getInt(1)%>" tabindex="-1"
+                                         role="dialog">
+<%--Tạo ra 1 modal có id là previewid để chứa thông tin book có id là id, modal này sẽ dc kích bởi data-tagert bên trên --%>
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="modal-product">
+                                                        <div class="product-images">
+                                                            <div class="main-image images">
+                                                                <img alt="" src="img/quick-view.jpg">
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <h1><%= book.getString(2)%>
+                                                            </h1> <%--Gán title --%>
+                                                            <div class="price-box">
+                                                                <p class="s-price"><span class="special-price"><span
+                                                                        class="amount"><%= book.getInt(3)%> VND</span></span>
+                                                                </p> <%--Gán price--%>
+                                                            </div>
+                                                            <a href="product-details.jsp" class="see-all">See all
+                                                                features</a>
+                                                            <div class="quick-add-to-cart">
+                                                                <form method="post" class="cart">
+                                                                    <div class="numbers-row">
+                                                                        <input type="number" id="french-hens" value="3">
+                                                                    </div>
+                                                                    <button class="single_add_to_cart_button"
+                                                                            type="submit">Add to cart
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                            <div class="quick-desc">
+                                                                <%--Gán description ử đây --%>
+                                                            </div>
+                                                            <div class="social-sharing">
+                                                                <div class="widget widget_socialsharing_widget">
+                                                                    <h3 class="widget-title-modal">Share this
+                                                                        product</h3>
+                                                                    <ul class="social-icons">
+                                                                        <li><a target="_blank" title="Facebook" href="#"
+                                                                               class="facebook social-icon"><i
+                                                                                class="fa fa-facebook"></i></a></li>
+                                                                        <li><a target="_blank" title="Twitter" href="#"
+                                                                               class="twitter social-icon"><i
+                                                                                class="fa fa-twitter"></i></a></li>
+                                                                        <li><a target="_blank" title="Pinterest"
+                                                                               href="#" class="pinterest social-icon"><i
+                                                                                class="fa fa-pinterest"></i></a></li>
+                                                                        <li><a target="_blank" title="Google +" href="#"
+                                                                               class="gplus social-icon"><i
+                                                                                class="fa fa-google-plus"></i></a></li>
+                                                                        <li><a target="_blank" title="LinkedIn" href="#"
+                                                                               class="linkedin social-icon"><i
+                                                                                class="fa fa-linkedin"></i></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- .product-info -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End of Quickview Product-->
                                 <% } %>
 
                             </div>
@@ -380,69 +456,6 @@
 <!-- Footer Area Start -->
 <jsp:include page="footer.jsp"/>
 <!-- Footer Area End -->
-<!--Quickview Product Start -->
-<div id="quickview-wrapper">
-    <!-- Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-product">
-                        <div class="product-images">
-                            <div class="main-image images">
-                                <img alt="" src="img/quick-view.jpg">
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h1>Frame Princes Cut Diamond</h1>
-                            <div class="price-box">
-                                <p class="s-price"><span class="special-price"><span
-                                        class="amount">$280.00</span></span></p>
-                            </div>
-                            <a href="product-details.jsp" class="see-all">See all features</a>
-                            <div class="quick-add-to-cart">
-                                <form method="post" class="cart">
-                                    <div class="numbers-row">
-                                        <input type="number" id="french-hens" value="3">
-                                    </div>
-                                    <button class="single_add_to_cart_button" type="submit">Add to cart</button>
-                                </form>
-                            </div>
-                            <div class="quick-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est
-                                tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
-                                justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                nulla.
-                            </div>
-                            <div class="social-sharing">
-                                <div class="widget widget_socialsharing_widget">
-                                    <h3 class="widget-title-modal">Share this product</h3>
-                                    <ul class="social-icons">
-                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i
-                                                class="fa fa-facebook"></i></a></li>
-                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i
-                                                class="fa fa-twitter"></i></a></li>
-                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i
-                                                class="fa fa-pinterest"></i></a></li>
-                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i
-                                                class="fa fa-google-plus"></i></a></li>
-                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i
-                                                class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- .product-info -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End of Quickview Product-->
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>

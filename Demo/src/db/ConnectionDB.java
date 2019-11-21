@@ -22,7 +22,7 @@ public class ConnectionDB {
 
     public static void main(String[] args) throws Exception {
         Statement s = ConnectionDB.connect();
-        ResultSet rs = s.executeQuery("select * from user");
+        ResultSet rs = s.executeQuery("select * from users");
 //        int i=rs.
         rs.last();
         System.out.println(rs.getRow());
