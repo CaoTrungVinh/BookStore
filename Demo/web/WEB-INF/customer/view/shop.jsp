@@ -191,7 +191,7 @@
                                     <div class="single-banner">
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
-                                                <img alt="" src="img/featured/1.jpg">
+                                                <img alt="" src="public/customer/img/featured/1.jpg">
                                                 <div class="price"><span><%= book.getInt(3)%>VND</span>
                                                 </div>
                                             </a>

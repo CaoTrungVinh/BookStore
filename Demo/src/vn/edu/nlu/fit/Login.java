@@ -48,17 +48,17 @@ public class Login extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("WEB-INF/customer/view/index.jsp");
 
             } else {
                 request.setAttribute("err", "Sai email hoặc mật khẩu.");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("WEB-INF/customer/view/login.jsp").forward(request, response);
                 response.getWriter().println("Đăng nhập không thành công");
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("err", "Sai email hoặc mật khẩu.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
     }

@@ -24,7 +24,7 @@
 					       <h2>PRODUCT DETAILS</h2> 
 					       <ul class="breadcrumbs-list">
 						        <li>
-						            <a title="Return to Home" href="index.jsp">Home</a>
+						            <a title="Return to Home" href="../../../index.jsp">Home</a>
 						        </li>
 						        <li>Product Details</li>
 						    </ul>

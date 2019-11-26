@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
     <head>
         <title>Book Store</title>
-        <jsp:include page="head.jsp"/>
+        <jsp:include page="WEB-INF/customer/view/head.jsp"/>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -11,7 +11,7 @@
 
         <!-- Add your site or application content here -->
         <!--Header Area Start-->
-        <jsp:include page="header.jsp"/>
+        <jsp:include page="WEB-INF/customer/view/header.jsp"/>
         <!--Header Area End-->
 		<!-- Mobile Menu Start -->
 		<!-- Mobile Menu End -->
@@ -19,8 +19,8 @@
 		<div class="slider-area">
 			<div class="bend niceties preview-1">
 				<div id="ensign-nivoslider" class="slides">	
-					<img src="img/slider/1.jpg" alt="" title="#slider-direction-1"  />
-					<img src="img/slider/2.jpg" alt="" title="#slider-direction-2"  />
+					<img src="public/customer/img/slider/1.jpg" alt="" title="#slider-direction-1"  />
+					<img src="public/customer/img/slider/2.jpg" alt="" title="#slider-direction-2"  />
 				</div>
 				<!-- direction 1 -->
 				<div id="slider-direction-1" class="text-center slider-direction">
@@ -81,7 +81,7 @@
 		                <div class="col-md-4 col-sm-6">
 		                    <div class="single-banner">
 		                        <a href="#">
-		                            <img src="img/banner/1.jpg" alt="">
+		                            <img src="public/customer/img/banner/1.jpg" alt="">
 		                        </a>
 		                        <div class="price"><span>$</span>160</div>
 		                        <div class="banner-bottom text-center">
@@ -92,7 +92,7 @@
 		                <div class="col-md-4 col-sm-6">
 		                    <div class="single-banner">
 		                        <a href="#">
-		                            <img src="img/banner/2.jpg" alt="">
+		                            <img src="public/customer/img/banner/2.jpg" alt="">
 		                        </a>
 		                        <div class="price"><span>$</span>160</div>
 		                        <div class="banner-bottom text-center">
@@ -103,7 +103,7 @@
 		                <div class="col-md-4 hidden-sm">
 		                    <div class="single-banner">
 		                        <a href="#">
-		                            <img src="img/banner/3.jpg" alt="">
+		                            <img src="public/customer/img/banner/3.jpg" alt="">
 		                        </a>
 		                        <div class="price"><span>$</span>160</div>
 		                        <div class="banner-bottom text-center">
@@ -188,7 +188,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/1.jpg">
+                                                    <img alt="" src="public/customer/img/featured/1.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -221,7 +221,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/5.jpg">
+                                                    <img alt="" src="public/customer/img/featured/5.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -256,7 +256,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/2.jpg">
+                                                    <img alt="" src="public/customer/img/featured/2.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -289,7 +289,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/6.jpg">
+                                                    <img alt="" src="public/customer/img/featured/6.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -324,7 +324,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/3.jpg">
+                                                    <img alt="" src="public/customer/img/featured/3.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -357,7 +357,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/7.jpg">
+                                                    <img alt="" src="public/customer/img/featured/7.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -392,7 +392,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/4.jpg">
+                                                    <img alt="" src="public/customer/img/featured/4.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -425,7 +425,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/8.jpg">
+                                                    <img alt="" src="public/customer/img/featured/8.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -460,7 +460,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/1.jpg">
+                                                    <img alt="" src="public/customer/img/featured/1.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -493,7 +493,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/5.jpg">
+                                                    <img alt="" src="public/customer/img/featured/5.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -528,7 +528,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/2.jpg">
+                                                    <img alt="" src="public/customer/img/featured/2.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -561,7 +561,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/6.jpg">
+                                                    <img alt="" src="public/customer/img/featured/6.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -600,7 +600,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/2.jpg">
+                                                    <img alt="" src="public/customer/img/featured/2.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -633,7 +633,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/6.jpg">
+                                                    <img alt="" src="public/customer/img/featured/6.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -668,7 +668,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/3.jpg">
+                                                    <img alt="" src="public/customer/img/featured/3.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -701,7 +701,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/7.jpg">
+                                                    <img alt="" src="public/customer/img/featured/7.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -736,7 +736,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/4.jpg">
+                                                    <img alt="" src="public/customer/img/featured/4.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -769,7 +769,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/8.jpg">
+                                                    <img alt="" src="public/customer/img/featured/8.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -804,7 +804,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/1.jpg">
+                                                    <img alt="" src="public/customer/img/featured/1.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -837,7 +837,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/5.jpg">
+                                                    <img alt="" src="public/customer/img/featured/5.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -872,7 +872,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/1.jpg">
+                                                    <img alt="" src="public/customer/img/featured/1.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -905,7 +905,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/5.jpg">
+                                                    <img alt="" src="public/customer/img/featured/5.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -940,7 +940,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/4.jpg">
+                                                    <img alt="" src="public/customer/img/featured/4.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -973,7 +973,7 @@
                                         <div class="single-banner">
                                             <div class="product-wrapper">
                                                 <a href="#" class="single-banner-image-wrapper">
-                                                    <img alt="" src="img/featured/8.jpg">
+                                                    <img alt="" src="public/customer/img/featured/8.jpg">
                                                     <div class="price"><span>$</span>160</div>
                                                     <div class="rating-icon">
                                                         <i class="fa fa-star icolor"></i>
@@ -1022,7 +1022,7 @@
 		            <div class="col-md-12">
 		                <div class="testimonial-list">
 		                    <div class="single-testimonial">
-                               <img src="img/testimonial/1.jpg" alt="">
+                               <img src="public/customer/img/testimonial/1.jpg" alt="">
 		                       <div class="testmonial-info clearfix">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p> 
                                    <div class="testimonial-author text-center">
@@ -1032,7 +1032,7 @@
 		                       </div>
 		                    </div>
 		                    <div class="single-testimonial">
-                               <img src="img/testimonial/2.jpg" alt="">
+                               <img src="public/customer/img/testimonial/2.jpg" alt="">
 		                       <div class="testmonial-info clearfix">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p> 
                                    <div class="testimonial-author text-center">
@@ -1105,7 +1105,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/1.jpg" alt="">
+		                            <img src="public/customer/img/blog/1.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1119,7 +1119,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/2.jpg" alt="">
+		                            <img src="public/customer/img/blog/2.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1133,7 +1133,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/3.jpg" alt="">
+		                            <img src="public/customer/img/blog/3.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1147,7 +1147,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/4.jpg" alt="">
+		                            <img src="public/customer/img/blog/4.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1161,7 +1161,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/1.jpg" alt="">
+		                            <img src="public/customer/img/blog/1.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1175,7 +1175,7 @@
 		                <div class="col-md-3">
 		                    <div class="single-blog">
 		                        <a href="single-#">
-		                            <img src="img/blog/2.jpg" alt="">
+		                            <img src="public/customer/img/blog/2.jpg" alt="">
 		                        </a>
 		                        <div class="blog-info text-center">
 		                            <a href="#"><h2>Modern Book Reviews</h2></a>
@@ -1214,7 +1214,7 @@
 		</div>
 		<!-- News Letter Area End -->
 		<!-- Footer Area Start -->
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="WEB-INF/customer/view/footer.jsp"/>
 		<!-- Footer Area End -->
         <!--Quickview Product Start -->
         <div id="quickview-wrapper">
@@ -1229,7 +1229,7 @@
                             <div class="modal-product">
                                 <div class="product-images">
                                     <div class="main-image images">
-                                        <img alt="" src="img/quick-view.jpg">
+                                        <img alt="" src="public/customer/img/quick-view.jpg">
                                     </div>
                                 </div>
                                 <div class="product-info">
@@ -1271,6 +1271,6 @@
         <!--End of Quickview Product-->			
 		<!-- all js here -->
 		<!-- jquery latest version -->
-        <jsp:include page="jquery.jsp"/>
+        <jsp:include page="WEB-INF/customer/view/jquery.jsp"/>
     </body>
 </html>

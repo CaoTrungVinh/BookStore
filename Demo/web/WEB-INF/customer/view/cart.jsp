@@ -24,7 +24,7 @@
 					       <h2>SHOPPING CART</h2> 
 					       <ul class="breadcrumbs-list">
 						        <li>
-						            <a title="Return to Home" href="index.jsp">Home</a>
+						            <a title="Return to Home" href="../../../index.jsp">Home</a>
 						        </li>
 						        <li>Shopping Cart</li>
 						    </ul>

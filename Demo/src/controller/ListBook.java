@@ -25,6 +25,7 @@ public class ListBook extends HttpServlet {
             PreparedStatement pst = conn.prepareStatement(sql);
 
             ResultSet rs = pst.executeQuery();
+
             request.setAttribute("rs", rs);
 
             Statement s1 = ConnectionDB.connect();
@@ -47,7 +48,7 @@ public class ListBook extends HttpServlet {
             request.setAttribute("book", book);
 //            response.getWriter().println(sql);
 
-            request.getRequestDispatcher("shop.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/customer/view/shop.jsp").forward(request, response);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

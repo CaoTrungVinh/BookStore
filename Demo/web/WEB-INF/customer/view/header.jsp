@@ -7,7 +7,7 @@
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
                     <a href="index.jsp">
-                        <img src="img/logo.png" alt="">
+                        <img src="public/customer/img/logo.png" alt="">
                     </a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -45,7 +45,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -89,7 +89,7 @@
                             <li><a href="index.jsp">HOME</a></li>
                             <li><a href="<%= Util.fullPath("ListBook")%>">LIST BOOK</a></li>
                             <!--                                    <li><a href="shop.jsp">REVIEW BOOK</a></li>-->
-                            <li><a href="about.jsp">ABOUT</a></li>
+                            <li><a href="WEB-INF/customer/about.jsp">ABOUT</a></li>
                             <!--                                    <li><a href="#">pages</a>-->
                             <!--                                        <ul class="sub-menu">-->
                             <!--                                            <li><a href="about.jsp">About Us</a></li>-->
@@ -104,7 +104,7 @@
                             <!--                                            <li><a href="404.jsp">404 Page</a></li>-->
                             <!--                                        </ul>-->
                             <!--                                    </li>-->
-                            <li><a href="contact.jsp">CONTACT</a></li>
+                            <li><a href="WEB-INF/customer/contact.jsp">CONTACT</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -125,7 +125,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -144,7 +144,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -187,7 +187,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -206,7 +206,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="img/shop/1.jpg" alt="">
+                                            <img src="public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -259,7 +259,7 @@
                 <div class="mobile-menu">
                     <nav id="dropdown">
                         <ul>
-                            <li><a href="index.jsp">HOME</a></li>
+                            <li><a href="../../../index.jsp">HOME</a></li>
                             <li><a href="<%= Util.fullPath("ListBook")%>">FEATURED</a></li>
                             <li><a href="shop.jsp">REVIEW BOOK</a></li>
                             <li><a href="about.jsp">ABOUT AUTHOR</a></li>
