@@ -7,7 +7,7 @@
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
                     <a href="index.jsp">
-                        <img src="public/customer/img/logo.png" alt="">
+                        <img src="/public/customer/img/logo.png" alt="">
                     </a>
                 </div>
             </div>

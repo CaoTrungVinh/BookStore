@@ -191,7 +191,10 @@
                                     <div class="single-banner">
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
-                                                <img alt="" src="public/customer/img/featured/1.jpg">
+<%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
+                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>">
+
+
                                                 <div class="price"><span><%= book.getInt(3)%>VND</span>
                                                 </div>
                                             </a>
@@ -205,7 +208,7 @@
                                                     </a>
                                                     <a title="Quick view" data-toggle="modal"
                                                        data-target="#preview<%= book.getInt(1)%>">
- <%--Khai báo dòng này sẽ mở 1 cái modal có id là previewid, ví dụ book có ìd là 10 thì data-tagert là preview10, tức là mở modal có là preview10--%>
+                                                        <%--Khai báo dòng này sẽ mở 1 cái modal có id là previewid, ví dụ book có ìd là 10 thì data-tagert là preview10, tức là mở modal có là preview10--%>
                                                         <i class="fa fa-compress"></i>
                                                     </a>
                                                 </div>
@@ -231,7 +234,7 @@
                                     <!-- Modal -->
                                     <div class="modal fade" id="preview<%= book.getInt(1)%>" tabindex="-1"
                                          role="dialog">
-<%--Tạo ra 1 modal có id là previewid để chứa thông tin book có id là id, modal này sẽ dc kích bởi data-tagert bên trên --%>
+                                        <%--Tạo ra 1 modal có id là previewid để chứa thông tin book có id là id, modal này sẽ dc kích bởi data-tagert bên trên --%>
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -243,7 +246,8 @@
                                                     <div class="modal-product">
                                                         <div class="product-images">
                                                             <div class="main-image images">
-                                                                <img alt="" src="img/quick-view.jpg">
+                                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>">
+
                                                             </div>
                                                         </div>
                                                         <div class="product-info">

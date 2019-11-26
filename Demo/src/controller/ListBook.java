@@ -22,6 +22,7 @@ public class ListBook extends HttpServlet {
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
             String sql = "SELECT id, name FROM categories WHERE active = 1";
+
             PreparedStatement pst = conn.prepareStatement(sql);
 
             ResultSet rs = pst.executeQuery();
@@ -30,12 +31,15 @@ public class ListBook extends HttpServlet {
 
             Statement s1 = ConnectionDB.connect();
             Connection conn1 = s1.getConnection();
-            sql = "SELECT id, title, price FROM books WHERE active = 1";
+
+            sql = "SELECT books.id, books.title, books.price, img.img FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1";
+//            sql = "SELECT id, title, price FROM books WHERE active = 1";
 
             if (type != null) {
                 sql += " and type = " + type;
             }
             PreparedStatement pst2 = conn1.prepareStatement(sql);
+
 //
             response.getWriter().println(sql);
             ResultSet book = pst2.executeQuery();

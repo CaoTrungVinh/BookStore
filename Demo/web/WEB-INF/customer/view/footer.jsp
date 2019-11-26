@@ -6,7 +6,7 @@
                 <div class="col-md-3 col-sm-8">
                     <div class="footer-left">
                         <a href="index.html">
-                            <img src="img/logo-2.png" alt="">
+                            <img src="/public/customer/img/logo-2.png" alt="">
                         </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
                         <ul class="footer-contact">

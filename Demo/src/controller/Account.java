@@ -8,14 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = {"/Account", "/Account/edit"})
+//@WebServlet(urlPatterns = {"/Account", "/Account/edit"})
+@WebServlet("/Account")
 public class Account extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+//        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("/Account; charset=UTF-8");
+        String type = request.getParameter("type");
+
+//        request.setCharacterEncoding("UTF-8");
+//        response.setContentType("text/html; charset=UTF-8");
+//        response.setCharacterEncoding("UTF-8");
+
 //Demo/account/ìno
         if(request.getPathInfo()== null)  {
             request.setAttribute("route", "edit");
