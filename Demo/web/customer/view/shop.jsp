@@ -28,7 +28,7 @@
                     <h2>SHOP LEFT SIDEBAR</h2>
                     <ul class="breadcrumbs-list">
                         <li>
-                            <a title="Return to Home" href="index.jsp">Home</a>
+                            <a title="Return to Home" href="../../index.jsp">Home</a>
                         </li>
                         <li>SHOP LEFT SIDEBAR</li>
                     </ul>
@@ -186,7 +186,7 @@
                         <div class="row tab-pane fade in active" id="home">
                             <div class="shop-single-product-area">
                                 <% ResultSet book = (ResultSet) request.getAttribute("book");
-                                    while (book.next()) { %>
+                                while (book.next()) { %>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="single-banner">
                                         <div class="product-wrapper">
@@ -200,7 +200,7 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="#" title="Add to Cart">
+                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>" title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
                                                     <a href="#" title="Add to Wishlist">

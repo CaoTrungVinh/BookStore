@@ -23,10 +23,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="breadcrumbs">
-                    <h2>LOGIN</h2>
+                    <h2>REGISTER</h2>
                     <ul class="breadcrumbs-list">
                         <li>
-                            <a title="Return to Home" href="../../../index.jsp">Home</a>
+                            <a title="Return to Home" href="../../index.jsp">Home</a>
                         </li>
                         <li>Login</li>
                     </ul>
@@ -41,32 +41,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6">
-                <%--                       <form action="#" class="create-account-form" method="post">--%>
-                <form action="<%= Util.fullPath("Login")%>" class="create-account-form" method="post">
+                <form action="<%= Util.fullPath("Register")%>" class="create-account-form" method="post">
                     <h2 class="heading-title">
-                        ALREADY RESIGTERED?
+                        CREATE AN ACCOUNT
                     </h2>
                     <p class="form-row">
-                        <%--                                <input type="email" name="email" placeholder="Email address">--%>
-                        <input type="email" name="email" placeholder="Email address">
-                    </p>
-
-                    <p class="form-row">
-                        <input type="password" name="pass" placeholder="Password">
+                        <input name="email" type="email" placeholder="Email address">
                     </p>
                     <p class="form-row">
-                        <%= request.getAttribute("err") != null ? request.getAttribute("err") : ""%>
-
+                        <%= request.getAttribute("err-email") != null ? request.getAttribute("err-email") : ""%>
                     </p>
-                    <p class="lost-password form-group">
-                        <a href="#" rel="nofollow">Forgot your password?</a>
+                    <p class="form-row">
+                        <input name="username" type="text" placeholder="UserName">
                     </p>
-
+                    <p class="form-row">
+                        <input name="pass" type="password" placeholder="Password">
+                    </p>
+                    <p class="form-row">
+                        <input name="re-pass" type="pass" placeholder="Password">
+                    </p>
+                    <p class="form-row">
+                        <%= request.getAttribute("err-pass") != null ? request.getAttribute("err-pass") : ""%>
+                    </p>
+                    <p class="form-row">
+                        <input name="phone" type="text" placeholder="Phone">
+                    </p>
                     <div class="submit">
                         <button name="submitcreate" id="submitcreate" type="submit" class="btn-default">
                                     <span>
                                         <i class="fa fa-user left"></i>
-                                        SING IN
+                                        Create an account
                                     </span>
                         </button>
                     </div>

@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
     <head>
         <title>Book Store</title>
-        <jsp:include page="WEB-INF/customer/view/head.jsp"/>
+        <jsp:include page="/customer/view/head.jsp"/>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -11,7 +11,7 @@
 
         <!-- Add your site or application content here -->
         <!--Header Area Start-->
-        <jsp:include page="WEB-INF/customer/view/header.jsp"/>
+        <jsp:include page="/customer/view/header.jsp"/>
         <!--Header Area End-->
 		<!-- Mobile Menu Start -->
 		<!-- Mobile Menu End -->
@@ -1214,7 +1214,7 @@
 		</div>
 		<!-- News Letter Area End -->
 		<!-- Footer Area Start -->
-        <jsp:include page="WEB-INF/customer/view/footer.jsp"/>
+        <jsp:include page="customer/view/footer.jsp"/>
 		<!-- Footer Area End -->
         <!--Quickview Product Start -->
         <div id="quickview-wrapper">
@@ -1271,6 +1271,6 @@
         <!--End of Quickview Product-->			
 		<!-- all js here -->
 		<!-- jquery latest version -->
-        <jsp:include page="WEB-INF/customer/view/jquery.jsp"/>
+        <jsp:include page="customer/view/jquery.jsp"/>
     </body>
 </html>

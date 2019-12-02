@@ -24,7 +24,7 @@
 					       <h2>My Account</h2> 
 					       <ul class="breadcrumbs-list">
 						        <li>
-						            <a title="Return to Home" href="../../../index.jsp">Home</a>
+						            <a title="Return to Home" href="../../index.jsp">Home</a>
 						        </li>
 						        <li>My Account</li>
 						    </ul>
@@ -93,7 +93,7 @@
 													<p class="form-row">
 														<input type="text" placeholder="Please assign an address title for future reference. *" />
 													</p>
-													<a title="Save" class="btn button button-small" href="../../../index.jsp">
+													<a title="Save" class="btn button button-small" href="../../index.jsp">
 														<span>
 															  Save
 															<i class="fa fa-chevron-right"></i>
@@ -298,7 +298,7 @@
 															Receive special offers from our partners!
 														</label>
 													</div>
-													<a title="Save" class="btn button button-small" href="../../../index.jsp">
+													<a title="Save" class="btn button button-small" href="../../index.jsp">
 														<span>
 															  Save
 															<i class="fa fa-chevron-right"></i>
@@ -340,7 +340,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="create-account-button pull-left">
-							<a href="../../../index.jsp" class="btn button button-small" title="Home">
+							<a href="../../index.jsp" class="btn button button-small" title="Home">
 								<span>
 									<i class="fa fa-chevron-left"></i>
 									  Home

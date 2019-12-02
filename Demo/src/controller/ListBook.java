@@ -32,7 +32,7 @@ public class ListBook extends HttpServlet {
             Statement s1 = ConnectionDB.connect();
             Connection conn1 = s1.getConnection();
 
-            sql = "SELECT books.id, books.title, books.price, img.img FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1";
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1";
 //            sql = "SELECT id, title, price FROM books WHERE active = 1";
 
             if (type != null) {
@@ -52,7 +52,7 @@ public class ListBook extends HttpServlet {
             request.setAttribute("book", book);
 //            response.getWriter().println(sql);
 
-            request.getRequestDispatcher("WEB-INF/customer/view/shop.jsp").forward(request, response);
+            request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
