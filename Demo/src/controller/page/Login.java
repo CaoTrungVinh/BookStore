@@ -56,13 +56,13 @@ public class Login extends HttpServlet {
 
             } else {
                 request.setAttribute("err", "Sai email hoặc mật khẩu.");
-                request.getRequestDispatcher(Util.fullPath("login")).forward(request, response);
+                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
                 response.getWriter().println("Đăng nhập không thành công");
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("err", "Sai email hoặc mật khẩu.");
-            request.getRequestDispatcher(Util.fullPath("login")).forward(request, response);
+            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
     }
