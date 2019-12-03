@@ -1,3 +1,4 @@
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
 <div class="content-right">
     <h1 class="have-margin">Thông tin tài khoản</h1>
     <div class="account-profile register-form">

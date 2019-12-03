@@ -1,5 +1,6 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="javax.swing.*" %>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -156,42 +157,76 @@
                             <ul>
                                 <li class="product-size-deatils">
                                     <div class="show-label">
-                                        <label>Show : </label>
-                                        <select>
-                                            <option value="10" selected="selected">10</option>
-                                            <option value="09">09</option>
-                                            <option value="08">08</option>
-                                            <option value="07">07</option>
-                                            <option value="06">06</option>
-                                        </select>
-                                    </div>
-                                </li>
-                                <li class="product-size-deatils">
-                                    <div class="show-label">
-                                        <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
-                                        <select>
-                                            <option value="position" selected="selected">Position</option>
+
+                                        <label><i class="fa fa-sort-amount-asc"
+                                                  href=""></i>Sort
+                                            by : </label>
+                                        <select name="selectSearch">
+                                            <option value="Possion" selected="selected">Possion</option>
                                             <option value="Name">Name</option>
                                             <option value="Price">Price</option>
                                         </select>
                                     </div>
                                 </li>
-                                <li class="shop-pagination"><a href="#">1</a></li>
-                                <li class="shop-pagination"><a href="#">2</a></li>
-                                <li class="shop-pagination"><a href="#"><i class="fa fa-caret-right"></i></a></li>
+
+                                <%
+                                    Integer nOfPages = (Integer) request.getAttribute("nOfPages");
+                                    Integer idType = (Integer) request.getAttribute("idType");
+                                    Integer currentPage1 = (Integer) request.getAttribute("currentPage");
+                                    int start1 = currentPage1;
+                                    String url = "ListBook?type=" + idType + "&page=";
+                                    if (idType == 0) {
+                                        url = "ListBook?page=";
+                                    }
+                                    if (currentPage1 % 2 == 0) { %>
+                                <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url + (start1-1) ) %>"><%= start1 - 1  %>
+                                </a></li>
+                                <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url+ (start1) ) %>"><%=start1  %>
+                                </a></li>
+
+                                <% } else {
+
+                                %>
+                                <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url + (start1) ) %>"><%= start1  %>
+                                </a></li>
+                                <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url + (start1+1) ) %>"><%=start1 + 1  %>
+                                </a></li>
+                                <% }
+                                %>
+
+                                <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url + (start1+2) ) %>"><i
+                                        class="fa fa-caret-right"></i></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="tab-content">
                         <div class="row tab-pane fade in active" id="home">
                             <div class="shop-single-product-area">
-                                <% ResultSet book = (ResultSet) request.getAttribute("book");
-                                    while (book.next()) { %>
+                                <%
+                                    ResultSet book = (ResultSet) request.getAttribute("book");
+                                    Integer currentPage = (Integer) request.getAttribute("currentPage");
+//                                    System.out.println(currentPage);
+                                    int i = -1;
+                                    int start = currentPage * 9 - 9;
+                                    while (book.next()) {
+                                        i++;
+                                        if (i < start) {
+                                            continue;
+                                        }
+                                        if (i >= currentPage * 9) break;
+//                                        System.out.println(i);
+
+                                %>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="single-banner">
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
-<%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
+                                                <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
                                                 <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>">
 
 
@@ -246,7 +281,8 @@
                                                     <div class="modal-product">
                                                         <div class="product-images">
                                                             <div class="main-image images">
-                                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>">
+                                                                <img alt=""
+                                                                     src="/public/customer/img/shop/<%= book.getString(4)%>">
 
                                                             </div>
                                                         </div>

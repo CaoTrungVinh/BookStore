@@ -1,4 +1,5 @@
-<%@ page import="Util.Util" %>
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
+
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -57,31 +58,38 @@
 
                 </div>
                 <% String route = (String) request.getAttribute("route");
-                    if (route.equals("edit")) {
+                    switch (route) {
+                        case "edit":
                 %>
                 <jsp:include page="account.jsp"/>
                 <%
-                } else if (route.equals("address")) {
+                        break;
+                    case "address":
                 %>
                 <jsp:include page="address.jsp"/>
                 <%
-                } else if (route.equals("add-address")) {
+                        break;
+                    case "add-address":
                 %>
                 <jsp:include page="add-address.jsp"/>
                 <%
-                } else if (route.equals("order")) {
+                        break;
+                    case "order":
                 %>
                 <jsp:include page="order-history.jsp"/>
                 <%
-                } else if (route.equals("wishlist")) {
+                        break;
+                    case "wishlist":
                 %>
                 <jsp:include page="wishlist.jsp"/>
 
                 <%
-                } else {
+                        break;
+                    default:
                 %>
                 <jsp:include page="account.jsp"/>
-                <% } %>
+                <% break;
+                } %>
 
             </div>
         </div>

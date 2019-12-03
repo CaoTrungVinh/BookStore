@@ -24,7 +24,7 @@
 					       <h2>Wishlist</h2> 
 					       <ul class="breadcrumbs-list">
 						        <li>
-						            <a title="Return to Home" href="../../../index.jsp">Home</a>
+						            <a title="Return to Home" href="../../index.jsp">Home</a>
 						        </li>
 						        <li>Wishlist</li>
 						    </ul>
@@ -249,7 +249,7 @@
                             </table>
                         </div>
                         <div class="wishlist-bottom-link">
-                            <a class="wishlist-single-link" href="../../../index.jsp">
+                            <a class="wishlist-single-link" href="../../index.jsp">
                                 <i class="fa fa-angle-double-left"></i>
                                 Back
                             </a>

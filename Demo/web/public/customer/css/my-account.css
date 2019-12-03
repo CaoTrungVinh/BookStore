@@ -3866,7 +3866,7 @@ pre code {
 
 @media (min-width:1200px) {
     .container {
-        width: 1170px
+        /*width: 1170px*/
     }
 }
 
@@ -13265,11 +13265,11 @@ strong {
 }
 
 .container {
-    max-width: none !important
+    /*max-width: none !important*/
 }
 
 .container-fluid {
-    min-width: 1170px
+    /*min-width: 1170px*/
 }
 
 .swiper-pagination-bullet {
@@ -13288,7 +13288,7 @@ strong {
 }
 
 a {
-    color: #007ff0
+    /*color: #007ff0*/
 }
 
 a:focus,
@@ -20079,7 +20079,7 @@ header#header .main-nav .main-nav-wrap>ul>li>a.active:not(.no-sub):after {
 }
 
 .container {
-    width: 1270px !important
+    /*width: 1270px !important*/
 }
 
 header#header .header-form-container .form-search,
@@ -24438,7 +24438,7 @@ body.badge-v2 .product-item .notify {
 .tiki-account .wrap .account-profile .form-group .input-wrap .checkbox input[type=checkbox] {
     /* opacity: 0;
     filter: alpha(opacity=0) */
-}
+/*}*/
 
 .tiki-account .wrap .account-profile .form-group .input-wrap .checkbox input[type=checkbox]+span.ico {
     width: 18px;
@@ -24460,7 +24460,7 @@ body.badge-v2 .product-item .notify {
     border-radius: 3px 0 0 3px;
     border-right: none;
     line-height: 32px
-} */
+}
 
 .tiki-account .wrap .account-profile .form-group .input-wrap.update-phone a.btn-send-otp {
     border-radius: 0 3px 3px 0;

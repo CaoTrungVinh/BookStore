@@ -1,21 +1,4 @@
-
-<%@ page import="Util.Util" %>
-<!doctype html>
-<html class="no-js" lang="">
-<head>
-    <title>My Account</title>
-    <jsp:include page="../view/head.jsp"/>
-</head>
-<body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-
-<!-- Add your site or application content here -->
-<!--Header Area Start-->
-<jsp:include page="../view/header.jsp"/>
-
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
 <div class="content-right">
     <h1 class="have-margin">
         Tạo sổ địa chỉ
@@ -231,12 +214,3 @@
     </div>
 </div>
 
-<!-- Loging Area End -->
-<!-- Footer Area Start -->
-<jsp:include page="../view/footer.jsp"/>
-<!-- Footer Area End -->
-<!-- all js here -->
-<!-- jquery latest version -->
-<jsp:include page="../view/jquery.jsp"/>
-</body>
-</html>

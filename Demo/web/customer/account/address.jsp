@@ -1,4 +1,5 @@
-<%@ page import="Util.Util" %>
+
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
 <div class="content-right">
     <h1 class="have-margin">
         Sổ địa chỉ

@@ -24,7 +24,7 @@
 					       <h2>404 Page</h2> 
 					       <ul class="breadcrumbs-list">
 						        <li>
-						            <a title="Return to Home" href="../../../index.jsp">Home</a>
+						            <a title="Return to Home" href="../../index.jsp">Home</a>
 						        </li>
 						        <li>404 page</li>
 						    </ul>
@@ -42,7 +42,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="error-text text-center">
 							<h1>OPPS! PAGE NOT FOUND</h1>
-							<a href="../../../index.jsp">BACK TO HOME PAGE</a>
+							<a href="../../index.jsp">BACK TO HOME PAGE</a>
 						</div>
 					</div>
 				</div>

@@ -1,3 +1,5 @@
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
+
 <div class="content-right">
 
     <h1 class="have-margin">Danh sách yêu thích (1) </h1>

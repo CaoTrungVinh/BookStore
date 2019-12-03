@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-//@WebServlet(urlPatterns = {"/Account", "/Account/edit"})
-@WebServlet("/Account")
+@WebServlet(urlPatterns = {"/Account", "/Account/edit", "/Account/address", "/Account/add-address", "/Account/order", "/Account/wishlist"})
+//@WebServlet("/Account")
 public class Account extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("/Account; charset=UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
 
 //        request.setCharacterEncoding("UTF-8");
@@ -24,30 +24,26 @@ public class Account extends HttpServlet {
 //        response.setCharacterEncoding("UTF-8");
 
 //Demo/account/ìno
-        if(request.getPathInfo()== null)  {
-            request.setAttribute("route", "edit");
-        }
-       else if(request.getPathInfo().equals("/edit")) {
+        System.out.println(request.getServletPath());
+        if (request.getServletPath().equals("/Account") || request.getServletPath().equals("/Account/edit")) {
+            System.out.println(request.getServletPath());
 
             request.setAttribute("route", "edit");
-//            request.getRequestDispatcher("WEB-INF/customer/account/my-account.jsp").forward(request, response);
 
-        }else if(request.getPathInfo().equals("/adderss")) {
+        } else if (request.getServletPath().equals("/Account/address")) {
             request.setAttribute("route", "address");
 
-        }
-        else if(request.getPathInfo().equals("/add-adderss")) {
+        } else if (request.getServletPath().equals("/Account/add-address")) {
             request.setAttribute("route", "add-address");
 
-        }
-        else if(request.getPathInfo().equals("/order")) {
+        } else if (request.getServletPath().equals("/Account/order")) {
             request.setAttribute("route", "order");
 
-        } else if(request.getPathInfo().equals("/wishlist")) {
+        } else if (request.getServletPath().equals("/Account/wishlist")) {
             request.setAttribute("route", "wishlist");
 
         }
-        request.getRequestDispatcher("/WEB-INF/customer/account/my-account.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/account/my-account.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
