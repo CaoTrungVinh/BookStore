@@ -11,6 +11,7 @@
 
         <!-- Add your site or application content here -->
         <!--Header Area Start-->
+        
         <jsp:include page="/customer/view/header.jsp"/>
         <!--Header Area End-->
 		<!-- Mobile Menu Start -->
@@ -1214,6 +1215,7 @@
 		</div>
 		<!-- News Letter Area End -->
 		<!-- Footer Area Start -->
+        
         <jsp:include page="/customer/view/footer.jsp"/>
 		<!-- Footer Area End -->
         <!--Quickview Product Start -->
@@ -1271,6 +1273,7 @@
         <!--End of Quickview Product-->			
 		<!-- all js here -->
 		<!-- jquery latest version -->
+        
         <jsp:include page="/customer/view/jquery.jsp"/>
     </body>
 </html>

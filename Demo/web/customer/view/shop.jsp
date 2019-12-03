@@ -29,7 +29,7 @@
                     <h2>SHOP LEFT SIDEBAR</h2>
                     <ul class="breadcrumbs-list">
                         <li>
-                            <a title="Return to Home" href="index.jsp">Home</a>
+                            <a title="Return to Home" href="../../index.jsp">Home</a>
                         </li>
                         <li>SHOP LEFT SIDEBAR</li>
                     </ul>
@@ -235,7 +235,7 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="#" title="Add to Cart">
+                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>" title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
                                                     <a href="#" title="Add to Wishlist">
