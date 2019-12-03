@@ -1,6 +1,7 @@
 <%@ page import="controller.page.ListBook" %>
 <%@ page import="Util.Util" %>
 <%@ page import="Model.Cart" %>
+<%@ page import="Model.Wish" %>
 <!--Header Area Start-->
 <div class="header-area bg-white">
     <div class="container">
@@ -151,10 +152,15 @@
                         </li>
 
                         <li class="shoping-cart" style="margin-right: 5px">
-                            <a href="#">
+
+                            <a href="<%= Util.fullPath("show-wish")%>">
                                 <i class="fa fa-heartbeat"></i>
-                                <span>2</span>
+                                <% Wish wish = (Wish) session.getAttribute("Wish");
+                                    int countWish = wish == null ? 0 : wish.list().size();
+                                %>
+                                <span><%= countWish%></span>
                             </a>
+
                             <div class="add-to-cart-product">
                                 <div class="cart-product">
                                     <div class="cart-product-image">
