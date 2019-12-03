@@ -16,7 +16,7 @@
                 <div class="header-right">
                     <ul>
                         <li>
-                            <a href="account.jsp"><i class="flaticon-people"></i></a>
+                            <a href="flaticon-people"><i class="flaticon-people"></i></a>
                         </li>
                         <li class="shoping-cart">
                             <a href="#">
@@ -99,7 +99,7 @@
                 <div class="header-right" style="margin-left: -100px;">
                     <ul>
                         <li style="margin-right: 5px">
-                            <a href="my-account.jsp"><i class="flaticon-people"></i>
+                            <a href="<%= Util.fullPath("account")%>"><i class="flaticon-people"></i>
                             </a>
                         </li>
                         <li class="shoping-cart" style="margin-right: 5px">

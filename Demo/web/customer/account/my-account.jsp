@@ -35,19 +35,19 @@
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                             <li class="active">
-                                <a href="<%= Util.fullPath("Account/edit")%>"><i class="fa fa-user"></i><span>Thông tin tài khoản</span>
+                                <a href="<%= Util.fullPath("account/edit")%>"><i class="fa fa-user"></i><span>Thông tin tài khoản</span>
                                     <!-- <span class='noti-nav'>Mới</span> --></a>
                             </li>
                             <li class="">
-                                <a href="<%= Util.fullPath("Account/address") %>"> <i class="fa fa-map-marker-alt"></i>
+                                <a href="<%= Util.fullPath("account/address") %>"> <i class="fa fa-map-marker-alt"></i>
                                     <span>Sổ địa chỉ</span> </a>
                             </li>
                             <li class="">
-                                <a href="<%= Util.fullPath("Account/order") %>"> <i class="fa fa-my-order"></i> <span>Quản lý đơn hàng</span></a>
+                                <a href="<%= Util.fullPath("account/order") %>"> <i class="fa fa-my-order"></i> <span>Quản lý đơn hàng</span></a>
                             </li>
 
                             <li class="">
-                                <a href="<%= Util.fullPath("Account/wishlist") %>"><i class="fa fa-favorite"></i> <span> Sản phẩm yêu thích</span></a>
+                                <a href="<%= Util.fullPath("account/wishlist") %>"><i class="fa fa-favorite"></i> <span> Sản phẩm yêu thích</span></a>
                             </li>
                             <!--  -->
                             <!-- <li class="hidden-md hidden-lg">

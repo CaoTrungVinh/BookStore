@@ -16,7 +16,7 @@ public class ListBook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-//        response.setContentType("/ListBook; charset=UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
 //        String search = request.getParameter("selectSearch");
         String page = request.getParameter("page");
@@ -51,11 +51,15 @@ public class ListBook extends HttpServlet {
             Statement s1 = ConnectionDB.connect();
             Connection conn1 = s1.getConnection();
 
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1";
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM" +
+                    " img inner JOIN books ON img.id_book = books.id WHERE acitive = 1 GROUP BY img.id_book ";
+
+
 
             if (idType != 0) {
-                sql += " and type = " + idType;
-            }
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM" +
+                " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType +" GROUP BY img.id_book ";
+             }
 //            else if(search != null) {
 //                sql += " and search =" + search;
 //            }
@@ -66,7 +70,7 @@ public class ListBook extends HttpServlet {
             ResultSet book = pst2.executeQuery();
             book.last();
             int rows = book.getRow();
-            book.first();
+            book.beforeFirst();
 //            System.out.println("gjhjhiu" + rows);
 
             int nOfPages = rows / 9;

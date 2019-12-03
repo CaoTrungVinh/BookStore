@@ -20,11 +20,17 @@ public class Register extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+
         String email = request.getParameter("email");
         String name = request.getParameter("username");
         String pass = request.getParameter("pass");
         String re_pass = request.getParameter("re-pass");
         String phone = request.getParameter("phone");
+
+
 
         Connection conn = null;
         String sql;
