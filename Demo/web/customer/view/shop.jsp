@@ -53,7 +53,8 @@
                                     while (rs.next()) {
                                 %>
                                 <li>
-                                    <a href="<%= Util.fullPath("ListBook?type=" + rs.getInt(1)) %>">
+                                  
+                                    <a href="<%= Util.fullPath("list-book?type=" + rs.getInt(1)) %>">
                                         <i class="fa fa-angle-double-right"></i>
                                         <%= rs.getString(2)%>
                                         <%--                                                <span>(5)</span>--%>
@@ -174,9 +175,15 @@
                                     Integer idType = (Integer) request.getAttribute("idType");
                                     Integer currentPage1 = (Integer) request.getAttribute("currentPage");
                                     int start1 = currentPage1;
-                                    String url = "ListBook?type=" + idType + "&page=";
+                                    String url = "list-book?type=" + idType + "&page=";
                                     if (idType == 0) {
-                                        url = "ListBook?page=";
+                                        url = "list-book?page=";
+                                    }
+                                    if ((currentPage1) == nOfPages) {
+                                        start1 = currentPage1 -2;
+                                    }
+                                    if(start1 <= 0 ) {
+                                        start1 = 2;
                                     }
                                     if (currentPage1 % 2 == 0) { %>
                                 <li class="shop-pagination"><a
@@ -195,12 +202,19 @@
                                 <li class="shop-pagination"><a
                                         href="<%= Util.fullPath(url + (start1+1) ) %>"><%=start1 + 1  %>
                                 </a></li>
-                                <% }
+                                <% } if(currentPage1 == nOfPages || start1 +1 == nOfPages) {
                                 %>
 
                                 <li class="shop-pagination"><a
+                                        href="<%= Util.fullPath(url + (start1) ) %>"><i
+                                        class="fa fa-caret-right"></i></a></li>
+                                <% } else  {
+                                %>
+                                <li class="shop-pagination"><a
                                         href="<%= Util.fullPath(url + (start1+2) ) %>"><i
                                         class="fa fa-caret-right"></i></a></li>
+                                <% }
+                                %>
                             </ul>
                         </div>
                     </div>
@@ -219,7 +233,7 @@
                                             continue;
                                         }
                                         if (i >= currentPage * 9) break;
-//                                        System.out.println(i);
+                                        System.out.println(i);
 
                                 %>
                                 <div class="col-md-4 col-sm-6">
@@ -235,10 +249,12 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>" title="Add to Cart">
+                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>"
+                                                       title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="#" title="Add to Wishlist">
+                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(5))%>"
+                                                       title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
                                                     <a title="Quick view" data-toggle="modal"
@@ -302,7 +318,9 @@
                                                                         <input type="number" id="french-hens" value="3">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
-                                                                            type="submit">Add to cart
+                                                                            type="submit"><a
+                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add
+                                                                        to cart</a>
                                                                     </button>
                                                                 </form>
                                                             </div>

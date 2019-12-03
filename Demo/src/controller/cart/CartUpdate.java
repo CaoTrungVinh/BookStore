@@ -31,7 +31,7 @@ public class CartUpdate extends HttpServlet {
             session.setAttribute("Cart", c);
         }catch (NumberFormatException e){
         }
-        response.sendRedirect(Util.fullPath("ShowCart"));
+        response.sendRedirect(Util.fullPath("show-cart"));
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

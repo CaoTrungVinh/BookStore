@@ -43,74 +43,81 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="wishlist-table-area table-responsive">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th class="product-remove">Remove</th>
-                            <th class="product-image">Image</th>
-                            <th class="t-product-name">Product Name</th>
-                            <th class="product-edit">Edit</th>
-                            <th class="product-unit-price">Unit Price</th>
-                            <th class="product-quantity">Quantity</th>
-                            <th class="product-subtotal">Subtotal</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <% Cart c = (Cart) request.getAttribute("Cart");
-                            if (c == null) c = new Cart();
-                            for (Product p : c.list()) {
-                        %>
-                        <tr>
-                            <td class="product-remove">
-                                <a href="<%= Util.fullPath("DelProduct?id="+p.getId()) %>">
-                                    <i class="flaticon-delete"></i>
-                                </a>
-                            </td>
-                            <td class="product-image">
-                                <a href="#">
-                                    <img src="/public/customer/img/shop/<%= p.getImg()%>" style="height: 140px" alt="">
-                                </a>
-                            </td>
-                            <td class="t-product-name">
-                                <h3>
-                                    <a href="#"><%= p.getName()%>
+                <form method="post" action="<%=Util.fullPath("CartUpdate")%>">
+
+                    <div class="wishlist-table-area table-responsive">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class="product-remove">Remove</th>
+                                <th class="product-image">Image</th>
+                                <th class="t-product-name">Product Name</th>
+                                <th class="product-edit">Edit</th>
+                                <th class="product-unit-price">Unit Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Subtotal</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% Cart c = (Cart) request.getAttribute("Cart");
+                                if (c == null) c = new Cart();
+                                for (Product p : c.list()) {
+                            %>
+                            <tr>
+                                <td class="product-remove">
+                                    <a href="<%= Util.fullPath("DelProduct?id="+p.getId()) %>">
+                                        <i class="flaticon-delete"></i>
                                     </a>
-                                </h3>
-                            </td>
-                            <td class="product-edit">
-                                <p>
-                                    <a href="#">Edit</a>
-                                </p>
-                            </td>
-                            <td class="product-unit-price">
-                                <p>$ <%= p.getPrice()%>
-                                </p>
-                            </td>
-                            <td class="product-quantity product-cart-details">
-                                <form method="post" action="<%=Util.fullPath("CartUpdate")%>">
+                                </td>
+                                <td class="product-image">
+                                    <a href="#">
+                                        <img src="/public/customer/img/shop/<%= p.getImg()%>" style="height: 140px"
+                                             alt="">
+                                    </a>
+                                </td>
+                                <td class="t-product-name">
+                                    <h3>
+                                        <a href="#"><%= p.getName()%>
+                                        </a>
+                                    </h3>
+                                </td>
+                                <td class="product-edit">
+                                    <p>
+                                        <a href="#">Edit</a>
+                                    </p>
+                                </td>
+                                <td class="product-unit-price">
+                                    <p>$ <%= p.getPrice()%>
+                                    </p>
+                                </td>
+                                <td class="product-quantity product-cart-details">
                                     <input type="hidden" name="id" value="<%= p.getId()%>" style="width: 60px">
-                                    <input type="number" name="quantity" min="1" value="<%= p.getQuantity()%>" style="width: 60px">
-                                    <input type="submit" value="^" style="font-family: Tahoma">
-                                </form>
-                            </td>
-                            <td class="product-quantity">
-                                <p>$ <%= p.total()%>
-                                </p>
-                            </td>
-                        </tr>
-                        <%}%>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="shopingcart-bottom-area">
-                    <a class="left-shoping-cart" href="#">CONTINUE SHOPPING</a>
-                    <div class="shopingcart-bottom-area pull-right">
-                        <a class="right-shoping-cart" href="#">CLEAR SHOPPING CART</a>
-                        <a class="right-shoping-cart" href="#">UPDATE SHOPPING CART</a>
+                                    <input type="number" name="quantity" min="1" value="<%= p.getQuantity()%>"
+                                           style="width: 60px">
+
+
+                                </td>
+                                <td class="product-quantity">
+                                    <p>$ <%= p.total()%>
+                                    </p>
+                                </td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
+                    <div class="shopingcart-bottom-area">
+                        <a class="left-shoping-cart" href="<%=Util.fullPath("list-book")%>">CONTINUE SHOPPING</a>
+                        <div class="shopingcart-bottom-area pull-right">
+                            <a class="right-shoping-cart" href="#">CLEAR SHOPPING CART</a>
+
+                            <%--                            <a class="right-shoping-cart" href="#">UPDATE SHOPPING CART</a>--%>
+                            <input type="submit" value="UPDATE SHOPPING CART">
+                        </div>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
@@ -139,7 +146,7 @@
                     <div class="subtotal-area">
                         <h2>GRAND TOTAL<span>$ <%= c.total()%></span></h2>
                     </div>
-                    <a href="#">CHECKOUT</a>
+                    <a href="customer/view/checkout.jsp">CHECKOUT</a>
                     <p>Checkout With Multiple Addresses</p>
                 </div>
             </div>

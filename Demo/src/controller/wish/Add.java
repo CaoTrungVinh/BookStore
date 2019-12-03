@@ -1,7 +1,8 @@
-package controller.cart;
+package controller.wish;
 
 import Model.Cart;
 import Model.Product;
+import Model.Wish;
 import Util.Util;
 
 import javax.servlet.ServletException;
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet("/DelProduct")
-public class Del extends HttpServlet {
+@WebServlet("/AddWish")
+public class Add extends HttpServlet {
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -22,13 +25,14 @@ public class Del extends HttpServlet {
             HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
             Product p = Product.find(id);
-            Model.Cart c = (Model.Cart) session.getAttribute("Cart");
-            if (c == null) c = new Cart();
-            c.remove(id);
-            session.setAttribute("Cart", c);
+            Wish c = (Wish)session.getAttribute("Wish");
+            if (c == null) c = new Wish();
+            if (c!= null)
+                c.put(p);
+            session.setAttribute("Wish", c);
         }catch (NumberFormatException e){
         }
-        response.sendRedirect(Util.fullPath("show-cart"));
+        response.sendRedirect(Util.fullPath("list-book"));
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

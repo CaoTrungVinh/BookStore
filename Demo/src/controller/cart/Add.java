@@ -28,7 +28,7 @@ public class Add extends HttpServlet {
             session.setAttribute("Cart", c);
         }catch (NumberFormatException e){
         }
-        response.sendRedirect(Util.fullPath("ListBook"));
+        response.sendRedirect(Util.fullPath("list-book"));
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
