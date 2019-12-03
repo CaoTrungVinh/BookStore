@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <%--                       <form action="#" class="create-account-form" method="post">--%>
-                <form action="<%= Util.fullPath("Login")%>" class="create-account-form" method="post">
+                <form action="<%= Util.fullPath("login")%>" class="create-account-form" method="post">
                     <h2 class="heading-title">
                         ALREADY RESIGTERED?
                     </h2>

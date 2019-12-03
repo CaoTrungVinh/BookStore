@@ -1,4 +1,4 @@
-package controller.cart;
+package controller.page;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/show-cart")
-public class Cart extends HttpServlet {
+@WebServlet("/about")
+public class About extends HttpServlet {
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        Model.Cart c = (Model.Cart) request.getSession().getAttribute("Cart");
-        request.setAttribute("Cart", c);
-        request.getRequestDispatcher("customer/view/cart.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/view/about.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

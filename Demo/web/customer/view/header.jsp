@@ -1,4 +1,4 @@
-<%@ page import="controller.ListBook" %>
+<%@ page import="controller.page.ListBook" %>
 <%@ page import="Util.Util" %>
 <%@ page import="Model.Cart" %>
 <!--Header Area Start-->
@@ -88,11 +88,9 @@
                     <nav>
                         <ul id="nav">
                             <li><a href="../../index.jsp">HOME</a></li>
-                            <li><a href="<%= Util.fullPath("ListBook")%>">LIST BOOK</a></li>
-                            <!--                                    <li><a href="shop.jsp">REVIEW BOOK</a></li>-->
-                            <li><a href="/customer/contact.jsp">CONTACT</a></li>
-                            <li><a href="about.jsp">ABOUT</a></li>
-                            <li><a href="contact.jsp">CONTACT</a></li>
+                            <li><a href="<%= Util.fullPath("list-book")%>">LIST BOOK</a></li>
+                            <li><a href="<%= Util.fullPath("contact")%>">CONTACT</a></li>
+                            <li><a href="<%= Util.fullPath("about")%>">ABOUT</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -105,7 +103,7 @@
                             </a>
                         </li>
                         <li class="shoping-cart" style="margin-right: 5px">
-                            <a href="#">
+                            <a href="<%= Util.fullPath("show-cart")%>">
                                 <i class="flaticon-shop"></i>
                                 <% Cart c = (Cart) session.getAttribute("Cart");
                                     int count = c == null ? 0 : c.list().size();
@@ -144,7 +142,7 @@
                                     </div>
                                 </div>
                                 <div class="cart-checkout">
-                                    <a href="<%= Util.fullPath("ShowCart")%>">
+                                    <a href="#">
                                         Check out
                                         <i class="fa fa-chevron-right"></i>
                                     </a>

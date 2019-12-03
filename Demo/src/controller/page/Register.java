@@ -1,7 +1,7 @@
-package vn.edu.nlu.fit;
+package controller.page;
 
-import controller.PasswordAuthentication;
-import controller.SendingEmail;
+import controller.auth.PasswordAuthentication;
+import controller.tool.SendingEmail;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.Base64;
 
 
-@WebServlet("/Register")
+@WebServlet("/register")
 public class Register extends HttpServlet {
 
 
@@ -38,10 +38,10 @@ public class Register extends HttpServlet {
 
             if (rs.getRow() == 1) {
                 request.setAttribute("err-email", "Email đã tồn tại.");
-                request.getRequestDispatcher("register.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
             } else if (!(pass.equals(re_pass))) { // kiểm tra pass khớp
                 request.setAttribute("err-pass", "Re-Pass không khớp!");
-                request.getRequestDispatcher("register.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
             } else {
                 sql = "INSERT INTO users(name, email, email_hashed, password" +
                         ", phone) VALUES(?,?,?,?,?)";
@@ -64,10 +64,10 @@ public class Register extends HttpServlet {
                     SendingEmail sendingEmail = new SendingEmail(email, hashMail);
                     sendingEmail.start();
                     conn.close();
-                    response.sendRedirect("verify.jsp");
+                    response.sendRedirect("/customer/view/verify.jsp");
                 } else {
                     conn.close();
-                    request.getRequestDispatcher("register.jsp").forward(request, response);
+                    request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
                 }
             }
         } catch (Exception e) {

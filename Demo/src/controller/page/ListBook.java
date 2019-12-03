@@ -1,4 +1,4 @@
-package controller;
+package controller.page;
 
 import db.ConnectionDB;
 
@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 
-@WebServlet("/ListBook")
+@WebServlet("/list-book")
 public class ListBook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -84,7 +83,7 @@ public class ListBook extends HttpServlet {
 
             request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
 
-            request.getRequestDispatcher("/customer/view/shop.jsp").forward(request, response);
+
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

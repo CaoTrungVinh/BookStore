@@ -1,4 +1,4 @@
-package controller;
+package controller.page;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = {"/Account", "/Account/edit", "/Account/address", "/Account/add-address", "/Account/order", "/Account/wishlist"})
-//@WebServlet("/Account")
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist"})
+//@WebServlet("/account")
 public class Account extends HttpServlet {
 
 
@@ -25,21 +25,21 @@ public class Account extends HttpServlet {
 
 //Demo/account/ìno
         System.out.println(request.getServletPath());
-        if (request.getServletPath().equals("/Account") || request.getServletPath().equals("/Account/edit")) {
+        if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             System.out.println(request.getServletPath());
 
             request.setAttribute("route", "edit");
 
-        } else if (request.getServletPath().equals("/Account/address")) {
+        } else if (request.getServletPath().equals("/account/address")) {
             request.setAttribute("route", "address");
 
-        } else if (request.getServletPath().equals("/Account/add-address")) {
+        } else if (request.getServletPath().equals("/account/add-address")) {
             request.setAttribute("route", "add-address");
 
-        } else if (request.getServletPath().equals("/Account/order")) {
+        } else if (request.getServletPath().equals("/account/order")) {
             request.setAttribute("route", "order");
 
-        } else if (request.getServletPath().equals("/Account/wishlist")) {
+        } else if (request.getServletPath().equals("/account/wishlist")) {
             request.setAttribute("route", "wishlist");
 
         }

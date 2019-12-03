@@ -1,10 +1,9 @@
-package vn.edu.nlu.fit;
+package controller.page;
 
 import Model.User;
-import controller.PasswordAuthentication;
+import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
 
-import javax.mail.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet("/Login")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,17 +47,17 @@ public class Login extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("WEB-INF/customer/view/index.jsp");
+                response.sendRedirect("/customer/view/index.jsp");
 
             } else {
                 request.setAttribute("err", "Sai email hoặc mật khẩu.");
-                request.getRequestDispatcher("WEB-INF/customer/view/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
                 response.getWriter().println("Đăng nhập không thành công");
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("err", "Sai email hoặc mật khẩu.");
-            request.getRequestDispatcher("WEB-INF/customer/view/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
     }

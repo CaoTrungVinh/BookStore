@@ -1,4 +1,4 @@
-package vn.edu.nlu.fit;
+package controller.auth;
 
 import db.ConnectionDB;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet("/ActivateAccount")
+@WebServlet("/activate-account")
 public class ActivateAccount extends HttpServlet {
 
 
@@ -35,7 +35,7 @@ public class ActivateAccount extends HttpServlet {
                 pst1.setString(2, hash);
                 int i = pst1.executeUpdate();
                 if (i == 1) {
-                    response.sendRedirect("login.jsp");
+                    response.sendRedirect("/customer/view/login.jsp");
                     System.out.println("Account Successfully Verified.");
                 } else {
                     response.sendRedirect("index.jsp");
