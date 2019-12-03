@@ -22,7 +22,7 @@
 
 
             <div class="form-group gender-select-wrap" id="register_name">
-                <label class="control-label" for="pasword">Giới tính</label>
+                <label class="control-label">Giới tính</label>
                 <div class="input-wrap">
                     <div class="row">
                         <div class="col-xs-4">
@@ -259,7 +259,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="new-password">Mật khẩu mới</label>
+                    <label class="control-label" for="new_password">Mật khẩu mới</label>
                     <div class="input-wrap">
                         <input type="password" name="new_password" class="form-control"
                                id="new_password" value="" autocomplete="off"

@@ -20,11 +20,16 @@ public class Register extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String name = request.getParameter("username");
-        String pass = request.getParameter("pass");
-        String re_pass = request.getParameter("re-pass");
-        String phone = request.getParameter("phone");
+        String email = request.getParameter("email") == null ? "" : request.getParameter("email");
+        String name = request.getParameter("username") == null ? "" : request.getParameter("username");
+        String pass = request.getParameter("pass") == null ? "" : request.getParameter("pass");
+        String re_pass = request.getParameter("re-pass") == null ? "" : request.getParameter("re-pass");
+        String phone = request.getParameter("phone") == null ? "" : request.getParameter("phone");
+
+        if (email == "" && name == "" && pass == "" && re_pass == "" && phone == "") {
+            request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+            return;
+        }
 
         Connection conn = null;
         String sql;
@@ -78,8 +83,6 @@ public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
-
 
 
 }

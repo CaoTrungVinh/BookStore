@@ -18,8 +18,6 @@ public class ActivateAccount extends HttpServlet {
         String email = request.getParameter("key1");
         String hash = request.getParameter("key2");
 
-        response.getWriter().println(email);
-        response.getWriter().println(hash);
 
 
         try {
@@ -35,10 +33,10 @@ public class ActivateAccount extends HttpServlet {
                 pst1.setString(2, hash);
                 int i = pst1.executeUpdate();
                 if (i == 1) {
-                    response.sendRedirect("/customer/view/login.jsp");
+                    response.sendRedirect("login");
                     System.out.println("Account Successfully Verified.");
                 } else {
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("");
                 }
             }
         } catch (Exception var10) {

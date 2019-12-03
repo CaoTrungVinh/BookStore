@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
-                    <a href="../../index.jsp">
+                    <a href="<%= Util.fullPath("Index")%>">
                         <img src="/public/customer/img/logo.png" alt="">
                     </a>
                 </div>
@@ -87,7 +87,7 @@
                 <div class="mainmenu text-center">
                     <nav>
                         <ul id="nav">
-                            <li><a href="../../index.jsp">HOME</a></li>
+                            <li><a href="<%= Util.fullPath("")%>">HOME</a></li>
                             <li><a href="<%= Util.fullPath("list-book")%>">LIST BOOK</a></li>
                             <li><a href="<%= Util.fullPath("contact")%>">CONTACT</a></li>
                             <li><a href="<%= Util.fullPath("about")%>">ABOUT</a></li>
@@ -99,14 +99,48 @@
                 <div class="header-right" style="margin-left: -100px;">
                     <ul>
                         <li style="margin-right: 5px">
-                            <a href="my-account.jsp"><i class="flaticon-people"></i>
-                            </a>
+
+                            <% if (request.getSession().getAttribute("user") == null) { %>
+                            <a href="<%= Util.fullPath("login")%>"><i class="flaticon-arrow"></i>
+                        <% } else { %>
+                        <a href="<%= Util.fullPath("account")%>"><i class="flaticon-people"></i>
+                            <% } %>
+
+                        </a>
                         </li>
                         <li class="shoping-cart" style="margin-right: 5px">
                             <a href="<%= Util.fullPath("show-cart")%>">
                                 <i class="flaticon-shop"></i>
-                                <% Cart c = (Cart) session.getAttribute("Cart");
-                                    int count = c == null ? 0 : c.list().size();
+                                <% Cart
+                                        c
+                                        =
+                                        (
+                                                Cart
+                                                )
+                                                session
+                                                        .
+                                                                getAttribute
+                                                                        (
+                                                                                "Cart"
+                                                                        );
+                                    int
+                                            count
+                                            =
+                                            c
+                                                    ==
+                                                    null
+                                                    ?
+                                                    0
+                                                    :
+                                                    c
+                                                            .
+                                                                    list
+                                                                            (
+                                                                            )
+                                                            .
+                                                                    size
+                                                                            (
+                                                                            );
                                 %>
                                 <span><%= count%></span>
                             </a>
@@ -138,7 +172,17 @@
                                     <div class="cart-product-line">
                                         <span>Total</span>
                                         <span class="total">$
-                                        <%= c!= null ? c.total() :0 %></span>
+                                        <%= c
+                                                !=
+                                                null
+                                                ?
+                                                c
+                                                        .
+                                                                total
+                                                                        (
+                                                                        )
+                                                :
+                                                0 %></span>
                                     </div>
                                 </div>
                                 <div class="cart-checkout">

@@ -1,6 +1,7 @@
 package controller.page;
 
 import Model.User;
+import Util.Util;
 import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
 
@@ -18,9 +19,13 @@ public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.getWriter().println("Đăng nhập không thành công");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
+        String email = request.getParameter("email") == null ? "" : request.getParameter("email");
+        String pass = request.getParameter("pass") == null ? "" : request.getParameter("pass");
 
+        if (email == "" && pass == "") {
+            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+            return;
+        }
 
         try {
             String query = "select * from users where email=?";
@@ -47,17 +52,17 @@ public class Login extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("/customer/view/index.jsp");
+                response.sendRedirect(Util.fullPath(""));
 
             } else {
                 request.setAttribute("err", "Sai email hoặc mật khẩu.");
-                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+                request.getRequestDispatcher(Util.fullPath("login")).forward(request, response);
                 response.getWriter().println("Đăng nhập không thành công");
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("err", "Sai email hoặc mật khẩu.");
-            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+            request.getRequestDispatcher(Util.fullPath("login")).forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
     }

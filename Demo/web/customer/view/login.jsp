@@ -26,7 +26,7 @@
                     <h2>LOGIN</h2>
                     <ul class="breadcrumbs-list">
                         <li>
-                            <a title="Return to Home" href="../../index.jsp">Home</a>
+                            <a title="Return to Home" href="index.jsp">Home</a>
                         </li>
                         <li>Login</li>
                     </ul>
