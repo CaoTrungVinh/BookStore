@@ -53,6 +53,7 @@
                                     while (rs.next()) {
                                 %>
                                 <li>
+                                  
                                     <a href="<%= Util.fullPath("list-book?type=" + rs.getInt(1)) %>">
                                         <i class="fa fa-angle-double-right"></i>
                                         <%= rs.getString(2)%>
@@ -252,7 +253,8 @@
                                                        title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="#" title="Add to Wishlist">
+                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(5))%>"
+                                                       title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
                                                     <a title="Quick view" data-toggle="modal"
@@ -316,7 +318,9 @@
                                                                         <input type="number" id="french-hens" value="3">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
-                                                                            type="submit">Add to cart
+                                                                            type="submit"><a
+                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add
+                                                                        to cart</a>
                                                                     </button>
                                                                 </form>
                                                             </div>
