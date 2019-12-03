@@ -91,9 +91,8 @@
                                     </p>
                                 </td>
                                 <td class="product-quantity product-cart-details">
-                                    <input type="hidden" name="id" value="<%= p.getId()%>" style="width: 60px">
-                                    <input type="number" name="quantity" min="1" value="<%= p.getQuantity()%>"
-                                           style="width: 60px">
+                                    <input type="hidden" name="id" value="<%= p.getId()%>">
+                                    <input type="number" name="quantity" min="1" value="<%= p.getQuantity()%>">
 
 
                                 </td>
