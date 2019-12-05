@@ -15,7 +15,6 @@ public class Product {
     public Product() {
 
     }
-
     public Product(int id, String name, int quantity, double price) {
         this.id = id;
         this.name = name;
@@ -25,9 +24,6 @@ public class Product {
 
     public static Product find(int id) {
         try {
-//            PreparedStatement ps = ConnectionDB.
-
-
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
             String sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM img inner JOIN books ON img.id_book = books.id WHERE books.id=? and active = 1";
