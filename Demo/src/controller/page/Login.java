@@ -19,8 +19,8 @@ public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        response.getWriter().println("Đăng nhập không thành công");
-        String email = request.getParameter("email") == null ? "" : request.getParameter("email");
-        String pass = request.getParameter("pass") == null ? "" : request.getParameter("pass");
+        String email = Util.getParameterGeneric(request,"email","");
+        String pass = Util.getParameterGeneric(request,"pass","");
 
         if (email == "" && pass == "") {
             request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);

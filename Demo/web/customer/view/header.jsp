@@ -98,10 +98,10 @@
             <div class="col-md-1 hidden-sm">
                 <div class="header-right" style="margin-left: -100px;">
                     <ul>
-                        <li style="margin-right: 5px">
+                        <li class="shoping-cart" style="margin-right: 5px;">
 
                             <% if (request.getSession().getAttribute("user") == null) { %>
-                            <a href="<%= Util.fullPath("login")%>"><i class="flaticon-arrow"></i>
+                            <a href="<%= Util.fullPath("login")%>"><i class="fa fa-sign-in"></i>
                         <% } else { %>
                         <a href="<%= Util.fullPath("account")%>"><i class="flaticon-people"></i>
                             <% } %>
