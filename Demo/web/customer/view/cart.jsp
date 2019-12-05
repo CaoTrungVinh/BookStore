@@ -1,5 +1,5 @@
 <%@ page import="Model.Cart" %>
-<%@ page import="Model.Product" %>
+<%@ page import="Model.BookItem" %>
 <%@ page import="Util.Util" %>
 <!doctype html>
 <html class="no-js" lang="">

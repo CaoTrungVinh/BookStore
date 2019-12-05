@@ -250,9 +250,9 @@
                                             <div class="product-description">
                                                 <div class="functional-buttons">
                                                     <%--                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>"--%>
-                                                    <a
-                                                            title="Add to Cart"
-                                                            onclick="addToCard(<%=book.getInt(1)%>)">
+
+                                                    <a title="Add to Cart"
+                                                       onclick="addToCard(<%=book.getInt(1)%>)">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
                                                     <%--                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"--%>
@@ -530,11 +530,8 @@
             url: "add-cart",   // this is my servlet
             data: {"bookID": id},
             success: function (data) {
-                if (data == 'true') {
-                    increaseCounter();
-                } else {
-                    alert(data);
-                }
+                increaseCounter();
+                addHTMLproduct(data);
             }
         });
     }
@@ -542,31 +539,38 @@
     function increaseCounter() {
         var counter = $("#shopping-cart-counter");
         counter.text(parseInt(counter.text()) + 1);
-        addHTMLproduct();
+
     }
 
-    function addHTMLproduct() {
-        var html = "   <div class=\"cart-product\">\n" +
+    function addHTMLproduct(data) {
+        var bookItem = $.parseJSON(data);
+        console.log(bookItem);
+        var html = "<div class=\"cart-product\">\n" +
             "                                    <div class=\"cart-product-image\">\n" +
             "                                        <a href=\"single-product.jsp\">\n" +
-            "                                            <img src=\"public/customer/img/shop/1.jpg\" alt=\"\">\n" +
+            "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
+            "\" alt=\"\">\n" +
             "                                        </a>\n" +
             "                                    </div>\n" +
             "                                    <div class=\"cart-product-info\">\n" +
             "                                        <p>\n" +
-            "                                            <span>1</span>\n" +
+            "                                            <span>" + bookItem.quantity +
+            "</span>\n" +
             "                                            x\n" +
-            "                                            <a href=\"single-product.jsp\">East of eden</a>\n" +
+            "                                            <a href=\"single-product.jsp\">" + bookItem.name +
+            "\n" +
+            "                                            </a>\n" +
             "                                        </p>\n" +
-            "                                        <a href=\"single-product.jsp\">S, Orange</a>\n" +
-            "                                        <span class=\"cart-price\">$ 140.00</span>\n" +
+            "                                        <span class=\"cart-price\">" + Math.floor(bookItem.quantity*bookItem.price) +
+            "</span>\n" +
             "                                    </div>\n" +
             "                                    <div class=\"cart-product-remove\">\n" +
             "                                        <i class=\"fa fa-times\"></i>\n" +
             "                                    </div>\n" +
-            "                                </div>"
+            "                                </div>";
 
         $("#shopping-cart-wrapper").prepend(html);
+        alert("Adding Successfully");
     }
 </script>
 </body>

@@ -1,6 +1,9 @@
 <%@ page import="controller.page.ListBook" %>
 <%@ page import="Util.Util" %>
 <%@ page import="Model.Cart" %>
+<%@ page import="Model.User" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Model.BookItem" %>
 <!--Header Area Start-->
 <div class="header-area bg-white">
     <div class="container">
@@ -109,47 +112,57 @@
                                 </a>
                         </li>
                         <li class="shoping-cart" style="margin-right: 5px">
-                            <%--                            <a href="<%= Util.fullPath("show-cart")%>">--%>
-                            <%--                                <i class="flaticon-shop"></i>--%>
-                            <%--                                <% Cart c=(Cart)session.getAttribute("Cart");--%>
-                            <%--                                    int count=c==null?0:c.list().size();--%>
-                            <%--                                %>--%>
-                            <%--                                <span><%= count%></span>--%>
-                            <%--                            </a>--%>
+                            <%
+                                User user = (User) request.getSession().getAttribute("user");
+                                ArrayList<BookItem> card = null;
+                                if (user != null) {
+                                    card = user.getShoppingCart();
+                                } else {
+                                    card = (ArrayList<BookItem>) request.getSession().getAttribute("card");
+                                    user = new User();
+                                    user.setShoppingCart(card);
+                                }
+
+                            %>
                             <a href="#">
                                 <i class="flaticon-shop"></i>
-                                <span id="shopping-cart-counter">0</span>
+                                <span id="shopping-cart-counter">
+                                    <%=card.size()%>
+                                </span>
                             </a>
                             <div id="shopping-cart-wrapper" class="add-to-cart-product">
-<%--                                <div class="cart-product">--%>
-<%--                                    <div class="cart-product-image">--%>
-<%--                                        <a href="single-product.jsp">--%>
-<%--                                            <img src="public/customer/img/shop/1.jpg" alt="">--%>
-<%--                                        </a>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="cart-product-info">--%>
-<%--                                        <p>--%>
-<%--                                            <span>1</span>--%>
-<%--                                            x--%>
-<%--                                            <a href="single-product.jsp">East of eden</a>--%>
-<%--                                        </p>--%>
-<%--                                        <a href="single-product.jsp">S, Orange</a>--%>
-<%--                                        <span class="cart-price">$ 140.00</span>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="cart-product-remove">--%>
-<%--                                        <i class="fa fa-times"></i>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+                                <%for (BookItem item : card) {%>
+                                <div class="cart-product">
+                                    <div class="cart-product-image">
+                                        <a href="single-product.jsp">
+                                            <img src="public/customer/img/shop/<%=item.getImg()%>" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="cart-product-info">
+                                        <p>
+                                            <span><%=item.getQuantity()%></span>
+                                            x
+                                            <a href="single-product.jsp"><%=item.getName()%>
+                                            </a>
+                                        </p>
+                                        <span class="cart-price"><%
+                                            Math.floor(item.getQuantity() * item.getPrice());%></span>
+                                    </div>
+                                    <div class="cart-product-remove">
+                                        <i class="fa fa-times"></i>
+                                    </div>
+                                </div>
+                                <%}%>
                                 <div class="total-cart-price">
-                                    <%--                                    <div class="cart-product-line fast-line">--%>
-                                    <%--                                        <span>Shipping</span>--%>
-                                    <%--                                        <span class="free-shiping">$10.50</span>--%>
-                                    <%--                                    </div>--%>
                                     <div class="cart-product-line">
                                         <span>Total</span>
-                                        <span class="total">$
-<%--                                        <%= c!=null?c .total():0 %></span>--%>
-                                        giá</span>
+                                        <% if (card.size() != 0) {%>
+                                        <span class="total">
+                                       <%=Math.floor(user.getTotalPrice())%> VND></span>
+                                        <%} else {%>
+                                        <span class="total">
+                                      0 VND></span>
+                                        <%}%>
                                     </div>
                                 </div>
                                 <div class="cart-checkout">
@@ -206,11 +219,11 @@
                                     </div>
                                 </div>
                                 <div class="total-cart-price">
-                                    <%--                                    <div class="cart-product-line fast-line">--%>
+                                    <%--                                    <div class="card-product-line fast-line">--%>
                                     <%--                                        <span>Shipping</span>--%>
                                     <%--                                        <span class="free-shiping">$10.50</span>--%>
                                     <%--                                    </div>--%>
-                                    <%--                                    <div class="cart-product-line">--%>
+                                    <%--                                    <div class="card-product-line">--%>
                                     <%--                                        <span>Total</span>--%>
                                     <%--                                        <span class="total">$ 140.00</span>--%>
                                     <%--                                    </div>--%>
