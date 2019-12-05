@@ -234,7 +234,6 @@
                                             continue;
                                         }
                                         if (i >= currentPage * 9) break;
-                                        System.out.println(i);
 
                                 %>
                                 <div class="col-md-4 col-sm-6">
@@ -250,11 +249,14 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>"
-                                                       title="Add to Cart">
+                                                    <%--                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>"--%>
+                                                    <a
+                                                            title="Add to Cart"
+                                                            onclick="addToCard(<%=book.getInt(1)%>)">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"
+                                                    <%--                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"--%>
+                                                    <a href="#"
                                                        title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
@@ -316,11 +318,13 @@
                                                             <div class="quick-add-to-cart">
                                                                 <form method="post" class="cart">
                                                                     <div class="numbers-row">
-                                                                        <input type="number" id="french-hens" min="1" value="1">
+                                                                        <input type="number" id="french-hens" min="1"
+                                                                               value="1">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
                                                                             type="submit"><a
-                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>">Add
+                                                                    <%--                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>">Add--%>
+                                                                            href="#">Add
                                                                         to cart</a>
                                                                     </button>
                                                                 </form>
@@ -518,5 +522,52 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
+<script>
+
+    function addToCard(id) {
+        $.ajax({
+            type: "POST",
+            url: "add-cart",   // this is my servlet
+            data: {"bookID": id},
+            success: function (data) {
+                if (data == 'true') {
+                    increaseCounter();
+                } else {
+                    alert(data);
+                }
+            }
+        });
+    }
+
+    function increaseCounter() {
+        var counter = $("#shopping-cart-counter");
+        counter.text(parseInt(counter.text()) + 1);
+        addHTMLproduct();
+    }
+
+    function addHTMLproduct() {
+        var html = "   <div class=\"cart-product\">\n" +
+            "                                    <div class=\"cart-product-image\">\n" +
+            "                                        <a href=\"single-product.jsp\">\n" +
+            "                                            <img src=\"public/customer/img/shop/1.jpg\" alt=\"\">\n" +
+            "                                        </a>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-info\">\n" +
+            "                                        <p>\n" +
+            "                                            <span>1</span>\n" +
+            "                                            x\n" +
+            "                                            <a href=\"single-product.jsp\">East of eden</a>\n" +
+            "                                        </p>\n" +
+            "                                        <a href=\"single-product.jsp\">S, Orange</a>\n" +
+            "                                        <span class=\"cart-price\">$ 140.00</span>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-remove\">\n" +
+            "                                        <i class=\"fa fa-times\"></i>\n" +
+            "                                    </div>\n" +
+            "                                </div>"
+
+        $("#shopping-cart-wrapper").prepend(html);
+    }
+</script>
 </body>
 </html>
