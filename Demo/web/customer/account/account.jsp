@@ -1,5 +1,8 @@
 <%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page import="Model.User" %>
 <div class="content-right">
+    <% User user = (User) request.getAttribute("user");
+    %>
     <h1 class="have-margin">Thông tin tài khoản</h1>
     <div class="account-profile register-form">
         <form class="content" method="post" action="" id="edit-account">
@@ -7,7 +10,7 @@
                 <label class="control-label" for="full_name">Email </label>
                 <div class="input-wrap">
                     <input type="text" name="full_name" class="form-control" id="email"
-                           value="kingtxx98@mail.com" placeholder="email" disabled>
+                           value="<%= user.getEmail()%>" placeholder="email" disabled>
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -15,7 +18,7 @@
                 <label class="control-label" for="full_name">Họ tên </label>
                 <div class="input-wrap">
                     <input type="text" name="full_name" class="form-control" id="full_name"
-                           value="Nguyễn Tánh" placeholder="Họ tên">
+                           value="<%= user.getFullName()%>" placeholder="Họ tên">
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -25,6 +28,9 @@
                 <label class="control-label">Giới tính</label>
                 <div class="input-wrap">
                     <div class="row">
+
+                        <% if(user.getGender().equals("Nam")) {%>
+
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="on" id="gender_male"
@@ -42,6 +48,27 @@
                             </label>
 
                         </div>
+                        <% } else { %>
+
+                        <div class="col-xs-4">
+                            <label>
+                                <input type="radio" name="gender" value="on" id="gender_male1"
+                                       class="gender" >
+                                Nam
+                            </label>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label>
+
+                                <input type="radio" name="gender" value="off" id="gender_female1"
+                                       class="gender" checked="">
+                                Nữ
+                            </label>
+
+                        </div>
+                        <% } %>
+
                     </div>
                     <span class="help-block">Vui lòng chọn giới tính</span>
 

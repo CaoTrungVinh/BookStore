@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Product Page - Admin HTML Template</title>
+    <title>Product Page - Admin</title>
+
+
+
+
     <jsp:include page="head.jsp"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    <style>
+        .table th {
+            padding: 10px !important;
+        }
+        .table tbody td {
+           cursor: pointer;
+        }
+        #category_filter {
+            margin-left: -50%;
+        }
+    </style>
+
 </head>
 
 <body id="reportsPage">
@@ -13,7 +32,10 @@
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <div class="tm-product-table-container">
-                    <table class="table table-hover tm-table-small tm-product-table">
+                    <%--                    <table class="table table-hover tm-table-small tm-product-table">--%>
+                    <table id="product"
+                           class="table table-striped table-bordered "
+                           style="width:100%">
                         <thead>
                         <tr>
                             <th scope="col">&nbsp;</th>
@@ -26,7 +48,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th scope="row"><input type="checkbox"/></th>
+                            <td scope="row"><input type="checkbox"/></td>
                             <td class="tm-product-name">Lorem Ipsum Product 1</td>
                             <td>1,450</td>
                             <td>550</td>
@@ -173,7 +195,13 @@
             <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
                 <h2 class="tm-block-title">Product Categories</h2>
                 <div class="tm-product-table-container">
-                    <table class="table tm-table-small tm-product-table">
+                    <table id="category"
+                           class="table table-striped table-bordered "
+                           style="width:100%">
+                        <thead>
+                        <th>Name</th>
+                        <th></th>
+                        </thead>
                         <tbody>
                         <tr>
                             <td class="tm-product-name">Product Category 1</td>
@@ -277,9 +305,19 @@
 
 <jsp:include page="footer.jsp"/>
 
-<script src="public/admin/js/jquery-3.3.1.min.js"></script>
+
+
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="public/admin/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
+
+
+<%--<script src="https://code.jquery.com/jquery-3.3.1.js"></script>--%>
+<%--<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>--%>
+
 <!-- https://getbootstrap.com/ -->
 <script>
     $(function () {
@@ -287,6 +325,24 @@
             window.location.href = "edit-product.jsp";
         });
     });
+
+    $(document).ready(function () {
+        $('#product').DataTable({
+            "columnDefs": [
+                {"orderable": false, "targets": [0]},
+                {"orderable": false, "targets": [5]},
+                {"width": "0%", "targets": 5}
+                ]
+        });
+        $('#category').DataTable({
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false });
+    });
+
+
+
 </script>
 </body>
 </html>

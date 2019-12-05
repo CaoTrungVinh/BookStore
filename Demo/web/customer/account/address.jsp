@@ -5,7 +5,7 @@
         Sổ địa chỉ
 
     </h1>
-    <a class="add-address" href="<%= Util.fullPath("Account/add-adderss")%>"><i class="add"></i>
+    <a class="add-address" href="<%= Util.fullPath("account/add-address")%>"><i class="add"></i>
         <span>Thêm địa chỉ mới</span></a>
 
     <div class="dashboard-address">

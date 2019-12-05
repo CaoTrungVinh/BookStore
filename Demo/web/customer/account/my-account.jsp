@@ -1,4 +1,5 @@
 <%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page import="Model.User" %>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -23,10 +24,12 @@
             <div class="row-style-1">
                 <div class="menu-left">
                     <div class="profiles">
+                        <% User user = (User) request.getAttribute("user");
+                        %>
                         <p class="image"><img src="https://salt.tikicdn.com/desktop/img/avatar.png?v=3" height="45"
                                               width="45" alt=""></p>
                         <p class="name">Tài khoản của</p>
-                        <h6>Nguyễn Tánh</h6>
+                        <h6><%= user.getUserName()%></h6>
                     </div>
                     <div class="menu dropdown">
                         <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1"

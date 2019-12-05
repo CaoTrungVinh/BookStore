@@ -3,6 +3,7 @@
     <head>
         <title>404 page not found || Witter Multipage Responsive Template</title>
         <jsp:include page="head.jsp"/>
+
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -21,7 +22,7 @@
 				<div class="row">
 					<div class="col-md-12">
 					    <div class="breadcrumbs">
-					       <h2>404 Page</h2> 
+					       <h2>404 Page</h2>
 					       <ul class="breadcrumbs-list">
 						        <li>
 						            <a title="Return to Home" href="../../index.jsp">Home</a>
@@ -32,8 +33,8 @@
 					</div>
 				</div>
 			</div>
-		</div> 
-		<!-- Breadcrumbs Area Start --> 
+		</div>
+		<!-- Breadcrumbs Area Start -->
         <!-- 404 Error Page Start -->
         <div class="error-text-area section-padding">
 			<img alt="" src="img/404-page.jpg">

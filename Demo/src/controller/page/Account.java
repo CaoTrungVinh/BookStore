@@ -19,11 +19,10 @@ public class Account extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
 
-//        request.setCharacterEncoding("UTF-8");
-//        response.setContentType("text/html; charset=UTF-8");
-//        response.setCharacterEncoding("UTF-8");
+        Model.User user = (Model.User) request.getSession().getAttribute("user");
+        request.setAttribute("user", user);
+        System.out.println(user.toString());
 
-//Demo/account/ìno
         System.out.println(request.getServletPath());
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             System.out.println(request.getServletPath());

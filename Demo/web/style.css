@@ -2491,3 +2491,9 @@ h3.widget-title-modal {
 #scrollUp i {
   line-height: 40px;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

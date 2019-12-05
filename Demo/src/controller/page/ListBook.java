@@ -51,13 +51,13 @@ public class ListBook extends HttpServlet {
             Statement s1 = ConnectionDB.connect();
             Connection conn1 = s1.getConnection();
 
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM" +
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM" +
                     " img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ";
 
 
 
             if (idType != 0) {
-                sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM" +
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
                 " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType +" GROUP BY img.id_book ";
              }
 //            else if(search != null) {

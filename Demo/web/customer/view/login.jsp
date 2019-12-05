@@ -39,7 +39,7 @@
 <!-- Loging Area Start -->
 <div class="login-account section-padding">
     <div class="container">
-        <div class="row">
+        <div class="row flex-center" >
             <div class="col-md-6 col-sm-6">
                 <%--                       <form action="#" class="create-account-form" method="post">--%>
                 <form action="<%= Util.fullPath("login")%>" class="create-account-form" method="post">

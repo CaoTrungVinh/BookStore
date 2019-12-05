@@ -46,6 +46,9 @@ public class Login extends HttpServlet {
                 User user = new User();
                 user.setId(rs.getInt(1));
                 user.setUserName(rs.getString(2));
+                user.setEmail(rs.getString(3));
+                user.setFullName(rs.getString(4));
+                user.setGender(rs.getString(5));
                 user.setPass("");
 //                user.setIdgroup(ra.getInt(4));
 //                user.setActive(ra.getInt(5));
