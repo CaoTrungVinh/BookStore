@@ -19,7 +19,6 @@ public class ActivateAccount extends HttpServlet {
         String hash = request.getParameter("key2");
 
 
-
         try {
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
@@ -33,8 +32,8 @@ public class ActivateAccount extends HttpServlet {
                 pst1.setString(2, hash);
                 int i = pst1.executeUpdate();
                 if (i == 1) {
-                    response.sendRedirect("login");
-                    System.out.println("Account Successfully Verified.");
+                    request.setAttribute("verify200", "Account Successfully Verified.");
+                    request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
                 } else {
                     response.sendRedirect("");
                 }

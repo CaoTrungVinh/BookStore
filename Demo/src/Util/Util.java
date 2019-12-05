@@ -1,6 +1,10 @@
 package Util;
 
+<<<<<<< .mine
 
+=======
+import javax.servlet.http.HttpServletRequest;
+>>>>>>> .theirs
 public class Util {
     static final String HOST = "http://localhost:8080/";
 
@@ -8,4 +12,7 @@ public class Util {
         return HOST + path;
     }
 
+    public static <T> T getParameterGeneric(HttpServletRequest request, String param, T t) {
+        return request.getParameter(param) == null ? t : (T)request.getParameter(param);
+    }
 }

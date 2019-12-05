@@ -18,8 +18,6 @@ public class CartUpdate extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         try {
             HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
@@ -27,7 +25,7 @@ public class CartUpdate extends HttpServlet {
             Product p = Product.find(id);
             Model.Cart c = (Model.Cart) session.getAttribute("Cart");
             if (c == null) c = new Cart();
-            c.put(id,quantity);
+            c.put(id, quantity);
             session.setAttribute("Cart", c);
         }catch (NumberFormatException e){
         }

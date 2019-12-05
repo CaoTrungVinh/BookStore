@@ -11,12 +11,8 @@
 <div class="text-center p-5">
     <h1>Thank You For Registration!</h1>
     <p class="lead">Please Check your Email for Account Verification Link.</p>
-    <p class="lead"><a href="login.jsp" class="btn btn-lg btn-primary">LOGIN</a></p>
+    <p class="lead"><a href="https://mail.google.com" class="btn btn-lg btn-primary">GO TO MAIL</a></p>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer mt-5 text-muted text-center text-small">
-    <p>Email Verification &copy; 2018, All Rights Reserved.</p>
-</footer>
 </body>
 </html>

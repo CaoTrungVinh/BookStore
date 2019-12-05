@@ -351,6 +351,7 @@
                                 <%
                                     ResultSet book = (ResultSet) request.getAttribute("book");
                                     Integer currentPage = (Integer) request.getAttribute("currentPage");
+//                                    
                                     int i = -1;
                                     int start = currentPage * 9 - 9;
                                     while (book.next()) {
@@ -359,6 +360,7 @@
                                             continue;
                                         }
                                         if (i >= currentPage * 9) break;
+                                        
 
                                 %>
                                 <div class="col-md-4 col-sm-6">
@@ -378,7 +380,7 @@
                                                        title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(5))%>"
+                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"
                                                        title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
@@ -390,7 +392,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="banner-bottom text-center">
+                                        <div class="banner-bottom text-center" style="height: 120px;">
                                             <div class="banner-bottom-title">
                                                 <a href="#"><%= book.getString(2)%>
                                                 </a>
@@ -450,11 +452,11 @@
                                                             <div class="quick-add-to-cart">
                                                                 <form method="post" class="cart">
                                                                     <div class="numbers-row">
-                                                                        <input type="number" id="french-hens" value="3">
+                                                                        <input type="number" id="french-hens" min="1" value="1">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
                                                                             type="submit"><a
-                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add
+                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>">Add
                                                                         to cart</a>
                                                                     </button>
                                                                 </form>

@@ -44,7 +44,7 @@
                 <%--                       <form action="#" class="create-account-form" method="post">--%>
                 <form action="<%= Util.fullPath("login")%>" class="create-account-form" method="post">
                     <h2 class="heading-title">
-                        ALREADY RESIGTERED?
+                        LOGIN
                     </h2>
                     <p class="form-row">
                         <%--                                <input type="email" name="email" placeholder="Email address">--%>
@@ -58,18 +58,20 @@
                         <%= request.getAttribute("err") != null ? request.getAttribute("err") : ""%>
 
                     </p>
-                    <p class="lost-password form-group">
-                        <a href="#" rel="nofollow">Forgot your password?</a>
-                    </p>
 
-                    <div class="submit">
+
+                    <div class="form-group submit">
                         <button name="submitcreate" id="submitcreate" type="submit" class="btn-default">
                                     <span>
                                         <i class="fa fa-user left"></i>
-                                        SING IN
+                                        SIGN IN
                                     </span>
                         </button>
                     </div>
+                    <p class="form-group flex-center">
+                        <a href="#" rel="nofollow">Forgot your password?</a>
+                        <a href="#" rel="nofollow">Sign up</a>
+                    </p>
                 </form>
             </div>
         </div>
