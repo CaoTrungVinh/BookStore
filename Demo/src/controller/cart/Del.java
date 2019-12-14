@@ -1,7 +1,7 @@
 package controller.cart;
 
 import Model.Cart;
-import Model.Product;
+import Model.BookItem;
 import Util.Util;
 
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class Del extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
-            Product p = Product.find(id);
+            BookItem p = BookItem.find(id);
             Model.Cart c = (Model.Cart) session.getAttribute("Cart");
             if (c == null) c = new Cart();
             c.remove(id);

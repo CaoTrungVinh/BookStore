@@ -329,7 +329,7 @@
                                         href="<%= Util.fullPath(url + (start1+1) ) %>"><%=start1 + 1  %>
                                 </a></li>
                                 <% }
-                                    if (currentPage1 == nOfPages) {
+                                    if (currentPage1 == nOfPages || start1 + 1 == nOfPages) {
                                 %>
 
                                 <li class="shop-pagination"><a
@@ -338,7 +338,7 @@
                                 <% } else {
                                 %>
                                 <li class="shop-pagination"><a
-                                        href="<%= Util.fullPath(url + (start1+1) ) %>"><i
+                                        href="<%= Util.fullPath(url + (start1+2) ) %>"><i
                                         class="fa fa-caret-right"></i></a></li>
                                 <% }
                                 %>
@@ -351,7 +351,7 @@
                                 <%
                                     ResultSet book = (ResultSet) request.getAttribute("book");
                                     Integer currentPage = (Integer) request.getAttribute("currentPage");
-//                                    
+//                                    System.out.println(currentPage);
                                     int i = -1;
                                     int start = currentPage * 9 - 9;
                                     while (book.next()) {
@@ -360,7 +360,6 @@
                                             continue;
                                         }
                                         if (i >= currentPage * 9) break;
-                                        
 
                                 %>
                                 <div class="col-md-4 col-sm-6">
@@ -376,11 +375,14 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>"
-                                                       title="Add to Cart">
+                                                    <%--                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>"--%>
+
+                                                    <a title="Add to Cart"
+                                                       onclick="addToCard(<%=book.getInt(1)%>)">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"
+                                                    <%--                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"--%>
+                                                    <a href="#"
                                                        title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
@@ -397,22 +399,12 @@
                                                 <a href="#"><%= book.getString(2)%>
                                                 </a>
                                             </div>
-                                            <div class="star-rating">
-                                                <div class="back-stars">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <div class="front-stars" style="width: <%= book.getInt(6)%>%">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
+                                            <div class="rating-icon">
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -452,11 +444,13 @@
                                                             <div class="quick-add-to-cart">
                                                                 <form method="post" class="cart">
                                                                     <div class="numbers-row">
-                                                                        <input type="number" id="french-hens" min="1" value="1">
+                                                                        <input type="number" id="french-hens" min="1"
+                                                                               value="1">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
                                                                             type="submit"><a
-                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>">Add
+                                                                    <%--                                                                            href="<%= Util.fullPath("AddCart?id="+book.getInt(1))%>">Add--%>
+                                                                            href="#">Add
                                                                         to cart</a>
                                                                     </button>
                                                                 </form>
@@ -499,40 +493,24 @@
 
                             </div>
                         </div>
-
                         <div id="menu1" class="tab-pane fade">
                             <div class="row">
-                                <%
-                                    //                                    ResultSet book = (ResultSet) request.getAttribute("book");
-                                    book.beforeFirst();
-                                    Integer currentPage2 = (Integer) request.getAttribute("currentPage");
-                                    int i2 = -1;
-                                    int start2 = currentPage2 * 9 - 9;
-                                    while (book.next()) {
-                                        i2++;
-                                        if (i2 < start2) {
-                                            continue;
-                                        }
-                                        if (i2 >= currentPage2 * 9) break;
-                                %>
-
                                 <div class="single-shop-product">
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
                                             <a href="single-product.jsp" title="East of eden">
-                                                <img src="/public/customer/img/shop/<%= book.getString(4)%>" alt="">
+                                                <img src="img/featured/1.jpg" alt="">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-7 col-md-8">
                                         <div class="deal-product-content">
                                             <h4>
-                                                <a href="single-product.jsp"
-                                                   title="East of eden"><%= book.getString(2)%>
-                                                </a>
+                                                <a href="single-product.jsp" title="East of eden">East of eden</a>
                                             </h4>
                                             <div class="product-price">
-                                                <span class="new-price"><%= book.getInt(3)%> VND</span>
+                                                <span class="new-price">$ 140.00</span>
+                                                <span class="old-price">$ 120.00</span>
                                             </div>
                                             <div class="list-rating-icon">
                                                 <i class="fa fa-star icolor"></i>
@@ -541,63 +519,121 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p><%= book.getString(7)%></p>
+                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy
+                                                material for a comfortable fit. Accessorize with a straw hat and you're
+                                                ready for summer!</p>
                                             <div class="availability">
                                                 <span>In stock</span>
-                                                <span><a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add to cart</a></span>
+                                                <span><a href="cart.jsp">Add to cart</a></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <% } %>
+                                <div class="single-shop-product">
+                                    <div class="col-xs-12 col-sm-5 col-md-4">
+                                        <div class="left-item">
+                                            <a href="single-product.jsp" title="People of the book">
+                                                <img src="img/featured/2.jpg" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-8">
+                                        <div class="deal-product-content">
+                                            <h4>
+                                                <a href="single-product.jsp" title="People of the book">People of the
+                                                    book</a>
+                                            </h4>
+                                            <div class="product-price">
+                                                <span class="new-price">$ 140.00</span>
+                                                <span class="old-price">$ 120.00</span>
+                                            </div>
+                                            <div class="list-rating-icon">
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy
+                                                material for a comfortable fit. Accessorize with a straw hat and you're
+                                                ready for summer!</p>
+                                            <div class="availability">
+                                                <span>In stock</span>
+                                                <span><a href="cart.jsp">Add to cart</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-shop-product">
+                                    <div class="col-xs-12 col-sm-5 col-md-4">
+                                        <div class="left-item">
+                                            <a href="single-product.jsp" title="The secret letter">
+                                                <img src="img/featured/3.jpg" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-8">
+                                        <div class="deal-product-content">
+                                            <h4>
+                                                <a href="single-product.jsp" title="The secret letter">The secret
+                                                    letter</a>
+                                            </h4>
+                                            <div class="product-price">
+                                                <span class="new-price">$ 140.00</span>
+                                                <span class="old-price">$ 120.00</span>
+                                            </div>
+                                            <div class="list-rating-icon">
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy
+                                                material for a comfortable fit. Accessorize with a straw hat and you're
+                                                ready for summer!</p>
+                                            <div class="availability">
+                                                <span>In stock</span>
+                                                <span><a href="cart.jsp">Add to cart</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single-shop-product">
+                                    <div class="col-xs-12 col-sm-5 col-md-4">
+                                        <div class="left-item">
+                                            <a href="single-product.jsp" title="Lone some dove">
+                                                <img src="img/featured/4.jpg" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-7 col-md-8">
+                                        <div class="deal-product-content">
+                                            <h4>
+                                                <a href="single-product.jsp" title="Lone some dove">Lone some dove</a>
+                                            </h4>
+                                            <div class="product-price">
+                                                <span class="new-price">$ 140.00</span>
+                                                <span class="old-price">$ 120.00</span>
+                                            </div>
+                                            <div class="list-rating-icon">
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star icolor"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy
+                                                material for a comfortable fit. Accessorize with a straw hat and you're
+                                                ready for summer!</p>
+                                            <div class="availability">
+                                                <span>In stock</span>
+                                                <span><a href="cart.jsp">Add to cart</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-
-                        <div class="list-pager">
-                            <ul>
-                                <%
-                                    if (currentPage1 % 2 == 0) { %>
-
-                                <li><a class="normal" href="<%= Util.fullPath(url + (start1-1) ) %>"
-                                       data-page-number="5"><%= start1 - 1 %>
-                                </a>
-                                </li>
-                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"
-                                       data-page-number="5"><%= start1 %>
-                                </a>
-                                </li>
-                                <% } else {
-
-                                %>
-
-                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"
-                                       data-page-number="5"><%= start1  %>
-                                </a>
-                                </li>
-                                <li><a class="normal" href="<%= Util.fullPath(url + (start1 +1 ) ) %>"
-                                       data-page-number="5"><%= start1 + 1 %>
-                                </a>
-                                </li>
-                                <% }
-                                    if (currentPage1 == nOfPages) {
-                                %>
-                                <li><a class="next icon-center" data-page-number="7"
-                                       href="<%= Util.fullPath(url + (start1) ) %>"><i
-                                        class=" fa fa-angle-right"></i></a>
-                                </li>
-
-
-                                <% } else {
-                                %>
-                                <li><a class="next icon-center" data-page-number="7"
-                                       href="<%= Util.fullPath(url + (start1 + 1) ) %>"><i
-                                        class=" fa fa-angle-right"></i></a>
-                                </li>
-                                <% }
-                                %>
-
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -612,5 +648,56 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
+<script>
+
+    function addToCard(id) {
+        $.ajax({
+            type: "POST",
+            url: "add-cart",   // this is my servlet
+            data: {"bookID": id},
+            success: function (data) {
+                increaseCounter();
+                addHTMLproduct(data);
+            }
+        });
+    }
+
+    function increaseCounter() {
+        var counter = $("#shopping-cart-counter");
+        counter.text(parseInt(counter.text()) + 1);
+
+    }
+
+    function addHTMLproduct(data) {
+        var bookItem = $.parseJSON(data);
+        console.log(bookItem);
+        var html = "<div class=\"cart-product\">\n" +
+            "                                    <div class=\"cart-product-image\">\n" +
+            "                                        <a href=\"single-product.jsp\">\n" +
+            "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
+            "\" alt=\"\">\n" +
+            "                                        </a>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-info\">\n" +
+            "                                        <p>\n" +
+            "                                            <span>" + bookItem.quantity +
+            "</span>\n" +
+            "                                            x\n" +
+            "                                            <a href=\"single-product.jsp\">" + bookItem.name +
+            "\n" +
+            "                                            </a>\n" +
+            "                                        </p>\n" +
+            "                                        <span class=\"cart-price\">" + Math.floor(bookItem.quantity*bookItem.price) +
+            "</span>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-remove\">\n" +
+            "                                        <i class=\"fa fa-times\"></i>\n" +
+            "                                    </div>\n" +
+            "                                </div>";
+
+        $("#shopping-cart-wrapper").prepend(html);
+        alert("Adding Successfully");
+    }
+</script>
 </body>
 </html>

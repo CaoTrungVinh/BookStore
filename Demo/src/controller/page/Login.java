@@ -44,14 +44,22 @@ public class Login extends HttpServlet {
 
             if (i == 1 && PasswordAuthentication.check(pass, passStoring)) {
                 User user = new User();
-                user.setId(rs.getInt(1));
-                user.setUserName(rs.getString(2));
-                user.setEmail(rs.getString(3));
-                user.setFullName(rs.getString(4));
-                user.setGender(rs.getString(5));
-                user.setPass("");
-//                user.setIdgroup(ra.getInt(4));
-//                user.setActive(ra.getInt(5));
+                user.setId(rs.getInt("id"));
+                user.setUserName(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setFullName(rs.getString("full_name"));
+                user.setGender(rs.getString("gender"));
+                user.setAddress(rs.getString("address"));
+                user.setPhone(rs.getString("phone"));
+                user.setIdgroup(rs.getInt("idgroup"));
+                user.setAddress(rs.getString("avt"));
+
+                ResultSet rs2 = s.executeQuery("SELECT id FROM orders WHERE id_customer = '"+user.getId()+"' AND statusID = 1");
+                if (rs2.next()){
+                    user.setId_order(rs2.getInt("id"));
+                }
+
+                System.out.println("runed");
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
