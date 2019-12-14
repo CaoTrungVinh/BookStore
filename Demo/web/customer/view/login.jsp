@@ -69,8 +69,8 @@
                         </button>
                     </div>
                     <p class="form-group flex-center">
-                        <a href="#" rel="nofollow">Forgot your password?</a>
-                        <a href="#" rel="nofollow">Sign up</a>
+                        <a href="<%=Util.fullPath("forgot-pass")%>" rel="nofollow">Forgot your password?</a>
+                        <a href="<%=Util.fullPath("register")%>" rel="nofollow">Sign up</a>
                     </p>
                 </form>
             </div>

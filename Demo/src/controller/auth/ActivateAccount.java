@@ -18,7 +18,6 @@ public class ActivateAccount extends HttpServlet {
         String email = request.getParameter("key1");
         String hash = request.getParameter("key2");
 
-
         try {
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();

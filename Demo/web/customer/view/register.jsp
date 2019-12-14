@@ -58,7 +58,7 @@
                         <input name="pass" type="password" placeholder="Password">
                     </p>
                     <p class="form-row">
-                        <input name="re-pass" type="pass" placeholder="Password">
+                        <input name="re-pass" type="password" placeholder="Password">
                     </p>
                     <p class="form-row">
                         <%= request.getAttribute("err-pass") != null ? request.getAttribute("err-pass") : ""%>
@@ -86,5 +86,19 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
+
+<script>
+
+
+    function validatePassword() {
+        var pass = $('input[name="pass"]');
+        var retype_pass = $('input[name="re-pass"]');
+        if (pass.value != retype_pass.value) {
+            retype_pass.setCustomValidity("Passwords Don't Match");
+        } else {
+            retype_pass.setCustomValidity('');
+        }
+    }
+</script>
 </body>
 </html>

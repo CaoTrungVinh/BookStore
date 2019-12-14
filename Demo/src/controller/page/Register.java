@@ -66,7 +66,7 @@ public class Register extends HttpServlet {
                 if (i != 0) {
                     System.out.println("Successfully created new user.");
                     System.out.println("Sending Mail... ");
-                    SendingEmail sendingEmail = new SendingEmail(email, hashMail);
+                    SendingEmail sendingEmail = new SendingEmail("active-account",email, hashMail);
                     sendingEmail.start();
                     conn.close();
                     response.sendRedirect("/customer/view/verify.jsp");
