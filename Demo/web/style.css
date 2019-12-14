@@ -493,7 +493,10 @@ body {
     padding: 10px 40px;
     text-transform: uppercase;
 }
-
+.shop-info-area {
+    background: rgba(0, 0, 0, 0) url(/public/customer/img/shop-info-bg.jpg) no-repeat scroll center center;
+    padding: 54px 0;
+}
 .layer-4 .title-4 input {
     border: medium none;
     border-bottom-left-radius: 30px;
@@ -720,7 +723,12 @@ body {
     top: 8px;
     width: 10px;
 }
-
+.testimonial-area {
+    background: rgba(0, 0, 0, 0) url(/public/customer/img/testimonial/bg.jpg) no-repeat scroll center center;
+    color: #ffffff;
+    padding-bottom: 100px;
+    padding-top: 70px;
+}
 .tab-menu ul.nav-tabs li.first-item a {
     padding-left: 0;
 }
@@ -778,7 +786,6 @@ body {
     border-top: 1px solid #ddd;
     overflow: hidden;
     padding: 10px 0;
-    height: 120px;
 }
 
 .icolor {

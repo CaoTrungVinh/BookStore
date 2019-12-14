@@ -1,8 +1,13 @@
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Add Product - Dashboard HTML Template</title>
     <jsp:include page="head.jsp"/>
+
+    <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -19,7 +24,8 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="" class="tm-edit-product-form">
+                        <form action="<%= Util.fullPath("/admin/add-product") %>" method="POST" onsubmit="onFormSubmit"
+                              class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
@@ -29,47 +35,52 @@
                                         id="name"
                                         name="name"
                                         type="text"
-                                        class="form-control validate"
+                                        class="form-control novalidate"
                                         required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="description"
+                                        for="editor"
                                 >Description</label
                                 >
-                                <textarea
-                                        class="form-control validate"
-                                        rows="3"
-                                        required
+                                <textarea id="editor"
+                                     name="description"
+                                     class="form-control novalidate"
+                                     rows="3"
                                 ></textarea>
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="category"
                                 >Category</label
                                 >
+                                <input type="hidden" name="category" id="category">
                                 <select
                                         class="custom-select tm-select-accounts"
-                                        id="category"
+                                        id="selectCetagories"
+
                                 >
-                                    <option selected>Select category</option>
-                                    <option value="1">New Arrival</option>
-                                    <option value="2">Most Popular</option>
-                                    <option value="3">Trending</option>
+
+                                    <%
+                                        ResultSet categories = (ResultSet) request.getAttribute("categories");
+//
+                                        while (categories.next()) {
+
+                                    %>
+                                    <option data-cc="<%= categories.getString("id")%>"><%= categories.getString("name")%>
+                                    </option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label
-                                            for="expire_date"
-                                    >Expire Date
+                                    <label for="expire_date">Price
                                     </label>
                                     <input
                                             id="expire_date"
-                                            name="expire_date"
+                                            name="price"
                                             type="text"
-                                            class="form-control validate"
+                                            class="form-control novalidate"
                                             data-large-mode="true"
                                     />
                                 </div>
@@ -82,12 +93,11 @@
                                             id="stock"
                                             name="stock"
                                             type="text"
-                                            class="form-control validate"
+                                            class="form-control novalidate"
                                             required
                                     />
                                 </div>
                             </div>
-
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                         <div class="tm-product-img-dummy mx-auto">
@@ -97,12 +107,12 @@
                             ></i>
                         </div>
                         <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;"/>
+                            <input id="fileInput" type="file" name="miages[]" multiple style="display:none;"/>
                             <input
                                     type="button"
                                     class="btn btn-primary btn-block mx-auto"
                                     value="UPLOAD PRODUCT IMAGE"
-                                    onclick="document.getElementById('fileInput').click();"
+                                    onclick="selectFileWithCKFinder( 'fileInput' );"
                             />
                         </div>
                     </div>
@@ -118,16 +128,60 @@
 
 <jsp:include page="footer.jsp"/>
 
-<script src="public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="/public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
 <!-- https://jqueryui.com/download/ -->
-<script src="public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
+<script src="/public/admin/js/jquery-editable-select.min.js"></script>
 <script>
+    function selectFileWithCKFinder(elementId) {
+        CKFinder.modal({
+            chooseFiles: true,
+            displayFoldersPanel: false,
+            width: 800,
+            height: 600,
+            onInit: function (finder) {
+                finder.on('files:choose', function (evt) {
+                    var file = evt.data.files.first();
+                    var output = document.getElementById(elementId);
+                    output.value = file.getUrl();
+                });
+
+                finder.on('file:choose:resizedImage', function (evt) {
+                    var output = document.getElementById(elementId);
+                    output.value = evt.data.resizedUrl;
+                });
+            }
+        });
+    }
+
+    var editor
+    function onFormSubmit() {
+        if (editor) {
+            editor.updateSourceElement();
+            console.log(editor.getData());
+        } else {
+            console.log("NULL");
+        }
+    }
+
     $(function () {
-        $("#expire_date").datepicker();
+        window.jQuery = $;
+        // $("#expire_date").datepicker();
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(e => editor = e)
+            .catch(error => {console.log(error)});
+
+        $('#selectCetagories').editableSelect()
+            .on('select.editable-select', function (e, el) {
+            // el is the selected item "option"
+            $('#category').val(el.data('cc'));
+        });
     });
+
 </script>
 </body>
 </html>

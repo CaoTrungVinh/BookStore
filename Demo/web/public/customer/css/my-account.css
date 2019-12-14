@@ -3618,13 +3618,31 @@ table {
     border-bottom: 1px solid #eee
 }
 
+dl,
+ol,
+ul {
+    margin-top: 0
+}
+
+blockquote ol:last-child,
+blockquote p:last-child,
+blockquote ul:last-child,
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+    margin-bottom: 0
+}
 
 address,
 dl {
     margin-bottom: 20px
 }
 
-
+ol,
+ul {
+    margin-bottom: 10px
+}
 
 .list-inline {
     margin-left: -5px
@@ -3801,6 +3819,21 @@ pre {
     border-radius: 4px
 }
 
+.container-fluid:after,
+.container-fluid:before,
+.container:after,
+.container:before,
+.row:after,
+.row:before {
+    display: table;
+    content: " "
+}
+
+.container,
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto
+}
 
 pre code {
     padding: 0;
@@ -3810,14 +3843,36 @@ pre code {
     border-radius: 0
 }
 
+.container,
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
 .pre-scrollable {
     max-height: 340px;
     overflow-y: scroll
 }
 
+.container:after {
+    clear: both
+}
 
+@media (min-width:992px) {
+    .container {
+        width: 970px
+    }
+}
 
+@media (min-width:1200px) {
+    .container {
+        /*width: 1170px*/
+    }
+}
 
+.container-fluid:after {
+    clear: both
+}
 
 .row {
     margin-left: -15px;
@@ -10870,6 +10925,23 @@ fieldset[disabled] .btn-yahoo:hover {
     z-index: 100
 }
 
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1
+}
+
+.swiper-container-no-flexbox .swiper-slide {
+    float: left
+}
+
+.swiper-container-vertical>.swiper-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
 
 .swiper-wrapper {
     position: relative;
@@ -10887,6 +10959,22 @@ fieldset[disabled] .btn-yahoo:hover {
     box-sizing: content-box
 }
 
+.swiper-container-android .swiper-slide,
+.swiper-wrapper {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.swiper-container-multirow>.swiper-wrapper {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+}
+
+.swiper-container-free-mode>.swiper-wrapper {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    margin: 0 auto
+}
 
 .swiper-slide {
     -ms-flex-negative: 0;
@@ -12210,6 +12298,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .tikicon.icon-global-24 {
+    background-image: url(../img/sprite.png?v=1519811185467);
     background-position: -319px -409px;
     width: 24px;
     height: 24px
@@ -12219,6 +12308,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 .tikicon.icon-gotadi-2 {
     width: 18px;
     height: 18px;
+    background-image: url(../img/sprite.png?v=1519811185467)
 }
 
 .tikicon.icon-gotadi-2 {
@@ -12230,12 +12320,14 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .tikicon.icon-hoan-tien-2 {
+    background-image: url(../img/sprite.png?v=1519811185467);
     background-position: -484px -281px;
     width: 20px;
     height: 20px
 }
 
 .tikicon.icon-home-global {
+    background-image: url(../img/sprite.png?v=1519811185467);
     background-position: -349px -45px;
     width: 40px;
     height: 40px

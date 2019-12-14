@@ -33,6 +33,7 @@ public class ListBook extends HttpServlet {
         try {
             pageNum = Integer.parseInt(page);
 
+
         } catch (Exception e) {
 
         }
@@ -55,11 +56,10 @@ public class ListBook extends HttpServlet {
                     " img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ";
 
 
-
             if (idType != 0) {
                 sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
-                " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType +" GROUP BY img.id_book ";
-             }
+                        " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType + " GROUP BY img.id_book ";
+            }
 //            else if(search != null) {
 //                sql += " and search =" + search;
 //            }
@@ -79,14 +79,16 @@ public class ListBook extends HttpServlet {
                 nOfPages++;
             }
 
+            if (pageNum <= 0 || pageNum > nOfPages) {
+                pageNum = 1;
 
+            }
             request.setAttribute("book", book);
             request.setAttribute("currentPage", pageNum);
             request.setAttribute("nOfPages", nOfPages);
             request.setAttribute("idType", idType);
 
             request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
-
 
 
         } catch (ClassNotFoundException | SQLException e) {

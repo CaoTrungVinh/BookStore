@@ -105,12 +105,5 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="../view/jquery.jsp"/>
-<script>
-    $("#is_change_pass").click(function (event) {
-        if ($("#is_change_pass").prop('checked') == true)
-            $(".password-group").css('display', 'block');
-        else $(".password-group").css('display', 'none');
-    });
-</script>
 </body>
 </html>
