@@ -39,7 +39,7 @@
     <!-- owl.carousel css -->
     <link rel="stylesheet" href="/public/customer/css/owl.carousel.css">
     <!-- style css -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css"  type="text/css">
     <!-- responsive css -->
     <link rel="stylesheet" href="/public/customer/css/responsive.css">
     <!-- modernizr css -->
