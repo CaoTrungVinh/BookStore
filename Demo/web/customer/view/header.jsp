@@ -87,7 +87,7 @@
                 <div class="mainmenu text-center">
                     <nav>
                         <ul id="nav">
-                            <li><a href="<%= Util.fullPath("")%>">HOME</a></li>
+                            <li><a href="<%= Util.fullPath("Index")%>">HOME</a></li>
                             <li><a href="<%= Util.fullPath("list-book")%>">LIST BOOK</a></li>
                             <li><a href="<%= Util.fullPath("contact")%>">CONTACT</a></li>
                             <li><a href="<%= Util.fullPath("about")%>">ABOUT</a></li>
@@ -148,7 +148,13 @@
                                     </div>
                                 </div>
                                 <div class="cart-checkout">
-                                    <a href="#">
+                                    <a href="cart.jsp">
+                                        View cart
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                                <div class="cart-checkout">
+                                    <a href="checkout.jsp">
                                         Check out
                                         <i class="fa fa-chevron-right"></i>
                                     </a>
@@ -230,37 +236,37 @@
 </div>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
-<div class="mobile-menu-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="mobile-menu">
-                    <nav id="dropdown">
-                        <ul>
-                            <li><a href="../../index.jsp">HOME</a></li>
-                            <li><a href="<%= Util.fullPath("ListBook")%>">FEATURED</a></li>
-                            <li><a href="shop.jsp">REVIEW BOOK</a></li>
-                            <li><a href="about.jsp">ABOUT AUTHOR</a></li>
-                            <li><a href="#">pages</a>
-                                <ul>
-                                    <li><a href="about.jsp">About Us</a></li>
-                                    <li><a href="cart.jsp">Cart Page</a></li>
-                                    <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="contact.jsp">Contact</a></li>
-                                    <li><a href="login.jsp">Login</a></li>
-                                    <li><a href="my-account.jsp">My Account</a></li>
-                                    <li><a href="shop.jsp">Shopping Page</a></li>
-                                    <li><a href="single-product.jsp">Single Shop Page</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist Page</a></li>
-                                    <li><a href="404.jsp">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.jsp">CONTACT</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div class="mobile-menu-area">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-lg-12 col-md-12 col-sm-12">--%>
+<%--                <div class="mobile-menu">--%>
+<%--                    <nav id="dropdown">--%>
+<%--                        <ul>--%>
+<%--                            <li><a href="../../index.jsp">HOME</a></li>--%>
+<%--                            <li><a href="<%= Util.fullPath("ListBook")%>">FEATURED</a></li>--%>
+<%--                            <li><a href="shop.jsp">REVIEW BOOK</a></li>--%>
+<%--                            <li><a href="about.jsp">ABOUT AUTHOR</a></li>--%>
+<%--                            <li><a href="#">pages</a>--%>
+<%--                                <ul>--%>
+<%--                                    <li><a href="about.jsp">About Us</a></li>--%>
+<%--                                    <li><a href="cart.jsp">Cart Page</a></li>--%>
+<%--                                    <li><a href="checkout.jsp">Check Out</a></li>--%>
+<%--                                    <li><a href="contact.jsp">Contact</a></li>--%>
+<%--                                    <li><a href="login.jsp">Login</a></li>--%>
+<%--                                    <li><a href="my-account.jsp">My Account</a></li>--%>
+<%--                                    <li><a href="shop.jsp">Shopping Page</a></li>--%>
+<%--                                    <li><a href="single-product.jsp">Single Shop Page</a></li>--%>
+<%--                                    <li><a href="wishlist.jsp">Wishlist Page</a></li>--%>
+<%--                                    <li><a href="404.jsp">404 Page</a></li>--%>
+<%--                                </ul>--%>
+<%--                            </li>--%>
+<%--                            <li><a href="contact.jsp">CONTACT</a></li>--%>
+<%--                        </ul>--%>
+<%--                    </nav>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 <!-- Mobile Menu End -->
