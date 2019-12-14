@@ -394,7 +394,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="banner-bottom text-center" style="height: 120px;">
+                                        <div class="banner-bottom text-center" style="height: 150px;">
                                             <div class="banner-bottom-title">
                                                 <a href="#"><%= book.getString(2)%>
                                                 </a>

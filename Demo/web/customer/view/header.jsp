@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
-                    <a href="<%= Util.fullPath("Index")%>">
+                    <a href="<%= Util.fullPath("")%>">
                         <img src="/public/customer/img/logo.png" alt="">
                     </a>
                 </div>
@@ -167,6 +167,12 @@
                                         <%}%>
                                         VND</span>
                                     </div>
+                                </div>
+                                <div class="cart-checkout">
+                                    <a href="<%=Util.fullPath("checkout")%>">
+                                        View cart
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
                                 </div>
                                 <div class="cart-checkout">
                                     <a href="<%=Util.fullPath("checkout")%>">
