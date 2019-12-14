@@ -5,24 +5,24 @@ import db.ConnectionDB;
 
 import java.sql.*;
 
-public class BookItem {
+public class Product {
     int id;
     String name;
     int quantity;
     String img;
     public double price;
 
-    public BookItem() {
+    public Product() {
 
     }
-    public BookItem(int id, String name, int quantity, double price) {
+    public Product(int id, String name, int quantity, double price) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public static BookItem find(int id) {
+    public static Product find(int id) {
         try {
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
@@ -32,7 +32,7 @@ public class BookItem {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                BookItem p = new BookItem();
+                Product p = new Product();
                 p.id = rs.getInt(1);
                 p.name = rs.getString(2);
                 p.price = rs.getDouble(3);

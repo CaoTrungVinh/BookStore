@@ -1,7 +1,7 @@
 package controller.cart;
 
 import Model.Cart;
-import Model.BookItem;
+import Model.Product;
 import Util.Util;
 
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class CartUpdate extends HttpServlet {
             HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
-            BookItem p = BookItem.find(id);
+            Product p = Product.find(id);
             Model.Cart c = (Model.Cart) session.getAttribute("Cart");
             if (c == null) c = new Cart();
             c.put(id, quantity);

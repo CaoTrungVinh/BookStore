@@ -1,6 +1,7 @@
 package controller.wish;
 
-import Model.BookItem;
+import Model.Cart;
+import Model.Product;
 import Model.Wish;
 import Util.Util;
 
@@ -23,7 +24,7 @@ public class Add extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             int id = Integer.parseInt(request.getParameter("id"));
-            BookItem p = BookItem.find(id);
+            Product p = Product.find(id);
             Wish c = (Wish)session.getAttribute("Wish");
             if (c == null) c = new Wish();
             if (c!= null)

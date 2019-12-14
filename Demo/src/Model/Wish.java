@@ -4,17 +4,17 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class Wish {
-    HashMap<Integer, BookItem> data;
+    HashMap<Integer, Product> data;
 
     public Wish() {
         this.data = new HashMap<>();
     }
 
-    public BookItem get(int id) {
+    public Product get(int id) {
         return data.get(id);
     }
 
-    public int put(BookItem item) {
+    public int put(Product item) {
         if (data.containsKey(item.getId()))
             data.get(item.getId()).quantityUp();
         else data.put(item.getId(), item);
@@ -32,12 +32,12 @@ public class Wish {
 
     public double total() {
         double sum = 0;
-        for (BookItem p : data.values())
+        for (Product p : data.values())
             sum += (p.quantity * p.price);
         return sum;
     }
 
-    public Collection<BookItem> list() {
+    public Collection<Product> list() {
         return data.values();
     }
 }
