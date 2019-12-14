@@ -1,10 +1,5 @@
 package Util;
-
-<<<<<<< .mine
-
-=======
 import javax.servlet.http.HttpServletRequest;
->>>>>>> .theirs
 public class Util {
     static final String HOST = "http://localhost:8080/";
 

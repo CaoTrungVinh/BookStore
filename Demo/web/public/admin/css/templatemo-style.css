@@ -500,7 +500,7 @@ button:focus {
   box-shadow: 0 -3px 5px 0 rgba(69, 92, 113, 0.59);
 }
 .custom-select {
-  height: 50px;
+  /*height: 50px;*/
   border-radius: 0;
 }
 .tm-product-img-dummy {
@@ -524,7 +524,7 @@ button:focus {
   display: block;
 }
 .tm-upload-icon {
-  background: #455c71;
+  /*background: #455c71;*/
   width: 55px;
   height: 55px;
   border-radius: 50%;
