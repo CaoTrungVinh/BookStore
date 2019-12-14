@@ -4,8 +4,9 @@
 <%@ page import="Model.User" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Model.BookItem" %>
+<%@ page import="java.util.Map" %>
 <!--Header Area Start-->
-<div class="header-area bg-white">
+<div class="header-area bg-white" style="background-color: white">
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
@@ -114,25 +115,28 @@
                         <li class="shoping-cart" style="margin-right: 5px">
                             <%
                                 User user = (User) request.getSession().getAttribute("user");
-                                ArrayList<BookItem> card = null;
+                                Cart cart = null;
                                 if (user != null) {
-                                    card = user.getShoppingCart();
+                                    cart = user.getCart();
                                 } else {
-                                    card = (ArrayList<BookItem>) request.getSession().getAttribute("card");
+                                    cart = (Cart) request.getSession().getAttribute("cart");
                                     user = new User();
-                                    user.setShoppingCart(card);
+                                    user.setCart(cart);
                                 }
 
                             %>
                             <a href="#">
                                 <i class="flaticon-shop"></i>
                                 <span id="shopping-cart-counter">
-                                    <%=card.size()%>
+                                    <%=cart.getQuantity()%>
                                 </span>
                             </a>
                             <div id="shopping-cart-wrapper" class="add-to-cart-product">
-                                <%for (BookItem item : card) {%>
-                                <div class="cart-product">
+                                <%
+                                    for (Map.Entry<Integer, BookItem> entry : cart.data.entrySet()) {
+                                        BookItem item = entry.getValue();
+                                %>
+                                <div class="cart-product" id="cartproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
                                             <img src="public/customer/img/shop/<%=item.getImg()%>" alt="">
@@ -140,33 +144,32 @@
                                     </div>
                                     <div class="cart-product-info">
                                         <p>
-                                            <span><%=item.getQuantity()%></span>
+                                            <span id="quantity-id<%=item.getId()%>"><%=item.getQuantity()%> </span>
                                             x
                                             <a href="single-product.jsp"><%=item.getName()%>
                                             </a>
                                         </p>
-                                        <span class="cart-price"><%
-                                            Math.floor(item.getQuantity() * item.getPrice());%></span>
+                                        <span class="cart-price">
+                                            <%=item.getPrice()%></span>
                                     </div>
-                                    <div class="cart-product-remove">
+                                    <div class="cart-product-remove" onclick="removeCartProduct(<%=item.getId()%>)">
                                         <i class="fa fa-times"></i>
                                     </div>
                                 </div>
                                 <%}%>
                                 <div class="total-cart-price">
                                     <div class="cart-product-line">
-                                        <span>Total</span>
-                                        <% if (card.size() != 0) {%>
-                                        <span class="total">
-                                       <%=Math.floor(user.getTotalPrice())%> VND></span>
+                                        <span>Total</span> <span class="total">
+                                        <% if (cart.getQuantity() != 0) {%>
+                                            <span id="cart-total-price"><%=(int) user.getTotalPrice()%> </span>
                                         <%} else {%>
-                                        <span class="total">
-                                      0 VND></span>
+                                       <span id="cart-total-price">0</span>
                                         <%}%>
+                                        VND</span>
                                     </div>
                                 </div>
                                 <div class="cart-checkout">
-                                    <a href="#">
+                                    <a href="<%=Util.fullPath("checkout")%>">
                                         Check out
                                         <i class="fa fa-chevron-right"></i>
                                     </a>
@@ -219,11 +222,11 @@
                                     </div>
                                 </div>
                                 <div class="total-cart-price">
-                                    <%--                                    <div class="card-product-line fast-line">--%>
+                                    <%--                                    <div class="cart-product-line fast-line">--%>
                                     <%--                                        <span>Shipping</span>--%>
                                     <%--                                        <span class="free-shiping">$10.50</span>--%>
                                     <%--                                    </div>--%>
-                                    <%--                                    <div class="card-product-line">--%>
+                                    <%--                                    <div class="cart-product-line">--%>
                                     <%--                                        <span>Total</span>--%>
                                     <%--                                        <span class="total">$ 140.00</span>--%>
                                     <%--                                    </div>--%>

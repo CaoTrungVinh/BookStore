@@ -5204,14 +5204,14 @@ fieldset[disabled] .form-control {
     cursor: pointer
 }
 
-.checkbox input[type=checkbox],
-.checkbox-inline input[type=checkbox],
-.radio input[type=radio],
-.radio-inline input[type=radio] {
-    position: absolute;
-    margin-left: -20px;
-    margin-top: 4px\9
-}
+/*.checkbox input[type=checkbox],*/
+/*.checkbox-inline input[type=checkbox],*/
+/*.radio input[type=radio],*/
+/*.radio-inline input[type=radio] {*/
+/*    position: absolute;*/
+/*    margin-left: -20px;*/
+/*    margin-top: 4px\9*/
+/*}*/
 
 .checkbox+.checkbox,
 .radio+.radio {

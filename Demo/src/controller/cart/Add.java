@@ -1,9 +1,11 @@
 package controller.cart;
 
 import Model.BookItem;
+import Model.Cart;
 import Model.User;
 import Util.Util;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -26,6 +29,13 @@ public class Add extends HttpServlet {
         Statement statement = null;
         int quantity = 1;
         BookItem bookItem = null;
+        Cart cart;
+        cart = (Cart) request.getSession().getAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+            HttpSession session = request.getSession();
+            session.setAttribute("cart", cart);
+        }
         try {
             statement = ConnectionDB.connect();
             conn = statement.getConnection();
@@ -34,16 +44,11 @@ public class Add extends HttpServlet {
             if (isLogin) {
                 sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
                 rs = statement.executeQuery(sql);
-
                 if (rs.next()) {
-                    user.setId_order(rs.getInt("id"));
+                    user.getCart().setId_order(rs.getInt("id"));
                 }
-                sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + user.getId_order() + "' AND id_book = '" + bookID + "'";
-
-
+                sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' AND id_book = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
-
-
                 if (rs.next()) {
                     int currentQuantity = rs.getInt("quantity");
                     rs.updateInt("quantity", currentQuantity + 1);
@@ -53,14 +58,16 @@ public class Add extends HttpServlet {
                 } else {
                     sql = "INSERT INTO orderdetails (id_order, id_book,quantity) VALUES(?,?,?)";
                     PreparedStatement preparedStatement = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                    preparedStatement.setInt(1, bookID);
-                    preparedStatement.setInt(2, 1);
+                    preparedStatement.setInt(1, user.getCart().getId_order());
+                    preparedStatement.setInt(2, bookID);
+                    preparedStatement.setInt(3, 1);
+                    preparedStatement.executeUpdate();
                 }
 
                 sql = "SELECT * FROM books JOIN img ON books.id = img.id_book WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, rs.getString("title"), quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
                 user.addToShoppingCard(bookItem);
@@ -68,11 +75,11 @@ public class Add extends HttpServlet {
                 sql = "SELECT * FROM books JOIN img ON books.id = img.id_book WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, rs.getString("title"), quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
-                ArrayList<BookItem> card = (ArrayList<BookItem>) request.getSession().getAttribute("card");
-                card.add(bookItem);
+
+                cart.put(bookItem);
             }
 
 
@@ -83,9 +90,10 @@ public class Add extends HttpServlet {
         }
 
         Gson gson = new Gson();
-        String json = gson.toJson(bookItem);
+        String bookItemJson = gson.toJson(bookItem);
 
-        response.getWriter().write(json.toString());
+
+        response.getWriter().write(bookItemJson);
         response.getWriter().flush();
         response.getWriter().close();
 
@@ -93,5 +101,9 @@ public class Add extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
+    }
+
+    public String shortOfTitle(String t) {
+        return t.length() > 12 ? t.substring(0, 13) + "..." : t;
     }
 }

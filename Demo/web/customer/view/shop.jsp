@@ -1,6 +1,10 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
 <%@ page import="javax.swing.*" %>
+<%@ page import="Model.User" %>
+<%@ page import="Model.Cart" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="Model.BookItem" %>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -10,12 +14,12 @@
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
 
+<![endif]-->
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
+<div id="snackbar">
+</div>
 <jsp:include page="header.jsp"/>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
@@ -523,55 +527,126 @@
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
 <script>
-
     function addToCard(id) {
         $.ajax({
             type: "POST",
             url: "add-cart",   // this is my servlet
             data: {"bookID": id},
             success: function (data) {
-                increaseCounter();
-                addHTMLproduct(data);
+                increaseCounterCart();
+                addHTMLproductCart(data);
+                showSnackbar("Adding successfully");
             }
         });
     }
 
-    function increaseCounter() {
+    function showSnackbar(mess) {
+        // Get the snackbar DIV
+        var x = $("#snackbar")
+        // x.removeClass("show");
+
+        x.text(mess);
+        x.addClass("show");
+
+        // After 2 seconds, remove the show class from DIV
+        setTimeout(function () {
+            x.removeClass("show");
+        }, 1000);
+    }
+
+    function increaseCounterCart() {
         var counter = $("#shopping-cart-counter");
         counter.text(parseInt(counter.text()) + 1);
 
     }
 
-    function addHTMLproduct(data) {
-        var bookItem = $.parseJSON(data);
-        console.log(bookItem);
-        var html = "<div class=\"cart-product\">\n" +
-            "                                    <div class=\"cart-product-image\">\n" +
-            "                                        <a href=\"single-product.jsp\">\n" +
-            "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
-            "\" alt=\"\">\n" +
-            "                                        </a>\n" +
-            "                                    </div>\n" +
-            "                                    <div class=\"cart-product-info\">\n" +
-            "                                        <p>\n" +
-            "                                            <span>" + bookItem.quantity +
-            "</span>\n" +
-            "                                            x\n" +
-            "                                            <a href=\"single-product.jsp\">" + bookItem.name +
-            "\n" +
-            "                                            </a>\n" +
-            "                                        </p>\n" +
-            "                                        <span class=\"cart-price\">" + Math.floor(bookItem.quantity*bookItem.price) +
-            "</span>\n" +
-            "                                    </div>\n" +
-            "                                    <div class=\"cart-product-remove\">\n" +
-            "                                        <i class=\"fa fa-times\"></i>\n" +
-            "                                    </div>\n" +
-            "                                </div>";
 
-        $("#shopping-cart-wrapper").prepend(html);
-        alert("Adding Successfully");
+    function removeCartProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "DelProduct",   // this is my servlet
+            data: {"bookID": id},
+            success: function (data) {
+                if (data == "true") {
+                    decreaseCounterCart(id);
+                    $("#cartproductid" + id).remove();
+                    books = books.filter(function (bookid) {
+                        return bookid !== id;
+                    })
+                }
+            }
+        });
+    }
+
+    function decreaseCounterCart(id) {
+        var currentQuantity = $("#quantity-id" + id).text();
+        var counter = $("#shopping-cart-counter");
+        counter.text(parseInt(counter.text()) - currentQuantity);
+
+    }
+
+    var books = [];
+
+    <%  User user = (User) request.getSession().getAttribute("user");
+    Cart cart = null;
+    if (user != null) {
+        cart = user.getCart();
+    } else {
+        cart = (Cart) request.getSession().getAttribute("cart");
+        user = new User();
+        user.setCart(cart);
+    }
+         double toltalPrice =0;
+     for (Map.Entry entry : cart.getData().entrySet()) {
+     %>
+
+    books.push(<%=entry.getKey()%>);
+    <%}%>
+
+    function addHTMLproductCart(data) {
+
+        var bookItem =  $.parseJSON(data);
+
+
+        if (books.includes(bookItem.id)) {
+            var selector = $("#quantity-id" + bookItem.id);
+            var quan = selector.text();
+            var newQuan = parseInt(quan) + 1;
+            selector.text(newQuan);
+
+        } else {
+            books.push(bookItem.id);
+            var html = "<div class=\"cart-product\" id=\"cartproductid" + bookItem.id + "\">\n" +
+                "                                    <div class=\"cart-product-image\">\n" +
+                "                                        <a href=\"single-product.jsp\">\n" +
+                "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
+                "\" alt=\"\">\n" +
+                "                                        </a>\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"cart-product-info\">\n" +
+                "                                        <p>\n" +
+                "                                            <span id=\"quantity-id" + bookItem.id + "\">" + bookItem.quantity +
+                "</span>\n" +
+                "                                            x\n" +
+                "                                            <a href=\"single-product.jsp\">" + bookItem.name +
+                "\n" +
+                "                                            </a>\n" +
+                "                                        </p>\n" +
+                "                                        <span class=\"cart-price\">" + bookItem.price +
+                "</span>\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"cart-product-remove\" onclick=\"removeCartProduct(" + bookItem.id + ")\">\n" +
+                "                                        <i class=\"fa fa-times\"></i>\n" +
+                "                                    </div>\n" +
+                "                                </div>";
+
+            $("#shopping-cart-wrapper").prepend(html);
+        }
+
+        $("#cart-total-price").text(parseInt($("#cart-total-price").text())+bookItem.price);
+
     }
 </script>
+
 </body>
 </html>

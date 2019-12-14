@@ -15,6 +15,7 @@ public class BookItem {
     public BookItem() {
 
     }
+
     public BookItem(int id, String name, int quantity, double price) {
         this.id = id;
         this.name = name;
@@ -93,7 +94,10 @@ public class BookItem {
     public void setPrice(double price) {
         this.price = price;
     }
-    public  double total(){
-        return price * quantity;
+
+    public int getTotalPrice() {
+        return (int) price * quantity;
     }
+
+
 }

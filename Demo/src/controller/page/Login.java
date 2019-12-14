@@ -18,15 +18,18 @@ import java.sql.*;
 public class Login extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        response.getWriter().println("Đăng nhập không thành công");
-        String email = Util.getParameterGeneric(request,"email","");
-        String pass = Util.getParameterGeneric(request,"pass","");
+        request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+    }
 
-        if (email == "" && pass == "") {
-            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
-            return;
-        }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = Util.getParameterGeneric(request, "email", "");
+        String pass = Util.getParameterGeneric(request, "pass", "");
+        login(request,response,email,pass);
 
+
+    }
+
+    public static void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
         try {
             String query = "select * from users where email=?";
 
@@ -54,13 +57,10 @@ public class Login extends HttpServlet {
                 user.setIdgroup(rs.getInt("idgroup"));
                 user.setAddress(rs.getString("avt"));
 
-                ResultSet rs2 = s.executeQuery("SELECT id FROM orders WHERE id_customer = '"+user.getId()+"' AND statusID = 1");
-                if (rs2.next()){
-                    user.setId_order(rs2.getInt("id"));
+                ResultSet rs2 = s.executeQuery("SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1");
+                if (rs2.next()) {
+                    user.getCart().setId_order(rs2.getInt("id"));
                 }
-
-                System.out.println("runed");
-
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 response.sendRedirect(Util.fullPath(""));
@@ -76,9 +76,5 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 }

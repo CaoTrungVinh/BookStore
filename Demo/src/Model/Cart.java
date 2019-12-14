@@ -2,12 +2,23 @@ package Model;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
-    HashMap<Integer, BookItem> data;
+    public HashMap<Integer, BookItem> data;
+    int id_order;
+
+    public int getId_order() {
+        return id_order;
+    }
+
+    public void setId_order(int id_order) {
+        this.id_order = id_order;
+    }
 
     public Cart() {
         this.data = new HashMap<>();
+        id_order = -1;
     }
 
     public BookItem get(int id) {
@@ -37,7 +48,36 @@ public class Cart {
         return sum;
     }
 
+
     public Collection<BookItem> list() {
         return data.values();
+    }
+
+    public int getTotalPrice() {
+        int rs = 0;
+        for (Map.Entry<Integer, BookItem> entry : data.entrySet()) {
+            rs += entry.getValue().getTotalPrice();
+        }
+        return rs;
+    }
+
+    public int getQuantity() {
+        int rs = 0;
+        for (Map.Entry<Integer, BookItem> entry : data.entrySet()) {
+            rs += entry.getValue().getQuantity();
+        }
+        return rs;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "data=" + data +
+                ", id_order=" + id_order +
+                '}';
+    }
+
+    public HashMap<Integer, BookItem> getData() {
+        return data;
     }
 }
