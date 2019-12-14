@@ -70,6 +70,7 @@ public class ListBook extends HttpServlet {
             ResultSet book = pst2.executeQuery();
             book.last();
             int rows = book.getRow();
+            System.out.println("books: "+rows);
             book.beforeFirst();
 //            System.out.println("gjhjhiu" + rows);
 
@@ -83,6 +84,7 @@ public class ListBook extends HttpServlet {
                 pageNum = 1;
 
             }
+
             request.setAttribute("book", book);
             request.setAttribute("currentPage", pageNum);
             request.setAttribute("nOfPages", nOfPages);

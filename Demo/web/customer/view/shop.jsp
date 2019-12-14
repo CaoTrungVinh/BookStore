@@ -504,6 +504,20 @@
                         </div>
                         <div id="menu1" class="tab-pane fade">
                             <div class="row">
+                                <%
+                                    //                                    ResultSet book = (ResultSet) request.getAttribute("book");
+                                    book.beforeFirst();
+                                    Integer currentPage2 = (Integer) request.getAttribute("currentPage");
+                                    int i2 = -1;
+                                    int start2 = currentPage2 * 9 - 9;
+                                    while (book.next()) {
+                                        i2++;
+                                        if (i2 < start2) {
+                                            continue;
+                                        }
+                                        if (i2 >= currentPage2 * 9) break;
+                                %>
+
                                 <div class="single-shop-product">
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
@@ -529,8 +543,7 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p><%= book.getString(7)%>
-                                            </p>
+                                            <p><%= book.getString(7)%></p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                                 <span><a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add to cart</a></span>
@@ -538,7 +551,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <%--                                <% } %>--%>
+                                <% } %>
                             </div>
                         </div>
 
@@ -546,43 +559,88 @@
                         <div class="list-pager">
                             <ul>
                                 <%
-                                    if (currentPage1 % 2 == 0) { %>
+                                    int startpage = currentPage - 2;
+                                    if (startpage < 1) {
+                                        startpage = 1;
+                                    }
+                                    int endPage = currentPage + 2;
+                                    if (endPage > nOfPages) {
+                                        endPage = nOfPages;
+                                    }
+                                    System.out.println("endpage: " + endPage);
+                                    System.out.println("nOfPages: " + nOfPages);
 
-                                <li><a class="normal" href="<%= Util.fullPath(url + (start1-1) ) %>"
-                                       data-page-number="5"><%= start1 - 1 %>
-                                </a>
-                                </li>
-                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"
-                                       data-page-number="5"><%= start1 %>
-                                </a>
-                                </li>
-                                <% } else {
+                                    if (startpage != 1) { %>
 
-                                %>
-
-                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"
-                                       data-page-number="5"><%= start1  %>
-                                </a>
+                                <li><a class="next icon-center" data-page-number="7"
+                                       href="<%= Util.fullPath(url + (currentPage-1) ) %>"><i
+                                        class=" fa fa-angle-left"></i></a>
                                 </li>
-                                <li><a class="normal" href="<%= Util.fullPath(url + (start1 +1 ) ) %>"
-                                       data-page-number="5"><%= start1 + 1 %>
+
+                                <% }
+                                    for (; startpage <=endPage; startpage++) {%>
+
+
+                                <li><a class="<%=startpage==currentPage?"current":"normal"%>" href="<%= Util.fullPath(url + startpage ) %>"
+                                       data-page-number="5"><%= startpage %>
                                 </a>
                                 </li>
                                 <% }
-                                    if (currentPage1 == nOfPages) {
+                                    if (startpage != nOfPages) {
+
                                 %>
+
                                 <li><a class="next icon-center" data-page-number="7"
-                                       href="<%= Util.fullPath(url + (start1) ) %>"><i
+                                       href="<%= Util.fullPath(url + (currentPage+1) ) %>"><i
                                         class=" fa fa-angle-right"></i></a>
                                 </li>
-                                <% } else {
-                                %>
-                                <li><a class="next icon-center" data-page-number="7"
-                                       href="<%= Util.fullPath(url + (start1 + 1) ) %>"><i
-                                        class=" fa fa-angle-right"></i></a>
-                                </li>
-                                <% }
-                                %>
+
+                                <% } %>
+<%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
+<%--                                       data-page-number="5"><%= start1 %>--%>
+<%--                                </a>--%>
+<%--                                </li>--%>
+
+
+<%--                                <% }--%>
+<%--                                    else--%>
+<%--                                    {--%>
+
+<%--                                %>--%>
+
+<%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
+<%--                                       data-page-number="5"><%= start1  %>--%>
+<%--                                </a>--%>
+<%--                                </li>--%>
+<%--                                <li><a class="normal" href="<%= Util.fullPath(url + (start1 +1 ) ) %>"--%>
+<%--                                       data-page-number="5"><%= start1--%>
+<%--                                    +--%>
+<%--                                    1 %>--%>
+<%--                                </a>--%>
+<%--                                </li>--%>
+<%--                                <% }--%>
+<%--                                    if--%>
+<%--                                    (--%>
+<%--                                    currentPage1--%>
+<%--                                    ==--%>
+<%--                                    nOfPages--%>
+<%--                                    )--%>
+<%--                                    {--%>
+<%--                                %>--%>
+<%--                                <li><a class="next icon-center" data-page-number="7"--%>
+<%--                                       href="<%= Util.fullPath(url + (start1) ) %>"><i--%>
+<%--                                        class=" fa fa-angle-right"></i></a>--%>
+<%--                                </li>--%>
+<%--                                <% }--%>
+<%--                                    else--%>
+<%--                                    {--%>
+<%--                                %>--%>
+<%--                                <li><a class="next icon-center" data-page-number="7"--%>
+<%--                                       href="<%= Util.fullPath(url + (start1 + 1) ) %>"><i--%>
+<%--                                        class=" fa fa-angle-right"></i></a>--%>
+<%--                                </li>--%>
+<%--                                <% }--%>
+<%--                                %>--%>
 
                             </ul>
                         </div>
