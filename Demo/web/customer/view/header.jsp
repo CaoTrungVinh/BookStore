@@ -87,7 +87,7 @@
                 <div class="mainmenu text-center">
                     <nav>
                         <ul id="nav">
-                            <li><a href="<%= Util.fullPath("")%>">HOME</a></li>
+                            <li><a href="<%= Util.fullPath("Index")%>">HOME</a></li>
                             <li><a href="<%= Util.fullPath("list-book")%>">LIST BOOK</a></li>
                             <li><a href="<%= Util.fullPath("contact")%>">CONTACT</a></li>
                             <li><a href="<%= Util.fullPath("about")%>">ABOUT</a></li>

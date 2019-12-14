@@ -26,16 +26,16 @@
         }
 
         .back-stars {
-            color: #bb5252;
+            color: #5B5B5B;
             position: relative;
-            text-shadow: 1px 2px 4px #843a3a;
+            /*text-shadow: 1px 2px 4px #843a3a;*/
         }
 
         .front-stars {
-            color: #FFBC0B;
+            color: #32B5F3;
             overflow: hidden;
             position: absolute;
-            text-shadow: 2px 2px 5px #d29b09;
+            /*text-shadow: 2px 2px 5px #d29b09;*/
             top: 0;
             transition: all 0.5s;
         }
@@ -368,10 +368,10 @@
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>">
+                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>" style="margin-top: 30px">
 
 
-                                                <div class="price"><span><%= book.getInt(3)%>VND</span>
+                                                <div class="price"><span><%= book.getInt(3)%> VND</span>
                                                 </div>
                                             </a>
                                             <div class="product-description">
