@@ -8,6 +8,9 @@ import java.sql.*;
 public class BookItem {
     int id;
     String name;
+
+
+    String publisher;
     int quantity;
     String img;
     public double price;
@@ -16,9 +19,10 @@ public class BookItem {
 
     }
 
-    public BookItem(int id, String name, int quantity, double price) {
+    public BookItem(int id, String name, String publisher, int quantity, double price) {
         this.id = id;
         this.name = name;
+        this.publisher = publisher;
         this.quantity = quantity;
         this.price = price;
     }
@@ -87,8 +91,8 @@ public class BookItem {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public int getPrice() {
+        return (int) price;
     }
 
     public void setPrice(double price) {
@@ -96,7 +100,11 @@ public class BookItem {
     }
 
     public int getTotalPrice() {
-        return (int) price * quantity;
+        return (int) (price) * quantity;
+    }
+
+    public String getPublisher() {
+        return publisher;
     }
 
 

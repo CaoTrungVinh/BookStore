@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Cart {
     public HashMap<Integer, BookItem> data;
+    int quantity;
     int id_order;
 
     public int getId_order() {
@@ -19,6 +20,7 @@ public class Cart {
     public Cart() {
         this.data = new HashMap<>();
         id_order = -1;
+        quantity = 0;
     }
 
     public BookItem get(int id) {

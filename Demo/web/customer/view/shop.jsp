@@ -369,7 +369,7 @@
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>"
+                                                <img alt="" src="public/customer/img/shop/<%= book.getString(4)%>"
                                                      style="margin-top: 30px">
 
 
@@ -575,8 +575,6 @@
                                        href="<%= Util.fullPath(url + (start1) ) %>"><i
                                         class=" fa fa-angle-right"></i></a>
                                 </li>
-
-
                                 <% } else {
                                 %>
                                 <li><a class="next icon-center" data-page-number="7"

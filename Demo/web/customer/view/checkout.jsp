@@ -1,11 +1,14 @@
 <%@ page import="Util.Util" pageEncoding="utf-8" %>
 <%@ page import="Model.User" %>
+<%@ page import="Model.Cart" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="Model.BookItem" %>
 
 <!doctype html>
 <html class="no-js" lang="">
 <head>
 
-    <title>My Account</title>
+    <title>Checkout</title>
     <jsp:include page="../view/head.jsp"/>
     <link rel="stylesheet" href="/public/customer/css/checkout.css">
 </head>
@@ -16,18 +19,39 @@
     <div class="wrap">
         <div class="container have-height">
 
+            <%
+                User user = (User) request.getSession().getAttribute("user");
+                Cart cart = null;
+                if (user != null) {
+                    cart = user.getCart();
+                } else {
+                    cart = (Cart) request.getSession().getAttribute("cart");
+                    user = new User();
+                    user.setCart(cart);
+                }
+                if (cart.getQuantity() != 0) {
+
+            %>
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="lbl-shopping-cart lbl-shopping-cart-gio-hang">Giỏ hàng <span>(1 sản phẩm)</span></h2>
+                    <h2 class="lbl-shopping-cart lbl-shopping-cart-gio-hang">Cart <span>(<%=cart.getQuantity()%> <%
+                        if (cart.getQuantity() == 1) { %>
+                        product
+                        <% } else { %>
+                        products
+                        <%}%>
+                        )</span>
+                    </h2>
                 </div>
                 <div class="col-xs-8 cart-col-1">
                     <form id="shopping-cart">
+                        <% for (Map.Entry<Integer, BookItem> entry : cart.getData().entrySet()) {
+                            BookItem bookItem = entry.getValue();%>
                         <div class="row shopping-cart-item">
                             <div class="col-xs-3 img-thumnail-custom">
                                 <p class="image">
-
                                     <img class="img-responsive"
-                                         src="https://salt.tikicdn.com/cache/175x175/ts/product/60/a7/a4/c8f71dedf2c4ccd1640186eb1b5c1f8d.jpg">
+                                         src="/public/customer/img/shop/<%=bookItem.getImg()%>">
                                 </p>
                             </div>
                             <div class="col-right">
@@ -38,17 +62,14 @@
                                         <p class="name">
                                             <a href="https://tiki.vn/nui-cao-cap-meizan-400g-p1914875.html?src=cart-page&amp;spid=1914877"
                                                target="_blank">
-                                                Nui Cao Cấp Meizan (400g) </a>
+                                                <%=bookItem.getName()%>
+                                            </a>
 
                                         </p>
                                     </div>
-                                    <p class="get-id stock-success" data-js-stock="1914877">
-                                        Chỉ còn 4 sản phẩm </p>
-
 
                                     <p class="seller-by">
-                                        Cung cấp bởi <span class="firm"><a href="">Tiki
-												Trading</a></span>
+                                        by <span class="firm"><a href=""><%=bookItem.getPublisher()%></a></span>
                                     </p>
 
                                     <p class="action">
@@ -63,11 +84,11 @@
                                 </div>
                                 <div class="badge-tikinow-a">
                                     <div class="box-price">
-                                        <p class="price">21.000đ</p>
-                                        <p class="price2">
-                                            27.000đ
-                                        </p>
-                                        <span class="sale">-22%</span>
+                                        <p class="price"><%=bookItem.getPrice()%>đ</p>
+                                        <%--                                        <p class="price2">--%>
+                                        <%--                                            27.000đ--%>
+                                        <%--                                        </p>--%>
+                                        <%--                                        <span class="sale">-22%</span>--%>
                                     </div>
                                 </div>
 
@@ -79,7 +100,8 @@
                                             style="display: none;"></span><input type="tel"
                                                                                  class="form-control quantity-r2 quantity js-quantity-product"
                                                                                  min="0"
-                                                                                 data-js-qty="" value="1"
+                                                                                 data-js-qty=""
+                                                                                 value="<%=bookItem.getQuantity()%>"
                                                                                  style="display: block;"><span
                                             class="input-group-addon bootstrap-touchspin-postfix"
                                             style="display: none;"></span><span class="input-group-btn"><button
@@ -89,10 +111,8 @@
                                 <!-- <div class="box-info-discount"></div> -->
                             </div>
                         </div>
+                        <% } %>
                     </form>
-
-
-
                 </div>
                 <div class="col-xs-4 cart-col-2">
                     <div id="right-affix" class="affix-top">
@@ -102,26 +122,26 @@
                             <div class="box-style fee">
 
                                 <p class="list-info-price">
-                                    <span>Tạm tính: </span>
-                                    <strong>21.000đ</strong>
+                                    <span>Provisional pricing: </span>
+                                    <strong><%=cart.getTotalPrice()%>đ</strong>
                                 </p>
                             </div>
                             <div class="box-style fee">
                                 <div class="total2 clearfix">
-                                    <span class="text-label">Thành tiền: </span>
+                                    <span class="text-label">Paying money: </span>
                                     <div class="amount">
                                         <p>
-                                            <strong>21.000đ </strong>
+                                            <strong><%=cart.getTotalPrice()%>đ </strong>
                                         </p>
                                         <p class="text-right">
-                                            <small>(Đã bao gồm VAT nếu có)</small>
+                                            <small>(VAT included (where applicable))</small>
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout">Tiến
-                                hành đặt hàng
+                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout">
+                                Proceed to ordering
                             </button>
 
 
@@ -131,16 +151,16 @@
                                 <div class="panel-group coupon" id="accordion">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h4 class="panel-title">Mã giảm giá / Quà tặng</h4>
+                                            <h4 class="panel-title"> CODE OF DISCOUNT / GIFT</h4>
                                         </div>
                                         <div id="collapseOne3" class="panel-collapsex`">
                                             <div class="panel-body">
                                                 <div class="input-group">
-                                                    <input id="coupon" placeholder="Nhập ở đây.." type="text"
+                                                    <input id="coupon" placeholder="type here.." type="text"
                                                            class="form-control" value="">
                                                     <span class="input-group-btn">
-														<button class="btn btn-default btn-coupon" type="button">Đồng
-															ý</button>
+														<button class="btn btn-default btn-coupon"
+                                                                type="button">Submit</button>
 													</span>
                                                 </div>
                                             </div>
@@ -152,6 +172,25 @@
                     </div>
                 </div>
             </div>
+            <% } else { %>
+            <div class="alert alert-danger"><i class="fa fa-times-circle" aria-hidden="true"
+                                               style="margin-right: 10px"></i> Cart is empty. Please
+                try again.
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h5 class="lbl-shopping-cart lbl-shopping-cart-gio-hang">Cart <span>(0 product)</span></h5>
+                    <div class="empty-cart">
+                        <!-- <img src="/assets/img/mascot.png"
+                             alt="Không có sản phẩm nào trong giỏ hàng của bạn."> -->
+
+                        <span class="mascot-image"></span>
+                        <p class="message">Không có sản phẩm nào trong giỏ hàng của bạn.</p>
+                        <a href="/" class="btn btn-yellow">Tiếp tục mua sắm</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
         </div>
     </div>
 </div>

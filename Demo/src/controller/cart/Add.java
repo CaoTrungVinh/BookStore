@@ -5,7 +5,6 @@ import Model.Cart;
 import Model.User;
 import Util.Util;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 
 @WebServlet("/add-cart")
 public class Add extends HttpServlet {
@@ -64,18 +62,26 @@ public class Add extends HttpServlet {
                     preparedStatement.executeUpdate();
                 }
 
-                sql = "SELECT * FROM books JOIN img ON books.id = img.id_book WHERE books.id = '" + bookID + "'";
+                sql = "SELECT books.title, publishers.name, books.price, img.img\n" +
+                        "FROM books \n" +
+                        "JOIN img ON books.id = img.id_book \n" +
+                        "JOIN publishers ON books.publisher = publishers.id \n" +
+                        "WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), rs.getString("name"),quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
                 user.addToShoppingCard(bookItem);
             } else {
-                sql = "SELECT * FROM books JOIN img ON books.id = img.id_book WHERE books.id = '" + bookID + "'";
+                sql = "SELECT books.title, publishers.name, books.price, img.img\n" +
+                        "FROM books \n" +
+                        "JOIN img ON books.id = img.id_book \n" +
+                        "JOIN publishers ON books.publisher = publishers.id \n" +
+                        "WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), rs.getString("name"),quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
 
@@ -107,3 +113,4 @@ public class Add extends HttpServlet {
         return t.length() > 12 ? t.substring(0, 13) + "..." : t;
     }
 }
+
