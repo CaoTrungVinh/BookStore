@@ -9,20 +9,9 @@
     <jsp:include page="head.jsp"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/public/admin/css/table.css">
 
-    <style>
-        .table th {
-            padding: 10px !important;
-        }
 
-        .table tbody td {
-            cursor: pointer;
-        }
-
-        #category_filter {
-            margin-left: -50%;
-        }
-    </style>
 
 </head>
 
@@ -59,20 +48,22 @@
 
                         %>
                         <tr>
-                            <td scope="row"><%= stt%>
+                            <td scope="row" class="text-center"><%= stt%>
                             </td>
-                            <td class="tm-product-name"><%= book.getString("title")%>
+                            <td class="tm-product-name">
+                                <a href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>"><%= book.getString("title")%>
+                                </a>
                             </td>
 
 
-                            <td><%= book.getString("price")%>
+                            <td class="text-center"><%= book.getString("price")%>
                             </td>
-                            <td><%= book.getString("in_stock")%>
+                            <td class="text-center"><%= book.getString("in_stock")%>
                             </td>
-                            <td><%= book.getString("rating")%>
+                            <td class="text-center"><%= book.getString("rating")%>
                             </td>
                             <td>
-                                <a href="<%= Util.fullPath("/admin/product/delete?id=" + book.getString("id")) %>" class="tm-product-delete-link">
+                                <a class="delete" href="<%= Util.fullPath("admin/product/delete?id=" + book.getString("id")) %>" class="tm-product-delete-link">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
 
@@ -114,10 +105,10 @@
 
                         %>
                         <tr>
-                            <td class="tm-product-name"><%= categories.getString("name")%>
+                            <td class="tm-product-name categories-name"><%= categories.getString("name")%>
                             </td>
                             <td class="text-center">
-                                <a href="#" class="tm-product-delete-link">
+                                <a href="#" class="tm-product-delete-link delete">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
                             </td>
@@ -164,7 +155,8 @@
 
                 {"orderable": false, "targets": [5]},
                 {"width": "0%", "targets": 5},
-                {"width": "50%", "targets": 1}
+                {"width": "50%", "targets": 1},
+                {"width": "7%", "targets": 0}
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -172,7 +164,7 @@
                     text: 'New product',
                     className: "btn btn-primary",
                     action: function () {
-                        window.location.href = "/admin/add-product";
+                        window.location.href = "/admin/product/add";
                     }
                 }
             ]
@@ -180,15 +172,22 @@
 
         });
         $('#category').DataTable({
+            "bPaginate": false,
             "bLengthChange": false,
             "bFilter": true,
             "bInfo": false,
             "bAutoWidth": false,
+            "columnDefs": [
+                {"orderable": false, "targets": [1]},
+                {"width": "5%", "targets": 1}
+            ],
+            dom: 'Bfrtip',
             buttons: [
                 {
-                    text: 'My button',
+                    text: 'Create',
+                    className: "btn btn-secondary",
                     action: function (e, dt, node, config) {
-                        alert('Button activated');
+                        // alert('Button activated');
                     }
                 }
             ]

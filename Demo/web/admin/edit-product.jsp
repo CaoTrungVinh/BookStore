@@ -1,8 +1,13 @@
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Product - Dashboard Admin Template</title>
+    <title>Edit Product</title>
     <jsp:include page="head.jsp"/>
+
+    <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -19,7 +24,12 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="" method="post" class="tm-edit-product-form">
+                        <%
+                            ResultSet books = (ResultSet) request.getAttribute("books");
+                        %>
+                        <form action="<%= Util.fullPath("admin/product/edit?id="+books.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                              class="tm-edit-product-form">
+
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
@@ -29,48 +39,106 @@
                                         id="name"
                                         name="name"
                                         type="text"
-                                        value="Lorem Ipsum Product"
-                                        class="form-control validate"
+                                        class="form-control novalidate"
+                                        value="<%= books.getString("title")%>"
+                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="description"
+                                        for="editor"
                                 >Description</label
                                 >
-                                <textarea
-                                        class="form-control validate tm-small"
-                                        rows="5"
-                                        required
-                                >Lorem ipsum dolor amet gentrify glossier locavore messenger bag chillwave hashtag irony migas wolf kale chips small batch kogi direct trade shaman.</textarea>
+                                <textarea id="editor"
+                                          name="description"
+                                          class="form-control novalidate"
+                                          rows="3"
+                                ><%= books.getString("description")%></textarea>
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="category"
                                 >Category</label
                                 >
+                                <input type="hidden" name="category" id="category" value="<%= books.getString("type")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
-                                        id="category"
+                                        id="selectCetagories"
+
                                 >
-                                    <option>Select category</option>
-                                    <option value="1" selected>New Arrival</option>
-                                    <option value="2">Most Popular</option>
-                                    <option value="3">Trending</option>
+
+                                    <%
+                                        ResultSet categories = (ResultSet) request.getAttribute("categories");
+//
+                                        while (categories.next()) {
+
+
+                                    %>
+                                    <option
+                                            <%= categories.getString("id").equals(books.getString("type")) ? "selected" : "" %>
+
+                                            data-cc="<%= categories.getString("id")%>"><%= categories.getString("name")%>
+                                    </option
+                                    >
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                >Publisher</label
+                                >
+                                <input type="hidden" name="publisher" id="publisher" value="<%= books.getString("publisher")%>">>
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectPublisher"
+
+                                >
+
+                                    <%
+                                        ResultSet publisher = (ResultSet) request.getAttribute("publisher");
+                                        while (publisher.next()) {
+
+                                    %>
+                                    <option
+                                            <%= publisher.getString("id").equals(books.getString("publisher")) ? "selected" : "" %>
+                                            data-cc="<%= publisher.getString("id")%>"><%= publisher.getString("name")%>
+                                    </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                >Author</label
+                                >
+                                <input type="hidden" name="author" id="author" value="<%= books.getString("author")%>">>
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectAuthor"
+
+                                >
+
+                                    <%
+                                        ResultSet authors = (ResultSet) request.getAttribute("authors");
+//
+                                        while (authors.next()) {
+
+                                    %>
+                                    <option
+                                            <%= authors.getString("id").equals(books.getString("author")) ? "selected" : "" %>
+
+                                            data-cc="<%= authors.getString("id")%>"><%= authors.getString("name")%>
+                                    </option>
+                                    <% } %>
                                 </select>
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label
-                                            for="expire_date"
-                                    >Expire Date
+                                    <label>Price
                                     </label>
                                     <input
-                                            id="expire_date"
-                                            name="expire_date"
+                                            value="<%= books.getString("price")%>"
+                                            name="price"
                                             type="text"
-                                            value="22 Oct, 2020"
-                                            class="form-control validate"
+                                            class="form-control novalidate"
                                             data-large-mode="true"
                                     />
                                 </div>
@@ -80,36 +148,35 @@
                                     >Units In Stock
                                     </label>
                                     <input
+                                            value="<%= books.getString("in_stock")%>"
                                             id="stock"
                                             name="stock"
                                             type="text"
-                                            value="19,765"
-                                            class="form-control validate"
+                                            class="form-control novalidate"
+                                            required
                                     />
                                 </div>
                             </div>
-
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                        <div class="tm-product-img-edit mx-auto">
-                            <img src="/public/admin/img/product-image.jpg" alt="Product image" class="img-fluid d-block mx-auto">
+                        <div class="tm-product-img-dummy mx-auto">
                             <i
                                     class="fas fa-cloud-upload-alt tm-upload-icon"
                                     onclick="document.getElementById('fileInput').click();"
                             ></i>
                         </div>
                         <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;"/>
+                            <input id="fileInput" type="file" name="miages[]" multiple style="display:none;"/>
                             <input
                                     type="button"
                                     class="btn btn-primary btn-block mx-auto"
-                                    value="CHANGE IMAGE NOW"
-                                    onclick="document.getElementById('fileInput').click();"
+                                    value="UPLOAD PRODUCT IMAGE"
+                                    onclick="selectFileWithCKFinder( 'fileInput' );"
                             />
                         </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">SAVE</button>
                     </div>
                     </form>
                 </div>
@@ -120,18 +187,74 @@
 
 <jsp:include page="footer.jsp"/>
 
-<script src="public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="/public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
 <!-- https://jqueryui.com/download/ -->
-<script src="public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
+<script src="/public/admin/js/jquery-editable-select.min.js"></script>
 <script>
-    $(function () {
-        $("#expire_date").datepicker({
-            defaultDate: "10/22/2020"
+    function selectFileWithCKFinder(elementId) {
+        CKFinder.modal({
+            chooseFiles: true,
+            displayFoldersPanel: false,
+            width: 800,
+            height: 600,
+            onInit: function (finder) {
+                finder.on('files:choose', function (evt) {
+                    var file = evt.data.files.first();
+                    var output = document.getElementById(elementId);
+                    output.value = file.getUrl();
+                });
+
+                finder.on('file:choose:resizedImage', function (evt) {
+                    var output = document.getElementById(elementId);
+                    output.value = evt.data.resizedUrl;
+                });
+            }
         });
+    }
+
+    var editor
+
+    function onFormSubmit() {
+        if (editor) {
+            editor.updateSourceElement();
+            console.log(editor.getData());
+        } else {
+            console.log("NULL");
+        }
+    }
+
+    $(function () {
+        window.jQuery = $;
+        // $("#expire_date").datepicker();
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(function (e) {
+                editor = e;
+            }).catch(function (eror) {
+            console.log(error);
+        });
+
+        $('#selectCetagories').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#category').val(el.data('cc'));
+            });
+        $('#selectPublisher').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#publisher').val(el.data('cc'));
+            });
+        $('#selectAuthor').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#author').val(el.data('cc'));
+            });
     });
+
 </script>
 </body>
 </html>
