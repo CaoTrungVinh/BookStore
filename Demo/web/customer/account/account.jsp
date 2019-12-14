@@ -29,7 +29,7 @@
                 <div class="input-wrap">
                     <div class="row">
 
-                        <% if(user.getGender().equals("Nam")) {%>
+                        <% if (user.getGender().equals("Nam")) {%>
 
                         <div class="col-xs-4">
                             <label>
@@ -53,7 +53,7 @@
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="on" id="gender_male1"
-                                       class="gender" >
+                                       class="gender">
                                 Nam
                             </label>
 
@@ -74,7 +74,6 @@
 
                 </div>
             </div>
-
 
 
             <div class="form-group ">
@@ -270,7 +269,8 @@
                         Thay đổi mật khẩu.
                     </label> -->
                     <label class="checkbox">
-                        <input type="checkbox" id="is_change_pass" name="is_change_pass">
+                        <input type="checkbox" id="is_change_pass" name="is_change_pass" style="position: relative;
+											margin-left: 0px;">
                         Thay đổi mật khẩu
                     </label>
                 </div>
@@ -309,7 +309,8 @@
                 <div class="input-wrap margin">
                     <input type="hidden" name="customer_birthdate" value="1998-11-30">
                     <button type="submit" class="btn btn-info btn-block btn-update">Cập
-                        nhật</button>
+                        nhật
+                    </button>
                 </div>
             </div>
         </form>

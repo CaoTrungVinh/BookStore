@@ -1,6 +1,9 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
 <%@ page import="javax.swing.*" %>
+<%@ page import="Model.User" %>
+<%@ page import="Model.Cart" %>
+<%@ page import="java.util.Map" %>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -136,12 +139,12 @@
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
 
+<![endif]-->
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
+<div id="snackbar">
+</div>
 <jsp:include page="header.jsp"/>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
@@ -329,7 +332,7 @@
                                         href="<%= Util.fullPath(url + (start1+1) ) %>"><%=start1 + 1  %>
                                 </a></li>
                                 <% }
-                                    if (currentPage1 == nOfPages) {
+                                    if (currentPage1 == nOfPages || start1 + 1 == nOfPages) {
                                 %>
 
                                 <li class="shop-pagination"><a
@@ -340,8 +343,7 @@
                                 <li class="shop-pagination"><a
                                         href="<%= Util.fullPath(url + (start1+1) ) %>"><i
                                         class="fa fa-caret-right"></i></a></li>
-                                <% }
-                                %>
+                                <% } %>
                             </ul>
                         </div>
                     </div>
@@ -351,7 +353,7 @@
                                 <%
                                     ResultSet book = (ResultSet) request.getAttribute("book");
                                     Integer currentPage = (Integer) request.getAttribute("currentPage");
-//                                    
+//
                                     int i = -1;
                                     int start = currentPage * 9 - 9;
                                     while (book.next()) {
@@ -360,7 +362,6 @@
                                             continue;
                                         }
                                         if (i >= currentPage * 9) break;
-                                        
 
                                 %>
                                 <div class="col-md-4 col-sm-6">
@@ -368,7 +369,8 @@
                                         <div class="product-wrapper">
                                             <a href="#" class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>" style="margin-top: 30px">
+                                                <img alt="" src="public/customer/img/shop/<%= book.getString(4)%>"
+                                                     style="margin-top: 30px">
 
 
                                                 <div class="price"><span><%= book.getInt(3)%> VND</span>
@@ -376,12 +378,12 @@
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
-                                                    <a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>"
+                                                    <a onclick="addToCard(<%=book.getInt("id")%>)"
                                                        title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a href="<%= Util.fullPath("AddWish?id="+book.getInt(1))%>"
-                                                       title="Add to Wishlist">
+                                                    <a
+                                                            title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
                                                     <a title="Quick view" data-toggle="modal"
@@ -452,7 +454,8 @@
                                                             <div class="quick-add-to-cart">
                                                                 <form method="post" class="cart">
                                                                     <div class="numbers-row">
-                                                                        <input type="number" id="french-hens" min="1" value="1">
+                                                                        <input type="number" id="french-hens" min="1"
+                                                                               value="1">
                                                                     </div>
                                                                     <button class="single_add_to_cart_button"
                                                                             type="submit"><a
@@ -499,23 +502,8 @@
 
                             </div>
                         </div>
-
                         <div id="menu1" class="tab-pane fade">
                             <div class="row">
-                                <%
-                                    //                                    ResultSet book = (ResultSet) request.getAttribute("book");
-                                    book.beforeFirst();
-                                    Integer currentPage2 = (Integer) request.getAttribute("currentPage");
-                                    int i2 = -1;
-                                    int start2 = currentPage2 * 9 - 9;
-                                    while (book.next()) {
-                                        i2++;
-                                        if (i2 < start2) {
-                                            continue;
-                                        }
-                                        if (i2 >= currentPage2 * 9) break;
-                                %>
-
                                 <div class="single-shop-product">
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
@@ -541,7 +529,8 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p><%= book.getString(7)%></p>
+                                            <p><%= book.getString(7)%>
+                                            </p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                                 <span><a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add to cart</a></span>
@@ -549,7 +538,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <% } %>
+                                <%--                                <% } %>--%>
                             </div>
                         </div>
 
@@ -586,8 +575,6 @@
                                        href="<%= Util.fullPath(url + (start1) ) %>"><i
                                         class=" fa fa-angle-right"></i></a>
                                 </li>
-
-
                                 <% } else {
                                 %>
                                 <li><a class="next icon-center" data-page-number="7"
@@ -612,5 +599,127 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
+<script>
+    function addToCard(id) {
+        $.ajax({
+            type: "POST",
+            url: "add-cart",   // this is my servlet
+            data: {"bookID": id},
+            success: function (data) {
+                increaseCounterCart();
+                addHTMLproductCart(data);
+                showSnackbar("Adding successfully");
+            }
+        });
+    }
+
+    function showSnackbar(mess) {
+        // Get the snackbar DIV
+        var x = $("#snackbar")
+        // x.removeClass("show");
+
+        x.text(mess);
+        x.addClass("show");
+
+        // After 2 seconds, remove the show class from DIV
+        setTimeout(function () {
+            x.removeClass("show");
+        }, 1000);
+    }
+
+    function increaseCounterCart() {
+        var counter = $("#shopping-cart-counter");
+        counter.text(parseInt(counter.text()) + 1);
+
+    }
+
+
+    function removeCartProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: "DelProduct",   // this is my servlet
+            data: {"bookID": id},
+            success: function (data) {
+                if (data == "true") {
+                    decreaseCounterCart(id);
+                    $("#cartproductid" + id).remove();
+                    books = books.filter(function (bookid) {
+                        return bookid !== id;
+                    })
+                }
+            }
+        });
+    }
+
+    function decreaseCounterCart(id) {
+        var currentQuantity = $("#quantity-id" + id).text();
+        var counter = $("#shopping-cart-counter");
+        counter.text(parseInt(counter.text()) - currentQuantity);
+
+    }
+
+    var books = [];
+
+    <%  User user = (User) request.getSession().getAttribute("user");
+    Cart cart = null;
+    if (user != null) {
+        cart = user.getCart();
+    } else {
+        cart = (Cart) request.getSession().getAttribute("cart");
+        user = new User();
+        user.setCart(cart);
+    }
+         double toltalPrice =0;
+     for (Map.Entry entry : cart.getData().entrySet()) {
+     %>
+
+    books.push(<%=entry.getKey()%>);
+    <%}%>
+
+    function addHTMLproductCart(data) {
+
+        var bookItem = $.parseJSON(data);
+
+
+        if (books.includes(bookItem.id)) {
+            var selector = $("#quantity-id" + bookItem.id);
+            var quan = selector.text();
+            var newQuan = parseInt(quan) + 1;
+            selector.text(newQuan);
+
+        } else {
+            books.push(bookItem.id);
+            var html = "<div class=\"cart-product\" id=\"cartproductid" + bookItem.id + "\">\n" +
+                "                                    <div class=\"cart-product-image\">\n" +
+                "                                        <a href=\"single-product.jsp\">\n" +
+                "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
+                "\" alt=\"\">\n" +
+                "                                        </a>\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"cart-product-info\">\n" +
+                "                                        <p>\n" +
+                "                                            <span id=\"quantity-id" + bookItem.id + "\">" + bookItem.quantity +
+                "</span>\n" +
+                "                                            x\n" +
+                "                                            <a href=\"single-product.jsp\">" + bookItem.name +
+                "\n" +
+                "                                            </a>\n" +
+                "                                        </p>\n" +
+                "                                        <span class=\"cart-price\">" + bookItem.price +
+                "</span>\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"cart-product-remove\" onclick=\"removeCartProduct(" + bookItem.id + ")\">\n" +
+                "                                        <i class=\"fa fa-times\"></i>\n" +
+                "                                    </div>\n" +
+                "                                </div>";
+
+            $("#shopping-cart-wrapper").prepend(html);
+        }
+
+        $("#cart-total-price").text(parseInt($("#cart-total-price").text()) + bookItem.price);
+
+    }
+</script>
+
 </body>
 </html>

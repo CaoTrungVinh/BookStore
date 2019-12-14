@@ -1,22 +1,46 @@
 package Model;
 
+import java.sql.*;
+
+import db.ConnectionDB;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class User {
     private int id;
     private String email;
     private String userName;
     private String fullName;
     private String gender;
-    private String pass;
     private String address;
     private String phone;
     private String avt;
-    private String hashPass;
     private int idgroup; // 1 is user, 2 is admin
     private int active; //0 is not active, 1 is active
+//    ArrayList<BookItem> shoppingCart;
+//    int id_order;
+    private Cart cart;
+
+
 
     public User() {
+        cart = new Cart();
+//        id_order = -1;
 
     }
+
+    public int getTotalPrice() {
+       return  (int) this.cart.getTotalPrice();
+    }
+
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        User user = new User();
+//        user.setId(1);
+//        user.addToCart(1, true);
+    }
+
 
     public String getGender() {
         return gender;
@@ -26,19 +50,12 @@ public class User {
         this.gender = gender;
     }
 
-    public User(int id, String email, String userName, String fullName, String gender, String pass, String address, String phone, String avt, String hashPass, int idgroup, int active) {
-        this.id = id;
-        this.email = email;
-        this.userName = userName;
-        this.fullName = fullName;
-        this.gender = gender;
-        this.pass = pass;
-        this.address = address;
-        this.phone = phone;
-        this.avt = avt;
-        this.hashPass = hashPass;
-        this.idgroup = idgroup;
-        this.active = active;
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public String getFullName() {
@@ -73,13 +90,6 @@ public class User {
         this.avt = avt;
     }
 
-    public String getHashPass() {
-        return hashPass;
-    }
-
-    public void setHashPass(String hashPass) {
-        this.hashPass = hashPass;
-    }
 
     public String getEmail() {
         return email;
@@ -105,14 +115,6 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
     public int getIdgroup() {
         return idgroup;
     }
@@ -129,19 +131,25 @@ public class User {
         this.active = active;
     }
 
+
+    public void addToShoppingCard(BookItem bookItem) {
+        this.cart.put(bookItem);
+    }
+
+
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
-                ", pass='" + pass + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", avt='" + avt + '\'' +
-                ", hashPass='" + hashPass + '\'' +
                 ", idgroup=" + idgroup +
                 ", active=" + active +
                 '}';
     }
+
 }

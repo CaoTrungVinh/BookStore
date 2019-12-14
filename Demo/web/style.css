@@ -428,6 +428,7 @@ body {
 }
 
 .cart-product-line span.total {
+    display: inline !important;
     color: #000000;
     float: right;
     font-family: arial;
@@ -2954,11 +2955,11 @@ h3.widget-title-modal {
     padding: 15px;
 }
 
-.checkbox input[type="checkbox"] {
-    margin-left: -20px;
-    margin-top: 2px;
-    position: absolute;
-}
+/*.checkbox input[type="checkbox"] {*/
+/*    margin-left: -20px;*/
+/*    margin-top: 2px;*/
+/*    position: absolute;*/
+/*}*/
 
 .my-account-area .panel.panel-default {
     margin-bottom: 5px;
@@ -3000,7 +3001,7 @@ h3.widget-title-modal {
     align-items: center;
 }
 
-.header-right .fa.fa-sign-in{
+.header-right .fa.fa-sign-in {
     height: 20px !important;
     width: 20px !important;
     border: 0.4px solid #777;
@@ -3011,3 +3012,104 @@ h3.widget-title-modal {
     margin-left: 1px;
     content: "\f090";
 }
+
+
+
+
+
+
+/*=======Snackbar========*/
+#snackbar {
+    visibility: hidden;
+    /*margin-left: -125px;*/
+    background-color: #32b5f3;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    top: 30px;
+    right: 15px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbar.hidden {
+    visibility: hidden;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        top: 30px;
+        opacity: 1;
+    }
+    to {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+.has-error .form-control {
+    border-color: #a94442 !important;
+}
+
+.has-feedback label~.form-control-feedback {
+    top: 39px;
+}
+
+.form-group>input {
+    border-radius: 20px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    width: 100%;
+}
+

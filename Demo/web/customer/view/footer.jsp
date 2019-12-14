@@ -1,4 +1,5 @@
 <!-- Footer Area Start -->
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <footer>
     <div class="footer-top-area">
         <div class="container">
@@ -8,19 +9,20 @@
                         <a href="index.html">
                             <img src="/public/customer/img/logo-2.png" alt="">
                         </a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+<%--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>--%>
+                        <p>Information about the site:</p>
                         <ul class="footer-contact">
                             <li>
                                 <i class="flaticon-location"></i>
-                                450 fifth Avenue, 34th floor. NYC
+                                Cẩm Tú - Nông Lâm University - TP.HCM
                             </li>
                             <li>
                                 <i class="flaticon-technology"></i>
-                                (+800) 123 4567 890
+                                (+80) 123 4567 890
                             </li>
                             <li>
                                 <i class="flaticon-web"></i>
-                                info@bookstore.com
+                                naname@gmail.com
                             </li>
                         </ul>
                     </div>
@@ -64,7 +66,7 @@
                 <div class="col-md-3 col-sm-8">
                     <div class="single-footer footer-newsletter">
                         <h2 class="footer-title">Our Newsletter</h2>
-                        <p>Consectetur adipisicing elit se do eiusm od tempor incididunt ut labore et dolore magnas aliqua.</p>
+                        <p>Consulting support:</p>
                         <form action="#" method="post">
                             <div>
                                 <input type="text" placeholder="email address">
@@ -116,7 +118,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-bottom-left pull-left">
-                        <p>Copyright &copy; 2016 <span><a href="#">DevItems</a></span>. All Right Reserved.</p>
+                        <p>Copyright &copy; 2020 <span><a href="#">Naname</a></span>. All Right Reserved.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
