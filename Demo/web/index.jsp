@@ -1,4 +1,5 @@
 <%@ page import="java.sql.ResultSet" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -158,8 +159,9 @@
             </div>
             <!-- layer 2 -->
             <div class="layer-2">
-                <p class="title-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="title-2">Each book is a journey that goes far beyond geographical distance but in fact it is a
+                    journey of discovery going deep inside,
+                    finding yourself really the domain of natural happiness for an intense, ego adventure.</p>
             </div>
             <!-- layer 3 -->
             <div class="layer-3">
@@ -174,8 +176,8 @@
             </div>
             <!-- layer 2 -->
             <div class="layer-2">
-                <p class="title-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</p>
+                <p class="title-2">Great autobiographies about the journey to regain consciousness, who you truly
+                    are.</p>
             </div>
             <!-- layer 3 -->
             <div class="layer-3">
@@ -189,10 +191,11 @@
 <div class="online-banner-area">
     <div class="container">
         <div class="banner-title text-center">
-            <h2>ONLINE <span>BOOK STORE</span></h2>
-            <p>The Online Books Guide is the biggest big store and the biggest books library in the world that has alot
-                of the popular and the most top category books presented here. Top Authors are here just subscribe your
-                email address and get updated with us.</p>
+            <h2>NANAME <span>BOOK STORE</span></h2>
+            <p>When ordering our books, you will greatly reduce your costs because you enjoy
+                free services and you also enjoy high discounts. In addition to providing wholesale and retail of rich
+                items,
+                NaName also serves you many other services.</p>
         </div>
         <div class="row">
             <div class="banner-list">
@@ -201,9 +204,9 @@
                         <a href="#">
                             <img src="public/customer/img/banner/1.jpg" alt="">
                         </a>
-<%--                        <div class="price"><span>$</span>160</div>--%>
+                        <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
-                            <a href="#">NEW RELEASE 2020</a>
+                            <a href="#">NEW PEYOND THE COVER 2020</a>
                         </div>
                     </div>
                 </div>
@@ -212,9 +215,9 @@
                         <a href="#">
                             <img src="public/customer/img/banner/2.jpg" alt="">
                         </a>
-<%--                        <div class="price"><span>$</span>160</div>--%>
+                        <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
-                            <a href="#">NEW RELEASE 2020</a>
+                            <a href="#">NEW EARTH'S SECRECT 2020</a>
                         </div>
                     </div>
                 </div>
@@ -223,9 +226,9 @@
                         <a href="#">
                             <img src="public/customer/img/banner/3.jpg" alt="">
                         </a>
-<%--                        <div class="price"><span>$</span>160</div>--%>
+                        <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
-                            <a href="#">NEW RELEASE 2020</a>
+                            <a href="#">NEW PEYOND THE COVER 2019</a>
                         </div>
                     </div>
                 </div>
@@ -245,7 +248,7 @@
                     </div>
                     <div class="shop-info-content">
                         <h2>FREE SHIPPING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
+                        <p>For all orders over $500. </p>
                         <a href="#">READ MORE</a>
                     </div>
                 </div>
@@ -256,8 +259,8 @@
                         <i class="flaticon-money"></i>
                     </div>
                     <div class="shop-info-content">
-                        <h2>FREE SHIPPING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
+                        <h2>MONEY BACK GUARANTEE</h2>
+                        <p>100% money back guarante. </p>
                         <a href="#">READ MORE</a>
                     </div>
                 </div>
@@ -268,8 +271,8 @@
                         <i class="flaticon-school"></i>
                     </div>
                     <div class="shop-info-content">
-                        <h2>FREE SHIPPING</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. </p>
+                        <h2>CASH ON DELIVERY</h2>
+                        <p>Lorem ipsum dolor consecte. </p>
                         <a href="#">READ MORE</a>
                     </div>
                 </div>
@@ -291,7 +294,7 @@
                             <a href="#arrival" aria-controls="arrival" role="tab" data-toggle="tab">New Arrival</a>
                         </li>
                         <li role="presentation">
-                            <a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">BEST SELLERS</a>
+                            <a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">Top Rating</a>
                         </li>
                     </ul>
                 </div>
@@ -302,23 +305,17 @@
                 <div role="tabpanel" class="tab-pane fade in active" id="arrival">
                     <div class="featured-product-list indicator-style">
                         <%
-                            ResultSet rs = (ResultSet) request.getAttribute("rs");
-                            while (rs.next()) {
+                            ResultSet bookNew = (ResultSet) request.getAttribute("bookNew");
+                            while (bookNew.next()) {
                         %>
                         <div class="single-p-banner">
                             <div class="col-md-3">
                                 <div class="single-banner">
                                     <div class="product-wrapper">
                                         <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="/public/customer/img/shop/<%= rs.getString(4)%>" style="padding-top: 30px">
-                                            <div class="price"><span><%= rs.getInt(3)%> VND</span></div>
-<%--                                            <div class="rating-icon">--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star"></i>--%>
-<%--                                                <i class="fa fa-star"></i>--%>
-<%--                                            </div>--%>
+                                            <img alt="" src="/public/customer/img/shop/<%= bookNew.getString(4)%>"
+                                                 style="padding-top: 30px">
+                                            <div class="price"><span><%= bookNew.getInt(3)%> VND</span></div>
                                             <div class="star-rating">
                                                 <div class="back-stars">
                                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -327,7 +324,7 @@
                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                     <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <div class="front-stars" style="width: <%= rs.getInt(6)%>%">
+                                                    <div class="front-stars" style="width: <%= bookNew.getInt(6)%>%">
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -352,380 +349,48 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="banner-bottom text-center" style="height: 100px">
-                                        <a href="#"><%= rs.getString(2)%></a>
+                                    <div class="banner-bottom text-center" style="height: 120px">
+                                        <a href="#"><%= bookNew.getString(2)%>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-<%--                            <div class="col-md-3">--%>
-<%--                                <div class="single-banner">--%>
-<%--                                    <div class="product-wrapper">--%>
-<%--                                        <a href="#" class="single-banner-image-wrapper">--%>
-<%--                                            <img alt="" src="public/customer/img/featured/5.jpg">--%>
-<%--                                            <div class="price"><span>$</span>160</div>--%>
-<%--                                            <div class="rating-icon">--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star icolor"></i>--%>
-<%--                                                <i class="fa fa-star"></i>--%>
-<%--                                                <i class="fa fa-star"></i>--%>
-<%--                                            </div>--%>
-<%--                                        </a>--%>
-<%--                                        <div class="product-description">--%>
-<%--                                            <div class="functional-buttons">--%>
-<%--                                                <a href="#" title="Add to Cart">--%>
-<%--                                                    <i class="fa fa-shopping-cart"></i>--%>
-<%--                                                </a>--%>
-<%--                                                <a href="#" title="Add to Wishlist">--%>
-<%--                                                    <i class="fa fa-heart-o"></i>--%>
-<%--                                                </a>--%>
-<%--                                                <a href="#" title="Quick view" data-toggle="modal"--%>
-<%--                                                   data-target="#productModal">--%>
-<%--                                                    <i class="fa fa-compress"></i>--%>
-<%--                                                </a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="banner-bottom text-center">--%>
-<%--                                        <a href="#">The historian</a>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </div>
                         <% } %>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="sale">
                     <div class="featured-product-list indicator-style">
+                        <%
+                            ResultSet bookTopRating = (ResultSet) request.getAttribute("bookTopRating");
+                            while (bookTopRating.next()) {
+                        %>
                         <div class="single-p-banner">
                             <div class="col-md-3">
                                 <div class="single-banner">
                                     <div class="product-wrapper">
                                         <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/2.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">People of the book</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/6.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">Cold mountain</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-p-banner">
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/3.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The secret letter</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/7.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The historian</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-p-banner">
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/4.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">Lone some dove</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/8.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The secret garden</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-p-banner">
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/1.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">East of eden</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/5.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The historian</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-p-banner">
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/1.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">East of eden</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/5.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
+                                            <img alt="" src="/public/customer/img/shop/<%= bookTopRating.getString(4)%>"
+                                                 style="padding-top: 30px">
+                                            <div class="price"><span><%= bookTopRating.getInt(3)%> VND</span></div>
+                                            <div class="star-rating">
+                                                <div class="back-stars">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
+                                                    <div class="front-stars"
+                                                         style="width: <%= bookTopRating.getInt(6)%>%">
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">
@@ -742,83 +407,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The historian</a>
+                                    <div class="banner-bottom text-center" style="height: 120px">
+                                        <a href="#"><%= bookTopRating.getString(2)%>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="single-p-banner">
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/4.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">East of eden</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="single-banner">
-                                    <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="public/customer/img/featured/8.jpg">
-                                            <div class="price"><span>$</span>160</div>
-                                            <div class="rating-icon">
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star icolor"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </a>
-                                        <div class="product-description">
-                                            <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
-                                                    <i class="fa fa-shopping-cart"></i>
-                                                </a>
-                                                <a href="#" title="Add to Wishlist">
-                                                    <i class="fa fa-heart-o"></i>
-                                                </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
-                                                   data-target="#productModal">
-                                                    <i class="fa fa-compress"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="banner-bottom text-center">
-                                        <a href="#">The historian</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -839,9 +435,10 @@
                     <div class="single-testimonial">
                         <img src="public/customer/img/testimonial/1.jpg" alt="">
                         <div class="testmonial-info clearfix">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation. </p>
+                            <p>Recently, people have been wondering what books to read, because each book is now very
+                                popular in the market, but valuable books are few. Luckily,
+                                I searched the web to find that Naname has some articles that share their books that are
+                                also valuable and interesting. </p>
                             <div class="testimonial-author text-center">
                                 <h3>JOHN DOE</h3>
                                 <p>The Author</p>
@@ -851,9 +448,9 @@
                     <div class="single-testimonial">
                         <img src="public/customer/img/testimonial/2.jpg" alt="">
                         <div class="testmonial-info clearfix">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation. </p>
+                            <p>This page is full of intellectuals in the country, so the whole book is valuable. The
+                                articles in this newspaper I find very quality too.
+                                Anyone who has free time up here and reads the newspaper will have a lot to learn.</p>
                             <div class="testimonial-author text-center">
                                 <h3>Ashim Kumar</h3>
                                 <p>CEO</p>
@@ -921,25 +518,60 @@
     <div class="container">
         <div class="row">
             <div class="blog-list indicator-style">
-                <%
-                    ResultSet book = (ResultSet) request.getAttribute("book");
-                    while (book.next()) {
-                %>
+                <%--                <%--%>
+                <%--                    ResultSet book = (ResultSet) request.getAttribute("book");--%>
+                <%--                    while (book.next()) {--%>
+                <%--                %>--%>
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="/public/customer/img/shop/<%= book.getString(4)%>" width="270px" height="200px" alt="">
+<%--                            <img src="/public/customer/img/shop/<%= book.getString(4)%>" width="270px" height="200px"--%>
+                            <img src="/public/customer/img/post/1.jpg" width="270px" height="200px"
+                                 alt="">
                         </a>
                         <div class="blog-info text-center">
-                            <a href="#"><h2>Modern Book Reviews</h2></a>
-                            <div class="blog-info-bottom">
-                                <span class="blog-author">BY: <a href="#">LATEST BLOG</a></span>
-                                <span class="blog-date">19TH JAN 2016</span>
-                            </div>
+<%--                            <div style="height: 120px"><a href="#"><h2><%= book.getString(2)%></h2></a></div>--%>
+                            <a href="#"><h2>Trần Thị Mỹ Duyên</h2></a>
+<%--                            <div class="blog-info-bottom">--%>
+<%--                                <span class="blog-author">MSSV : <a href="#"> 17130045</a></span>--%>
+<%--                                <span class="blog-date">Birth: 6/7/1999</span>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
                 </div>
-                <% } %>
+                <div class="col-md-3">
+                    <div class="single-blog">
+                        <a href="single-#">
+                            <img src="/public/customer/img/post/2.jpg" width="270px" height="200px"
+                                 alt="">
+                        </a>
+                        <div class="blog-info text-center">
+                            <a href="#"><h2>Nguyễn Văn Tánh</h2></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="single-blog">
+                        <a href="single-#">
+                            <img src="/public/customer/img/post/3.jpg" width="270px" height="200px"
+                                 alt="">
+                        </a>
+                        <div class="blog-info text-center">
+                            <a href="#"><h2>Cao Trung Vĩnh</h2></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="single-blog">
+                        <a href="single-#">
+                            <img src="/public/customer/img/post/4.jpg" width="270px" height="200px"
+                                 alt="" style="height: 350px">
+                        </a>
+                        <div class="blog-info text-center">
+                            <a href="#"><h2>Team NaName</h2></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
