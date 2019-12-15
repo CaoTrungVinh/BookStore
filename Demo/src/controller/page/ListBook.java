@@ -18,11 +18,13 @@ public class ListBook extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
+        String nsx = request.getParameter("nsx");
 //        String search = request.getParameter("selectSearch");
         String page = request.getParameter("page");
         response.getWriter().println(page);
         int idType = 0;
         int pageNum = 1;
+        int idNsx = 0;
 
         try {
             idType = Integer.parseInt(type);
@@ -32,6 +34,13 @@ public class ListBook extends HttpServlet {
         }
         try {
             pageNum = Integer.parseInt(page);
+
+
+        } catch (Exception e) {
+
+        }
+        try {
+            idNsx = Integer.parseInt(nsx);
 
 
         } catch (Exception e) {
@@ -64,6 +73,11 @@ public class ListBook extends HttpServlet {
                 sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType + " GROUP BY img.id_book ";
             }
+            if(idNsx!=0) {
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
+                        " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND publisher = " + idNsx + " GROUP BY img.id_book ";
+
+            }
 //            else if(search != null) {
 //                sql += " and search =" + search;
 //            }
@@ -74,13 +88,13 @@ public class ListBook extends HttpServlet {
             ResultSet book = pst2.executeQuery();
             book.last();
             int rows = book.getRow();
-            System.out.println("books: "+rows);
+//            System.out.println("books: "+rows);
             book.beforeFirst();
 //            System.out.println("gjhjhiu" + rows);
 
             int nOfPages = rows / 9;
 
-            if (nOfPages % 9 > 0) {
+            if (rows % 9 > 0) {
                 nOfPages++;
             }
 
@@ -88,11 +102,14 @@ public class ListBook extends HttpServlet {
                 pageNum = 1;
 
             }
+            System.out.println("row Server: " + rows);
+            System.out.println("nOfPage Server: " + nOfPages);
 
             request.setAttribute("book", book);
             request.setAttribute("currentPage", pageNum);
             request.setAttribute("nOfPages", nOfPages);
             request.setAttribute("idType", idType);
+            request.setAttribute("idNsx", idNsx);
 
             request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
 
