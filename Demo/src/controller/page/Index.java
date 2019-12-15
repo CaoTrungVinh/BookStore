@@ -33,13 +33,6 @@ public class Index extends HttpServlet {
             ResultSet bookcTopRating = pstTopRating.executeQuery();
             request.setAttribute("bookTopRating", bookcTopRating);
 
-            Statement s1 = ConnectionDB.connect();
-            Connection conn1 = s1.getConnection();
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book";
-            PreparedStatement pst2 = conn1.prepareStatement(sql);
-            response.getWriter().println(sql);
-            ResultSet book = pst2.executeQuery();
-            request.setAttribute("book", book);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

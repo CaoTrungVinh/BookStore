@@ -518,24 +518,18 @@
     <div class="container">
         <div class="row">
             <div class="blog-list indicator-style">
-                <%--                <%--%>
-                <%--                    ResultSet book = (ResultSet) request.getAttribute("book");--%>
-                <%--                    while (book.next()) {--%>
-                <%--                %>--%>
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-<%--                            <img src="/public/customer/img/shop/<%= book.getString(4)%>" width="270px" height="200px"--%>
                             <img src="/public/customer/img/post/1.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
-<%--                            <div style="height: 120px"><a href="#"><h2><%= book.getString(2)%></h2></a></div>--%>
                             <a href="#"><h2>Trần Thị Mỹ Duyên</h2></a>
-<%--                            <div class="blog-info-bottom">--%>
-<%--                                <span class="blog-author">MSSV : <a href="#"> 17130045</a></span>--%>
-<%--                                <span class="blog-date">Birth: 6/7/1999</span>--%>
-<%--                            </div>--%>
+                            <%--                            <div class="blog-info-bottom">--%>
+                            <%--                                <span class="blog-author">MSSV : <a href="#"> 17130045</a></span>--%>
+                            <%--                                <span class="blog-date">Birth: 6/7/1999</span>--%>
+                            <%--                            </div>--%>
                         </div>
                     </div>
                 </div>
