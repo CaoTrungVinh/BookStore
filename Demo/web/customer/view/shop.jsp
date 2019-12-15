@@ -193,6 +193,24 @@
 
                             </ul>
                         </aside>
+                        <aside class="widget widget-categories">
+                            <h2 class="sidebar-title text-center">PRODUCER</h2>
+                            <ul class="sidebar-menu">
+                                <% ResultSet rsconnNSX = (ResultSet) request.getAttribute("rsconnNSX");
+                                    while (rsconnNSX.next()) {
+                                %>
+                                <li>
+
+                                    <a href="<%= Util.fullPath("list-book?type=" + rsconnNSX.getInt(1)) %>">
+                                        <i class="fa fa-angle-double-right"></i>
+                                        <%= rsconnNSX.getString(2)%>
+                                        <%--                                                <span>(5)</span>--%>
+                                    </a>
+                                </li>
+                                <% } %>
+
+                            </ul>
+                        </aside>
                         <aside class="widget shop-filter">
                             <h2 class="sidebar-title text-center">PRICE SLIDER</h2>
                             <div class="info-widget">
@@ -543,7 +561,8 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p><%= book.getString(7)%></p>
+                                            <p><%= book.getString(7)%>
+                                            </p>
                                             <div class="availability">
                                                 <span>In stock</span>
                                                 <span><a href="<%= Util.fullPath("AddCart?id="+book.getInt(5))%>">Add to cart</a></span>
@@ -578,10 +597,11 @@
                                 </li>
 
                                 <% }
-                                    for (; startpage <=endPage; startpage++) {%>
+                                    for (; startpage <= endPage; startpage++) {%>
 
 
-                                <li><a class="<%=startpage==currentPage?"current":"normal"%>" href="<%= Util.fullPath(url + startpage ) %>"
+                                <li><a class="<%=startpage==currentPage?"current":"normal"%>"
+                                       href="<%= Util.fullPath(url + startpage ) %>"
                                        data-page-number="5"><%= startpage %>
                                 </a>
                                 </li>
@@ -596,51 +616,51 @@
                                 </li>
 
                                 <% } %>
-<%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
-<%--                                       data-page-number="5"><%= start1 %>--%>
-<%--                                </a>--%>
-<%--                                </li>--%>
+                                <%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
+                                <%--                                       data-page-number="5"><%= start1 %>--%>
+                                <%--                                </a>--%>
+                                <%--                                </li>--%>
 
 
-<%--                                <% }--%>
-<%--                                    else--%>
-<%--                                    {--%>
+                                <%--                                <% }--%>
+                                <%--                                    else--%>
+                                <%--                                    {--%>
 
-<%--                                %>--%>
+                                <%--                                %>--%>
 
-<%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
-<%--                                       data-page-number="5"><%= start1  %>--%>
-<%--                                </a>--%>
-<%--                                </li>--%>
-<%--                                <li><a class="normal" href="<%= Util.fullPath(url + (start1 +1 ) ) %>"--%>
-<%--                                       data-page-number="5"><%= start1--%>
-<%--                                    +--%>
-<%--                                    1 %>--%>
-<%--                                </a>--%>
-<%--                                </li>--%>
-<%--                                <% }--%>
-<%--                                    if--%>
-<%--                                    (--%>
-<%--                                    currentPage1--%>
-<%--                                    ==--%>
-<%--                                    nOfPages--%>
-<%--                                    )--%>
-<%--                                    {--%>
-<%--                                %>--%>
-<%--                                <li><a class="next icon-center" data-page-number="7"--%>
-<%--                                       href="<%= Util.fullPath(url + (start1) ) %>"><i--%>
-<%--                                        class=" fa fa-angle-right"></i></a>--%>
-<%--                                </li>--%>
-<%--                                <% }--%>
-<%--                                    else--%>
-<%--                                    {--%>
-<%--                                %>--%>
-<%--                                <li><a class="next icon-center" data-page-number="7"--%>
-<%--                                       href="<%= Util.fullPath(url + (start1 + 1) ) %>"><i--%>
-<%--                                        class=" fa fa-angle-right"></i></a>--%>
-<%--                                </li>--%>
-<%--                                <% }--%>
-<%--                                %>--%>
+                                <%--                                <li><a class="current" href="<%= Util.fullPath(url + (start1) ) %>"--%>
+                                <%--                                       data-page-number="5"><%= start1  %>--%>
+                                <%--                                </a>--%>
+                                <%--                                </li>--%>
+                                <%--                                <li><a class="normal" href="<%= Util.fullPath(url + (start1 +1 ) ) %>"--%>
+                                <%--                                       data-page-number="5"><%= start1--%>
+                                <%--                                    +--%>
+                                <%--                                    1 %>--%>
+                                <%--                                </a>--%>
+                                <%--                                </li>--%>
+                                <%--                                <% }--%>
+                                <%--                                    if--%>
+                                <%--                                    (--%>
+                                <%--                                    currentPage1--%>
+                                <%--                                    ==--%>
+                                <%--                                    nOfPages--%>
+                                <%--                                    )--%>
+                                <%--                                    {--%>
+                                <%--                                %>--%>
+                                <%--                                <li><a class="next icon-center" data-page-number="7"--%>
+                                <%--                                       href="<%= Util.fullPath(url + (start1) ) %>"><i--%>
+                                <%--                                        class=" fa fa-angle-right"></i></a>--%>
+                                <%--                                </li>--%>
+                                <%--                                <% }--%>
+                                <%--                                    else--%>
+                                <%--                                    {--%>
+                                <%--                                %>--%>
+                                <%--                                <li><a class="next icon-center" data-page-number="7"--%>
+                                <%--                                       href="<%= Util.fullPath(url + (start1 + 1) ) %>"><i--%>
+                                <%--                                        class=" fa fa-angle-right"></i></a>--%>
+                                <%--                                </li>--%>
+                                <%--                                <% }--%>
+                                <%--                                %>--%>
 
                             </ul>
                         </div>
