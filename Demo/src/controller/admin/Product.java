@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-
-@WebServlet(urlPatterns = {"/admin/product", "/admin/product/delete", "/admin/product/add","/admin/product/edit"})
+@WebServlet(urlPatterns = {"/admin/product", "/admin/product/delete", "/admin/product/add", "/admin/product/edit"
+        , "/admin/categories/add", "/admin/categories/edit", "/admin/categories/delete"})
 public class Product extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +40,8 @@ public class Product extends HttpServlet {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/products.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("/admin/product/add")) {
+        }
+        else if (request.getServletPath().equals("/admin/product/add")) {
 
             try {
                 Statement s = ConnectionDB.connect();
@@ -68,14 +69,13 @@ public class Product extends HttpServlet {
             }
             request.getRequestDispatcher("/admin/add-product.jsp").forward(request, response);
 
-        } else if (request.getServletPath().equals("/admin/product/edit")) {
+        }
+        else if (request.getServletPath().equals("/admin/product/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
-
-
                     String sqlBooks = "SELECT * FROM books where id=?";
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
@@ -95,12 +95,10 @@ public class Product extends HttpServlet {
                     PreparedStatement pstAuthor = conn.prepareStatement(sqlAuthor);
                     ResultSet authors = pstAuthor.executeQuery();
 
-
                     request.setAttribute("books", books);
                     request.setAttribute("categories", categories);
                     request.setAttribute("publisher", publisher);
                     request.setAttribute("authors", authors);
-
 
                     request.getRequestDispatcher("/admin/edit-product.jsp").forward(request, response);
                 } catch (SQLException e) {
@@ -109,13 +107,63 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("/admin/product/delete")) {
+        }
+        else if (request.getServletPath().equals("/admin/product/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
                     String sqlCategory = "DELETE FROM books WHERE id = ?";
+
+                    PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+                    pstCate.setString(1, id);
+
+                    pstCate.execute();
+
+
+                    response.sendRedirect("/admin/product");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else if (request.getServletPath().equals("/admin/categories/add")) {
+            request.getRequestDispatcher("/admin/add-categories.jsp").forward(request, response);
+        }
+
+        else if (request.getServletPath().equals("/admin/categories/edit")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                try {
+                    Statement s = ConnectionDB.connect();
+                    Connection conn = s.getConnection();
+                    String sqlCategory = "SELECT * FROM categories WHERE id=?";
+
+                    PreparedStatement pst = conn.prepareStatement(sqlCategory);
+                    pst.setString(1, id);
+                    ResultSet categories = pst.executeQuery();
+                    categories.first();
+
+                    request.setAttribute("categories", categories);
+                    request.getRequestDispatcher("/admin/edit-categories.jsp").forward(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        else if (request.getServletPath().equals("/admin/categories/delete")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                try {
+                    Statement s = ConnectionDB.connect();
+                    Connection conn = s.getConnection();
+                    String sqlCategory = "DELETE FROM categories WHERE id = ?";
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, id);
@@ -185,10 +233,7 @@ public class Product extends HttpServlet {
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
                     String sqlCategory = "UPDATE books SET title=?,type=?,description=?,price=?,in_stock=?,publisher=?,author=? where id=?";
-
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
-
-
                     pstCate.setString(1, name);
                     pstCate.setInt(2, Integer.parseInt(category));
                     pstCate.setString(3, description);
@@ -207,6 +252,45 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
 
+            }
+            response.sendRedirect("/admin/product");
+        }
+        else if (request.getServletPath().equals("/admin/categories/add")) {
+            String name = request.getParameter("name");
+            try {
+                Statement s = ConnectionDB.connect();
+                Connection conn = s.getConnection();
+                String sqlCategory = "INSERT INTO categories (name, active) VALUE (?,1)";
+
+                PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+                pstCate.setString(1, name);
+                pstCate.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            response.sendRedirect("/admin/product");
+        }
+
+        else if (request.getServletPath().equals("/admin/categories/edit")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                String name = request.getParameter("name");
+                response.getWriter().println(name);
+                try {
+                    Statement s = ConnectionDB.connect();
+                    Connection conn = s.getConnection();
+                    String sqlCategory = "UPDATE categories SET name=? where id=?";
+                    PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+                    pstCate.setString(1, name);
+                    pstCate.setString(2,id);
+                    pstCate.execute();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
             response.sendRedirect("/admin/product");
         }

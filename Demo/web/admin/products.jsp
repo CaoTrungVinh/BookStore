@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/public/admin/css/table.css">
 
 
-
 </head>
 
 <body id="reportsPage">
@@ -51,11 +50,10 @@
                             <td scope="row" class="text-center"><%= stt%>
                             </td>
                             <td class="tm-product-name">
-                                <a href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>"><%= book.getString("title")%>
+                                <a href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>">
+                                    <%= book.getString("title")%>
                                 </a>
                             </td>
-
-
                             <td class="text-center"><%= book.getString("price")%>
                             </td>
                             <td class="text-center"><%= book.getString("in_stock")%>
@@ -63,11 +61,18 @@
                             <td class="text-center"><%= book.getString("rating")%>
                             </td>
                             <td>
-                                <a class="delete" href="<%= Util.fullPath("admin/product/delete?id=" + book.getString("id")) %>" class="tm-product-delete-link">
-                                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                <a class="delete"
+                                   href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>"
+                                   class="tm-product-delete-link">
+                                    <i class="fas fa-edit"></i>
                                 </a>
 
 
+                                <a class="delete"
+                                   href="<%= Util.fullPath("admin/product/delete?id=" + book.getString("id")) %>"
+                                   class="tm-product-delete-link">
+                                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                </a>
                             </td>
                         </tr>
                         <% } %>
@@ -75,18 +80,17 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- table container -->
-<%--                <a--%>
-<%--                        href="<%= Util.fullPath("/admin/add-product") %>"--%>
-<%--                        class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>--%>
-                <%--                <button class="btn btn-primary btn-block text-uppercase">--%>
-                <%--                    Delete selected products--%>
-                <%--                </button>--%>
             </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
                 <h2 class="tm-block-title">Product Categories</h2>
+
+                <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
+                        type="button"><a href="<%= Util.fullPath("admin/categories/add") %>"
+                                         style="color: white;text-decoration: none;">
+                    New Categories</a></button>
+
                 <div class="tm-product-table-container">
                     <table id="category"
                            class="table table-striped table-bordered "
@@ -98,17 +102,27 @@
                         <tbody>
                         <%
                             ResultSet categories = (ResultSet) request.getAttribute("categories");
-//
 //                            int stt = 0;
                             while (categories.next()) {
 //                                stt++;
-
                         %>
                         <tr>
-                            <td class="tm-product-name categories-name"><%= categories.getString("name")%>
+                            <td class="tm-product-name categories-name"
+                                style="width: 20000px"><%= categories.getString("name")%>
                             </td>
+
                             <td class="text-center">
-                                <a href="#" class="tm-product-delete-link delete">
+                                <a class="delete"
+                                   href="<%= Util.fullPath("admin/categories/edit?id=" + categories.getString("id")) %>"
+                                   class="tm-product-delete-link">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+
+                            <td class="text-center">
+                                <a
+                                        href="<%= Util.fullPath("admin/categories/delete?id=" + categories.getString("id")) %>"
+                                        class="tm-product-delete-link delete">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
                             </td>
@@ -118,9 +132,9 @@
                     </table>
                 </div>
                 <!-- table container -->
-<%--                <button class="btn btn-primary btn-block text-uppercase mb-3">--%>
-<%--                    Add new category--%>
-<%--                </button>--%>
+                <%--                <button class="btn btn-primary btn-block text-uppercase mb-3">--%>
+                <%--                    Add new category--%>
+                <%--                </button>--%>
             </div>
         </div>
     </div>

@@ -91,7 +91,6 @@
                             data-toggle="tooltip"
                             title="Delete"></i></a>
                 </td>
-
             </tr>
             <% } %>
 

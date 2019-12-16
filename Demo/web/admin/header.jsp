@@ -25,6 +25,12 @@
                         Products
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%= Util.fullPath("admin/producer") %>">
+                        <i class="fas fa-shopping-cart"></i>
+                        Producer
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="<%= Util.fullPath("admin/account") %>">

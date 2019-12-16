@@ -1,3 +1,7 @@
+#dtBasicExample_wrapper{
+    margin: 50px;
+    margin-right: 100px;
+}
 .table th {
     padding: 10px !important;
 }

@@ -22,8 +22,6 @@
                     <span class="help-block"></span>
                 </div>
             </div>
-
-
             <div class="form-group gender-select-wrap" id="register_name">
                 <label class="control-label">Giới tính</label>
                 <div class="input-wrap">
