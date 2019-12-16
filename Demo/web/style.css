@@ -1810,12 +1810,12 @@ p.form-row-phone {
     display: block;
     margin-left: 27px;
     margin-right: 5px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .sidebar-menu > li {
     line-height: 1;
-    padding: 19px 0;
+    padding: 5px 0;
 }
 
 .widget-categories {
