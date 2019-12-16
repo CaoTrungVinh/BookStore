@@ -166,7 +166,7 @@
                             <div id="product-comments-block-extra">
 								<ul class="comments-advices">
 									<li>
-										<a href="#" class="open-comment-form">Write a review</a>
+										<a href="#" class="fa fa-edit">Write a review</a>
 									</li>
 								</ul>
 							</div>
@@ -241,7 +241,7 @@
                         <div class="col-md-3">
                             <div class="single-banner" style="background: white">
                                 <div class="product-wrapper">
-                                    <a href="#" class="single-banner-image-wrapper">
+                                    <a href="<%=Util.fullPath("single-product?id=" +listBook.getString("id"))%>" class="single-banner-image-wrapper">
                                         <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
                                         <img alt="" src="/public/customer/img/shop/<%= listBook.getString(4)%>"
                                              style="margin-top: 30px">
@@ -322,7 +322,7 @@
                                                                 class="amount"><%=  Util.formatCurrency(listBook.getString("price"))%></span></span>
                                                         </p> <%--Gán price--%>
                                                     </div>
-                                                    <a href="product-details.jsp" class="see-all">See all
+                                                    <a href="<%=Util.fullPath("single-product?id=" +listBook.getString("id"))%>" class="see-all">See all
                                                         features</a>
                                                     <div class="quick-add-to-cart">
                                                         <form method="post" class="cart">

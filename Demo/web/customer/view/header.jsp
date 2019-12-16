@@ -246,7 +246,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="search.jsp"><i class="fa fa-search"></i>
+                            <a href="<%= Util.fullPath("list-book")%>"><i class="fa fa-search"></i>
                             </a>
                         </li>
                     </ul>
