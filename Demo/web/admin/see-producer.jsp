@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Producer</title>
+    <title>See Producer</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Edit Producer</h2>
+                        <h2 class="tm-block-title d-inline-block">See Producer</h2>
                     </div>
                 </div>
                 <div class="row tm-edit-product-row">
@@ -27,7 +27,7 @@
                         <%
                             ResultSet publishers = (ResultSet) request.getAttribute("publishers");
                         %>
-                        <form action="<%= Util.fullPath("admin/producer/edit?id="+publishers.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/producer/see?id="+publishers.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -68,7 +68,8 @@
                             </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">UPDATE</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase"
+                                style="margin-top: 30px"><a style="color: white" href="<%= Util.fullPath("admin/producer") %>">COME BACK</a></button>
                     </div>
                     </form>
                 </div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Producer</title>
+    <title>See Categories</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -15,60 +15,38 @@
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
-        <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mx-auto">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto"
+                 style="border: 1px solid #dededc;padding: 85px;">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Edit Producer</h2>
+                        <h2 class="tm-block-title d-inline-block">See Categories</h2>
                     </div>
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-12 col-lg-6 col-md-12">
                         <%
-                            ResultSet publishers = (ResultSet) request.getAttribute("publishers");
+                            ResultSet categories = (ResultSet) request.getAttribute("categories");
                         %>
-                        <form action="<%= Util.fullPath("admin/producer/edit?id="+publishers.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/categories/see?id="+categories.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Producer Name
+                                        for="name">Categories Name
                                 </label>
                                 <input
                                         id="name"
                                         name="name"
                                         type="text"
                                         class="form-control novalidate"
-                                        value="<%= publishers.getString("name")%>"
-                                        required/>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="name">Address
-                                </label>
-                                <input
-                                        id="address"
-                                        name="address"
-                                        type="text"
-                                        class="form-control novalidate"
-                                        value="<%= publishers.getString("address")%>"
-                                        required/>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="contact"
-                                >Contact</label
-                                >
-                                <input
-                                        id="contact"
-                                        name="contact"
-                                        type="text"
-                                        class="form-control novalidate"
-                                        value="<%= publishers.getString("contact")%>"
+                                        value="<%= categories.getString("name")%>"
                                         required/>
                             </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">UPDATE</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">
+                            <a style="color: white" href="<%= Util.fullPath("admin/product") %>">COME BACK</a>
+                        </button>
                     </div>
                     </form>
                 </div>

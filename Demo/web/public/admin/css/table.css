@@ -90,7 +90,7 @@ table.table tr th:first-child {
 }
 
 table.table tr th:last-child {
-    width: 100px;
+    width: 30px;
 }
 
 table.table-striped tbody tr:nth-of-type(odd) {

@@ -20,8 +20,8 @@
 
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
     <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
-            type="button" style="margin-left: 40%;margin-bottom: -6%;">
-        <a href="<%=Util.fullPath("admin/producer/add")%>" style="color: white; text-decoration: none;">New Producer</a>
+            type="button" style="margin-right: 8%;margin-top: 3.4%; float: right">
+        <a href="<%=Util.fullPath("admin/producer/add")%>" style="color: white; text-decoration: none;">New producer</a>
     </button>
     <thead>
     <tr>
@@ -48,13 +48,14 @@
         <td scope="row" class="text-center"><%= stt%>
         </td>
         <td style="width: 400px">
-            <%= publishers.getString("name")%>
+            <a href="<%= Util.fullPath("admin/producer/see?id=" + publishers.getString("id")) %>"><%= publishers.getString("name")%></a>
+
         </td>
         <td><%= publishers.getString("address")%>
         </td>
         <td><%= publishers.getString("contact")%>
         </td>
-        <td style="text-align: center">
+        <td style="text-align: center; width: 100px">
             <a class="delete" href="<%= Util.fullPath("admin/producer/edit?id=" + publishers.getString("id")) %>"
                class="tm-product-delete-link">
                 <i class="fas fa-edit"></i>

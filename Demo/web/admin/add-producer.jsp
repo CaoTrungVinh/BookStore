@@ -15,7 +15,7 @@
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mx-auto">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12">

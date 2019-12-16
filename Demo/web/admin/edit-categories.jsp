@@ -15,8 +15,9 @@
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto"
+                 style="border: 1px solid #dededc;padding: 85px;">
                 <div class="row">
                     <div class="col-12">
                         <h2 class="tm-block-title d-inline-block">Edit Categories</h2>
@@ -31,7 +32,7 @@
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Producer Name
+                                        for="name">Categories Name
                                 </label>
                                 <input
                                         id="name"
@@ -43,7 +44,7 @@
                             </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">Save Categories</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">UPDATE</button>
                     </div>
                     </form>
                 </div>

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-@WebServlet(urlPatterns = {"/admin/producer", "/admin/producer/delete", "/admin/producer/add", "/admin/producer/edit"})
+@WebServlet(urlPatterns = {"/admin/producer", "/admin/producer/delete", "/admin/producer/add", "/admin/producer/edit", "/admin/producer/see"})
 public class Producer extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,6 +54,29 @@ public class Producer extends HttpServlet {
 
                     request.setAttribute("publishers", publishers);
                     request.getRequestDispatcher("/admin/edit-producer.jsp").forward(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        else if (request.getServletPath().equals("/admin/producer/see")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                try {
+                    Statement s = ConnectionDB.connect();
+                    Connection conn = s.getConnection();
+                    String sqlCategory = "SELECT * FROM publishers WHERE id=?";
+
+                    PreparedStatement pst = conn.prepareStatement(sqlCategory);
+                    pst.setString(1, id);
+                    ResultSet publishers = pst.executeQuery();
+                    publishers.first();
+
+                    request.setAttribute("publishers", publishers);
+                    request.getRequestDispatcher("/admin/see-producer.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (ClassNotFoundException e) {

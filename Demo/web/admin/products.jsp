@@ -33,6 +33,12 @@
                             <th scope="col">PRICE</th>
                             <th scope="col">IN STOCK</th>
                             <th scope="col">RATING</th>
+                            <th scope="col">ACTIVE</th>
+                            <%--                            <th scope="col">PRODUCT NAME</th>--%>
+                            <%--                            <th scope="col">PRICE</th>--%>
+                            <%--                            <th scope="col">IN STOCK</th>--%>
+                            <%--                            <th scope="col">RATING</th>--%>
+                            <%--                            <th scope="col">ACTIVE</th>--%>
                             <th scope="col">&nbsp;</th>
                         </tr>
                         </thead>
@@ -50,7 +56,7 @@
                             <td scope="row" class="text-center"><%= stt%>
                             </td>
                             <td class="tm-product-name">
-                                <a href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>">
+                                <a href="<%= Util.fullPath("admin/product/see?id=" + book.getString("id")) %>">
                                     <%= book.getString("title")%>
                                 </a>
                             </td>
@@ -60,7 +66,16 @@
                             </td>
                             <td class="text-center"><%= book.getString("rating")%>
                             </td>
-                            <td>
+                            <td class="text-center">
+                                <% if (book.getString("active").equals("1")) {%>
+                                <i class="fa fa-check" style="color: #2196F3">
+                                </i>
+                                <% } else {%>
+                                <i class="fa fa-minus-circle" style="color: red !important;">
+                                </i>
+                                <% } %>
+                            </td>
+                            <td style="width: 70px; text-align: center">
                                 <a class="delete"
                                    href="<%= Util.fullPath("admin/product/edit?id=" + book.getString("id")) %>"
                                    class="tm-product-delete-link">
@@ -86,17 +101,18 @@
             <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
                 <h2 class="tm-block-title">Product Categories</h2>
 
-                <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
-                        type="button"><a href="<%= Util.fullPath("admin/categories/add") %>"
-                                         style="color: white;text-decoration: none;">
-                    New Categories</a></button>
+                <%--                <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"--%>
+                <%--                        type="button"><a href="<%= Util.fullPath("admin/categories/add") %>"--%>
+                <%--                                         style="color: white;text-decoration: none;">--%>
+                <%--                    New Categories</a></button>--%>
 
                 <div class="tm-product-table-container">
                     <table id="category"
                            class="table table-striped table-bordered "
                            style="width:100%">
                         <thead>
-                        <th>Name</th>
+                        <th>NAME</th>
+                        <th>ACTIVE</th>
                         <th></th>
                         </thead>
                         <tbody>
@@ -107,19 +123,30 @@
 //                                stt++;
                         %>
                         <tr>
-                            <td class="tm-product-name categories-name"
-                                style="width: 20000px"><%= categories.getString("name")%>
+                            <td class="tm-product-name categories-name">
+                                <a href="<%= Util.fullPath("admin/categories/see?id=" + categories.getString("id")) %>"><%= categories.getString("name")%>
+                                </a>
                             </td>
 
                             <td class="text-center">
+                                <% if (categories.getString("active").equals("1")) {%>
+                                <i class="fa fa-check" style="color: #2196F3">
+                                </i>
+                                <% } else {%>
+                                <i class="fa fa-minus-circle" style="color: red !important;">
+                                </i>
+                                <% } %>
+                            </td>
+
+                            <td class="text-center" style="width: 1px; text-align: center">
                                 <a class="delete"
                                    href="<%= Util.fullPath("admin/categories/edit?id=" + categories.getString("id")) %>"
                                    class="tm-product-delete-link">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                            </td>
+                                <%--                            </td>--%>
 
-                            <td class="text-center">
+                                <%--                            <td class="text-center">--%>
                                 <a
                                         href="<%= Util.fullPath("admin/categories/delete?id=" + categories.getString("id")) %>"
                                         class="tm-product-delete-link delete">
@@ -198,10 +225,11 @@
             dom: 'Bfrtip',
             buttons: [
                 {
-                    text: 'Create',
+                    text: 'New categories',
                     className: "btn btn-secondary",
                     action: function (e, dt, node, config) {
                         // alert('Button activated');
+                        window.location.href = "/admin/categories/add";
                     }
                 }
             ]

@@ -175,9 +175,11 @@
                             />
                         </div>
                     </div>
+
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">SAVE</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">UPDATE</button>
                     </div>
+
                     </form>
                 </div>
             </div>
