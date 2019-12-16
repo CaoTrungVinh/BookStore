@@ -72,6 +72,7 @@
 
 
                 <td class="text-center"><%= user.getString("idgroup").equals("1")? "User" : "Admin"%> </td>
+
                 <td class="text-center">
                     <% if(user.getString("is_active").equals("1")) {%>
                     <i class="fa fa-check" style="color: #2196F3" >
