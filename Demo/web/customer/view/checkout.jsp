@@ -92,9 +92,11 @@
                                         <span
                                                 class="input-group-btn input-group-prepend"><button
                                                 class="btn btn-primary bootstrap-touchspin-down"
-                                                type="button" onclick="changeQuantityProduct(-1, <%=bookItem.getId()%>)">-</button>
+                                                type="button"
+                                                onclick="changeQuantityProduct(-1, <%=bookItem.getId()%>)">-</button>
                                         </span>
-                                        <input type="text" value="1" name="touch2"
+                                        <input id="touch<%=bookItem.getId()%>" type="number" min="1" value="<%=bookItem.getQuantity()%>"
+                                               name="touchspin"
                                                class="form-control">
                                         <span
                                                 class="input-group-btn input-group-append"><button
@@ -194,25 +196,35 @@
 <script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
 <script language="javascript" type="text/javascript">
 
-    $(document).ready(function () {
-        $('input[name="touchspin"]').TouchSpin({min: 1});
-    });
+    // function () {
+    //     $('input[name="touchspin"]').val() == 1 ? $('.bootstrap-touchspin-down').addClass("disable") : $('.bootstrap-touchspin-down').removeClass("disable");
+    //
+    // }
+
+    // $('input[name="touchspin"]').val() == 1 ? $('.bootstrap-touchspin-down').addClass("disable") : $('.bootstrap-touchspin-down').removeClass("disable");
+
 
     function changeQuantityProduct(flag, id) {
-        $.ajax({
-            type: "POST",
-            url: "ChangeQuantityProduct",   // this is my servlet
-            data: {"flag": flag, "bookID": id},
-            success: function (data) {
-                var respon = $.parseJSON(data);
-                if (respon.status === "ok") {
-                    $('#giatamtinh,#thanhtien').text(respon.price);
-                    changeCounterCart(flag)
+        var selector = "#touch" + id;
+        if ($(selector).val() == 1 && flag == -1) {
+            return
+        } else
+            $.ajax({
+                type: "POST",
+                url: "ChangeQuantityProduct",   // this is my servlet
+                data: {"flag": flag, "bookID": id},
+                success: function (data) {
+                    var respon = $.parseJSON(data);
+                    if (respon.status === "ok") {
+                        $('#giatamtinh,#thanhtien').text(respon.price+"đ");
+                        $(selector).val((parseInt($(selector).val()) + flag));
+                        changeCounterCart(flag);
 
+                    }
                 }
-            }
-        });
+            });
     }
+
     function changeCounterCart(flag) {
         var counter = $("#shopping-cart-counter");
         console.log(counter.text())

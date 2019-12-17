@@ -170,12 +170,6 @@
                                 </div>
                                 <div class="cart-checkout">
                                     <a href="<%=Util.fullPath("checkout")%>">
-                                        View cart
-                                        <i class="fa fa-chevron-right"></i>
-                                    </a>
-                                </div>
-                                <div class="cart-checkout">
-                                    <a href="<%=Util.fullPath("checkout")%>">
                                         Check out
                                         <i class="fa fa-chevron-right"></i>
                                     </a>

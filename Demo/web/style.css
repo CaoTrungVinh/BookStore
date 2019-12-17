@@ -3119,3 +3119,10 @@ input:focus {
 /*.tiki-cart a:hover {*/
 /*    color: #2498ff!important;*/
 /*}*/
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

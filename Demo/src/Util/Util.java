@@ -1,6 +1,8 @@
 package Util;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Util {
     static final String HOST = "http://localhost:8080/";
@@ -26,5 +28,17 @@ public class Util {
 
     public static void main(String[] args) {
         System.out.println(showPrice(2404000));
+    }
+
+    public static String formatCurrency(String money) {
+        double m = 0;
+        try {
+            m = Double.parseDouble(money);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        return currencyVN.format(m);
     }
 }

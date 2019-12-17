@@ -26,12 +26,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = Util.getParameterGeneric(request, "email", "");
         String pass = Util.getParameterGeneric(request, "pass", "");
-        login(request, response, email, pass);
 
-
-    }
-
-    public static void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
         try {
             String sql;
             Statement statement = ConnectionDB.connect();
@@ -110,5 +105,9 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
+
+
     }
+
+
 }

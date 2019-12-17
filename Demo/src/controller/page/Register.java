@@ -51,7 +51,6 @@ public class Register extends HttpServlet {
                         ", phone) VALUES(?,?,?,?,?)";
                 conn = s.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
-
                 String hashMail = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
                 String hashPass = PasswordAuthentication.getSaltedHash(pass);
 
