@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Product Page - Admin</title>
+    <title>Producer Page - Admin</title>
 
 
     <jsp:include page="head.jsp"/>

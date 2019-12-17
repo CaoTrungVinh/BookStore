@@ -27,12 +27,12 @@
                         <%
                             ResultSet orders = (ResultSet) request.getAttribute("orders");
                         %>
-                        <form action="<%= Util.fullPath("admin/orders/edit") %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
                                 >Customer</label>
-                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("id_customer")%>">
+                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("orderDate")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectcustomer"
@@ -47,15 +47,13 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <label
-                                        for="orderDate"
-                                >Orders Date
-                                </label>
+                                <label for="orderDate">Orders Date </label>
                                 <input
                                         id="orderDate"
                                         name="orderDate"
                                         type="date"
                                         class="form-control novalidate"
+                                        value="<%= orders.getDate("orderDate")%>"
                                         required
                                 />
                             </div>
