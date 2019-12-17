@@ -33,6 +33,14 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="<%= Util.fullPath("admin/orders") %>">
+                        <i class="fas fa-shopping-cart"></i>
+                        Order
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
                     <a class="nav-link" href="<%= Util.fullPath("admin/account") %>">
                         <i class="far fa-user"></i>
                         Accounts

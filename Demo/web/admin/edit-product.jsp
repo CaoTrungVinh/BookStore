@@ -63,7 +63,6 @@
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectCetagories"
-
                                 >
 
                                     <%

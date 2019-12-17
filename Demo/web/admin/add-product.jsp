@@ -60,12 +60,9 @@
                                         id="selectCetagories"
                                         required
                                 >
-
                                     <%
                                         ResultSet categories = (ResultSet) request.getAttribute("categories");
-//
                                         while (categories.next()) {
-
                                     %>
                                     <option data-cc="<%= categories.getString("id")%>"><%= categories.getString("name")%>
                                     </option>
@@ -82,12 +79,10 @@
                                         id="selectPublisher"
                                         required
                                 >
-
                                     <%
                                         ResultSet publisher = (ResultSet) request.getAttribute("publisher");
 //
                                         while (publisher.next()) {
-
                                     %>
                                     <option data-cc="<%= publisher.getString("id")%>"><%= publisher.getString("name")%>
                                     </option>
