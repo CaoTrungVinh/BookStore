@@ -1,7 +1,7 @@
 package controller.cart;
 
 import Model.Cart;
-import Model.BookItem;
+import Model.Product;
 import Model.User;
 import Util.Util;
 import db.ConnectionDB;
@@ -34,7 +34,7 @@ public class Del extends HttpServlet {
             HttpSession session = request.getSession();
             int id = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));
             User user = (User) session.getAttribute("user");
-            BookItem p = BookItem.find(id);
+            Product p = Product.find(id);
             Cart cart = null;
             if (user == null) {
                 cart = (Cart) session.getAttribute("cart");
@@ -43,13 +43,7 @@ public class Del extends HttpServlet {
                 sql = "SELECT * FROM orderdetails WHERE  orderdetails.id_book =  '" + id + "' and  orderdetails.id_order in (SELECT id FROM orders WHERE orders.id_customer = '" + user.getId() + "') ";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-//                    int currentQuantity = rs.getInt("quantity");
-//                    if (currentQuantity > 1) {
-//                        rs.updateInt("quantity", currentQuantity - 1);
-//                        rs.updateRow();
-//                    } else if (currentQuantity == 1) {
                         rs.deleteRow();
-//                    }
                 }
             }
             cart.remove(id);

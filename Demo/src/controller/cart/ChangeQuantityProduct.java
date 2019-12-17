@@ -3,6 +3,7 @@ package controller.cart;
 import Model.Cart;
 import Model.User;
 import Util.Util;
+import db.ConnectionDB;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @WebServlet("/ChangeQuantityProduct")
 public class ChangeQuantityProduct extends HttpServlet {
@@ -23,19 +27,37 @@ public class ChangeQuantityProduct extends HttpServlet {
         int flag = Integer.parseInt(Util.getParameterGeneric(request, "flag", ""));
         int bookID = Integer.parseInt(Util.getParameterGeneric(request, "bookID", ""));
 
+        String sql;
+        Statement statement;
+        ResultSet rs;
+        Cart cart = null;
 
-        User user = (User) request.getSession().getAttribute("user");
-        boolean isLogin = user != null;
-        Cart cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
-        cart.changeQuantityProduct(flag, bookID);
+        try {
+            statement = ConnectionDB.connect();
+            User user = (User) request.getSession().getAttribute("user");
+            boolean isLogin = user != null;
+            cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
+            cart.changeQuantityProduct(flag, bookID);
+
+            //edit database
+            sql = "SELECT * FROM orderdetails WHERE  orderdetails.id_book =  '" + bookID + "' and  orderdetails.id_order  = '" + cart.getId_order() + "' ";
+            rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                int currentQuantity = rs.getInt("quantity");
+                rs.updateInt("quantity", currentQuantity + flag);
+                rs.updateRow();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", "ok");
         jsonObject.put("price", Util.showPrice(cart.getTotalPrice()));
-        //database
-
-
-        response.getWriter().write(jsonObject.toString() );
+        response.getWriter().write(jsonObject.toString());
         response.getWriter().flush();
         response.getWriter().close();
     }

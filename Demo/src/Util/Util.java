@@ -26,9 +26,6 @@ public class Util {
 
     }
 
-    public static void main(String[] args) {
-        System.out.println(showPrice(2404000));
-    }
 
     public static String formatCurrency(String money) {
         double m = 0;

@@ -1930,7 +1930,6 @@ p.form-row-phone {
 }
 
 .seller-details li {
-    cursor: pointer;
     display: inline;
 }
 
@@ -2045,6 +2044,7 @@ p.form-row-phone {
     font-weight: 600;
     margin-bottom: 20px;
     padding: 3px 12px;
+    cursor: pointer;
 }
 
 .availability a {
@@ -2129,7 +2129,6 @@ ul.product-tabs {
 
 #quantity-wanted-p {
     background: #ffffff none repeat scroll 0 0;
-    border: 2px solid #dddddd;
     display: inline-block;
     margin-right: 10px;
 }
@@ -3113,12 +3112,6 @@ input:focus {
     width: 100%;
 }
 
-/*.tiki-cart a {*/
-/*    color: #007ff0!important;*/
-/*}*/
-/*.tiki-cart a:hover {*/
-/*    color: #2498ff!important;*/
-/*}*/
 
 
 input[type=number]::-webkit-inner-spin-button,

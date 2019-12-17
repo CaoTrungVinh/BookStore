@@ -3,9 +3,11 @@
 <%@ page import="Model.Cart" %>
 <%@ page import="Model.User" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.BookItem" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="Model.Product" %>
 <!--Header Area Start-->
+<div id="snackbar">
+</div>
 <div class="header-area bg-white" style="background-color: white">
     <div class="container">
         <div class="row">
@@ -133,8 +135,8 @@
                             </a>
                             <div id="shopping-cart-wrapper" class="add-to-cart-product">
                                 <%
-                                    for (Map.Entry<Integer, BookItem> entry : cart.data.entrySet()) {
-                                        BookItem item = entry.getValue();
+                                    for (Map.Entry<Integer, Product> entry : cart.data.entrySet()) {
+                                        Product item = entry.getValue();
                                 %>
                                 <div class="cart-product" id="cartproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
@@ -150,7 +152,7 @@
                                             </a>
                                         </p>
                                         <span class="cart-price">
-                                            <%=item.getPrice()%></span>
+                                            <%=Util.showPrice(item.getPrice())%></span>
                                     </div>
                                     <div class="cart-product-remove" onclick="removeCartProduct(<%=item.getId()%>)">
                                         <i class="fa fa-times"></i>
@@ -161,7 +163,7 @@
                                     <div class="cart-product-line">
                                         <span>Total</span> <span class="total">
                                         <% if (cart.getQuantity() != 0) {%>
-                                            <span id="cart-total-price"><%=(int) user.getTotalPrice()%> </span>
+                                            <span id="cart-total-price"><%=Util.showPrice(user.getTotalPrice())%> </span>
                                         <%} else {%>
                                        <span id="cart-total-price">0</span>
                                         <%}%>

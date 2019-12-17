@@ -220,19 +220,38 @@ function shortOfTitleCart(name) {
     return (name.length > 9 && name.substring(0, 10) + "..." || name);
 }
 
-function showSnackbar(mess) {
-    // Get the snackbar DIV
-    var x = $("#snackbar")
-    // x.removeClass("show");
+function showPrice(price) {
+    if (Math.floor(parseInt(price) / 1000) == 0) return price;
+    return showPrice(Math.floor(parseInt(price) / 1000)) + "." + price.toString().substring(price.toString().length - 3);
+}
 
+function toNumberFromVND(price) {
+    return price.replace(/[.\s]/g, '')
+
+}
+
+function showSnackbar(mess) {
+    var x = $("#snackbar")
     x.text(mess);
     x.addClass("show");
-
-    // After 2 seconds, remove the show class from DIV
     setTimeout(function () {
         x.removeClass("show");
-    }, 1000);
+    }, 2000);
 }
+
+function addToCard(id, quantity) {
+    $.ajax({
+        type: "POST",
+        url: "add-cart",   // this is my servlet
+        data: {"bookID": id, "quantity": quantity},
+        success: function (data) {
+            increaseCounterCart(quantity);
+            addHTMLproductCart(data);
+            showSnackbar("Adding successfully");
+        }
+    });
+}
+
 
 function increaseCounterCart() {
     var counter = $("#shopping-cart-counter");
@@ -244,9 +263,126 @@ function decreaseCounterCart(id) {
     var counter = $("#shopping-cart-counter");
     counter.text(parseInt(counter.text()) - currentQuantity);
 }
+
 function decrease1CounterCart() {
     var counter = $("#shopping-cart-counter");
     counter.text(parseInt(counter.text()) - 1);
 }
 
+
+function changeQuantityProduct(flag, id) {
+    var selector = "#touch" + id;
+    if ($(selector).val() == 1 && flag == -1) {
+        return
+    } else
+        $.ajax({
+            type: "POST",
+            url: "ChangeQuantityProduct",   // this is my servlet
+            data: {"flag": flag, "bookID": id},
+            success: function (data) {
+                var respon = $.parseJSON(data);
+                if (respon.status === "ok") {
+                    $('#giatamtinh,#thanhtien').text(respon.price + "đ");
+                    $(selector).val((parseInt($(selector).val()) + flag));
+                    changeCounterCart(flag);
+
+                }
+            }
+        });
+}
+
+function changeCounterCart(flag) {
+    var counter = $("#shopping-cart-counter");
+    console.log(counter.text())
+    counter.text(parseInt(counter.text()) + flag);
+}
+
+function removeCartProduct(id) {
+    $.ajax({
+        type: "POST",
+        url: "DelProduct",   // this is my servlet
+        data: {"bookID": id},
+        success: function (data) {
+            if (data == "true") {
+                decreaseCounterCart(id);
+                $("#cartproductid" + id).remove();
+            }
+        }
+    });
+}
+
+
+function addToCard(id, quantity) {
+    $.ajax({
+        type: "POST",
+        url: "add-cart",   // this is my servlet
+        data: {"bookID": id, "quantity": quantity},
+        success: function (data) {
+            increaseCounterCart(quantity);
+            addHTMLproductCart(data);
+            $('html,body').animate({scrollTop: 0}, 300);
+            showSnackbar("Adding successfully");
+        }
+    });
+}
+
+
+function increaseCounterCart(quantity) {
+    var counter = $("#shopping-cart-counter");
+    counter.text(parseInt(counter.text()) + parseInt(quantity));
+}
+
+function decreaseCounterCart(id) {
+    var currentQuantity = $("#quantity-id" + id).text();
+    var counter = $("#shopping-cart-counter");
+    counter.text(parseInt(counter.text()) - currentQuantity);
+}
+
+function decrease1CounterCart() {
+    var counter = $("#shopping-cart-counter");
+    counter.text(parseInt(counter.text()) - 1);
+}
+
+function addHTMLproductCart(data) {
+
+    var datajson = $.parseJSON(data);
+    var bookItem = datajson.book;
+    var $cartItem = "#cartproductid" + bookItem.id;
+    if ($($cartItem).length) {
+        var selector = $("#quantity-id" + bookItem.id);
+        var quan = selector.text();
+        var newQuan = parseInt(quan) + bookItem.quantity;
+        selector.text(newQuan);
+    } else {
+        console.log("not exist")
+        var html = "<div class=\"cart-product\" id=\"cartproductid" + bookItem.id + "\">\n" +
+            "                                    <div class=\"cart-product-image\">\n" +
+            "                                        <a href=\"single-product.jsp\">\n" +
+            "                                            <img src=\"public/customer/img/shop/" + bookItem.img +
+            "\" alt=\"\">\n" +
+            "                                        </a>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-info\">\n" +
+            "                                        <p>\n" +
+            "                                            <span id=\"quantity-id" + bookItem.id + "\">" + bookItem.quantity +
+            "</span>\n" +
+            "                                            x\n" +
+            "                                            <a href=\"localhost:8080/single-product?id=" + bookItem.id + "\">" + shortOfTitleCart(bookItem.name) +
+            "\n" +
+            "                                            </a>\n" +
+            "                                        </p>\n" +
+            "                                        <span class=\"cart-price\">" + showPrice(bookItem.price) +
+            "</span>\n" +
+            "                                    </div>\n" +
+            "                                    <div class=\"cart-product-remove\" onclick=\"removeCartProduct(" + bookItem.id + ")\">\n" +
+            "                                        <i class=\"fa fa-times\"></i>\n" +
+            "                                    </div>\n" +
+            "                                </div>";
+
+        $("#shopping-cart-wrapper").prepend(html);
+    }
+
+    $("#cart-total-price").text(showPrice(datajson.totalPrice));
+
+}
 

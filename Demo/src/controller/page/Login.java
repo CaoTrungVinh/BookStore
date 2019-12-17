@@ -1,6 +1,6 @@
 package controller.page;
 
-import Model.BookItem;
+import Model.Product;
 import Model.Cart;
 import Model.User;
 import Util.Util;
@@ -79,14 +79,16 @@ public class Login extends HttpServlet {
                         "FROM orderdetails \n" +
                         "JOIN books ON orderdetails.id_book = books.id\n" +
                         "JOIN img ON books.id = img.id_book\n" +
-                        "WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "'";
+                        "WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' \n" +
+                "GROUP BY books.id";
                 rs = statement.executeQuery(sql);
                 Cart cart = user.getCart();
-                BookItem item;
+                Product product;
                 while (rs.next()) {
-                    item = new BookItem(rs.getInt("id"), rs.getString("title"), rs.getString("publisher"), rs.getInt("quantity"), rs.getDouble("price"));
-                    item.setImg(rs.getString("img"));
-                    cart.put(item);
+                    product = new Product(rs.getInt("id"), rs.getString("title"), rs.getString("publisher"), rs.getInt("quantity"), rs.getDouble("price"));
+                    product.setImg(rs.getString("img"));
+                    System.out.println(product.toString());
+                    cart.put(product);
                 }
                 // End Load shopping cart.
 

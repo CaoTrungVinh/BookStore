@@ -18,7 +18,7 @@ public class User {
     private String avt;
     private int idgroup; // 1 is user, 2 is admin
     private int active; //0 is not active, 1 is active
-//    ArrayList<BookItem> shoppingCart;
+//    ArrayList<Product> shoppingCart;
 //    int id_order;
     private Cart cart;
 
@@ -33,12 +33,6 @@ public class User {
        return  (int) this.cart.getTotalPrice();
     }
 
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        User user = new User();
-//        user.setId(1);
-//        user.addToCart(1, true);
-    }
 
 
     public String getGender() {
@@ -131,8 +125,8 @@ public class User {
     }
 
 
-    public void addToShoppingCard(BookItem bookItem) {
-        this.cart.put(bookItem);
+    public void addToShoppingCard(Product product) {
+        this.cart.put(product);
     }
 
 
