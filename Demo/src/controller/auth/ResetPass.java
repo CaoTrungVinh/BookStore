@@ -69,9 +69,9 @@ public class ResetPass extends HttpServlet {
                     rs.updateRow();
                 }
 
-//                request.setAttribute("email", email);
-//                request.setAttribute("pass", pass);
-                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+                request.setAttribute("email", email);
+                request.setAttribute("pass", pass);
+                Login.login(request,response,email,pass);
 
             } catch (Exception var10) {
             }
