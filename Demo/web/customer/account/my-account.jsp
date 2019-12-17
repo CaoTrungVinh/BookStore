@@ -29,7 +29,8 @@
                         <p class="image"><img src="https://salt.tikicdn.com/desktop/img/avatar.png?v=3" height="45"
                                               width="45" alt=""></p>
                         <p class="name">Tài khoản của</p>
-                        <h6><%= user.getUserName()%></h6>
+                        <h6><%= user.getUserName()%>
+                        </h6>
                     </div>
                     <div class="menu dropdown">
                         <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1"
@@ -62,12 +63,7 @@
                 </div>
                 <% String route = (String) request.getAttribute("route");
                     switch (route) {
-                        case "edit":
-                %>
-                <jsp:include page="account.jsp"/>
-                <%
-                        break;
-                    case "address":
+                        case "address":
                 %>
                 <jsp:include page="address.jsp"/>
                 <%
@@ -85,7 +81,6 @@
                     case "wishlist":
                 %>
                 <jsp:include page="wishlist.jsp"/>
-
                 <%
                         break;
                     default:

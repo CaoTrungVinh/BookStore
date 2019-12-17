@@ -11,6 +11,7 @@
     <title>Checkout</title>
     <jsp:include page="../view/head.jsp"/>
     <link rel="stylesheet" href="/public/customer/css/checkout.css">
+    <script src="/public/customer/js/vendor/jquery-1.12.0.min.js"></script>
 </head>
 <body>
 
@@ -21,14 +22,8 @@
 
             <%
                 User user = (User) request.getSession().getAttribute("user");
-                Cart cart = null;
-                if (user != null) {
-                    cart = user.getCart();
-                } else {
-                    cart = (Cart) request.getSession().getAttribute("cart");
-                    user = new User();
-                    user.setCart(cart);
-                }
+                boolean isLogin = user != null;
+                Cart cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
                 if (cart.getQuantity() != 0) {
 
             %>
@@ -84,7 +79,7 @@
                                 </div>
                                 <div class="badge-tikinow-a">
                                     <div class="box-price">
-                                        <p class="price"><%=bookItem.getPrice()%>đ</p>
+                                        <p class="price"><%=Util.showPrice(bookItem.getPrice())%>đ</p>
                                         <%--                                        <p class="price2">--%>
                                         <%--                                            27.000đ--%>
                                         <%--                                        </p>--%>
@@ -93,20 +88,20 @@
                                 </div>
 
                                 <div class="quantity-block">
-                                    <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button
-                                            class="btn btn-default bootstrap-touchspin-down"
-                                            type="button">-</button></span><span
-                                            class="input-group-addon bootstrap-touchspin-prefix"
-                                            style="display: none;"></span><input type="tel"
-                                                                                 class="form-control quantity-r2 quantity js-quantity-product"
-                                                                                 min="0"
-                                                                                 data-js-qty=""
-                                                                                 value="<%=bookItem.getQuantity()%>"
-                                                                                 style="display: block;"><span
-                                            class="input-group-addon bootstrap-touchspin-postfix"
-                                            style="display: none;"></span><span class="input-group-btn"><button
-                                            class="btn btn-default bootstrap-touchspin-up"
-                                            type="button">+</button></span></div>
+                                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                        <span
+                                                class="input-group-btn input-group-prepend"><button
+                                                class="btn btn-primary bootstrap-touchspin-down"
+                                                type="button">-</button>
+                                        </span>
+                                        <input type="text" value="1" name="touch2"
+                                               class="form-control">
+                                        <span
+                                                class="input-group-btn input-group-append"><button
+                                                class="btn btn-primary bootstrap-touchspin-up"
+                                                type="button" >+</button>
+                                        </span>
+                                    </div>
                                 </div>
                                 <!-- <div class="box-info-discount"></div> -->
                             </div>
@@ -123,15 +118,15 @@
 
                                 <p class="list-info-price">
                                     <span>Provisional pricing: </span>
-                                    <strong><%=cart.getTotalPrice()%>đ</strong>
+                                    <strong id="giatamtinh"><%=Util.showPrice(cart.getTotalPrice())%>đ</strong>
                                 </p>
                             </div>
                             <div class="box-style fee">
                                 <div class="total2 clearfix">
-                                    <span class="text-label">Paying money: </span>
+                                    <span class="text-label">Total payment: </span>
                                     <div class="amount">
                                         <p>
-                                            <strong><%=cart.getTotalPrice()%>đ </strong>
+                                            <strong id="thanhtien"><%=Util.showPrice(cart.getTotalPrice())%>đ </strong>
                                         </p>
                                         <p class="text-right">
                                             <small>(VAT included (where applicable))</small>
@@ -143,8 +138,6 @@
                             <button type="button" class="btn btn-large btn-block btn-danger btn-checkout">
                                 Proceed to ordering
                             </button>
-
-
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
@@ -181,12 +174,9 @@
                 <div class="col-xs-12">
                     <h5 class="lbl-shopping-cart lbl-shopping-cart-gio-hang">Cart <span>(0 product)</span></h5>
                     <div class="empty-cart">
-                        <!-- <img src="/assets/img/mascot.png"
-                             alt="Không có sản phẩm nào trong giỏ hàng của bạn."> -->
-
                         <span class="mascot-image"></span>
-                        <p class="message">Không có sản phẩm nào trong giỏ hàng của bạn.</p>
-                        <a href="/" class="btn btn-yellow">Tiếp tục mua sắm</a>
+                        <p class="message">You have no items in your shopping cart.</p>
+                        <a href="/" class="btn btn-yellow">Continue shopping</a>
                     </div>
                 </div>
             </div>
@@ -200,5 +190,43 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="../view/jquery.jsp"/>
+
+<script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
+<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+        $('input[name="touchspin"]').TouchSpin({min: 1});
+    });
+
+    function changeQuantityProduct(id) {
+        $("input[name='touch" + id + "']").on('touchspin.on.startupspin', changeQuantityProductAjax(1, id));
+        $("input[name='touch" + id + "']").on('touchspin.on.startdownspin', changeQuantityProductAjax(1, id));
+    }
+
+    function changeQuantityProductAjax(flag, id) {
+        $.ajax({
+            type: "POST",
+            url: "ChangeQuantityProduct",   // this is my servlet
+            data: {"flag": flag, "bookID": id},
+            success: function (data) {
+                var respon = $.parseJSON(data);
+                if (respon.status === "ok") {
+                    $('#giatamtinh,#thanhtien').text(respon.price);
+                    changeCounterCart(flag)
+
+                }
+            }
+        });
+    }
+
+    function changeCounterCart(flag) {
+        var counter = $("#shopping-cart-counter");
+        console.log(counter.text())
+        counter.text(parseInt(counter.text()) + flag);
+    }
+
+</script>
+
+
 </body>
 </html>

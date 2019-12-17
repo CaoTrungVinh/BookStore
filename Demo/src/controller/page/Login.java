@@ -1,5 +1,7 @@
 package controller.page;
 
+import Model.BookItem;
+import Model.Cart;
 import Model.User;
 import Util.Util;
 import controller.auth.PasswordAuthentication;
@@ -24,20 +26,21 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = Util.getParameterGeneric(request, "email", "");
         String pass = Util.getParameterGeneric(request, "pass", "");
-        login(request,response,email,pass);
+        login(request, response, email, pass);
 
 
     }
 
     public static void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
         try {
-            String query = "select * from users where email=?";
+            String sql;
+            Statement statement = ConnectionDB.connect();
+            Connection conn = statement.getConnection();
 
-            Statement s = ConnectionDB.connect();
-            Connection conn = s.getConnection();
-            PreparedStatement pstmt = conn.prepareStatement(query);
+
+            sql = "select * from users where email=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
-
             ResultSet rs = pstmt.executeQuery();
 
             rs.last();
@@ -48,19 +51,50 @@ public class Login extends HttpServlet {
             if (i == 1 && PasswordAuthentication.check(pass, passStoring)) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
-                user.setUserName(rs.getString("username"));
+                user.setUserName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
-                user.setFullName(rs.getString("full_name"));
+                user.setFullName(rs.getString("fullname"));
                 user.setGender(rs.getString("gender"));
                 user.setAddress(rs.getString("address"));
                 user.setPhone(rs.getString("phone"));
                 user.setIdgroup(rs.getInt("idgroup"));
                 user.setAddress(rs.getString("avt"));
 
-                ResultSet rs2 = s.executeQuery("SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1");
+                ResultSet rs2 = statement.executeQuery("SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1");
                 if (rs2.next()) {
                     user.getCart().setId_order(rs2.getInt("id"));
                 }
+
+                // Load shopping cart.
+                sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+                rs = statement.executeQuery(sql);
+                if (rs.next()) {
+                    user.getCart().setId_order(rs.getInt("id"));
+                } else {
+                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
+                    statement.executeUpdate(sql);
+                    user.getCart().setId_order(1);
+                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+                    rs = statement.executeQuery(sql);
+                    if (rs.next()) {
+                        user.getCart().setId_order(rs.getInt("id"));
+                    }
+                }
+                sql = "SELECT  books.id, books.title, books.publisher, orderdetails.quantity, books.price, img.img\n" +
+                        "FROM orderdetails \n" +
+                        "JOIN books ON orderdetails.id_book = books.id\n" +
+                        "JOIN img ON books.id = img.id_book\n" +
+                        "WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "'";
+                rs = statement.executeQuery(sql);
+                Cart cart = user.getCart();
+                BookItem item;
+                while (rs.next()) {
+                    item = new BookItem(rs.getInt("id"), rs.getString("title"), rs.getString("publisher"), rs.getInt("quantity"), rs.getDouble("price"));
+                    item.setImg(rs.getString("img"));
+                    cart.put(item);
+                }
+                // End Load shopping cart.
+
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 response.sendRedirect(Util.fullPath(""));

@@ -7,7 +7,7 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendingEmail extends Thread{
+public class SendingEmail extends Thread {
     private String userEmail;
     private String myHash;
     private String servletName;
@@ -17,7 +17,7 @@ public class SendingEmail extends Thread{
         sendMail();
     }
 
-    public SendingEmail(String servletName,String userEmail, String myHash) {
+    public SendingEmail(String servletName, String userEmail, String myHash) {
         this.userEmail = userEmail;
         this.myHash = myHash;
         this.servletName = servletName;
@@ -46,9 +46,8 @@ public class SendingEmail extends Thread{
             message.setFrom(new InternetAddress(email));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.userEmail));
             message.setSubject("Email Verification Link");
-            message.setText("Click this link to confirm your email address and complete setup for your account.\n\nVerification Link: http://localhost:8080/"+servletName+"?key1=" + this.userEmail + "&key2=" + this.myHash);
+            message.setText("Click this link to confirm your email address and complete setup for your account.\n\nVerification Link: http://localhost:8080/" + servletName + "?key1=" + this.userEmail + "&key2=" + this.myHash);
             Transport.send(message);
-            System.out.println("Successfully sent Verification Link");
         } catch (Exception var6) {
             System.out.println("Error at SendingEmail.java: " + var6);
         }

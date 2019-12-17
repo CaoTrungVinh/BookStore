@@ -82,4 +82,12 @@ public class Cart {
     public HashMap<Integer, BookItem> getData() {
         return data;
     }
+
+
+
+    public void changeQuantityProduct(int flag, int bookID) {
+        BookItem item = data.get(bookID);
+        item.setQuantity(item.getQuantity() + flag);
+        if (item.getQuantity() <= 0) remove(bookID);
+    }
 }

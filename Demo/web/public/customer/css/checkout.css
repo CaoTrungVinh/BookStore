@@ -15545,6 +15545,14 @@ header#header .header-link .user-profile {
     width: 35px
 }
 
+#shopping-cart > div > div.col-right > div.quantity-block > div > input {
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    border-radius: 0;
+    width: 35px;
+}
+
 .tiki-cart .wrap .empty-cart {
     text-align: center;
     background-color: #fff;

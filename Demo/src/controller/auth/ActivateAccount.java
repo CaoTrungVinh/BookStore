@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet("/activate-account")
+@WebServlet("/active-account")
 public class ActivateAccount extends HttpServlet {
 
 

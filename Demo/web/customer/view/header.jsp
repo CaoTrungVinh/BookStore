@@ -146,7 +146,7 @@
                                         <p>
                                             <span id="quantity-id<%=item.getId()%>"><%=item.getQuantity()%> </span>
                                             x
-                                            <a href="single-product.jsp"><%=item.getName()%>
+                                            <a href="single-product.jsp"><%=Util.shortOfTitle(item.getName())%>
                                             </a>
                                         </p>
                                         <span class="cart-price">

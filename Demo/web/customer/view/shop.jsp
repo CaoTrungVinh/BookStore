@@ -701,7 +701,7 @@
                 "                                            <span id=\"quantity-id" + bookItem.id + "\">" + bookItem.quantity +
                 "</span>\n" +
                 "                                            x\n" +
-                "                                            <a href=\"single-product.jsp\">" + bookItem.name +
+                "                                            <a href=\"single-product.jsp\">" + shortOfTitleCart(bookItem.name) +
                 "\n" +
                 "                                            </a>\n" +
                 "                                        </p>\n" +

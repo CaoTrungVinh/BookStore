@@ -493,10 +493,12 @@ body {
     padding: 10px 40px;
     text-transform: uppercase;
 }
+
 .shop-info-area {
     background: rgba(0, 0, 0, 0) url(/public/customer/img/shop-info-bg.jpg) no-repeat scroll center center;
     padding: 54px 0;
 }
+
 .layer-4 .title-4 input {
     border: medium none;
     border-bottom-left-radius: 30px;
@@ -723,12 +725,14 @@ body {
     top: 8px;
     width: 10px;
 }
+
 .testimonial-area {
     background: rgba(0, 0, 0, 0) url(/public/customer/img/testimonial/bg.jpg) no-repeat scroll center center;
     color: #ffffff;
     padding-bottom: 100px;
     padding-top: 70px;
 }
+
 .tab-menu ul.nav-tabs li.first-item a {
     padding-left: 0;
 }
@@ -3014,10 +3018,6 @@ h3.widget-title-modal {
 }
 
 
-
-
-
-
 /*=======Snackbar========*/
 #snackbar {
     visibility: hidden;
@@ -3101,11 +3101,11 @@ input:focus {
     border-color: #a94442 !important;
 }
 
-.has-feedback label~.form-control-feedback {
+.has-feedback label ~ .form-control-feedback {
     top: 39px;
 }
 
-.form-group>input {
+.form-group > input {
     border-radius: 20px;
     height: 40px;
     line-height: 40px;
@@ -3113,3 +3113,9 @@ input:focus {
     width: 100%;
 }
 
+/*.tiki-cart a {*/
+/*    color: #007ff0!important;*/
+/*}*/
+/*.tiki-cart a:hover {*/
+/*    color: #2498ff!important;*/
+/*}*/

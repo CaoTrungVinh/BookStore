@@ -53,7 +53,7 @@ public class Register extends HttpServlet {
                 conn = s.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
 
-                String hashMail = Base64.getEncoder().encodeToString(email.getBytes());
+                String hashMail = Base64.getEncoder().encodeToString((email+java.time.LocalDateTime.now()).getBytes());
                 String hashPass = PasswordAuthentication.getSaltedHash(pass);
 
 
@@ -64,14 +64,10 @@ public class Register extends HttpServlet {
                 pstmt.setString(5, phone);
                 int i = pstmt.executeUpdate();
                 if (i != 0) {
-                    System.out.println("Successfully created new user.");
-                    System.out.println("Sending Mail... ");
                     SendingEmail sendingEmail = new SendingEmail("active-account",email, hashMail);
                     sendingEmail.start();
-                    conn.close();
                     response.sendRedirect("/customer/view/verify.jsp");
                 } else {
-                    conn.close();
                     request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
                 }
             }

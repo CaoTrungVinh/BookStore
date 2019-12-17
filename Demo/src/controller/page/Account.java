@@ -25,7 +25,7 @@ public class Account extends HttpServlet {
 
         System.out.println(request.getServletPath());
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
-            System.out.println(request.getServletPath());
+//            System.out.println(request.getServletPath());
 
             request.setAttribute("route", "edit");
 

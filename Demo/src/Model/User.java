@@ -26,7 +26,6 @@ public class User {
 
     public User() {
         cart = new Cart();
-//        id_order = -1;
 
     }
 

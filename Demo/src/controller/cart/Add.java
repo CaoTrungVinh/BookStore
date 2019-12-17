@@ -44,6 +44,15 @@ public class Add extends HttpServlet {
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
                     user.getCart().setId_order(rs.getInt("id"));
+                } else {
+                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
+                    statement.executeUpdate(sql);
+                    user.getCart().setId_order(1);
+                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+                    rs = statement.executeQuery(sql);
+                    if (rs.next()) {
+                        user.getCart().setId_order(rs.getInt("id"));
+                    }
                 }
                 sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' AND id_book = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
@@ -69,7 +78,7 @@ public class Add extends HttpServlet {
                         "WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), rs.getString("name"),quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, rs.getString("title"), rs.getString("name"), quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
                 user.addToShoppingCard(bookItem);
@@ -81,7 +90,7 @@ public class Add extends HttpServlet {
                         "WHERE books.id = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                    bookItem = new BookItem(bookID, shortOfTitle(rs.getString("title")), rs.getString("name"),quantity, rs.getDouble("price"));
+                    bookItem = new BookItem(bookID, rs.getString("title"), rs.getString("name"), quantity, rs.getDouble("price"));
                     bookItem.setImg(rs.getString("img"));
                 }
 
@@ -109,8 +118,6 @@ public class Add extends HttpServlet {
         doGet(request, response);
     }
 
-    public String shortOfTitle(String t) {
-        return t.length() > 12 ? t.substring(0, 13) + "..." : t;
-    }
+
 }
 

@@ -16,7 +16,6 @@ public class BookItem {
     public double price;
 
     public BookItem() {
-
     }
 
     public BookItem(int id, String name, String publisher, int quantity, double price) {
@@ -107,5 +106,15 @@ public class BookItem {
         return publisher;
     }
 
-
+    @Override
+    public String toString() {
+        return "BookItem{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", quantity=" + quantity +
+                ", img='" + img + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
