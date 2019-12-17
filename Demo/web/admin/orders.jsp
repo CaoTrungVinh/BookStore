@@ -22,7 +22,7 @@
     <tr>
         <th class="th-sm">STT
         </th>
-        <th class="th-sm">ID-CUSTOMER
+        <th class="th-sm">CUSTOMER
         </th>
         <th class="th-sm">ORDERDATE
         </th>
@@ -32,7 +32,7 @@
         </th>
         <th class="th-sm">TOTAL
         </th>
-        <th class="th-sm">STATUS-ID
+        <th class="th-sm">STATUS
         </th>
         <th class="th-sm">
         </th>
@@ -68,7 +68,7 @@
             </a>
 
             <a class="delete"
-            <%--               href="<%= Util.fullPath("admin/producer/delete?id=" + publishers.getString("id")) %>"--%>
+                           href="<%= Util.fullPath("admin/orders/delete?id=" + orders.getString("id")) %>"
                class="tm-product-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
             </a>

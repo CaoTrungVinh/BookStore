@@ -18,7 +18,7 @@
         <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 mx-auto">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" style="margin-left: 13%">
                         <h2 class="tm-block-title d-inline-block">Edit Orders</h2>
                     </div>
                 </div>
@@ -27,12 +27,11 @@
                         <%
                             ResultSet orders = (ResultSet) request.getAttribute("orders");
                         %>
-                        <form action="<%= Util.fullPath("admin/orders/dit") %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/orders/edit") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                >Customer</label
-                                >
+                                >Customer</label>
                                 <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("id_customer")%>">
                                 <select
                                         class="custom-select tm-select-accounts"

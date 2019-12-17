@@ -27,11 +27,11 @@
     <tr>
         <th class="th-sm">STT
         </th>
-        <th class="th-sm">Name
+        <th class="th-sm">NAME
         </th>
-        <th class="th-sm">Address
+        <th class="th-sm">ADDRESS
         </th>
-        <th class="th-sm">Contact
+        <th class="th-sm">CONTACT
         </th>
         <th class="th-sm">
         </th>

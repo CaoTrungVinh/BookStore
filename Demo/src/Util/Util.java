@@ -25,11 +25,6 @@ public class Util {
         return showPrice(price / 1000) + "." + (pricestr.substring(pricestr.length() - 3));
 
     }
-
-    public static void main(String[] args) {
-        System.out.println(showPrice(2404000));
-    }
-
     public static String formatCurrency(String money) {
         double m = 0;
         try {
@@ -40,5 +35,9 @@ public class Util {
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(m);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(showPrice(2404000));
     }
 }
