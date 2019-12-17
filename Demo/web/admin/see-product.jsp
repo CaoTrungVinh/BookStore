@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Product</title>
+    <title>See Product</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -19,7 +19,7 @@
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+                        <h2 class="tm-block-title d-inline-block">See Product </h2>
                     </div>
                 </div>
                 <div class="row tm-edit-product-row">
@@ -27,7 +27,7 @@
                         <%
                             ResultSet books = (ResultSet) request.getAttribute("books");
                         %>
-                        <form action="<%= Util.fullPath("admin/product/edit?id="+books.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/product/see?id="+books.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
 
                             <div class="form-group mb-3">
@@ -63,6 +63,7 @@
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectCetagories"
+
                                 >
 
                                     <%
@@ -176,7 +177,9 @@
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">UPDATE</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                            <a style="color: white" href="<%= Util.fullPath("admin/product") %>">COME BACK</a>
+                        </button>
                     </div>
 
                     </form>

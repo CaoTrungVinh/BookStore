@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
-                    <a href="<%= Util.fullPath("Index")%>">
+                    <a href="<%= Util.fullPath("")%>">
                         <img src="/public/customer/img/logo.png" alt="">
                     </a>
                 </div>
@@ -170,6 +170,12 @@
                                 </div>
                                 <div class="cart-checkout">
                                     <a href="<%=Util.fullPath("checkout")%>">
+                                        View cart
+                                        <i class="fa fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                                <div class="cart-checkout">
+                                    <a href="<%=Util.fullPath("checkout")%>">
                                         Check out
                                         <i class="fa fa-chevron-right"></i>
                                     </a>
@@ -240,7 +246,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="search.jsp"><i class="fa fa-search"></i>
+                            <a href="<%= Util.fullPath("list-book")%>"><i class="fa fa-search"></i>
                             </a>
                         </li>
                     </ul>

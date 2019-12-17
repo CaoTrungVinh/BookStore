@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Product - Dashboard HTML Template</title>
+    <title>Add Product</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="<%= Util.fullPath("/admin/add-product") %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/product/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -45,9 +45,9 @@
                                 >Description</label
                                 >
                                 <textarea id="editor"
-                                     name="description"
-                                     class="form-control novalidate"
-                                     rows="3"
+                                          name="description"
+                                          class="form-control novalidate"
+                                          rows="3"
                                 ></textarea>
                             </div>
                             <div class="form-group mb-3">
@@ -58,16 +58,53 @@
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectCetagories"
-
+                                        required
                                 >
-
                                     <%
                                         ResultSet categories = (ResultSet) request.getAttribute("categories");
-//
                                         while (categories.next()) {
-
                                     %>
                                     <option data-cc="<%= categories.getString("id")%>"><%= categories.getString("name")%>
+                                    </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                >Publisher</label
+                                >
+                                <input type="hidden" name="publisher" id="publisher">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectPublisher"
+                                        required
+                                >
+                                    <%
+                                        ResultSet publisher = (ResultSet) request.getAttribute("publisher");
+//
+                                        while (publisher.next()) {
+                                    %>
+                                    <option data-cc="<%= publisher.getString("id")%>"><%= publisher.getString("name")%>
+                                    </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                >Author</label
+                                >
+                                <input type="hidden" name="author" id="author">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectAuthor"
+                                        required
+                                >
+                                    <%
+                                        ResultSet authors = (ResultSet) request.getAttribute("authors");
+//
+                                        while (authors.next()) {
+                                    %>
+                                    <option data-cc="<%= authors.getString("id")%>"><%= authors.getString("name")%>
                                     </option>
                                     <% } %>
                                 </select>
@@ -82,6 +119,7 @@
                                             type="text"
                                             class="form-control novalidate"
                                             data-large-mode="true"
+                                            required
                                     />
                                 </div>
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
@@ -97,6 +135,17 @@
                                             required
                                     />
                                 </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label>Decentralization</label>
+
+                                <br>
+                                <input type="radio" value="0" name="group" id="hide2" checked="checked">
+                                <label for="hide2">Admin</label>
+                                <br>
+                                <input type="radio" value="1" name="group" id="hide1">
+                                <label for="hide1">Customer</label>
+
                             </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
@@ -158,6 +207,7 @@
     }
 
     var editor
+
     function onFormSubmit() {
         if (editor) {
             editor.updateSourceElement();
@@ -172,14 +222,28 @@
         // $("#expire_date").datepicker();
         ClassicEditor
             .create(document.querySelector('#editor'))
-            .then(e => editor = e)
-            .catch(error => {console.log(error)});
+            .then(e = > editor = e
+    )
+    .
+        catch(error = > {console.log(error)}
+    )
+        ;
 
         $('#selectCetagories').editableSelect()
             .on('select.editable-select', function (e, el) {
-            // el is the selected item "option"
-            $('#category').val(el.data('cc'));
-        });
+                // el is the selected item "option"
+                $('#category').val(el.data('cc'));
+            });
+        $('#selectPublisher').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#publisher').val(el.data('cc'));
+            });
+        $('#selectAuthor').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#author').val(el.data('cc'));
+            });
     });
 
 </script>
