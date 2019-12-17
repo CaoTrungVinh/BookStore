@@ -69,20 +69,6 @@
     </tr>
     <% } %>
     </tbody>
-    <tfoot>
-    <tr>
-        <th>STT
-        </th>
-        <th>Name
-        </th>
-        <th>Address
-        </th>
-        <th>Contact
-        </th>
-        <th>
-        </th>
-    </tr>
-    </tfoot>
 
 </table>
 
