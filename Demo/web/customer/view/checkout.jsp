@@ -92,14 +92,14 @@
                                         <span
                                                 class="input-group-btn input-group-prepend"><button
                                                 class="btn btn-primary bootstrap-touchspin-down"
-                                                type="button">-</button>
+                                                type="button" onclick="changeQuantityProduct(-1, <%=bookItem.getId()%>)">-</button>
                                         </span>
                                         <input type="text" value="1" name="touch2"
                                                class="form-control">
                                         <span
                                                 class="input-group-btn input-group-append"><button
                                                 class="btn btn-primary bootstrap-touchspin-up"
-                                                type="button" >+</button>
+                                                type="button" onclick="changeQuantityProduct(1, <%=bookItem.getId()%>)">+</button>
                                         </span>
                                     </div>
                                 </div>
@@ -198,12 +198,7 @@
         $('input[name="touchspin"]').TouchSpin({min: 1});
     });
 
-    function changeQuantityProduct(id) {
-        $("input[name='touch" + id + "']").on('touchspin.on.startupspin', changeQuantityProductAjax(1, id));
-        $("input[name='touch" + id + "']").on('touchspin.on.startdownspin', changeQuantityProductAjax(1, id));
-    }
-
-    function changeQuantityProductAjax(flag, id) {
+    function changeQuantityProduct(flag, id) {
         $.ajax({
             type: "POST",
             url: "ChangeQuantityProduct",   // this is my servlet
@@ -218,7 +213,6 @@
             }
         });
     }
-
     function changeCounterCart(flag) {
         var counter = $("#shopping-cart-counter");
         console.log(counter.text())

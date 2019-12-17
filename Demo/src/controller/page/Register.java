@@ -20,16 +20,15 @@ public class Register extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email") == null ? "" : request.getParameter("email");
         String name = request.getParameter("username") == null ? "" : request.getParameter("username");
         String pass = request.getParameter("pass") == null ? "" : request.getParameter("pass");
         String re_pass = request.getParameter("re-pass") == null ? "" : request.getParameter("re-pass");
         String phone = request.getParameter("phone") == null ? "" : request.getParameter("phone");
-
-        if (email == "" && name == "" && pass == "" && re_pass == "" && phone == "") {
-            request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
-            return;
-        }
 
         Connection conn = null;
         String sql;
@@ -53,7 +52,7 @@ public class Register extends HttpServlet {
                 conn = s.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql);
 
-                String hashMail = Base64.getEncoder().encodeToString((email+java.time.LocalDateTime.now()).getBytes());
+                String hashMail = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
                 String hashPass = PasswordAuthentication.getSaltedHash(pass);
 
 
@@ -64,7 +63,7 @@ public class Register extends HttpServlet {
                 pstmt.setString(5, phone);
                 int i = pstmt.executeUpdate();
                 if (i != 0) {
-                    SendingEmail sendingEmail = new SendingEmail("active-account",email, hashMail);
+                    SendingEmail sendingEmail = new SendingEmail("active-account", email, hashMail);
                     sendingEmail.start();
                     response.sendRedirect("/customer/view/verify.jsp");
                 } else {
@@ -74,10 +73,6 @@ public class Register extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
     }
 
 

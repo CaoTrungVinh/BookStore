@@ -25,7 +25,7 @@ public class ForgotPass extends HttpServlet {
         String email = Util.getParameterGeneric(request, "email", "");
         String email2 = email + java.time.LocalDateTime.now();
         try {
-            email2 = Base64.getEncoder().encodeToString(email2.getBytes());
+            email2 = Base64.getEncoder().encodeToString((email2).getBytes());
             String sql = "select * from users where email= '" + email + "'";
             Statement statement = ConnectionDB.connect();
             ResultSet resultSet = statement.executeQuery(sql);
