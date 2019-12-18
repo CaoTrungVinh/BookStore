@@ -91,6 +91,26 @@ public class Orders extends HttpServlet {
                 }
             }
         }
+        else if (request.getServletPath().equals("/admin/orders/delete")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                try {
+                    Statement s = ConnectionDB.connect();
+                    Connection conn = s.getConnection();
+                    String sqlCategory = "DELETE FROM orders WHERE id = ?";
+
+                    PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+                    pstCate.setString(1, id);
+                    pstCate.execute();
+
+                    response.sendRedirect("/admin/orders");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -110,12 +130,18 @@ public class Orders extends HttpServlet {
                 String sqlCategory = "INSERT INTO orders (id_customer, orderDate, subtotal, shipping, total, statusID) VALUE (?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
-                pstCate.setInt(1, Integer.parseInt(id_customer));
-                pstCate.setDate(2,Date.valueOf(orderDate));
-                pstCate.setDouble(3, Double.parseDouble(subtotal));
-                pstCate.setDouble(4, Double.parseDouble(shipping));
-                pstCate.setDouble(5, Double.parseDouble(total));
-                pstCate.setInt(6, Integer.parseInt(statusID));
+//                pstCate.setInt(1, Integer.parseInt(id_customer));
+//                pstCate.setDate(2, Date.valueOf(orderDate));
+//                pstCate.setDouble(3, Double.parseDouble(subtotal));
+//                pstCate.setDouble(4, Double.parseDouble(shipping));
+//                pstCate.setDouble(5, Double.parseDouble(total));
+//                pstCate.setInt(6, Integer.parseInt(statusID));
+                pstCate.setString(1, id_customer);
+                pstCate.setString(2, orderDate);
+                pstCate.setString(3, subtotal);
+                pstCate.setString(4, shipping);
+                pstCate.setString(5, total);
+                pstCate.setString(6, statusID);
                 pstCate.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -124,6 +150,7 @@ public class Orders extends HttpServlet {
             }
             response.sendRedirect("/admin/orders");
         }
+
         else if (request.getServletPath().equals("/admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
@@ -137,13 +164,21 @@ public class Orders extends HttpServlet {
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
                     String sqlCategory = "UPDATE orders SET id_customer=?,orderDate=?,subtotal=?,shipping=?,total=?,statusID=? where id=?";
+//                    PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+//                    pstCate.setInt(1, Integer.parseInt(id_customer));
+//                    pstCate.setDate(2,Date.valueOf(orderDate));
+//                    pstCate.setDouble(3, Double.parseDouble(subtotal));
+//                    pstCate.setDouble(4, Double.parseDouble(shipping));
+//                    pstCate.setDouble(5, Double.parseDouble(total));
+//                    pstCate.setInt(6, Integer.parseInt(statusID));
+//                    pstCate.setString(7, id);
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
-                    pstCate.setInt(1, Integer.parseInt(id_customer));
-                    pstCate.setDate(2,Date.valueOf(orderDate));
-                    pstCate.setDouble(3, Double.parseDouble(subtotal));
-                    pstCate.setDouble(4, Double.parseDouble(shipping));
-                    pstCate.setDouble(5, Double.parseDouble(total));
-                    pstCate.setInt(6, Integer.parseInt(statusID));
+                    pstCate.setString(1, id_customer);
+                    pstCate.setString(2, orderDate);
+                    pstCate.setString(3, subtotal);
+                    pstCate.setString(4, shipping);
+                    pstCate.setString(5, total);
+                    pstCate.setString(6, statusID);
                     pstCate.setString(7, id);
 
                     pstCate.execute();

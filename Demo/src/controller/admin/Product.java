@@ -154,9 +154,7 @@ public class Product extends HttpServlet {
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, id);
-
                     pstCate.execute();
-
 
                     response.sendRedirect("/admin/product");
                 } catch (SQLException e) {

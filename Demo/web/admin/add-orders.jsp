@@ -18,7 +18,7 @@
         <div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 mx-auto">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12" style="margin-left: 13%">
                         <h2 class="tm-block-title d-inline-block">Add Orders</h2>
                     </div>
                 </div>

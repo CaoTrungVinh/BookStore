@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Product Page - Admin</title>
+    <title>Producer Page - Admin</title>
 
 
     <jsp:include page="head.jsp"/>
@@ -27,11 +27,11 @@
     <tr>
         <th class="th-sm">STT
         </th>
-        <th class="th-sm">Name
+        <th class="th-sm">NAME
         </th>
-        <th class="th-sm">Address
+        <th class="th-sm">ADDRESS
         </th>
-        <th class="th-sm">Contact
+        <th class="th-sm">CONTACT
         </th>
         <th class="th-sm">
         </th>
@@ -69,20 +69,6 @@
     </tr>
     <% } %>
     </tbody>
-    <tfoot>
-    <tr>
-        <th>STT
-        </th>
-        <th>Name
-        </th>
-        <th>Address
-        </th>
-        <th>Contact
-        </th>
-        <th>
-        </th>
-    </tr>
-    </tfoot>
 
 </table>
 

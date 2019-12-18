@@ -36,7 +36,6 @@ public class Util {
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(m);
     }
-    public static void main(String[] args) {
-        System.out.println(showPrice(2404000));
-    }
+
+   
 }

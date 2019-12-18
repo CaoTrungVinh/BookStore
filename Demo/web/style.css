@@ -2045,6 +2045,7 @@ p.form-row-phone {
     font-weight: 600;
     margin-bottom: 20px;
     padding: 3px 12px;
+    cursor: pointer;
 }
 
 .availability a {
@@ -3113,9 +3114,10 @@ input:focus {
     width: 100%;
 }
 
-/*.tiki-cart a {*/
-/*    color: #007ff0!important;*/
-/*}*/
-/*.tiki-cart a:hover {*/
-/*    color: #2498ff!important;*/
-/*}*/
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

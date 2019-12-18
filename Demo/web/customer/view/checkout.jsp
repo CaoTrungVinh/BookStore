@@ -2,7 +2,7 @@
 <%@ page import="Model.User" %>
 <%@ page import="Model.Cart" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="Model.BookItem" %>
+<%@ page import="Model.Product" %>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -40,13 +40,13 @@
                 </div>
                 <div class="col-xs-8 cart-col-1">
                     <form id="shopping-cart">
-                        <% for (Map.Entry<Integer, BookItem> entry : cart.getData().entrySet()) {
-                            BookItem bookItem = entry.getValue();%>
+                        <% for (Map.Entry<Integer, Product> entry : cart.getData().entrySet()) {
+                            Product product = entry.getValue();%>
                         <div class="row shopping-cart-item">
                             <div class="col-xs-3 img-thumnail-custom">
                                 <p class="image">
                                     <img class="img-responsive"
-                                         src="/public/customer/img/shop/<%=bookItem.getImg()%>">
+                                         src="/public/customer/img/shop/<%=product.getImg()%>">
                                 </p>
                             </div>
                             <div class="col-right">
@@ -57,14 +57,14 @@
                                         <p class="name">
                                             <a href="https://tiki.vn/nui-cao-cap-meizan-400g-p1914875.html?src=cart-page&amp;spid=1914877"
                                                target="_blank">
-                                                <%=bookItem.getName()%>
+                                                <%=product.getName()%>
                                             </a>
 
                                         </p>
                                     </div>
 
                                     <p class="seller-by">
-                                        by <span class="firm"><a href=""><%=bookItem.getPublisher()%></a></span>
+                                        by <span class="firm"><a href=""><%=product.getPublisher()%></a></span>
                                     </p>
 
                                     <p class="action">
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="badge-tikinow-a">
                                     <div class="box-price">
-                                        <p class="price"><%=Util.showPrice(bookItem.getPrice())%>đ</p>
+                                        <p class="price"><%=Util.showPrice(product.getPrice())%>đ</p>
                                         <%--                                        <p class="price2">--%>
                                         <%--                                            27.000đ--%>
                                         <%--                                        </p>--%>
@@ -92,14 +92,16 @@
                                         <span
                                                 class="input-group-btn input-group-prepend"><button
                                                 class="btn btn-primary bootstrap-touchspin-down"
-                                                type="button" onclick="changeQuantityProduct(-1, <%=bookItem.getId()%>)">-</button>
+                                                type="button"
+                                                onclick="changeQuantityProduct(-1, <%=product.getId()%>)">-</button>
                                         </span>
-                                        <input type="text" value="1" name="touch2"
+                                        <input id="touch<%=product.getId()%>" type="number" min="1" value="<%=product.getQuantity()%>"
+                                               name="touchspin"
                                                class="form-control">
                                         <span
                                                 class="input-group-btn input-group-append"><button
                                                 class="btn btn-primary bootstrap-touchspin-up"
-                                                type="button" onclick="changeQuantityProduct(1, <%=bookItem.getId()%>)">+</button>
+                                                type="button" onclick="changeQuantityProduct(1, <%=product.getId()%>)">+</button>
                                         </span>
                                     </div>
                                 </div>
@@ -192,34 +194,6 @@
 <jsp:include page="../view/jquery.jsp"/>
 
 <script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
-<script language="javascript" type="text/javascript">
-
-    $(document).ready(function () {
-        $('input[name="touchspin"]').TouchSpin({min: 1});
-    });
-
-    function changeQuantityProduct(flag, id) {
-        $.ajax({
-            type: "POST",
-            url: "ChangeQuantityProduct",   // this is my servlet
-            data: {"flag": flag, "bookID": id},
-            success: function (data) {
-                var respon = $.parseJSON(data);
-                if (respon.status === "ok") {
-                    $('#giatamtinh,#thanhtien').text(respon.price);
-                    changeCounterCart(flag)
-
-                }
-            }
-        });
-    }
-    function changeCounterCart(flag) {
-        var counter = $("#shopping-cart-counter");
-        console.log(counter.text())
-        counter.text(parseInt(counter.text()) + flag);
-    }
-
-</script>
 
 
 </body>
