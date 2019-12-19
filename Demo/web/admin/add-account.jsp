@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Edit Orders</title>
+    <title>Add Account</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -19,107 +19,138 @@
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12" style="margin-left: 13%">
-                        <h2 class="tm-block-title d-inline-block">Edit Orders</h2>
+                        <h2 class="tm-block-title d-inline-block">Add Account</h2>
                     </div>
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-9 col-lg-6 col-md-12" style="margin: auto">
-                        <%
-                            ResultSet orders = (ResultSet) request.getAttribute("orders");
-                        %>
-                        <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/account/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                >Customer</label>
-                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("id_customer")%>">
+                                        for="name"
+                                >Name
+                                </label>
+                                <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        class="form-control novalidate"
+                                        required
+                                />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                        for="email"
+                                >Email
+                                </label>
+                                <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        class="form-control novalidate"
+                                        required
+                                />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                        for="fullname"
+                                >Full name
+                                </label>
+                                <input
+                                        id="fullname"
+                                        name="fullname"
+                                        type="text"
+                                        class="form-control novalidate"
+                                        required
+                                />
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                >Gender</label
+                                >
+                                <input type="hidden" name="gender" id="gender">
                                 <select
                                         class="custom-select tm-select-accounts"
-                                        id="selectcustomer"
+                                        id="selectgender"
                                         required>
-                                    <%
-                                        ResultSet customer = (ResultSet) request.getAttribute("customer");
-                                        while (customer.next()) {
-                                    %>
-                                    <option data-cc="<%= customer.getString("id")%>"><%= customer.getString("id")%>
+                                    <option data-cc="1">Nam
                                     </option>
-                                    <% } %>
+                                    <option data-cc="0">Nữ
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="orderDate">Orders Date </label>
+                                <label
+                                        for="dateofbirth"
+                                >Birth Day
+                                </label>
                                 <input
-                                        id="orderDate"
-                                        name="orderDate"
+                                        id="dateofbirth"
+                                        name="dateofbirth"
                                         type="date"
                                         class="form-control novalidate"
-                                        value="<%= orders.getDate("orderDate")%>"
                                         required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="subtotal"
-                                >Subtotal
+                                        for="address"
+                                >Address
                                 </label>
                                 <input
-                                        id="subtotal"
-                                        name="subtotal"
+                                        id="address"
+                                        name="address"
                                         type="text"
                                         class="form-control novalidate"
-                                        value="<%= orders.getString("subtotal")%>"
                                         required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="shipping"
-                                >Shipping
+                                        for="phone"
+                                >Phone
                                 </label>
                                 <input
-                                        id="shipping"
-                                        name="shipping"
-                                        type="text"
+                                        id="phone"
+                                        name="phone"
+                                        type="number"
                                         class="form-control novalidate"
-                                        value="<%= orders.getString("shipping")%>"
                                         required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="total"
-                                >Total
+                                        for="group"
+                                >Group
                                 </label>
                                 <input
-                                        id="total"
-                                        name="total"
-                                        type="text"
+                                        id="group"
+                                        name="group"
+                                        type="number"
                                         class="form-control novalidate"
-                                        value="<%= orders.getString("shipping")%>"
                                         required
                                 />
                             </div>
+
                             <div class="form-group mb-3">
                                 <label
-                                >Statuses</label
+                                >Active</label
                                 >
-                                <input type="hidden" name="statusID" id="statusID" value="<%= orders.getString("statusID")%>">
+                                <input type="hidden" name="active" id="active">
                                 <select
                                         class="custom-select tm-select-accounts"
-                                        id="selectstatusID"
+                                        id="selectactive"
                                         required>
-                                    <%
-                                        ResultSet statuses = (ResultSet) request.getAttribute("statuses");
-                                        while (statuses.next()) {
-                                    %>
-                                    <option data-cc="<%= statuses.getString("id")%>"><%= statuses.getString("id")%>
+                                    <option data-cc="1">Admin
                                     </option>
-                                    <% } %>
+                                    <option data-cc="0">Customer
+                                    </option>
                                 </select>
                             </div>
                     </div>
                     <div class="col-9" style="margin: auto">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Update</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Account Now</button>
                     </div>
                     </form>
                 </div>
@@ -194,6 +225,11 @@
             .on('select.editable-select', function (e, el) {
                 // el is the selected item "option"
                 $('#statusID').val(el.data('cc'));
+            });
+        $('#selectactive').editableSelect()
+            .on('select.editable-select', function (e, el) {
+                // el is the selected item "option"
+                $('#active').val(el.data('cc'));
             });
         $('#selectAuthor').editableSelect()
             .on('select.editable-select', function (e, el) {

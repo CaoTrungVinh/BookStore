@@ -217,16 +217,19 @@
         }
     }
 
+    //IDE bị ngu, không nhận cú pháp => của ES6, nên phải dùng cú pháp này
+    //Nếu không bấm format nó sẽ nhảy ngu
     $(function () {
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
             .create(document.querySelector('#editor'))
-            .then(e = > editor = e
-    )
-    .
-        catch(error = > {console.log(error)}
-    )
+            .then(function (value) {
+                editor = value;
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
         ;
 
         $('#selectCetagories').editableSelect()
