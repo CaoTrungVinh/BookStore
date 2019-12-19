@@ -41,30 +41,33 @@
                             <li <% if (request.getAttribute("route").equals("edit")) {%>
                                     class="active" <%}%> >
                                 <a href="<%= Util.fullPath("account/edit")%>"><i class="fa fa-user"
-                                                                                 aria-hidden="true"></i><span>Thông tin tài khoản</span>
+                                                                                 aria-hidden="true"></i><span>Your account</span>
                                     <!-- <span class='noti-nav'>Mới</span> --></a>
                             </li>
                             <li <% if (request.getAttribute("route").equals("address")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/address") %>"> <i class="fa fa-map-marker"
                                                                                       aria-hidden="true"></i>
-                                    <span>Sổ địa chỉ</span> </a>
+                                    <span>Your address</span> </a>
                             </li>
                             <li <% if (request.getAttribute("route").equals("order")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/order") %>"><i class="fa fa-pie-chart"
-                                                                                   aria-hidden="true"></i><span>Quản lý đơn hàng</span></a>
+                                                                                   aria-hidden="true"></i><span>Orders history</span></a>
                             </li>
 
                             <li <% if (request.getAttribute("route").equals("wishlist")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/wishlist") %>"><i class="fa fa-star"
                                                                                       aria-hidden="true"></i>
-                                    <span> Sản phẩm yêu thích</span></a>
+                                    <span> Wish list </span></a>
                             </li>
                             <li class="">
-                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Thoát
-                                    tài khoản</a>
+                                <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
+                                    Admin mode</a>
+                            </li>
+                            <li class="">
+                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </div>

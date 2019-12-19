@@ -39,7 +39,7 @@
                                         ResultSet customer = (ResultSet) request.getAttribute("customer");
                                         while (customer.next()) {
                                     %>
-                                    <option data-cc="<%= customer.getString("id")%>"><%= customer.getString("id")%>
+                                    <option data-cc="<%= customer.getString("id")%>"><%= customer.getString("fullname")%>
                                     </option>
                                     <% } %>
                                 </select>
@@ -80,7 +80,7 @@
                                         name="shipping"
                                         type="text"
                                         class="form-control novalidate"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -109,7 +109,7 @@
                                         ResultSet statuses = (ResultSet) request.getAttribute("statuses");
                                         while (statuses.next()) {
                                     %>
-                                    <option data-cc="<%= statuses.getString("id")%>"><%= statuses.getString("id")%>
+                                    <option data-cc="<%= statuses.getString("id")%>"><%= statuses.getString("status")%>
                                     </option>
                                     <% } %>
                                 </select>

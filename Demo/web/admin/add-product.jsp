@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,6 +137,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
+
                                 <label>Decentralization</label>
 
                                 <br>
@@ -217,17 +218,21 @@
         }
     }
 
+    //IDE bị ngu, không nhận cú pháp => của ES6, nên phải dùng cú pháp này
+    //Nếu không bấm format nó sẽ nhảy ngu
     $(function () {
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(e = > editor = e
-    )
-    .
-        catch(error = > {console.log(error)}
-    )
-        ;
+            .create(document.querySelector('#editor')) //Đến đoạn này là editor đã chạy xong
+            .then(function (e) { //Đoạn này bug nên nó chết
+                editor = e;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        //Dẫn đến dưới này k chạy
 
         $('#selectCetagories').editableSelect()
             .on('select.editable-select', function (e, el) {
