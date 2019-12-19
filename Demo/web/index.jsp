@@ -336,13 +336,14 @@
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
+                                                <a  title="Add to Cart"
+                                                   onclick="addToCard(<%=bookNew.getInt("id")%>,1)">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
-                                                <a href="#" title="Add to Wishlist">
+                                                <a title="Add to Wishlist">
                                                     <i class="fa fa-heart-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                <a title="Quick view" data-toggle="modal"
                                                    data-target="#productModal">
                                                     <i class="fa fa-compress"></i>
                                                 </a>
@@ -394,13 +395,14 @@
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">
-                                                <a href="#" title="Add to Cart">
+                                                <a title="Add to Cart">
+                                                    onclick="addToCard(<%=bookTopRating.getInt("id")%>,1)
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
-                                                <a href="#" title="Add to Wishlist">
+                                                <a title="Add to Wishlist">
                                                     <i class="fa fa-heart-o"></i>
                                                 </a>
-                                                <a href="#" title="Quick view" data-toggle="modal"
+                                                <a title="Quick view" data-toggle="modal"
                                                    data-target="#productModal">
                                                     <i class="fa fa-compress"></i>
                                                 </a>

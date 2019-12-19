@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,14 +223,15 @@
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(function (value) {
-                editor = value;
+            .create(document.querySelector('#editor')) //Đến đoạn này là editor đã chạy xong
+            .then(function (e) { //Đoạn này bug nên nó chết
+                editor = e;
             })
-            .catch(function (reason) {
-                console.log(reason);
-            })
-        ;
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        //Dẫn đến dưới này k chạy
 
         $('#selectCetagories').editableSelect()
             .on('select.editable-select', function (e, el) {

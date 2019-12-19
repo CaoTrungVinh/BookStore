@@ -37,7 +37,5 @@ public class Util {
         return currencyVN.format(m);
     }
 
-    public static void main(String[] args) {
-        System.out.println(showPrice(2404000));
-    }
+   
 }
