@@ -25,50 +25,24 @@
             <div class="form-group gender-select-wrap" id="register_name">
                 <label class="control-label">Giới tính</label>
                 <div class="input-wrap">
+                    <span class="help-block">Vui lòng chọn giới tính</span>
                     <div class="row">
-
-                        <% if (user.getGender().equals("Nam")) {%>
 
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="on" id="gender_male"
-                                       class="gender" checked="">
+                                       class="gender" <% if (user.getGender().equals("Nam")) {%> checked <% }  %>>
                                 Nam
                             </label>
-
                         </div>
                         <div class="col-xs-4">
                             <label>
-
                                 <input type="radio" name="gender" value="off" id="gender_female"
-                                       class="gender">
+                                       class="gender" <% if (user.getGender().equals("Nu")) {%> checked <% }  %>>
                                 Nữ
                             </label>
-
                         </div>
-                        <% } else { %>
-
-                        <div class="col-xs-4">
-                            <label>
-                                <input type="radio" name="gender" value="on" id="gender_male1"
-                                       class="gender">
-                                Nam
-                            </label>
-
-                        </div>
-                        <div class="col-xs-4">
-                            <label>
-
-                                <input type="radio" name="gender" value="off" id="gender_female1"
-                                       class="gender" checked="">
-                                Nữ
-                            </label>
-
-                        </div>
-                        <% } %>
-
                     </div>
-                    <span class="help-block">Vui lòng chọn giới tính</span>
 
                 </div>
             </div>

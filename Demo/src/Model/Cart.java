@@ -46,7 +46,7 @@ public class Cart {
     public double total() {
         double sum = 0;
         for (Product p : data.values())
-            sum += (p.quantity * p.price);
+            sum += (p.getQuantity() * p.getPrice());
         return sum;
     }
 
@@ -82,7 +82,6 @@ public class Cart {
     public HashMap<Integer, Product> getData() {
         return data;
     }
-
 
 
     public void changeQuantityProduct(int flag, int bookID) {

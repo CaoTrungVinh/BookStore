@@ -77,7 +77,7 @@
                                 </td>
                                 <td class="t-product-name">
                                     <h3>
-                                        <a href="#"><%= p.getName()%>
+                                        <a href="#"><%= p.getTitle()%>
                                         </a>
                                     </h3>
                                 </td>
@@ -97,7 +97,7 @@
 
                                 </td>
                                 <td class="product-quantity">
-                                    <p>$ <%= p.total()%>
+                                    <p>$ <%= p.getQuantity()%>
                                     </p>
                                 </td>
                             </tr>

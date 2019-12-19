@@ -1,7 +1,16 @@
 package Util;
 
+import Model.Cart;
+import controller.cart.Update;
+
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class Util {
@@ -38,4 +47,15 @@ public class Util {
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(m);
     }
+
+    public static void updateOrderDB(Connection conn, Cart cart) throws SQLException {
+        String sql = "UPDATE orders SET  orderDate = ?, subtotal = ?, total = ? WHERE id = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setDate(1, new java.sql.Date(System.currentTimeMillis()));
+        preparedStatement.setInt(2, cart.getTotalPrice());
+        preparedStatement.setInt(3, cart.getTotalPrice());
+        preparedStatement.setInt(4, cart.getId_order());
+        preparedStatement.executeUpdate();
+    }
+
 }

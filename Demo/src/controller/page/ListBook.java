@@ -102,8 +102,6 @@ public class ListBook extends HttpServlet {
                 pageNum = 1;
 
             }
-            System.out.println("row Server: " + rows);
-            System.out.println("nOfPage Server: " + nOfPages);
 
             request.setAttribute("book", book);
             request.setAttribute("currentPage", pageNum);

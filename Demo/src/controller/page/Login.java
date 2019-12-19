@@ -1,8 +1,6 @@
 package controller.page;
 
-import Model.Product;
-import Model.Cart;
-import Model.User;
+import Model.*;
 import Util.Util;
 import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
@@ -60,42 +58,49 @@ public class Login extends HttpServlet {
                 user.setIdgroup(rs.getInt("idgroup"));
                 user.setAddress(rs.getString("avt"));
 
-                ResultSet rs2 = statement.executeQuery("SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1");
-                if (rs2.next()) {
-                    user.getCart().setId_order(rs2.getInt("id"));
-                }
 
-                // Load shopping cart.
-                sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+                // Load shopping cart & wish-lish..
+                boolean first = true;
+                sql = "SELECT * FROM orders WHERE id_customer = '" + user.getId() + "' AND  statusID in (1,3)";
                 rs = statement.executeQuery(sql);
-                if (rs.next()) {
-                    user.getCart().setId_order(rs.getInt("id"));
-                } else {
-                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
-                    statement.executeUpdate(sql);
-                    user.getCart().setId_order(1);
-                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
-                    rs = statement.executeQuery(sql);
-                    if (rs.next()) {
+                while (rs.next()) {
+                    first = false;
+                    if (rs.getInt("statusID") == 3)
+                        user.getWishlist().setId(rs.getInt("id"));
+                    else
                         user.getCart().setId_order(rs.getInt("id"));
+                }
+                if (first) {
+                    sql = "INSERT INTO orders (id_customer, statusID) VALUES ('" + user.getId() + "',1),('" + user.getId() + "',3) ";
+                    statement.executeUpdate(sql);
+                    sql = "SELECT * FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID in (1,3)";
+                    rs = statement.executeQuery(sql);
+                    while (rs.next()) {
+                        if (rs.getInt("statusID") == 1)
+                            user.getCart().setId_order(rs.getInt("id"));
+                        else if (rs.getInt("statusID") == 3)
+                            user.getWishlist().setId(rs.getInt("id"));
+
                     }
                 }
-                sql = "SELECT  books.id, books.title, books.publisher, orderdetails.quantity, books.price, img.img\n" +
-                        "FROM orderdetails \n" +
-                        "JOIN books ON orderdetails.id_book = books.id\n" +
-                        "JOIN img ON books.id = img.id_book\n" +
-                        "WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' \n" +
-                "GROUP BY books.id";
+
+                WishList wishList = user.getWishlist();
+                sql = "SELECT books.id, img, title, rating, categories.name as type, publishers.name as publisher, authors.name as author, description,  books.price, orderdetails.quantity FROM  books JOIN categories ON books.type = categories.id JOIN publishers ON publishers.id = books.publisher JOIN authors ON authors.id = books.author JOIN img on img.id_book = books.id JOIN orderdetails ON orderdetails.id_book = books.id WHERE books.id in  (SELECT orderdetails.id_book FROM orderdetails WHERE orderdetails.id_order = '" + user.getWishlist().getId() + "') GROUP BY books.id";
                 rs = statement.executeQuery(sql);
-                Cart cart = user.getCart();
-                Product product;
                 while (rs.next()) {
-                    product = new Product(rs.getInt("id"), rs.getString("title"), rs.getString("publisher"), rs.getInt("quantity"), rs.getDouble("price"));
-                    product.setImg(rs.getString("img"));
-                    System.out.println(product.toString());
+                    Product product = new Product(rs.getInt("id"), rs.getString("img"), rs.getString("title"), rs.getInt("rating"), rs.getString("type"), rs.getString("publisher"), rs.getString("author"), rs.getString("description"), (int) rs.getDouble("price"), 1);
+                    wishList.add(product);
+                }
+                Cart cart = user.getCart();
+                sql = "SELECT books.id, img, title, rating, categories.name as type, publishers.name as publisher, authors.name as author, description,  books.price, orderdetails.quantity FROM  books JOIN categories ON books.type = categories.id JOIN publishers ON publishers.id = books.publisher JOIN authors ON authors.id = books.author JOIN img on img.id_book = books.id JOIN orderdetails ON orderdetails.id_book = books.id WHERE books.id in  (SELECT orderdetails.id_book FROM orderdetails WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "') GROUP BY books.id";
+                rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    Product product = new Product(rs.getInt("id"), rs.getString("img"), rs.getString("title"), rs.getInt("rating"), rs.getString("type"), rs.getString("publisher"), rs.getString("author"), rs.getString("description"), (int) rs.getDouble("price"), 1);
                     cart.put(product);
                 }
-                // End Load shopping cart.
+
+
+                // End load shopping cart & wish-lish.
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);

@@ -1,78 +1,99 @@
 <%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Model.Product" %>
 
 <div class="content-right">
-
-    <h1 class="have-margin">Danh sách yêu thích (1) </h1>
-
+    <% ArrayList<Product> wishlist = (ArrayList<Product>) request.getAttribute("wishlist");
+        if (wishlist.size() != 0) {
+    %>
+    <h1 class="have-margin">Danh sách yêu thích (<%=wishlist.size()%>) </h1>
     <div class="account-wishlist list-item " data-impress-list-title="Wishlist">
         <form id="wishlist" method="post">
-            <div class="item wishlist-item" data-id="4312259" data-price="299000"
-                data-title="Chuột Chơi Game Có Dây Logitech G300s 2500DPI RGB - Hàng Chính Hãng" data-brand="Logitech"
-                data-category="Thiết Bị Số - Phụ Kiện Số/Phụ kiện máy tính và Laptop/Phụ kiện phím chuột chơi game/Chuột chơi game">
+            <% for (Product item : wishlist) {%>
+            <div class="item wishlist-item" data-id="<%=item.getId()%>" data-price=""
+                 data-title="" data-brand=""
+                 data-category="">
                 <div class="item-col-1">
                     <p class="image">
-                        <a
-                            href="https://tiki.vn/chuot-choi-game-co-day-logitech-g300s-2500dpi-rgb-hang-chinh-hang-p4312259.html?_lc=Vk4wMzkwMjQwMDg%3D">
+                        <a href="<%=Util.fullPath("single-product?id=" +item.getId())%>">
                             <img class="img-responsive"
-                                src="https://salt.tikicdn.com/cache/200x280/ts/product/65/72/92/fddfb72f6e1406abab6fd4216d723a01.jpg"
-                                width="130" height="182" alt="sample text">
+                                 src="/public/customer/img/shop/<%=item.getImg()%>"
+                                 width="130" height="182" alt="sample text">
                         </a>
                     </p>
                 </div>
                 <div class="item-col-2">
                     <div class="infomation">
                         <p class="title">
-                            <a
-                                href="https://tiki.vn/chuot-choi-game-co-day-logitech-g300s-2500dpi-rgb-hang-chinh-hang-p4312259.html?_lc=Vk4wMzkwMjQwMDg%3D">
-                                Chuột Chơi Game Có Dây Logitech G300s 2500DPI RGB - Hàng Chính Hãng </a>
+                            <a href="href="<%=Util.fullPath("single-product?id=" + item.getId())%>">
+                            <%=item.getTitle()%> </a>
                         </p>
-                        <p class="author"></p>
-                        <p class="cover-books"></p>
+                        <p class="author"><%=item.getAuthor()%>
+                        </p>
+                        <p class="cover-books"><%=item.getType()%>
+                        </p>
                         <p class="rating">
-                            <span class="rating-content">
-                                <i class="star"></i>
-                                <i class="star"></i>
-                                <i class="star"></i>
-                                <i class="star"></i>
-                                <i class="star"></i>
-                                <span style="width:0%">
-                                    <i class="star"></i>
-                                    <i class="star"></i>
-                                    <i class="star"></i>
-                                    <i class="star"></i>
-                                    <i class="star"></i>
-                                </span>
-                            </span>
-                        </p>
-                        <div class="description">
-                            <!--                                         <a href="https://tiki.vn/chuot-choi-game-co-day-logitech-g300s-2500dpi-rgb-hang-chinh-hang-p4312259.html">Xem chi tiết <i class="fa fa-caret-right"></i></a>
-                                                                -->
+                        <div class="back-stars">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <div class="front-stars" style="width: <%= item.getRating()%>%">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
                         </div>
+                        </p>
+                        <%--                        <div class="description">--%>
+                        <%--                            <%=item.getDescription()%>--%>
+                        <%--                        </div>--%>
                     </div>
                 </div>
 
                 <div class="item-col-3">
                     <p class="price-sale">
-
-                        299.000đ<br>
-                        <span>399.000đ</span>
-                        <span class="sale-tag">-25%</span>
+                        <%=Util.showPrice(item.getPrice())%>đ<br>
+                        <%--                        <span>399.000đ</span>--%>
+                        <%--                        <span class="sale-tag">-25%</span>--%>
                     </p>
                     <p class="action">
-                        <!-- <button type="button" class="btn btn-large btn-default btn-addtocart wishlist-add-to-cart" data-product-id="4312259" data-product-price="299000" data-item-id='7643960'>
-                                    <span class="hidden-lg hidden-md"><i class="fa fa-shopping-cart"></i></span>
-                                    <span class="hidden-xs hidden-sm">Thêm vào giỏ hàng</span>
-                                </button> -->
+                        <button type="button" class="btn btn-large btn-default btn-addtocart wishlist-add-to-cart"
+                                data-product-id="<%=item.getId()%>" data-product-price="299000" data-item-id='7643960'
+                                onclick="addToCardFromWishlist(<%=item.getId()%>)">
+                            <span class="hidden-lg hidden-md"><i class="fa fa-shopping-cart"></i></span>
+                            <span class="hidden-xs hidden-sm">Thêm vào giỏ hàng</span>
+                        </button>
                     </p>
                     <button type="button" class="btn btn-default btn-custom1 delete-wishlist-item"
-                        data-item-id="7643960"><img src="https://salt.tikicdn.com/desktop/img/account/cross.png" alt="">
+                            data-item-id="" onclick="removeWishlistItem(<%=item.getId()%>)">
+                        <img src="https://salt.tikicdn.com/desktop/img/account/cross.png" alt="">
                     </button>
                 </div>
             </div>
+            <% }%>
         </form>
     </div>
     <div class="list-pager">
-
     </div>
-    <!-- END WISHLIST -->
+    <%
+    } else {%>
+    <div class="row">
+        <div class="col-xs-12">
+            <h5 class="lbl-shopping-cart lbl-shopping-cart-gio-hang">Wishlist <span>(0 product)</span></h5>
+            <div class="empty-cart">
+                <span class="mascot-image"></span>
+                <p class="message">You have no items in your wishlish.</p>
+                <a href="/" class="btn btn-yellow">Continue shopping</a>
+            </div>
+        </div>
+    </div>
+    <%}%>
 </div>
+
+<script>
+
+</script>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
 
 
 @WebServlet("/DelProduct")
@@ -34,7 +35,6 @@ public class Del extends HttpServlet {
             HttpSession session = request.getSession();
             int id = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));
             User user = (User) session.getAttribute("user");
-            Product p = Product.find(id);
             Cart cart = null;
             if (user == null) {
                 cart = (Cart) session.getAttribute("cart");
@@ -43,10 +43,12 @@ public class Del extends HttpServlet {
                 sql = "SELECT * FROM orderdetails WHERE  orderdetails.id_book =  '" + id + "' and  orderdetails.id_order in (SELECT id FROM orders WHERE orders.id_customer = '" + user.getId() + "') ";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
-                        rs.deleteRow();
+                    rs.deleteRow();
                 }
             }
             cart.remove(id);
+
+            Util.updateOrderDB(statement.getConnection(), cart);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         } catch (SQLException e) {

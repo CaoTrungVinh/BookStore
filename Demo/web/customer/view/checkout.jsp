@@ -55,9 +55,9 @@
                                            value="1">
                                     <div class="badge-tikinow-a">
                                         <p class="name">
-                                            <a href="https://tiki.vn/nui-cao-cap-meizan-400g-p1914875.html?src=cart-page&amp;spid=1914877"
+                                            <a href=""
                                                target="_blank">
-                                                <%=product.getName()%>
+                                                <%=product.getTitle()%>
                                             </a>
 
                                         </p>
@@ -128,7 +128,7 @@
                                     <span class="text-label">Total payment: </span>
                                     <div class="amount">
                                         <p>
-                                            <strong id="thanhtien"><%=Util.showPrice(cart.getTotalPrice())%>đ </strong>
+                                            <strong id="thanhtien"><%=Util.showPrice(cart.getTotalPrice())%>đ</strong>
                                         </p>
                                         <p class="text-right">
                                             <small>(VAT included (where applicable))</small>
@@ -137,9 +137,9 @@
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-large btn-block btn-danger btn-checkout">
+                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout" href="<%=Util.fullPath("cartPay")%>">
                                 Proceed to ordering
-                            </button>
+                            </a>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
