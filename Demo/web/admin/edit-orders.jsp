@@ -82,7 +82,7 @@
                                         type="text"
                                         class="form-control novalidate"
                                         value="<%= orders.getString("shipping")%>"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">

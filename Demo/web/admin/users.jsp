@@ -31,8 +31,8 @@
         </th>
         <th class="th-sm">GENDER
         </th>
-        <th class="th-sm">BIRTH DAY
-        </th>
+<%--        <th class="th-sm">BIRTH DAY--%>
+<%--        </th>--%>
         <th class="th-sm">ADDRESS
         </th>
         <th class="th-sm">PHONE
@@ -59,11 +59,12 @@
         <td><%= users.getString("email")%></td>
         <td><%= users.getString("gender")%></td>
 
-        <td></td>
+<%--        <td></td>--%>
 
         <td><%= users.getString("address")%></td>
         <td><%= users.getString("phone")%></td>
         <td><%= users.getString("idgroup")%></td>
+
         <td class="text-center">
             <% if (users.getString("is_active").equals("1")) {%>
             <i class="fa fa-check" style="color: #2196F3">
@@ -73,15 +74,16 @@
             </i>
             <% } %>
         </td>
+
         <td class="text-center" style="width: 70px; text-align: center">
             <a class="delete"
-<%--               href="<%= Util.fullPath("admin/categories/edit?id=" + categories.getString("id")) %>"--%>
+               href="<%= Util.fullPath("admin/account/edit?id=" + users.getString("id")) %>"
                class="tm-product-delete-link">
                 <i class="fas fa-edit"></i>
             </a>
 
             <a
-<%--                    href="<%= Util.fullPath("admin/categories/delete?id=" + categories.getString("id")) %>"--%>
+                    href="<%= Util.fullPath("admin/account/delete?id=" + users.getString("id")) %>"
                     class="tm-product-delete-link delete">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
             </a>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Add Account</title>
+    <title>Edit Account</title>
     <jsp:include page="head.jsp"/>
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
@@ -19,12 +19,15 @@
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12" style="margin-left: 13%">
-                        <h2 class="tm-block-title d-inline-block">Add Account</h2>
+                        <h2 class="tm-block-title d-inline-block">Edit Account</h2>
                     </div>
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-9 col-lg-6 col-md-12" style="margin: auto">
-                        <form action="<%= Util.fullPath("/admin/account/add") %>" method="POST" onsubmit="onFormSubmit"
+                        <%
+                            ResultSet users = (ResultSet) request.getAttribute("users");
+                        %>
+                        <form action="<%= Util.fullPath("admin/account/edit?id="+users.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -36,6 +39,7 @@
                                         name="name"
                                         type="text"
                                         class="form-control novalidate"
+                                        value="<%= users.getString("name")%>"
                                         required
                                 />
                             </div>
@@ -49,6 +53,7 @@
                                         name="email"
                                         type="email"
                                         class="form-control novalidate"
+                                        value="<%= users.getString("email")%>"
                                         required
                                 />
                             </div>
@@ -62,6 +67,7 @@
                                         name="fullname"
                                         type="text"
                                         class="form-control novalidate"
+                                        value="<%= users.getString("fullname")%>"
                                         required
                                 />
                             </div>
@@ -69,17 +75,18 @@
                             <div class="form-group mb-3">
                                 <label
                                 >Gender</label>
-<%--                                <input type="hidden" name="gender" id="gender">--%>
-<%--                                <select--%>
-<%--                                        class="custom-select tm-select-accounts"--%>
-<%--                                        id="selectgender"--%>
-<%--                                        required>--%>
-<%--                                    <option data-cc="1">Nam--%>
-<%--                                    </option>--%>
-<%--                                    <option data-cc="0">Nữ--%>
-<%--                                    </option>--%>
-<%--                                </select>--%>
-                                <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
+                                <%--                                <input type="hidden" name="gender" id="gender">--%>
+                                <%--                                <select--%>
+                                <%--                                        class="custom-select tm-select-accounts"--%>
+                                <%--                                        id="selectgender"--%>
+                                <%--                                        required>--%>
+                                <%--                                    <option data-cc="1">Nam--%>
+                                <%--                                    </option>--%>
+                                <%--                                    <option data-cc="0">Nữ--%>
+                                <%--                                    </option>--%>
+                                <%--                                </select>--%>
+                                <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
+                                        value="<%= users.getString("gender")%>">
                                     <option value="Male">Male
                                     </option>
                                     <option value="Female">Female
@@ -97,6 +104,7 @@
                                         name="dateofbirth"
                                         type="date"
                                         class="form-control novalidate"
+<%--                                        value="<%= users.getDate("dateofbirth")%>"--%>
                                         required
                                 />
                             </div>
@@ -110,7 +118,8 @@
                                         name="address"
                                         type="text"
                                         class="form-control novalidate"
-                                        required
+                                        value="<%= users.getString("address")%>"
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -123,7 +132,8 @@
                                         name="phone"
                                         type="number"
                                         class="form-control novalidate"
-                                        required
+                                        value="<%= users.getString("phone")%>"
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -136,7 +146,8 @@
                                         name="avt"
                                         type="number"
                                         class="form-control novalidate"
-<%--                                        required--%>
+                                        value="<%= users.getString("avt")%>"
+                                <%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -149,14 +160,16 @@
                                         name="idgroup"
                                         type="number"
                                         class="form-control novalidate"
-<%--                                        required--%>
+                                        value="<%= users.getString("idgroup")%>"
+                                <%--                                        required--%>
                                 />
                             </div>
 
                             <div class="form-group mb-3">
                                 <label>Active</label>
 
-                                <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
+                                <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
+                                        value="<%= users.getString("is_active")%>">
                                     <option value="1">Admin
                                     </option>
                                     <option value="0">Customer
@@ -165,7 +178,7 @@
                             </div>
                     </div>
                     <div class="col-9" style="margin: auto">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Account Now</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">UPDATE</button>
                     </div>
                     </form>
                 </div>
