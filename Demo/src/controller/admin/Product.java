@@ -22,10 +22,10 @@ public class Product extends HttpServlet {
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
-//                String sql = "SELECT * FROM books WHERE active = 1 ";
-//                String sqlCategory = "SELECT * FROM categories WHERE active = 1";
-                String sql = "SELECT * FROM books";
-                String sqlCategory = "SELECT * FROM categories ";
+                String sql = "SELECT * FROM books WHERE active = 1 ";
+                String sqlCategory = "SELECT * FROM categories WHERE active = 1";
+//                String sql = "SELECT * FROM books";
+//                String sqlCategory = "SELECT * FROM categories ";
 
                 PreparedStatement pst = conn.prepareStatement(sql);
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);

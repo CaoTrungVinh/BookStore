@@ -12,7 +12,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true"
-                        style="margin-top: -10px;" onclick="hideAlertLogin()">×
+                        style="margin-top: -10px;" onclick="hideAlertLogin()">x
                 </button>
                 <div class="bootbox-body">You must login to use this function.</div>
             </div>
