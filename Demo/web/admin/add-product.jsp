@@ -149,10 +149,12 @@
                             </div>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+
+
                         <div class="tm-product-img-dummy mx-auto">
                             <i
                                     class="fas fa-cloud-upload-alt tm-upload-icon"
-                                    onclick="document.getElementById('fileInput').click();"
+                                    onclick=" ckFinder();"
                             ></i>
                         </div>
                         <div class="custom-file mt-3 mb-3">
@@ -161,7 +163,7 @@
                                     type="button"
                                     class="btn btn-primary btn-block mx-auto"
                                     value="UPLOAD PRODUCT IMAGE"
-                                    onclick="selectFileWithCKFinder( 'fileInput' );"
+                                    onclick="ckFinder();"
                             />
                         </div>
                     </div>
@@ -184,27 +186,9 @@
 <script src="/public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
 <script src="/public/admin/js/jquery-editable-select.min.js"></script>
-<script>
-    function selectFileWithCKFinder(elementId) {
-        CKFinder.modal({
-            chooseFiles: true,
-            displayFoldersPanel: false,
-            width: 800,
-            height: 600,
-            onInit: function (finder) {
-                finder.on('files:choose', function (evt) {
-                    var file = evt.data.files.first();
-                    var output = document.getElementById(elementId);
-                    output.value = file.getUrl();
-                });
+<script src="/ckfinder/ckfinder.js"></script>
 
-                finder.on('file:choose:resizedImage', function (evt) {
-                    var output = document.getElementById(elementId);
-                    output.value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
+<script>
 
     var editor
 
@@ -216,8 +200,16 @@
             console.log("NULL");
         }
     }
+    function ckFinder() {
+        var finder = new CKFinder();
+        finder.basePath = '/ckfinder/';
+        finder.popup();
+    }
 
     $(function () {
+
+
+
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
@@ -247,6 +239,8 @@
                 $('#author').val(el.data('cc'));
             });
     });
+
+
 
 </script>
 </body>
