@@ -22,6 +22,9 @@ public class Account extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
+
+
+
         if (request.getServletPath().equals("/admin/account")) {
             try {
                 Statement s = ConnectionDB.connect();
