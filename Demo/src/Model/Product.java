@@ -1,54 +1,57 @@
 package Model;
 
-
 import db.ConnectionDB;
 
 import java.sql.*;
 
 public class Product {
-    int id;
-    String name;
-    String publisher;
-    int quantity;
-    String img;
-    public double price;
+    private int id;
+    private String title;
+    private int rating;
+    private String type;
+    private String publisher;
+    private String author;
+    private String description;
+    private String img;
+    private int price;
+    private int quantity;
+
 
     public Product() {
     }
 
-    public Product(int id, String name, String publisher, int quantity, double price) {
+    public Product(int id, String img, String title, int rating, String type, String publisher, String author, String description, int price, int quantity) {
         this.id = id;
-        this.name = name;
+        this.img = img;
+        this.title = title;
+        this.rating = rating;
+        this.type = type;
         this.publisher = publisher;
-        this.quantity = quantity;
+        this.author = author;
+        this.description = description;
         this.price = price;
+        this.quantity = quantity;
+
     }
 
-    public static Product find(int id) {
-        try {
-            Statement s = ConnectionDB.connect();
-            Connection conn = s.getConnection();
-            String sql = "SELECT books.id, books.title, books.price, img.img, img.id FROM img inner JOIN books ON img.id_book = books.id WHERE books.id=? and active = 1";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, id);
-            ResultSet rs = pst.executeQuery();
+    public String getPublisher() {
+        return publisher;
+    }
 
-            if (rs.next()) {
-                Product p = new Product();
-                p.id = rs.getInt(1);
-                p.name = rs.getString(2);
-                p.price = rs.getDouble(3);
-                p.img = rs.getString(4);
-                p.quantity = 1;
-                return p;
-            }
-            return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getTotalPrice() {
+        return (int) (price) * quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void quantityUp() {
@@ -57,6 +60,46 @@ public class Product {
 
     public void quantityUp(int quantity) {
         setQuantity(this.quantity + quantity);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImg() {
@@ -71,46 +114,29 @@ public class Product {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        if (quantity < 1) quantity = 1;
-        this.quantity = quantity;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPrice() {
-        return (int) price;
+        return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public int getTotalPrice() {
-        return (int) (price) * quantity;
-    }
 
-    public String getPublisher() {
-        return publisher;
-    }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Wish{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", quantity=" + quantity +
+                ", title='" + title + '\'' +
+                ", rating=" + rating +
+                ", type='" + type + '\'' +
+                ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
                 ", img='" + img + '\'' +
                 ", price=" + price +
                 '}';

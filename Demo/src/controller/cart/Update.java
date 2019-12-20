@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
 
-@WebServlet("/ChangeQuantityProduct")
-public class ChangeQuantityProduct extends HttpServlet {
+@WebServlet("/cart-update")
+public class Update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -34,6 +33,7 @@ public class ChangeQuantityProduct extends HttpServlet {
 
         try {
             statement = ConnectionDB.connect();
+
             User user = (User) request.getSession().getAttribute("user");
             boolean isLogin = user != null;
             cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
@@ -47,6 +47,8 @@ public class ChangeQuantityProduct extends HttpServlet {
                 rs.updateInt("quantity", currentQuantity + flag);
                 rs.updateRow();
             }
+
+            Util.updateOrderDB(statement.getConnection(), cart);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -55,7 +57,6 @@ public class ChangeQuantityProduct extends HttpServlet {
 
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("status", "ok");
         jsonObject.put("price", Util.showPrice(cart.getTotalPrice()));
         response.getWriter().write(jsonObject.toString());
         response.getWriter().flush();

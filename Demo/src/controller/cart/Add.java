@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
@@ -21,43 +20,36 @@ import java.sql.*;
 public class Add extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int bookID = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));
-        int quantity =  Integer.parseInt((String) Util.getParameterGeneric(request, "quantity", ""));
-
+        int quantity = Integer.parseInt((String) Util.getParameterGeneric(request, "quantity", ""));
 
 
         User user = (User) request.getSession().getAttribute("user");
         boolean isLogin = user != null;
+        Cart cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
         Connection conn = null;
         String sql;
         Statement statement = null;
         Product product = null;
-        Cart cart;
-        cart = (Cart) request.getSession().getAttribute("cart");
-        if (cart == null) {
-            cart = new Cart();
-            HttpSession session = request.getSession();
-            session.setAttribute("cart", cart);
-        }
         try {
             statement = ConnectionDB.connect();
             conn = statement.getConnection();
             ResultSet rs;
 
             if (isLogin) {
-                sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
-                rs = statement.executeQuery(sql);
-                if (rs.next()) {
-                    user.getCart().setId_order(rs.getInt("id"));
-                } else {
-                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
-                    statement.executeUpdate(sql);
-                    user.getCart().setId_order(1);
-                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
-                    rs = statement.executeQuery(sql);
-                    if (rs.next()) {
-                        user.getCart().setId_order(rs.getInt("id"));
-                    }
-                }
+//                sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+////                rs = statement.executeQuery(sql);
+////                if (rs.next()) {
+////                    user.getCart().setId_order(rs.getInt("id"));
+////                } else {
+////                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
+////                    statement.executeUpdate(sql);
+////                    user.getCart().setId_order(1);
+////                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+////                    rs = statement.executeQuery(sql);
+////                    if (rs.next()) {
+////                        user.getCart().setId_order(rs.getInt("id"));
+////                    }
+////                }
                 sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' AND id_book = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
@@ -74,32 +66,14 @@ public class Add extends HttpServlet {
                     preparedStatement.setInt(3, quantity);
                     preparedStatement.executeUpdate();
                 }
-
-                sql = "SELECT books.title, publishers.name, books.price, img.img\n" +
-                        "FROM books \n" +
-                        "JOIN img ON books.id = img.id_book \n" +
-                        "JOIN publishers ON books.publisher = publishers.id \n" +
-                        "WHERE books.id = '" + bookID + "'";
-                rs = statement.executeQuery(sql);
-                if (rs.next()) {
-                    product = new Product(bookID, rs.getString("title"), rs.getString("name"), quantity, rs.getDouble("price"));
-                    product.setImg(rs.getString("img"));
-                }
-                user.addToShoppingCard(product);
-            } else {
-                sql = "SELECT books.title, publishers.name, books.price, img.img\n" +
-                        "FROM books \n" +
-                        "JOIN img ON books.id = img.id_book \n" +
-                        "JOIN publishers ON books.publisher = publishers.id \n" +
-                        "WHERE books.id = '" + bookID + "'";
-                rs = statement.executeQuery(sql);
-                if (rs.next()) {
-                    product = new Product(bookID, rs.getString("title"), rs.getString("name"), quantity, rs.getDouble("price"));
-                    product.setImg(rs.getString("img"));
-                }
-
-                cart.put(product);
             }
+
+            sql = "SELECT books.id, img, title, rating, categories.name as type, publishers.name as publisher, authors.name as author, description,  books.price FROM  books JOIN categories ON books.type = categories.id JOIN publishers ON publishers.id = books.publisher JOIN authors ON authors.id = books.author JOIN img on img.id_book = books.id WHERE books.id =   '" + bookID + "'";
+            rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                product = new Product(rs.getInt("id"), rs.getString("img"), rs.getString("title"), rs.getInt("rating"), rs.getString("type"), rs.getString("publisher"), rs.getString("author"), rs.getString("description"), (int) rs.getDouble("price"), quantity);
+            }
+            cart.put(product);
 
 
         } catch (ClassNotFoundException e) {
@@ -108,14 +82,11 @@ public class Add extends HttpServlet {
             e.printStackTrace();
         }
 
-//        Gson gson = new Gson();
-//        String ProductJson = gson.toJson(Product);
 
         JSONObject bookJson = new JSONObject(product);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("book", bookJson);
         jsonObject.put("totalPrice", cart.getTotalPrice());
-
 
 
         response.getWriter().write(jsonObject.toString());

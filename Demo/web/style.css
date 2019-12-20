@@ -3121,3 +3121,36 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.star-rating, .back-stars, .front-stars {
+    display: flex;
+}
+
+.star-rating {
+    align-items: center;
+    font-size: 3em;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.star-rating i {
+    font-size: 16px;
+    padding: 3px;
+}
+
+.back-stars {
+    color: #5B5B5B;
+    position: relative;
+    /*text-shadow: 1px 2px 4px #843a3a;*/
+}
+
+.front-stars {
+    color: #32B5F3;
+    overflow: hidden;
+    position: absolute;
+    /*text-shadow: 2px 2px 5px #d29b09;*/
+    top: 0;
+    transition: all 0.5s;
+}
+
+
+

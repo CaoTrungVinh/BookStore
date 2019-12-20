@@ -22,8 +22,10 @@ public class Product extends HttpServlet {
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
-                String sql = "SELECT * FROM books WHERE active = 1 ";
-                String sqlCategory = "SELECT * FROM categories WHERE active = 1";
+//                String sql = "SELECT * FROM books WHERE active = 1 ";
+//                String sqlCategory = "SELECT * FROM categories WHERE active = 1";
+                String sql = "SELECT * FROM books";
+                String sqlCategory = "SELECT * FROM categories ";
 
                 PreparedStatement pst = conn.prepareStatement(sql);
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
@@ -41,12 +43,12 @@ public class Product extends HttpServlet {
             request.getRequestDispatcher("/admin/products.jsp").forward(request, response);
         }
         else if (request.getServletPath().equals("/admin/product/add")) {
-                    try {
-                        Statement s = ConnectionDB.connect();
-                        Connection conn = s.getConnection();
-                        String sqlCategory = "SELECT * FROM categories WHERE active = 1";
-                        String sqlPublisher = "SELECT * FROM publishers";
-                        String sqlAuthor = "SELECT * FROM authors";
+            try {
+                Statement s = ConnectionDB.connect();
+                Connection conn = s.getConnection();
+                String sqlCategory = "SELECT * FROM categories WHERE active = 1";
+                String sqlPublisher = "SELECT * FROM publishers";
+                String sqlAuthor = "SELECT * FROM authors";
 //loại sách
                 PreparedStatement pst = conn.prepareStatement(sqlCategory);
                 ResultSet categories = pst.executeQuery();

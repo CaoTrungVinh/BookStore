@@ -32,7 +32,7 @@
                             <div class="form-group mb-3">
                                 <label
                                 >Customer</label>
-                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("orderDate")%>">
+                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("id_customer")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectcustomer"
@@ -82,7 +82,7 @@
                                         type="text"
                                         class="form-control novalidate"
                                         value="<%= orders.getString("shipping")%>"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">

@@ -56,7 +56,7 @@
                                 <input
                                         id="contact"
                                         name="contact"
-                                        type="text"
+                                        type="email"
                                         class="form-control novalidate"
                                         required/>
                             </div>

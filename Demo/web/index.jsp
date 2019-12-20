@@ -1,4 +1,5 @@
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="Util.Util" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="">
@@ -315,7 +316,7 @@
                                         <a href="#" class="single-banner-image-wrapper">
                                             <img alt="" src="/public/customer/img/shop/<%= bookNew.getString(4)%>"
                                                  style="padding-top: 30px">
-                                            <div class="price"><span><%= bookNew.getInt(3)%> VND</span></div>
+                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>
                                             <div class="star-rating">
                                                 <div class="back-stars">
                                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -336,11 +337,12 @@
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">
-                                                <a  title="Add to Cart"
+                                                <a title="Add to Cart"
                                                    onclick="addToCard(<%=bookNew.getInt("id")%>,1)">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
-                                                <a title="Add to Wishlist">
+                                                <a title="Add to Wishlist"
+                                                   onclick="add2Wishlist(<%=bookNew.getInt("id")%>)">
                                                     <i class="fa fa-heart-o"></i>
                                                 </a>
                                                 <a title="Quick view" data-toggle="modal"
@@ -373,7 +375,7 @@
                                         <a href="#" class="single-banner-image-wrapper">
                                             <img alt="" src="/public/customer/img/shop/<%= bookTopRating.getString(4)%>"
                                                  style="padding-top: 30px">
-                                            <div class="price"><span><%= bookTopRating.getInt(3)%> VND</span></div>
+                                            <div class="price"><span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>
                                             <div class="star-rating">
                                                 <div class="back-stars">
                                                     <i class="fa fa-star" aria-hidden="true"></i>
@@ -399,7 +401,8 @@
                                                     onclick="addToCard(<%=bookTopRating.getInt("id")%>,1)
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
-                                                <a title="Add to Wishlist">
+                                                <a title="Add to Wishlist"
+                                                   onclick="add2Wishlist(<%=bookTopRating.getInt("id")%>)">
                                                     <i class="fa fa-heart-o"></i>
                                                 </a>
                                                 <a title="Quick view" data-toggle="modal"

@@ -1,3 +1,4 @@
+<%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,9 @@
 </head>
 <body style="background-color: #f5f5f5;">
 <div class="text-center p-5">
-    <h1>Thank You For Registration!</h1>
-    <p class="lead">Please Check your Email for Account Verification Link.</p>
-    <p class="lead"><a href="https://mail.google.com" class="btn btn-lg btn-primary">GO TO MAIL</a></p>
+    <h1>Payment Successfully</h1>
+    <p class="lead">Your payment was successfully!! You can now continue shopping</p>
+    <p class="lead"><a href="<%=Util.fullPath("")%>" class="btn btn-lg btn-primary">CONTINUE SHOPPING</a></p>
 </div>
 </body>
 </html>

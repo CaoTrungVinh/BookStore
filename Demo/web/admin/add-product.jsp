@@ -137,6 +137,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
+
                                 <label>Decentralization</label>
 
                                 <br>
@@ -206,6 +207,8 @@
         finder.popup();
     }
 
+    //IDE bị ngu, không nhận cú pháp => của ES6, nên phải dùng cú pháp này
+    //Nếu không bấm format nó sẽ nhảy ngu
     $(function () {
 
 
