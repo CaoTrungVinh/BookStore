@@ -26,7 +26,7 @@
                     <div class="profiles">
                         <% User user = (User) request.getAttribute("user");
                         %>
-                        <p class="image"><img src="https://salt.tikicdn.com/desktop/img/avatar.png?v=3" height="45"
+                        <p class="image"><img src="" height="45"
                                               width="45" alt=""></p>
                         <p class="name">Tài khoản của</p>
                         <h6><%= user.getUserName()%>
@@ -38,25 +38,37 @@
                             Danh mục <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li class="active">
-                                <a href="<%= Util.fullPath("account/edit")%>"><i class="fa fa-user"></i><span>Thông tin tài khoản</span>
+                            <li <% if (request.getAttribute("route").equals("edit")) {%>
+                                    class="active" <%}%> >
+                                <a href="<%= Util.fullPath("account/edit")%>"><i class="fa fa-user"
+                                                                                 aria-hidden="true"></i><span>Your account</span>
                                     <!-- <span class='noti-nav'>Mới</span> --></a>
                             </li>
-                            <li class="">
-                                <a href="<%= Util.fullPath("account/address") %>"> <i class="fa fa-map-marker-alt"></i>
-                                    <span>Sổ địa chỉ</span> </a>
+                            <li <% if (request.getAttribute("route").equals("address")) {%>
+                                    class="active" <%}%>>
+                                <a href="<%= Util.fullPath("account/address") %>"> <i class="fa fa-map-marker"
+                                                                                      aria-hidden="true"></i>
+                                    <span>Your address</span> </a>
                             </li>
-                            <li class="">
-                                <a href="<%= Util.fullPath("account/order") %>"> <i class="fa fa-my-order"></i> <span>Quản lý đơn hàng</span></a>
+                            <li <% if (request.getAttribute("route").equals("order")) {%>
+                                    class="active" <%}%>>
+                                <a href="<%= Util.fullPath("account/order") %>"><i class="fa fa-pie-chart"
+                                                                                   aria-hidden="true"></i><span>Orders history</span></a>
                             </li>
 
-                            <li class="">
-                                <a href="<%= Util.fullPath("account/wishlist") %>"><i class="fa fa-favorite"></i> <span> Sản phẩm yêu thích</span></a>
+                            <li <% if (request.getAttribute("route").equals("wishlist")) {%>
+                                    class="active" <%}%>>
+                                <a href="<%= Util.fullPath("account/wishlist") %>"><i class="fa fa-star"
+                                                                                      aria-hidden="true"></i>
+                                    <span> Wish list </span></a>
                             </li>
-                            <!--  -->
-                            <!-- <li class="hidden-md hidden-lg">
-                <a href="https://tiki.vn/customer/account/logout">Thoát tài khoản</a>
-            </li> -->
+                            <li class="">
+                                <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
+                                    Admin mode</a>
+                            </li>
+                            <li class="">
+                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -83,7 +95,7 @@
                 <jsp:include page="wishlist.jsp"/>
                 <%
                         break;
-                    default:
+                    case "edit":
                 %>
                 <jsp:include page="account.jsp"/>
                 <% break;
@@ -100,5 +112,12 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 <jsp:include page="../view/jquery.jsp"/>
+<script>
+    $("#is_change_pass").click(function (event) {
+        if ($("#is_change_pass").prop('checked') == true)
+            $(".password-group").css('display', 'block');
+        else $(".password-group").css('display', 'none');
+    });
+</script>
 </body>
 </html>

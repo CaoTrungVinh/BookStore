@@ -18,15 +18,23 @@ public class User {
     private String avt;
     private int idgroup; // 1 is user, 2 is admin
     private int active; //0 is not active, 1 is active
-//    ArrayList<Product> shoppingCart;
-//    int id_order;
     private Cart cart;
+    private WishList wishlist;
 
 
 
     public User() {
         cart = new Cart();
+        wishlist = new WishList();
 
+    }
+
+    public WishList getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(WishList wishlist) {
+        this.wishlist = wishlist;
     }
 
     public int getTotalPrice() {

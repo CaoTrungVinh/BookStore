@@ -327,8 +327,8 @@
                                                        title="Add to Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
-                                                    <a
-                                                            title="Add to Wishlist">
+                                                    <a onclick="add2Wishlist(<%=book.getInt("id")%>)"
+                                                       title="Add to Wishlist">
                                                         <i class="fa fa-heart-o"></i>
                                                     </a>
                                                     <a title="Quick view" data-toggle="modal"
@@ -496,7 +496,7 @@
                                             <div class="availability">
                                                 <%--                                                <span>In stock</span>--%>
                                                 <span><a
-                                                        onclick="addToCard(<%=book.getInt("id")%>)">Add to cart</a></span>
+                                                        onclick="addToCard(<%=book.getInt("id")%>,1)">Add to cart</a></span>
                                             </div>
                                         </div>
                                     </div>
@@ -510,8 +510,6 @@
                             <ul>
                                 <%
                                     int startpage = currentPage - 2;
-                                    System.out.println("curent page: " + currentPage);
-                                    System.out.println("nOfPages: " + nOfPages);
                                     if (startpage < 1) {
                                         startpage = 1;
                                     }

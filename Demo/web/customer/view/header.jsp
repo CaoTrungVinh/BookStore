@@ -6,6 +6,21 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="Model.Product" %>
 <!--Header Area Start-->
+<div id="alert-login" class="bootbox modal fade bootbox-alert in hide" role="dialog"
+     style="display: block; padding-right: 16px; background: rgba(255,255,255,0.3)">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true"
+                        style="margin-top: -10px;" onclick="hideAlertLogin()">×
+                </button>
+                <div class="bootbox-body">You must login to use this function.</div>
+            </div>
+            <div class="modal-footer"><a href="<%=Util.fullPath("login")%>" data-bb-handler="ok" type="button"
+                                         class="btn btn-primary">OK</a></div>
+        </div>
+    </div>
+</div>
 <div id="snackbar">
 </div>
 <div class="header-area bg-white" style="background-color: white">
@@ -33,7 +48,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="public/customer/img/shop/1.jpg" alt="">
+                                            <img src="/public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -52,7 +67,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="public/customer/img/shop/1.jpg" alt="">
+                                            <img src="/public/customer/img/shop/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -117,17 +132,10 @@
                         <li class="shoping-cart" style="margin-right: 5px">
                             <%
                                 User user = (User) request.getSession().getAttribute("user");
-                                Cart cart = null;
-                                if (user != null) {
-                                    cart = user.getCart();
-                                } else {
-                                    cart = (Cart) request.getSession().getAttribute("cart");
-                                    user = new User();
-                                    user.setCart(cart);
-                                }
-
+                                boolean isLogin = user != null;
+                                Cart cart = isLogin ? user.getCart() : (Cart) request.getSession().getAttribute("cart");
                             %>
-                            <a href="#">
+                            <a href="<%=Util.fullPath("checkout")%>">
                                 <i class="flaticon-shop"></i>
                                 <span id="shopping-cart-counter">
                                     <%=cart.getQuantity()%>
@@ -141,14 +149,14 @@
                                 <div class="cart-product" id="cartproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="public/customer/img/shop/<%=item.getImg()%>" alt="">
+                                            <img src="/public/customer/img/shop/<%=item.getImg()%>" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
                                         <p>
                                             <span id="quantity-id<%=item.getId()%>"><%=item.getQuantity()%> </span>
                                             x
-                                            <a href="single-product.jsp"><%=Util.shortOfTitle(item.getName())%>
+                                            <a href="single-product.jsp"><%=Util.shortOfTitle(item.getTitle())%>
                                             </a>
                                         </p>
                                         <span class="cart-price">
@@ -163,18 +171,12 @@
                                     <div class="cart-product-line">
                                         <span>Total</span> <span class="total">
                                         <% if (cart.getQuantity() != 0) {%>
-                                            <span id="cart-total-price"><%=Util.showPrice(user.getTotalPrice())%> </span>
+                                            <span id="cart-total-price"><%=Util.showPrice(cart.getTotalPrice())%> </span>
                                         <%} else {%>
                                        <span id="cart-total-price">0</span>
                                         <%}%>
                                         VND</span>
                                     </div>
-                                </div>
-                                <div class="cart-checkout">
-                                    <a href="<%=Util.fullPath("checkout")%>">
-                                        View cart
-                                        <i class="fa fa-chevron-right"></i>
-                                    </a>
                                 </div>
                                 <div class="cart-checkout">
                                     <a href="<%=Util.fullPath("checkout")%>">
@@ -186,61 +188,46 @@
                         </li>
 
                         <li class="shoping-cart" style="margin-right: 5px">
-                            <a href="#">
+                            <%
+                                ArrayList<Product> wishlist = isLogin ? user.getWishlist().getWishlist() : null;
+                            %>
+                            <a href="<%=Util.fullPath("account/wishlist")%>">
                                 <i class="fa fa-heartbeat"></i>
-                                <span>2</span>
+                                <span id="counter-wish">
+                                    <% if (isLogin) { %>
+                                        <%= wishlist.size()%>
+                                    <% } else {%>
+                                        0
+                                <%}%></span>
                             </a>
-                            <div class="add-to-cart-product">
-                                <div class="cart-product">
+
+
+                            <div class="add-to-cart-product" id="wish-wrapper">
+                                <%
+                                    if (isLogin) {
+                                        for (Product item : wishlist) {
+                                %>
+                                <div class="cart-product" id="wishproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="public/customer/img/shop/1.jpg" alt="">
+                                            <img src="/public/customer/img/shop/<%=item.getImg()%>" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.jsp">East of eden</a>
-                                        </p>
-                                        <a href="single-product.jsp">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </div>
-                                <div class="cart-product">
-                                    <div class="cart-product-image">
-                                        <a href="single-product.jsp">
-                                            <img src="public/customer/img/shop/1.jpg" alt="">
+                                        <a href="single-product.jsp"><%=Util.shortOfTitle(item.getTitle())%>
                                         </a>
+                                        <a href="single-product.jsp"><%=item.getType()%>
+                                        </a>
+                                        <span class="cart-price"><%=Util.showPrice(item.getPrice())%></span>
                                     </div>
-                                    <div class="cart-product-info">
-                                        <p>
-                                            <span>1</span>
-                                            x
-                                            <a href="single-product.jsp">East of eden</a>
-                                        </p>
-                                        <a href="single-product.jsp">S, Orange</a>
-                                        <span class="cart-price">$ 140.00</span>
-                                    </div>
-                                    <div class="cart-product-remove">
+                                    <div class="cart-product-remove" onclick="removeWishlistItemAjax(<%=item.getId()%>)">
                                         <i class="fa fa-times"></i>
                                     </div>
                                 </div>
-                                <div class="total-cart-price">
-                                    <%--                                    <div class="cart-product-line fast-line">--%>
-                                    <%--                                        <span>Shipping</span>--%>
-                                    <%--                                        <span class="free-shiping">$10.50</span>--%>
-                                    <%--                                    </div>--%>
-                                    <%--                                    <div class="cart-product-line">--%>
-                                    <%--                                        <span>Total</span>--%>
-                                    <%--                                        <span class="total">$ 140.00</span>--%>
-                                    <%--                                    </div>--%>
-                                </div>
+                                <% }
+                                } %>
                                 <div class="cart-checkout">
-                                    <a href="wishlist.jsp">
+                                    <a href="<%=Util.fullPath("account/wishlist")%>">
                                         WISH LIST
                                         <i class="fa fa-chevron-right"></i>
                                     </a>

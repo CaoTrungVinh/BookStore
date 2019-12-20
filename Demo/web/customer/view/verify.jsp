@@ -13,6 +13,5 @@
     <p class="lead">Please Check your Email for Account Verification Link.</p>
     <p class="lead"><a href="https://mail.google.com" class="btn btn-lg btn-primary">GO TO MAIL</a></p>
 </div>
-
 </body>
 </html>

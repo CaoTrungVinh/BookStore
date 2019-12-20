@@ -39,9 +39,13 @@
 <!-- Loging Area Start -->
 <div class="login-account section-padding">
     <div class="container">
-        <div class="row flex-center" >
+        <div class="row flex-center">
             <div class="col-md-6 col-sm-6">
-                <%--                       <form action="#" class="create-account-form" method="post">--%>
+                <% if (request.getAttribute("mess") != null) {%>
+                <div class="alert alert-danger"><i class="fa fa-times-circle" aria-hidden="true"
+                                                   style="margin-right: 10px"></i> <%request.getAttribute("mess");%>
+                </div>
+                <%}%>
                 <form action="<%= Util.fullPath("login")%>" class="create-account-form" method="post">
                     <h2 class="heading-title">
                         LOGIN

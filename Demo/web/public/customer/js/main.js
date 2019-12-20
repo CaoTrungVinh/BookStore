@@ -239,36 +239,6 @@ function showSnackbar(mess) {
     }, 2000);
 }
 
-function addToCard(id, quantity) {
-    $.ajax({
-        type: "POST",
-        url: "add-cart",   // this is my servlet
-        data: {"bookID": id, "quantity": quantity},
-        success: function (data) {
-            increaseCounterCart(quantity);
-            addHTMLproductCart(data);
-            showSnackbar("Adding successfully");
-        }
-    });
-}
-
-
-function increaseCounterCart() {
-    var counter = $("#shopping-cart-counter");
-    counter.text(parseInt(counter.text()) + 1);
-}
-
-function decreaseCounterCart(id) {
-    var currentQuantity = $("#quantity-id" + id).text();
-    var counter = $("#shopping-cart-counter");
-    counter.text(parseInt(counter.text()) - currentQuantity);
-}
-
-function decrease1CounterCart() {
-    var counter = $("#shopping-cart-counter");
-    counter.text(parseInt(counter.text()) - 1);
-}
-
 
 function changeQuantityProduct(flag, id) {
     var selector = "#touch" + id;
@@ -277,30 +247,27 @@ function changeQuantityProduct(flag, id) {
     } else
         $.ajax({
             type: "POST",
-            url: "ChangeQuantityProduct",   // this is my servlet
+            url: "cart-update",   // this is my servlet
             data: {"flag": flag, "bookID": id},
             success: function (data) {
                 var respon = $.parseJSON(data);
-                if (respon.status === "ok") {
-                    $('#giatamtinh,#thanhtien').text(respon.price + "đ");
-                    $(selector).val((parseInt($(selector).val()) + flag));
-                    changeCounterCart(flag);
-
-                }
+                console.log(respon.price + "đ");
+                $('#giatamtinh,#thanhtien').text(respon.price + JSON.parse(JSON.stringify("đ")));
+                $(selector).val((parseInt($(selector).val()) + flag));
+                changeCounterCart(flag);
             }
         });
 }
 
 function changeCounterCart(flag) {
     var counter = $("#shopping-cart-counter");
-    console.log(counter.text())
     counter.text(parseInt(counter.text()) + flag);
 }
 
 function removeCartProduct(id) {
     $.ajax({
         type: "POST",
-        url: "DelProduct",   // this is my servlet
+        url: "//localhost:8080/DelProduct",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             if (data == "true") {
@@ -315,13 +282,13 @@ function removeCartProduct(id) {
 function addToCard(id, quantity) {
     $.ajax({
         type: "POST",
-        url: "add-cart",   // this is my servlet
+        url: "//localhost:8080/add-cart",   // this is my servlet
         data: {"bookID": id, "quantity": quantity},
         success: function (data) {
             increaseCounterCart(quantity);
             addHTMLproductCart(data);
             $('html,body').animate({scrollTop: 0}, 300);
-            showSnackbar("Adding successfully");
+            showSnackbar("Adding cart successfully");
         }
     });
 }
@@ -354,7 +321,6 @@ function addHTMLproductCart(data) {
         var newQuan = parseInt(quan) + bookItem.quantity;
         selector.text(newQuan);
     } else {
-        console.log("not exist")
         var html = "<div class=\"cart-product\" id=\"cartproductid" + bookItem.id + "\">\n" +
             "                                    <div class=\"cart-product-image\">\n" +
             "                                        <a href=\"single-product.jsp\">\n" +
@@ -367,7 +333,7 @@ function addHTMLproductCart(data) {
             "                                            <span id=\"quantity-id" + bookItem.id + "\">" + bookItem.quantity +
             "</span>\n" +
             "                                            x\n" +
-            "                                            <a href=\"localhost:8080/single-product?id=" + bookItem.id + "\">" + shortOfTitleCart(bookItem.name) +
+            "                                            <a href=\"localhost:8080/single-product?id=" + bookItem.id + "\">" + shortOfTitleCart(bookItem.title) +
             "\n" +
             "                                            </a>\n" +
             "                                        </p>\n" +
@@ -383,6 +349,94 @@ function addHTMLproductCart(data) {
     }
 
     $("#cart-total-price").text(showPrice(datajson.totalPrice));
+}
+
+function showAlertLogin() {
+    $('#alert-login').removeClass("hide")
+}
+
+function hideAlertLogin() {
+    $('#alert-login').addClass("hide")
+}
+
+
+function add2Wishlist(id) {
+    $.ajax({
+        type: "POST",
+        url: "//localhost:8080/addWish",   // this is my servlet
+        data: {"bookID": id},
+        success: function (data) {
+            changeCounterWish(1);
+            addHTMLproductWish(data);
+            $('html,body').animate({scrollTop: 0}, 300);
+            showSnackbar("Adding wish product successfully");
+
+        },
+        error: function (xhr) {
+            if (xhr.status === 404)
+                showAlertLogin();
+            else if (xhr.status === 500) {
+                showSnackbar(xhr.responseText);
+            }
+        }
+    });
+}
+
+function changeCounterWish(quantity) {
+    var counter = $("#counter-wish");
+    counter.text(parseInt(counter.text()) + parseInt(quantity));
+}
+
+function addHTMLproductWish(data) {
+    var bookItem = $.parseJSON(data);
+    var html = " <div class=\"cart-product\" id=\"wishproductid" + bookItem.id + "\">\n" +
+        "                                    <div class=\"cart-product-image\">\n" +
+        "                                        <a href=\"single-product.jsp\">\n" +
+        "                                            <img src=\"/public/customer/img/shop/" + bookItem.img + "\" alt=\"\">\n" +
+        "                                        </a>\n" +
+        "                                    </div>\n" +
+        "                                    <div class=\"cart-product-info\">\n" +
+        "                                        <a href=\"single-product.jsp\">" + shortOfTitleCart(bookItem.title) +
+        "\n" +
+        "                                        </a>\n" +
+        "                                        <a href=\"single-product.jsp\">" + bookItem.type +
+        "\n" +
+        "                                        </a>\n" +
+        "                                        <span class=\"cart-price\">" + showPrice(bookItem.price) +
+        "</span>\n" +
+        "                                    </div>\n" +
+        "                                    <div class=\"cart-product-remove\" onclick=\"removeWishlistItemAjax(" + bookItem.id + ")\">\n" +
+        "                                        <i class=\"fa fa-times\"></i>\n" +
+        "                                    </div>\n" +
+        "                                </div>";
+
+    $("#wish-wrapper").prepend(html);
+}
+
+
+function addToCardFromWishlist(id) {
+    removeWishlistItemAjax(2);
+    removeWishlistItem(2);
+    addToCard(2, 1);
 
 }
 
+function removeWishlistItemAjax(id) {
+    $.ajax({
+        type: "POST",
+        url: "//localhost:8080/delWish",   // this is my servlet
+        data: {"bookID": id},
+        success: function (data) {
+            changeCounterWish(-1);
+            $("#wishproductid" + id).remove();
+            showSnackbar("Remove wish product successfully");
+        }
+    });
+}
+
+function removeWishlistItem(id) {
+    $('.wishlist-item[data-id="' + id + '"]').remove();
+    changeCounterWish(-1);
+    $("#wishproductid" + id).remove();
+    showSnackbar("Remove wish product successfully");
+}
