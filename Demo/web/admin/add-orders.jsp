@@ -28,7 +28,7 @@
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                >Customer</label
+                                >Customer <i class="fas fa-star"></i></label
                                 >
                                 <input type="hidden" name="id_customer" id="id_customer">
                                 <select
