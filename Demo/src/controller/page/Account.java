@@ -53,7 +53,7 @@ public class Account extends HttpServlet {
         } else if (request.getServletPath().equals("/account/order")) {
             try {
                 ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
-                sql = "SELECT * FROM orders WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
+                sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
                 rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     Statement statement2 = ConnectionDB.connect();
@@ -62,7 +62,7 @@ public class Account extends HttpServlet {
                     while (rs2.next()) {
                         products.add(rs2.getString("title"));
                     }
-                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getDate("orderDate"), products, rs.getInt("total"), rs.getInt("statusID"));
+                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getDate("orderDate"), products, rs.getInt("total"), rs.getString("status"));
                     ordereds.add(ordered);
                 }
                 request.setAttribute("ordereds", ordereds);

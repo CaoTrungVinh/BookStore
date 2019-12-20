@@ -8,9 +8,9 @@ public class Ordered {
     private Date date;
     private ArrayList<String> products;
     private int totalPrice;
-    private int status;
+    private String status;
 
-    public Ordered(int id, Date date, ArrayList<String> products, int totalPrice, int status) {
+    public Ordered(int id, Date date, ArrayList<String> products, int totalPrice, String status) {
         this.id = id;
         this.date = date;
         this.products = products;
@@ -54,11 +54,11 @@ public class Ordered {
         this.totalPrice = totalPrice;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

@@ -23,16 +23,15 @@ public class ForgotPass extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = Util.getParameterGeneric(request, "email", "");
-        String email2 = email + java.time.LocalDateTime.now();
         try {
-            email2 = Base64.getEncoder().encodeToString((email2).getBytes());
             String sql = "select * from users where email= '" + email + "'";
             Statement statement = ConnectionDB.connect();
             ResultSet resultSet = statement.executeQuery(sql);
+            String hashMail = "";
             if (resultSet.next()) {
-                resultSet.updateString("email_hashed", email2);
+                hashMail = resultSet.getString("email_hashed");
             }
-            SendingEmail sendingEmail = new SendingEmail("reset-pass", email, email2);
+            SendingEmail sendingEmail = new SendingEmail("reset-pass", email, hashMail);
             sendingEmail.start();
             request.getRequestDispatcher("/customer/view/verify.jsp").forward(request, response);
         } catch (ClassNotFoundException e) {

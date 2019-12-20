@@ -15,31 +15,31 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label" for="full_name">Họ tên </label>
+                <label class="control-label" for="full_name">Full name </label>
                 <div class="input-wrap">
                     <input type="text" name="full_name" class="form-control" id="full_name"
-                           value="<%= user.getFullName()%>" placeholder="Họ tên">
+                           value="<%= user.getFullName()%>" placeholder="Full name">
                     <span class="help-block"></span>
                 </div>
             </div>
             <div class="form-group gender-select-wrap" id="register_name">
-                <label class="control-label">Giới tính</label>
+                <label class="control-label">Gender</label>
                 <div class="input-wrap">
-                    <span class="help-block">Vui lòng chọn giới tính</span>
+                    <span class="help-block">Please choose gender</span>
                     <div class="row">
 
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="on" id="gender_male"
                                        class="gender" <% if (user.getGender().equals("Nam")) {%> checked <% }  %>>
-                                Nam
+                                Male
                             </label>
                         </div>
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="off" id="gender_female"
                                        class="gender" <% if (user.getGender().equals("Nu")) {%> checked <% }  %>>
-                                Nữ
+                                Female
                             </label>
                         </div>
                     </div>
@@ -50,15 +50,15 @@
 
             <div class="form-group ">
                 <label class="control-label no-lh" for="birthdate">
-                    Ngày sinh
-                    <span>(Không bắt buộc)</span>
+                    Day of birth
+                    <span>(optional)</span>
                 </label>
 
                 <div class="input-wrap">
                     <div id="birthday-picker" class="birthday-picker">
                         <fieldset class="birthday-picker"><select class="birth-day form-control"
                                                                   name="birth[day]">
-                            <option value="0">Ngày</option>
+                            <option value="0">Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -91,7 +91,7 @@
                             <option value="30" selected="selected">30</option>
                             <option value="31">31</option>
                         </select><select class="birth-month form-control" name="birth[month]">
-                            <option value="0">Tháng</option>
+                            <option value="0">Month</option>
                             <option value="1">01</option>
                             <option value="2">02</option>
                             <option value="3">03</option>
@@ -105,7 +105,7 @@
                             <option value="11" selected="selected">11</option>
                             <option value="12">12</option>
                         </select><select class="birth-year form-control" name="birth[year]">
-                            <option value="0">Năm</option>
+                            <option value="0">Year</option>
                             <option value="2019">2019</option>
                             <option value="2018">2018</option>
                             <option value="2017">2017</option>
@@ -243,13 +243,13 @@
                     <label class="checkbox">
                         <input type="checkbox" id="is_change_pass" name="is_change_pass" style="position: relative;
 											margin-left: 0px;">
-                        Thay đổi mật khẩu
+                        Change password
                     </label>
                 </div>
             </div>
             <div class="password-group" id="chagne-pass-gr">
                 <div class="form-group">
-                    <label class="control-label" for="old_password">Mật khẩu cũ</label>
+                    <label class="control-label" for="old_password">Old password</label>
                     <div class="input-wrap">
                         <input type="password" name="old_password" class="form-control"
                                id="old_password" value="" autocomplete="off"
@@ -258,7 +258,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="new_password">Mật khẩu mới</label>
+                    <label class="control-label" for="new_password">New password</label>
                     <div class="input-wrap">
                         <input type="password" name="new_password" class="form-control"
                                id="new_password" value="" autocomplete="off"
@@ -267,11 +267,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="re_new_password">Nhập lại</label>
+                    <label class="control-label" for="re_new_password">Confirm password</label>
                     <div class="input-wrap">
                         <input type="password" name="re_new_password" class="form-control"
                                id="re_new_password" value="" autocomplete="off"
-                               placeholder="Nhập lại mật khẩu mới">
+                               placeholder="Retype new password">
                         <span class="help-block"></span>
                     </div>
                 </div>

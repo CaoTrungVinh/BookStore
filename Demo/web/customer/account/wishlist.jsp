@@ -6,7 +6,7 @@
     <% ArrayList<Product> wishlist = (ArrayList<Product>) request.getAttribute("wishlist");
         if (wishlist.size() != 0) {
     %>
-    <h1 class="have-margin">Danh sách yêu thích (<%=wishlist.size()%>) </h1>
+    <h1 class="have-margin">Your wish list (<%=wishlist.size()%>) </h1>
     <div class="account-wishlist list-item " data-impress-list-title="Wishlist">
         <form id="wishlist" method="post">
             <% for (Product item : wishlist) {%>
@@ -65,7 +65,7 @@
                                 data-product-id="<%=item.getId()%>" data-product-price="299000" data-item-id='7643960'
                                 onclick="addToCardFromWishlist(<%=item.getId()%>)">
                             <span class="hidden-lg hidden-md"><i class="fa fa-shopping-cart"></i></span>
-                            <span class="hidden-xs hidden-sm">Thêm vào giỏ hàng</span>
+                            <span class="hidden-xs hidden-sm">Add to shopping cart</span>
                         </button>
                     </p>
                     <button type="button" class="btn btn-default btn-custom1 delete-wishlist-item"

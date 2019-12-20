@@ -25,7 +25,6 @@ public class ResetPass extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         email = Util.getParameterGeneric(request, "key1", "");
         hash = Util.getParameterGeneric(request, "key2", "");
-        System.out.println(email+hash);
         try {
             Statement statement = ConnectionDB.connect();
             Connection conn = statement.getConnection();

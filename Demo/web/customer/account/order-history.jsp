@@ -27,15 +27,15 @@
             <thead>
             <tr>
                 <th>
-                    <span class="hidden-xs hidden-sm hidden-md">Mã đơn hàng</span>
+                    <span class="hidden-xs hidden-sm hidden-md">Order id</span>
                     <span class="hidden-lg">Code</span>
                 </th>
-                <th>Ngày mua</th>
-                <th>Sản phẩm</th>
-                <th>Tổng tiền</th>
+                <th>Order date</th>
+                <th>Products</th>
+                <th>Total payent</th>
                 <th>
-                    <span class="hidden-xs hidden-sm hidden-md">Trạng thái <br> đơn hàng</span>
-                    <span class="hidden-lg">Trạng thái</span>
+                    <span class="hidden-xs hidden-sm hidden-md">Status</span>
+                    <span class="hidden-lg">Status</span>
                 </th>
             </tr>
             </thead>

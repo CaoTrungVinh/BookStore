@@ -27,9 +27,7 @@
                         <form action="<%= Util.fullPath("admin/orders/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
-                                <label
-                                >Customer <i class="fas fa-star"></i></label
-                                >
+                                <label>Customer</label>
                                 <input type="hidden" name="id_customer" id="id_customer">
                                 <select
                                         class="custom-select tm-select-accounts"
@@ -80,7 +78,7 @@
                                         name="shipping"
                                         type="text"
                                         class="form-control novalidate"
-<%--                                        required--%>
+                                <%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
