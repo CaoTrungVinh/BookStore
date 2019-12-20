@@ -86,7 +86,7 @@
                                 <label
                                 >Publisher</label
                                 >
-                                <input type="hidden" name="publisher" id="publisher" value="<%= books.getString("publisher")%>">>
+                                <input type="hidden" name="publisher" id="publisher" value="<%= books.getString("publisher")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectPublisher"
@@ -109,7 +109,7 @@
                                 <label
                                 >Author</label
                                 >
-                                <input type="hidden" name="author" id="author" value="<%= books.getString("author")%>">>
+                                <input type="hidden" name="author" id="author" value="<%= books.getString("author")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectAuthor"
