@@ -111,7 +111,7 @@ public class Account extends HttpServlet {
                 String  password = PasswordAuthentication.getSaltedHash(pass);
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
-                String sqlusers = "INSERT INTO users (name, email, fullname, gender, dateofbirth,email_hashed,password, address, phone, avt, idgroup, is_active) VALUE (?, ?, ?, ?,?,?, ?, ?,?,?,?,?)";
+                String sqlusers = "INSERT INTO users (name, email, fullname, gender,email_hashed,password, address, phone,  idgroup, is_active) VALUE (?,   ?,?,?, ?, ?,?,?,?,?)";
                 PreparedStatement pstCate = conn.prepareStatement(sqlusers);
 
 
@@ -132,14 +132,14 @@ public class Account extends HttpServlet {
                 pstCate.setString(2, email);
                 pstCate.setString(3, fullname);
                 pstCate.setString(4, gender);
-                pstCate.setString(5, dateofbirth);
-                pstCate.setString(6, email_hashed);
-                pstCate.setString(7, password);
-                pstCate.setString(8, address);
-                pstCate.setString(9, phone);
-                pstCate.setString(10, avt);
-                pstCate.setString(11, idgroup);
-                pstCate.setString(12, is_active);
+//                pstCate.setString(5, dateofbirth);
+                pstCate.setString(5, email_hashed);
+                pstCate.setString(6, password);
+                pstCate.setString(7, address);
+                pstCate.setString(8, phone);
+//                pstCate.setString(9, avt);
+                pstCate.setString(9, idgroup);
+                pstCate.setString(10, is_active);
                 pstCate.execute();
             } catch (SQLException e) {
                 e.printStackTrace();

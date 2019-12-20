@@ -112,7 +112,7 @@
                                     <% } %>
                                 </select>
                             </div>
-                    </div>
+<%--                    </div>--%>
                     <div class="col-9" style="margin: auto">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Orders Now</button>
                     </div>

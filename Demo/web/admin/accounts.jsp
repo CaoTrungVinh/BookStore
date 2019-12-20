@@ -8,7 +8,6 @@
 <body id="reportsPage">
 <div class="" id="home">
     <jsp:include page="header.jsp"/>
-
     <div class="container mt-5">
         <div class="row tm-content-row">
             <div class="col-12 tm-block-col">
