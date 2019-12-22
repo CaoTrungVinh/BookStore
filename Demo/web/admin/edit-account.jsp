@@ -75,39 +75,15 @@
                             <div class="form-group mb-3">
                                 <label
                                 >Gender</label>
-                                <%--                                <input type="hidden" name="gender" id="gender">--%>
-                                <%--                                <select--%>
-                                <%--                                        class="custom-select tm-select-accounts"--%>
-                                <%--                                        id="selectgender"--%>
-                                <%--                                        required>--%>
-                                <%--                                    <option data-cc="1">Nam--%>
-                                <%--                                    </option>--%>
-                                <%--                                    <option data-cc="0">Nữ--%>
-                                <%--                                    </option>--%>
-                                <%--                                </select>--%>
                                 <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
                                         value="<%= users.getString("gender")%>">
-                                    <option value="Male">Male
+                                    <option value="Nam">Male
                                     </option>
-                                    <option value="Female">Female
+                                    <option value="Nu">Female
                                     </option>
                                 </select>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label
-                                        for="dateofbirth"
-                                >Birth Day
-                                </label>
-                                <input
-                                        id="dateofbirth"
-                                        name="dateofbirth"
-                                        type="date"
-                                        class="form-control novalidate"
-<%--                                        value="<%= users.getDate("dateofbirth")%>"--%>
-                                        required
-                                />
-                            </div>
                             <div class="form-group mb-3">
                                 <label
                                         for="address"
@@ -136,40 +112,14 @@
 <%--                                        required--%>
                                 />
                             </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="avt"
-                                >Avt
-                                </label>
-                                <input
-                                        id="avt"
-                                        name="avt"
-                                        type="number"
-                                        class="form-control novalidate"
-                                        value="<%= users.getString("avt")%>"
-                                <%--                                        required--%>
-                                />
-                            </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="idgroup"
-                                >Group
-                                </label>
-                                <input
-                                        id="idgroup"
-                                        name="idgroup"
-                                        type="number"
-                                        class="form-control novalidate"
-                                        value="<%= users.getString("idgroup")%>"
-                                <%--                                        required--%>
-                                />
-                            </div>
 
                             <div class="form-group mb-3">
                                 <label>Active</label>
 
                                 <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
                                         value="<%= users.getString("is_active")%>">
+                                    <option value="1">Admin
+                                    </option>
                                     <option value="1">Admin
                                     </option>
                                     <option value="0">Customer

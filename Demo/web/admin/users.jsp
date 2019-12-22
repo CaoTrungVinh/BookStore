@@ -37,8 +37,8 @@
         </th>
         <th class="th-sm">PHONE
         </th>
-        <th class="th-sm">GROUP
-        </th>
+<%--        <th class="th-sm">GROUP--%>
+<%--        </th>--%>
         <th class="th-sm">ACTIVE
         </th>
         <th class="th-sm">
@@ -63,7 +63,7 @@
 
         <td><%= users.getString("address")%></td>
         <td><%= users.getString("phone")%></td>
-        <td><%= users.getString("idgroup")%></td>
+<%--        <td><%= users.getString("idgroup")%></td>--%>
 
         <td class="text-center">
             <% if (users.getString("is_active").equals("1")) {%>

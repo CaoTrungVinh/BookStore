@@ -111,19 +111,22 @@
                            class="table table-striped table-bordered "
                            style="width:100%">
                         <thead>
+                        <th scope="col" style="width: 1px">STT</th>
                         <th>NAME</th>
                         <th>ACTIVE</th>
-                        <th></th>
+                        <th style="width: 60px"></th>
                         </thead>
                         <tbody>
                         <%
                             ResultSet categories = (ResultSet) request.getAttribute("categories");
-//                            int stt = 0;
+                            int sttt = 0;
                             while (categories.next()) {
-//                                stt++;
+                                sttt++;
                         %>
                         <tr>
-                            <td class="tm-product-name categories-name">
+                            <td scope="row" class="text-center"><%= sttt%>
+                            </td>
+                            <td class="tm-product-name categories-name" style="width: 45%">
                                 <a href="<%= Util.fullPath("admin/categories/see?id=" + categories.getString("id")) %>"><%= categories.getString("name")%>
                                 </a>
                             </td>
