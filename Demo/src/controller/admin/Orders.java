@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @WebServlet(urlPatterns = {"/admin/orders", "/admin/orders/delete",
         "/admin/orders/add", "/admin/orders/edit", "/admin/orders/see"})
 
 public class Orders extends HttpServlet {
-
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -26,8 +27,15 @@ public class Orders extends HttpServlet {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
                 String sqlCategory = "SELECT * FROM orders";
+                String sqlcustomer = "SELECT * FROM users";
+
+                PreparedStatement pstcustomer = conn.prepareStatement(sqlcustomer);
+                ResultSet customer = pstcustomer.executeQuery();
+
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                 ResultSet orders = pstCate.executeQuery();
+
+                request.setAttribute("customer", customer);
                 request.setAttribute("orders", orders);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -35,8 +43,7 @@ public class Orders extends HttpServlet {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/orders.jsp").forward(request, response);
-        }
-        else if (request.getServletPath().equals("/admin/orders/add")) {
+        } else if (request.getServletPath().equals("/admin/orders/add")) {
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
@@ -57,9 +64,7 @@ public class Orders extends HttpServlet {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/add-orders.jsp").forward(request, response);
-        }
-
-        else if (request.getServletPath().equals("/admin/orders/edit")) {
+        } else if (request.getServletPath().equals("/admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -90,8 +95,7 @@ public class Orders extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/orders/delete")) {
+        } else if (request.getServletPath().equals("/admin/orders/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -119,23 +123,27 @@ public class Orders extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         if (request.getServletPath().equals("/admin/orders/add")) {
             String id_customer = request.getParameter("id_customer");
-            String orderDate = request.getParameter("orderDate");
             String subtotal = request.getParameter("subtotal");
             String shipping = request.getParameter("shipping");
             String total = request.getParameter("total");
             String statusID = request.getParameter("statusID");
+
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyy/MM/dd hh:mm:ss");
+            String orderDate = formatter.format(date);
+
+//            response.getWriter().println(id_customer);
+//            response.getWriter().println(orderDate);
+//            response.getWriter().println(subtotal);
+//            response.getWriter().println(shipping);
+//            response.getWriter().println(total);
+//            response.getWriter().println(statusID);
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
                 String sqlCategory = "INSERT INTO orders (id_customer, orderDate, subtotal, shipping, total, statusID) VALUE (?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
-//                pstCate.setInt(1, Integer.parseInt(id_customer));
-//                pstCate.setDate(2, Date.valueOf(orderDate));
-//                pstCate.setDouble(3, Double.parseDouble(subtotal));
-//                pstCate.setDouble(4, Double.parseDouble(shipping));
-//                pstCate.setDouble(5, Double.parseDouble(total));
-//                pstCate.setInt(6, Integer.parseInt(statusID));
                 pstCate.setString(1, id_customer);
                 pstCate.setString(2, orderDate);
                 pstCate.setString(3, subtotal);

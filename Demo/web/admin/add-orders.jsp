@@ -27,7 +27,8 @@
                         <form action="<%= Util.fullPath("admin/orders/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
-                                <label>Customer</label>
+                                <label
+                                >Customer<a style="color: red"> *</a></label>
                                 <input type="hidden" name="id_customer" id="id_customer">
                                 <select
                                         class="custom-select tm-select-accounts"
@@ -42,19 +43,7 @@
                                     <% } %>
                                 </select>
                             </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="orderDate"
-                                >Orders Date
-                                </label>
-                                <input
-                                        id="orderDate"
-                                        name="orderDate"
-                                        type="date"
-                                        class="form-control novalidate"
-                                        required
-                                />
-                            </div>
+
                             <div class="form-group mb-3">
                                 <label
                                         for="subtotal"
@@ -63,9 +52,9 @@
                                 <input
                                         id="subtotal"
                                         name="subtotal"
-                                        type="text"
+                                        type="n"
                                         class="form-control novalidate"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -84,7 +73,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="total"
-                                >Total
+                                >Total<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="total"
@@ -96,7 +85,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Statuses</label
+                                >Statuses<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="statusID" id="statusID">
                                 <select
@@ -112,7 +101,7 @@
                                     <% } %>
                                 </select>
                             </div>
-<%--                    </div>--%>
+                    </div>
                     <div class="col-9" style="margin: auto">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Orders Now</button>
                     </div>

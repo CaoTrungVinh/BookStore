@@ -41,6 +41,7 @@
     <tbody>
     <%
         ResultSet orders = (ResultSet) request.getAttribute("orders");
+//        ResultSet customer = (ResultSet) request.getAttribute("customer");
         int stt = 0;
         while (orders.next()) {
             stt++;
@@ -48,7 +49,13 @@
     <tr>
         <td scope="row" class="text-center"><%= stt%>
         </td>
-        <td><%= orders.getString("id_customer")%>
+        <td>
+<%--            <%--%>
+<%--                ResultSet customer = (ResultSet) request.getAttribute("customer");--%>
+<%--                while (customer.next()) {--%>
+<%--            %>--%>
+            <%= orders.getString("id_customer")%>
+<%--            <% } %>--%>
         </td>
         <td><%= orders.getString("orderDate")%>
         </td>

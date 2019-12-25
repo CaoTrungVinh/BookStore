@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
-                                >Name
+                                >Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -42,7 +42,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="email"
-                                >Email
+                                >Email<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="email"
@@ -55,7 +55,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="fullname"
-                                >Full name
+                                >Full name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="fullname"
@@ -68,7 +68,7 @@
 
                             <div class="form-group mb-3">
                                 <label
-                                >Gender</label>
+                                >Gender<a style="color: red"> *</a></label>
                                 <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
                                     <option value="Nam">Male
                                     </option>
@@ -80,12 +80,12 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="pass"
-                                >Pass
+                                >Pass<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="pass"
                                         name="pass"
-                                        type="text"
+                                        type="password"
                                         class="form-control novalidate"
                                         required
                                 />
@@ -100,7 +100,7 @@
                                         name="address"
                                         type="text"
                                         class="form-control novalidate"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -113,38 +113,12 @@
                                         name="phone"
                                         type="number"
                                         class="form-control novalidate"
-                                        required
+<%--                                        required--%>
                                 />
                             </div>
-<%--                            <div class="form-group mb-3">--%>
-<%--                                <label--%>
-<%--                                        for="avt"--%>
-<%--                                >Avt--%>
-<%--                                </label>--%>
-<%--                                <input--%>
-<%--                                        id="avt"--%>
-<%--                                        name="avt"--%>
-<%--                                        type="number"--%>
-<%--                                        class="form-control novalidate"--%>
-<%--&lt;%&ndash;                                        required&ndash;%&gt;--%>
-<%--                                />--%>
-<%--                            </div>--%>
-<%--                            <div class="form-group mb-3">--%>
-<%--                                <label--%>
-<%--                                        for="idgroup"--%>
-<%--                                >Group--%>
-<%--                                </label>--%>
-<%--                                <input--%>
-<%--                                        id="idgroup"--%>
-<%--                                        name="idgroup"--%>
-<%--                                        type="number"--%>
-<%--                                        class="form-control novalidate"--%>
-<%--&lt;%&ndash;                                        required&ndash;%&gt;--%>
-<%--                                />--%>
-<%--                            </div>--%>
 
                             <div class="form-group mb-3">
-                                <label>Active</label>
+                                <label>Active<a style="color: red"> *</a></label>
 
                                 <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
                                     <option value="1">Admin

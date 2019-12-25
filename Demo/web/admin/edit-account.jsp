@@ -120,8 +120,6 @@
                                         value="<%= users.getString("is_active")%>">
                                     <option value="1">Admin
                                     </option>
-                                    <option value="1">Admin
-                                    </option>
                                     <option value="0">Customer
                                     </option>
                                 </select>
