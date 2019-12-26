@@ -103,11 +103,11 @@ public class Account extends HttpServlet {
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
             String avt = request.getParameter("avt");
-//            String idgroup = request.getParameter("idgroup");
             String is_active = request.getParameter("is_active");
+
+//            response.getWriter().println(is_active);
             try {
                 String email_hashed = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
-//                String pass = "000";
                 String  password = PasswordAuthentication.getSaltedHash(pass);
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();

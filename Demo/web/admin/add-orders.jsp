@@ -47,27 +47,27 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="subtotal"
-                                >Subtotal
+                                >Subtotal<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="subtotal"
                                         name="subtotal"
-                                        type="n"
+                                        type="tel"
                                         class="form-control novalidate"
-<%--                                        required--%>
+                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
                                         for="shipping"
-                                >Shipping
+                                >Shipping<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="shipping"
                                         name="shipping"
                                         type="text"
                                         class="form-control novalidate"
-                                <%--                                        required--%>
+                                                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">

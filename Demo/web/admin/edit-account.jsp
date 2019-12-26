@@ -32,7 +32,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
-                                >Name
+                                >Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -46,7 +46,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="email"
-                                >Email
+                                >Email<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="email"
@@ -60,7 +60,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="fullname"
-                                >Full name
+                                >Full name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="fullname"
@@ -74,15 +74,24 @@
 
                             <div class="form-group mb-3">
                                 <label
-                                >Gender</label>
-                                <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
-                                        value="<%= users.getString("gender")%>">
-                                    <option value="Nam">Male
+                                >Gender<a style="color: red"> *</a></label>
+                                <input type="hidden" name="gender" id="gender"
+                                       value="<%= users.getString("gender")%>">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectgender"
+                                        required>
+                                    <option
+<%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
+                                            data-cc="Nam">Male
                                     </option>
-                                    <option value="Nu">Female
+                                    <option
+<%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
+                                            data-cc="Nu">Female
                                     </option>
                                 </select>
                             </div>
+
 
                             <div class="form-group mb-3">
                                 <label
@@ -114,13 +123,19 @@
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Active</label>
-
-                                <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;"
-                                        value="<%= users.getString("is_active")%>">
-                                    <option value="1">Admin
+                                <label
+                                >Active<a style="color: red"> *</a></label
+                                >
+                                <input type="hidden" name="is_active" id="is_active">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectis_active"
+                                        required>
+                                    <option
+                                            data-cc="1">Admin
                                     </option>
-                                    <option value="0">Customer
+                                    <option
+                                            data-cc="0">Customer
                                     </option>
                                 </select>
                             </div>
@@ -197,10 +212,10 @@
                 // el is the selected item "option"
                 $('#id_customer').val(el.data('cc'));
             });
-        $('#selectactive').editableSelect()
+        $('#selectis_active').editableSelect()
             .on('select.editable-select', function (e, el) {
                 // el is the selected item "option"
-                $('#active').val(el.data('cc'));
+                $('#is_active').val(el.data('cc'));
             });
         $('#selectgender').editableSelect()
             .on('select.editable-select', function (e, el) {

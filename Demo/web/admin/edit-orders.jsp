@@ -27,12 +27,14 @@
                         <%
                             ResultSet orders = (ResultSet) request.getAttribute("orders");
                         %>
-                        <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                >Customer</label>
-                                <input type="hidden" name="id_customer" id="id_customer" value="<%= orders.getString("id_customer")%>">
+                                >Customer<a style="color: red"> *</a></label>
+                                <input type="hidden" name="id_customer" id="id_customer"
+                                       value="<%= orders.getString("id_customer")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectcustomer"
@@ -41,26 +43,17 @@
                                         ResultSet customer = (ResultSet) request.getAttribute("customer");
                                         while (customer.next()) {
                                     %>
-                                    <option data-cc="<%= customer.getString("id")%>"><%= customer.getString("id")%>
+                                    <option
+                                            <%= customer.getString("id").equals(orders.getString("id_customer")) ? "selected" : "" %>
+                                            data-cc="<%= customer.getString("id")%>"><%= customer.getString("fullname")%>
                                     </option>
                                     <% } %>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="orderDate">Orders Date </label>
-                                <input
-                                        id="orderDate"
-                                        name="orderDate"
-                                        type="date"
-                                        class="form-control novalidate"
-                                        value="<%= orders.getDate("orderDate")%>"
-                                        required
-                                />
-                            </div>
-                            <div class="form-group mb-3">
                                 <label
                                         for="subtotal"
-                                >Subtotal
+                                >Subtotal<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="subtotal"
@@ -74,7 +67,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="shipping"
-                                >Shipping
+                                >Shipping<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="shipping"
@@ -82,13 +75,13 @@
                                         type="text"
                                         class="form-control novalidate"
                                         value="<%= orders.getString("shipping")%>"
-<%--                                        required--%>
+                                                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">
                                 <label
                                         for="total"
-                                >Total
+                                >Total<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="total"
@@ -101,9 +94,10 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Statuses</label
+                                >Statuses<a style="color: red"> *</a></label
                                 >
-                                <input type="hidden" name="statusID" id="statusID" value="<%= orders.getString("statusID")%>">
+                                <input type="hidden" name="statusID" id="statusID"
+                                       value="<%= orders.getString("statusID")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectstatusID"
@@ -112,7 +106,9 @@
                                         ResultSet statuses = (ResultSet) request.getAttribute("statuses");
                                         while (statuses.next()) {
                                     %>
-                                    <option data-cc="<%= statuses.getString("id")%>"><%= statuses.getString("id")%>
+                                    <option
+                                            <%= statuses.getString("id").equals(orders.getString("statusID")) ? "selected" : "" %>
+                                            data-cc="<%= statuses.getString("id")%>"><%= statuses.getString("status")%>
                                     </option>
                                     <% } %>
                                 </select>
