@@ -74,7 +74,6 @@
                         <tbody>
                         <%
                             ResultSet orders = (ResultSet) request.getAttribute("orders");
-//        ResultSet customer = (ResultSet) request.getAttribute("customer");
                             int stt = 0;
                             while (orders.next()) {
                                 stt++;
@@ -83,32 +82,32 @@
                             <td scope="row" class="text-center"><%= stt%>
                             </td>
                             <td>
-                                <%--            &lt;%&ndash;%>
-                                <%--                ResultSet customer = (ResultSet) request.getAttribute("customer");--%>
-                                <%--                while (customer.next()) {--%>
-                                <%--            %>--%>
-                                <%= orders.getString("id_customer")%>
-                                <%--            <% } %>--%>
+                                <%= orders.getString(2)%>
                             </td>
-                            <td><%= orders.getString("orderDate")%>
+                            <td>
+                                <%= orders.getString(3)%>
                             </td>
-                            <td><%= orders.getString("subtotal")%>
+                            <td>
+                                <%= orders.getString(4)%>
                             </td>
-                            <td><%= orders.getString("shipping")%>
+                            <td>
+                                <%= orders.getString(5)%>
                             </td>
-                            <td><%= orders.getString("total")%>
+                            <td>
+                                <%= orders.getString(6)%>
                             </td>
-                            <td><%= orders.getString("statusID")%>
+                            <td>
+                                <%= orders.getString(7)%>
                             </td>
                             <td style="text-align: center; width: 100px">
                                 <a class="delete"
-                                   href="<%= Util.fullPath("admin/orders/edit?id=" + orders.getString("id")) %>"
+                                   href="<%= Util.fullPath("admin/orders/edit?id=" + orders.getString(1)) %>"
                                    class="tm-product-delete-link">
                                     <i class="fas fa-edit"></i>
                                 </a>
 
                                 <a class="delete"
-                                   href="<%= Util.fullPath("admin/orders/delete?id=" + orders.getString("id")) %>"
+                                   href="<%= Util.fullPath("admin/orders/delete?id=" + orders.getString(1)) %>"
                                    class="tm-product-delete-link">
                                     <i class="far fa-trash-alt tm-product-delete-icon"></i>
                                 </a>
@@ -202,7 +201,7 @@
 <!-- https://getbootstrap.com/ -->
 <script src="/public/admin/js/tooplate-scripts.js"></script>
 <script>
-    Chart.defaults.global.defaultFontColor = 'black';
+    Chart.defaults.global.defaultFontColor = '#90949C';
     let ctxLine,
         ctxBar,
         ctxPie,

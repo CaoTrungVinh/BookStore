@@ -88,7 +88,7 @@
                                         name="total"
                                         type="text"
                                         class="form-control novalidate"
-                                        value="<%= orders.getString("shipping")%>"
+                                        value="<%= orders.getString("total")%>"
                                         required
                                 />
                             </div>
