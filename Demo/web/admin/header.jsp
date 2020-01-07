@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<%= Util.fullPath("/admin") %>">
+                    <a class="nav-link active" href="<%= Util.fullPath("admin") %>">
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                         <span class="sr-only">(current)</span>
@@ -32,12 +32,6 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<%= Util.fullPath("admin/orders") %>">
-                        <i class="fas fa-shopping-cart"></i>
-                        Order
-                    </a>
-                </li>
 
 
                 <li class="nav-item">

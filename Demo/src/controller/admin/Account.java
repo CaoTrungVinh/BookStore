@@ -99,47 +99,31 @@ public class Account extends HttpServlet {
             String email = request.getParameter("email");
             String fullname = request.getParameter("fullname");
             String gender = request.getParameter("gender");
-            String dateofbirth = request.getParameter("dateofbirth");
+            String pass = request.getParameter("pass");
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
             String avt = request.getParameter("avt");
-            String idgroup = request.getParameter("idgroup");
             String is_active = request.getParameter("is_active");
+
+//            response.getWriter().println(is_active);
             try {
                 String email_hashed = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
-                String pass = "000";
                 String  password = PasswordAuthentication.getSaltedHash(pass);
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
-                String sqlusers = "INSERT INTO users (name, email, fullname, gender,email_hashed,password, address, phone,  idgroup, is_active) VALUE (?,   ?,?,?, ?, ?,?,?,?,?)";
+                String sqlusers = "INSERT INTO users (name, email, fullname, gender,email_hashed,password, address, phone, is_active) VALUE (?,?,?, ?, ?,?,?,?,?)";
                 PreparedStatement pstCate = conn.prepareStatement(sqlusers);
-
-
-//            response.getWriter().println(name);
-//            response.getWriter().println(email);
-//            response.getWriter().println(fullname);
-//            response.getWriter().println(gender);
-//            response.getWriter().println(dateofbirth);
-//            response.getWriter().println(email_hashed);
-//            response.getWriter().println(password);
-//            response.getWriter().println(address);
-//            response.getWriter().println(phone);
-//            response.getWriter().println(avt);
-//            response.getWriter().println(idgroup);
-//            response.getWriter().println(is_active);
 
                 pstCate.setString(1, name);
                 pstCate.setString(2, email);
                 pstCate.setString(3, fullname);
                 pstCate.setString(4, gender);
-//                pstCate.setString(5, dateofbirth);
                 pstCate.setString(5, email_hashed);
                 pstCate.setString(6, password);
                 pstCate.setString(7, address);
                 pstCate.setString(8, phone);
-//                pstCate.setString(9, avt);
-                pstCate.setString(9, idgroup);
-                pstCate.setString(10, is_active);
+//                pstCate.setString(9, idgroup);
+                pstCate.setString(9, is_active);
                 pstCate.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -158,20 +142,13 @@ public class Account extends HttpServlet {
                 String email = request.getParameter("email");
                 String fullname = request.getParameter("fullname");
                 String gender = request.getParameter("gender");
-                String dateofbirth = request.getParameter("dateofbirth");
                 String address = request.getParameter("address");
                 String phone = request.getParameter("phone");
-                String avt = request.getParameter("avt");
-                String idgroup = request.getParameter("idgroup");
                 String is_active = request.getParameter("is_active");
                 try {
-                    String email_hashed = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
-                    String pass = "000";
-                    String  password = PasswordAuthentication.getSaltedHash(pass);
-
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
-                    String sqlCategory = "UPDATE users SET name=?,email=?,fullname=?,gender=?,dateofbirth=?,email_hashed=?,password=?,address=?,phone=?,avt=?,idgroup=?,is_active=? where id=?";
+                    String sqlCategory = "UPDATE users SET name=?,email=?,fullname=?,gender=?,address=?,phone=?,is_active=? where id=?";
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
 
 
@@ -179,15 +156,10 @@ public class Account extends HttpServlet {
                     pstCate.setString(2, email);
                     pstCate.setString(3, fullname);
                     pstCate.setString(4, gender);
-                    pstCate.setString(5, dateofbirth);
-                    pstCate.setString(6, email_hashed);
-                    pstCate.setString(7, password);
-                    pstCate.setString(8, address);
-                    pstCate.setString(9, phone);
-                    pstCate.setString(10, avt);
-                    pstCate.setString(11, idgroup);
-                    pstCate.setString(12, is_active);
-                    pstCate.setString(13, id);
+                    pstCate.setString(5, address);
+                    pstCate.setString(6, phone);
+                    pstCate.setString(7, is_active);
+                    pstCate.setString(8, id);
                     pstCate.execute();
                 } catch (SQLException e) {
                     e.printStackTrace();

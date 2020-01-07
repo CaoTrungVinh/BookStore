@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
-                                >Name
+                                >Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -42,7 +42,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="email"
-                                >Email
+                                >Email<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="email"
@@ -55,7 +55,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="fullname"
-                                >Full name
+                                >Full name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="fullname"
@@ -68,34 +68,43 @@
 
                             <div class="form-group mb-3">
                                 <label
-                                >Gender</label>
-<%--                                <input type="hidden" name="gender" id="gender">--%>
-<%--                                <select--%>
-<%--                                        class="custom-select tm-select-accounts"--%>
-<%--                                        id="selectgender"--%>
-<%--                                        required>--%>
-<%--                                    <option data-cc="1">Nam--%>
-<%--                                    </option>--%>
-<%--                                    <option data-cc="0">Nữ--%>
-<%--                                    </option>--%>
-<%--                                </select>--%>
-                                <select name="gender"  style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
-                                    <option value="Nam">Male
+                                >Gender<a style="color: red"> *</a></label
+                                >
+                                <input type="hidden" name="gender" id="gender">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectgender"
+                                        required>
+                                    <option
+                                            data-cc="Nam">Male
                                     </option>
-                                    <option value="Nữ">Female
+                                    <option
+                                            data-cc="Nu">Female
                                     </option>
                                 </select>
                             </div>
 
+<%--                            <div class="form-group mb-3">--%>
+<%--                                <label--%>
+<%--                                >Gender<a style="color: red"> *</a></label>--%>
+<%--                                <select name="gender"--%>
+<%--                                        style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">--%>
+<%--                                    <option value="Nam">Male--%>
+<%--                                    </option>--%>
+<%--                                    <option value="Nu">Female--%>
+<%--                                    </option>--%>
+<%--                                </select>--%>
+<%--                            </div>--%>
+
                             <div class="form-group mb-3">
                                 <label
-                                        for="dateofbirth"
-                                >Birth Day
+                                        for="pass"
+                                >Pass<a style="color: red"> *</a>
                                 </label>
                                 <input
-                                        id="dateofbirth"
-                                        name="dateofbirth"
-                                        type="date"
+                                        id="pass"
+                                        name="pass"
+                                        type="password"
                                         class="form-control novalidate"
                                         required
                                 />
@@ -110,7 +119,7 @@
                                         name="address"
                                         type="text"
                                         class="form-control novalidate"
-                                        required
+                                <%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -121,48 +130,30 @@
                                 <input
                                         id="phone"
                                         name="phone"
-                                        type="number"
+                                        type="tel"
                                         class="form-control novalidate"
-                                        required
-                                />
-                            </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="avt"
-                                >Avt
-                                </label>
-                                <input
-                                        id="avt"
-                                        name="avt"
-                                        type="number"
-                                        class="form-control novalidate"
-<%--                                        required--%>
-                                />
-                            </div>
-                            <div class="form-group mb-3">
-                                <label
-                                        for="idgroup"
-                                >Group
-                                </label>
-                                <input
-                                        id="idgroup"
-                                        name="idgroup"
-                                        type="number"
-                                        class="form-control novalidate"
-<%--                                        required--%>
+                                <%--                                        required--%>
                                 />
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Active</label>
-
-                                <select name="is_active" style="display: block;width: 100%;height: calc(2.25rem + 2px);padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;color: #495057;background-color: #fff;background-clip: padding-box;border: 1px solid #ced4da;border-radius: .25rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;">
-                                    <option value="1">Admin
+                                <label
+                                >Active<a style="color: red"> *</a></label
+                                >
+                                <input type="hidden" name="is_active" id="is_active">
+                                <select
+                                        class="custom-select tm-select-accounts"
+                                        id="selectis_active"
+                                        required>
+                                    <option
+                                            data-cc="1">Admin
                                     </option>
-                                    <option value="0">Customer
+                                    <option
+                                            data-cc="0">Customer
                                     </option>
                                 </select>
                             </div>
+
                     </div>
                     <div class="col-9" style="margin: auto">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Account Now</button>
@@ -236,10 +227,10 @@
                 // el is the selected item "option"
                 $('#id_customer').val(el.data('cc'));
             });
-        $('#selectactive').editableSelect()
+        $('#selectis_active').editableSelect()
             .on('select.editable-select', function (e, el) {
                 // el is the selected item "option"
-                $('#active').val(el.data('cc'));
+                $('#is_active').val(el.data('cc'));
             });
         $('#selectgender').editableSelect()
             .on('select.editable-select', function (e, el) {

@@ -32,7 +32,7 @@
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Categories Name
+                                        for="name">Categories Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
