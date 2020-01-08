@@ -38,9 +38,23 @@ public class Util {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(m);
+    }
+
+    public static int price(String money, String discount) {
+        double m = 0;
+        double d = 0;
+        try {
+            m = Double.parseDouble(money);
+            d = Double.parseDouble(discount) / 100;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        return (int) (m * (1-d));
     }
 
     public static void updateOrderDB(Connection conn, Cart cart) throws SQLException {

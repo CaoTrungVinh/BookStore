@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 @WebServlet("/list-book")
@@ -63,16 +60,16 @@ public class ListBook extends HttpServlet {
             request.setAttribute("rsconnNSX", rsconnNSX);
 
             Connection conn1 = ConnectionDB.getConnection();
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM" +
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description, books.discount FROM" +
                     " img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ";
 
 
             if (idType != 0) {
-                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description, books.discount FROM" +
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType + " GROUP BY img.id_book ";
             }
             if (idNsx != 0) {
-                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description, books.discount FROM" +
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND publisher = " + idNsx + " GROUP BY img.id_book ";
 
             }
