@@ -325,7 +325,7 @@
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
                                                 <img alt=""
                                                      src="/public/customer/img/shop/images/<%= book.getString(4)%>"
-                                                     style="margin-top: 30px">
+                                                    style="margin-top: 10px">
 
 
                                             </a>
@@ -347,7 +347,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="banner-bottom text-center" style="height: 150px;">
+                                        <div class="banner-bottom text-center" style="height: 180px;">
                                             <div class="banner-bottom-title">
                                                 <a href="<%=Util.fullPath("single-product?id=" +book.getString("id"))%>"><%= book.getString(2)%>
                                                 </a>
@@ -374,13 +374,13 @@
 
                                                     <% if (book.getString("discount") != null) {%>
 <p class="price">
-    <%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>VND
+    <%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%> VND
     <span class="percent "> -<%= book.getString("discount")%>%</span>
 
-    <span class="original "> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
+    <span class="original "> <%=  Util.showPrice(book.getInt("price"))%> VND</span>
 </p>
                                                     <% } else { %>
-                                                    <%=  Util.showPrice(book.getInt("price"))%>VND
+                                                    <%=  Util.showPrice(book.getInt("price"))%> VND
                                                     <% } %>
                                                 </span>
                                             </div>

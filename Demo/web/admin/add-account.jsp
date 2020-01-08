@@ -24,7 +24,7 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-9 col-lg-6 col-md-12" style="margin: auto">
-                        <form action="<%= Util.fullPath("/admin/account/add") %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/account/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
