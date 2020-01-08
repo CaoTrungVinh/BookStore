@@ -112,10 +112,10 @@ public class Account extends HttpServlet {
 
                         if (PasswordAuthentication.check(oldPass, rs.getString("password"))) {
 
-                            if (newPass.length() < 6 && newPass.length() > 32) {
+                            if (newPass.length() < 8 && newPass.length() > 32) {
                                 System.out.println("new pass");
-                                request.setAttribute("errNewPass", "Mật khẩu phải từ 6-32 kí tự");
-                                request.setAttribute("noti", "Cập nhật không thành công");
+                                request.setAttribute("errNewPass", "Password length must be between 8 and 32 character");
+                                request.setAttribute("noti", "Update successfully");
                                 response.sendRedirect("/account/edit?id" + id);
                                 return;
                             }
@@ -134,8 +134,8 @@ public class Account extends HttpServlet {
 
                             } else {
                                 System.out.println("re pass");
-                                request.setAttribute("errRePass", "Mật khẩu không trùng khớp");
-                                request.setAttribute("noti", "Cập nhật không thành công");
+                                request.setAttribute("errRePass", "Password not match");
+                                request.setAttribute("noti", "Update fail");
                                 response.sendRedirect("/account/edit?id" + id);
                                 return;
                             }
@@ -143,8 +143,8 @@ public class Account extends HttpServlet {
 
                         } else {
                             System.out.println("old pass");
-                            request.setAttribute("errOldPass", "Mật khẩu cũ không đúng");
-                            request.setAttribute("noti", "Cập nhật không thành công");
+                            request.setAttribute("errOldPass", "Old password not correct");
+                            request.setAttribute("noti", "Update fail");
                             response.sendRedirect("/account/edit?id" + id);
                             return;
                         }
@@ -182,13 +182,11 @@ public class Account extends HttpServlet {
                     session.setAttribute("user", user);
 
 
-                } catch (SQLException e) {
-                    e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            request.setAttribute("noti", "Cập nhật thành công");
+            request.setAttribute("noti", "Update successfully");
             response.sendRedirect("/account/edit?id=" + id);
         }
 

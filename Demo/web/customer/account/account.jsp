@@ -8,7 +8,7 @@
         <form class="content" action="<%= Util.fullPath("/account/edit?id="+user.getId()) %>" method="post" action=""
               id="edit-account">
             <div class="form-group">
-                <label class="control-label">Họ tên </label>
+                <label class="control-label">Full name</label>
                 <div class="input-wrap">
                     <input type="text" name="name" class="form-control" id="name"
                            value="<%= user.getUserName()%>">
@@ -30,7 +30,7 @@
             <%--                </div>--%>
             <%--            </div>--%>
             <div class="form-group">
-                <label class="control-label" for="full_name">Số điện thoại </label>
+                <label class="control-label" for="phone">Phone number </label>
                 <div class="input-wrap">
                     <input type="text" name="phone" class="form-control" id="phone"
                            value="<%= user.getPhone()%>">
@@ -38,17 +38,17 @@
                 </div>
             </div>
             <div class="form-group gender-select-wrap" id="register_name">
-                <label class="control-label">Giới tính
+                <label class="control-label">Gender
                 </label>
                 <div class="input-wrap">
-                    <span class="help-block">Vui lòng chọn giới tính</span>
+                    <span class="help-block">Please choose your render</span>
                     <div class="row">
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="Nam" id="gender_male"
                                        class="gender" <% if ((user.getGender()!=null) && (user.getGender().equals("Nam"))) {%>
                                        checked <% }  %>>
-                                Nam
+                                Male
                             </label>
                         </div>
                         <div class="col-xs-4">
@@ -56,7 +56,7 @@
                                 <input type="radio" name="gender" value="Nữ" id="gender_female"
                                        class="gender" <% if ((user.getGender()!=null) && user.getGender().equals("Nữ")) {%>
                                        checked <% }  %>>
-                                Nữ
+                                Female
                             </label>
                         </div>
 
@@ -67,13 +67,11 @@
 
 
             <div class="form-group ">
-                <label class="control-label no-lh" for="">
-                    Ngày sinh
-                    <span>(Lựa chọn)</span>
+                <label class="control-label no-lh" for="dateofbirth">
+                    Birthday
                 </label>
-
                 <div class="input-wrap">
-                    <input class="form-control" type="date" name="dateofbirth" value="<%=user.getDateofbirth()%>">
+                    <input class="form-control" type="date" name="dateofbirth" id="dateofbirth" value="<%=user.getDateofbirth()%>">
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -87,35 +85,35 @@
                     <label class="checkbox">
                         <input type="checkbox" id="is_change_pass" name="is_change_pass" style="position: relative;
 											margin-left: 0px;">
-                        Thay đổi mật khẩu
+                        Change password
                     </label>
                 </div>
             </div>
             <div class="password-group" id="chagne-pass-gr">
                 <div class="form-group">
-                    <label class="control-label" for="old_password">Mật khẩu cũ</label>
+                    <label class="control-label" for="old_password">Old password</label>
                     <div class="input-wrap">
                         <input type="password" name="old_password" class="form-control"
                                id="old_password" value="" autocomplete="off"
-                               placeholder="Nhập mật khẩu cũ">
+                               placeholder="Enter old password">
                         <span class="help-block"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="new_password">Mật khẩu mới</label>
+                    <label class="control-label" for="new_password">New password</label>
                     <div class="input-wrap">
                         <input type="password" name="new_password" class="form-control"
                                id="new_password" value="" autocomplete="off"
-                               placeholder="Mật khẩu từ 6 đến 32 ký tự">
+                               placeholder="Enter 8 to 32 character password">
                         <span class="help-block"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="re_new_password">Nhập lại mật khẩu</label>
+                    <label class="control-label" for="re_new_password">Re-enter password</label>
                     <div class="input-wrap">
                         <input type="password" name="re_new_password" class="form-control"
                                id="re_new_password" value="" autocomplete="off"
-                               placeholder="Nhập lại mật khẩu mới">
+                               placeholder="Enter new password">
                         <span class="help-block"></span>
                     </div>
                 </div>
@@ -123,8 +121,7 @@
             </div>
             <div class="form-group">
                 <div class="input-wrap margin">
-                    <input type="hidden" name="customer_birthdate" value="1998-11-30">
-                    <button type="submit" class="btn btn-info btn-block btn-update">Cập nhật</button>
+                    <button type="submit" class="btn btn-info btn-block btn-update">Update</button>
                 </div>
             </div>
         </form>
