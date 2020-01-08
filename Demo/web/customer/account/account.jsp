@@ -31,7 +31,7 @@
                         <div class="col-xs-4">
                             <label>
                                 <input type="radio" name="gender" value="on" id="gender_male"
-                                       class="gender" <% if (user.getGender().equals("Nam")) {%> checked <% }  %>>
+                                       class="gender" <% if (user.getGender().equals("Nam")) {%> checked <% }  %>
                                 Male
                             </label>
                         </div>

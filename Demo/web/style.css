@@ -3166,11 +3166,13 @@ input[type=number]::-webkit-outer-spin-button {
 ._4uyl ._1cb {
     background-color: #f7f7f7;
 }
-.alert-danger-my{
+
+.alert-danger-my {
     color: #a94442;
     margin-top: -15px;
     font-size: 12px;
     margin-bottom: 10px;
 }
+
 
 

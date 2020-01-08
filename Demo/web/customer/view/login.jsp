@@ -78,11 +78,34 @@
             margin-right: 1rem;
         }
 
-        /*.login-form {*/
-        /*    padding: 30px 70px !important;*/
-        /*    border-radius: 7px;*/
-        /*    border: 1px solid rgb(204, 204, 204);*/
-        /*}*/
+        .fb_iframe_widget {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fb_iframe_widget > span {
+            border-radius: 10px !important;
+            color: #141313;
+            font-size: 12px;
+            font-weight: 500;
+            width: 100%;
+            height: 50px !important;
+            padding: 14px;
+            line-height: 1.42857143 !important;
+            background-image: none;
+            /* border: 2px solid #dce0df; */
+            /* background-color: #fff; */
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 0px 0px rgba(0, 0, 0, .075);
+        }
+
+        .fb_iframe_widget iframe {
+            position: relative !important;
+        }
     </style>
     <script>
         // This is called with the results from from FB.getLoginStatus().
@@ -92,38 +115,52 @@
             console.log(response.authResponse.accessToken);
             //alert(response.authResponse.accessToken);
             if (response.status === 'connected') {
-                window.location.href='FB_login?access_token='+response.authResponse.accessToken;
+                window.location.href = 'FB_login?access_token=' + response.authResponse.accessToken;
             } else {
                 // The person is not logged into your app or we are unable to tell.
-                document.getElementById('status').innerHTML = 'Please log ' +
-                    'into this app.';
+                alert('Please log into this app.');
             }
         }
+
         // This function is called when someone finishes with the Login
         // Button. See the onlogin handler attached to it in the sample
         // code below.
         function checkLoginState() {
-            FB.getLoginStatus(function(response) {
+            FB.getLoginStatus(function (response) {
                 statusChangeCallback(response);
             });
         }
-        window.fbAsyncInit = function() {
+
+        window.fbAsyncInit = function () {
             FB.init({
-                appId : '1060067031013824',
-                cookie : true, // enable cookies to allow the server to access
+                appId: '1060067031013824',
+                cookie: true, // enable cookies to allow the server to access
                 // the session
-                xfbml : true, // parse social plugins on this page
-                version : 'v5.0' // use graph api version 2.8
+                xfbml: true, // parse social plugins on this page
+                version: 'v5.0' // use graph api version 2.8
             });
-            FB.getLoginStatus(function(response) {
+            FB.getLoginStatus(function (response) {
                 statusChangeCallback(response);
             });
         };
+
+        function fb_login() {
+            FB.login(function (response) {
+                if (response.status === 'connected') {
+                    window.location.href = 'FB_login?access_token=' + response.authResponse.accessToken;
+                    // Logged into your webpage and Facebook.
+                } else {
+                    // The person is not logged into your webpage or we are unable to tell.
+                }
+            });
+        }
+
         // Load the SDK asynchronously
-        (function(d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
@@ -170,18 +207,14 @@
                     <button type="submit" class="btn-block btn-default text-center form-control border-0">SIGN
                         IN
                     </button>
-                    <%--                    <button type="submit" class="btn-block text-center form-control bt-fb"><i--%>
-                    <%--                            class="fa fa-facebook mr-3"></i>SIGN IN WITH FACEBOOK--%>
-                    <%--                    </button>--%>
+                    <div class="btn-block text-center form-control bt-fb"
+                            onclick="fb_login()"><i
+                            class="fa fa-facebook mr-3"></i>SIGN IN WITH FACEBOOK
+                    </div>
 
-
-
-                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-                    </fb:login-button>
-
-                    <button type="submit" class="btn-block text-center form-control bt-gg"><i
+                    <div class="btn-block text-center form-control bt-gg"><i
                             class="fa fa-google mr-3"></i>SIGN IN WITH GOOGLE+
-                    </button>
+                    </div>
                     <div class="m-4"></div>
                     <div class="col-12 text-center">
                         <p>Don't have an acount? <a href="<%=Util.fullPath("register")%>">Sign Up</a></p>
