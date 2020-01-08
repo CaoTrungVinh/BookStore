@@ -124,7 +124,7 @@
                             <% if (request.getSession().getAttribute("user") == null) { %>
                             <a href="<%= Util.fullPath("login")%>"><i class="fa fa-sign-in"></i>
                                     <% } else { %>
-                                <a href="<%= Util.fullPath("account")%>"><i class="flaticon-people"></i>
+                                <a href="<%= Util.fullPath("account/edit?id="+ ((User)(request.getSession().getAttribute("user"))).getId())%>"><i class="flaticon-people"></i>
                                     <% } %>
 
                                 </a>

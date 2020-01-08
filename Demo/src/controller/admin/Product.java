@@ -41,8 +41,7 @@ public class Product extends HttpServlet {
                 e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/products.jsp").forward(request, response);
-        }
-        else if (request.getServletPath().equals("/admin/product/add")) {
+        } else if (request.getServletPath().equals("/admin/product/add")) {
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
@@ -69,8 +68,7 @@ public class Product extends HttpServlet {
             }
             request.getRequestDispatcher("/admin/add-product.jsp").forward(request, response);
 
-        }
-        else if (request.getServletPath().equals("/admin/product/edit")) {
+        } else if (request.getServletPath().equals("/admin/product/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -80,6 +78,7 @@ public class Product extends HttpServlet {
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
                     String sqlAuthor = "SELECT * FROM authors";
+                    String sqlImg = "SELECT * FROM img";
                     // rút ra cuốn sách cần edit
                     PreparedStatement pstBooks = conn.prepareStatement(sqlBooks);
                     pstBooks.setString(1, id);
@@ -94,11 +93,16 @@ public class Product extends HttpServlet {
 //tác giả
                     PreparedStatement pstAuthor = conn.prepareStatement(sqlAuthor);
                     ResultSet authors = pstAuthor.executeQuery();
+//img
+                    PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+                    ResultSet img = pstImg.executeQuery();
+
 
                     request.setAttribute("books", books);
                     request.setAttribute("categories", categories);
                     request.setAttribute("publisher", publisher);
                     request.setAttribute("authors", authors);
+                    request.setAttribute("imgs", img);
 
                     request.getRequestDispatcher("/admin/edit-product.jsp").forward(request, response);
                 } catch (SQLException e) {
@@ -107,8 +111,7 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/product/see")) {
+        } else if (request.getServletPath().equals("/admin/product/see")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -145,8 +148,7 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/product/delete")) {
+        } else if (request.getServletPath().equals("/admin/product/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -165,11 +167,9 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/categories/add")) {
+        } else if (request.getServletPath().equals("/admin/categories/add")) {
             request.getRequestDispatcher("/admin/add-categories.jsp").forward(request, response);
-        }
-        else if (request.getServletPath().equals("/admin/categories/edit")) {
+        } else if (request.getServletPath().equals("/admin/categories/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -190,8 +190,7 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/categories/see")) {
+        } else if (request.getServletPath().equals("/admin/categories/see")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -212,8 +211,7 @@ public class Product extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
-        else if (request.getServletPath().equals("/admin/categories/delete")) {
+        } else if (request.getServletPath().equals("/admin/categories/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -251,13 +249,16 @@ public class Product extends HttpServlet {
             String author = request.getParameter("author");
             String price = request.getParameter("price");
             String stock = request.getParameter("stock");
+            String img1 = request.getParameter("imgPlaceHolder1");
+            String img2 = request.getParameter("imgPlaceHolder2");
+            String img3 = request.getParameter("imgPlaceHolder3");
 
             try {
                 Statement s = ConnectionDB.connect();
                 Connection conn = s.getConnection();
                 String sqlCategory = "INSERT INTO books (title, type, description, price, in_stock, publisher, author, active, rating) VALUE (?, ?, ?, ?, ?, ?,?,1, 0)";
 
-                PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
+                PreparedStatement pstCate = conn.prepareStatement(sqlCategory, Statement.RETURN_GENERATED_KEYS);
                 pstCate.setString(1, name);
                 pstCate.setInt(2, Integer.parseInt(category));
                 pstCate.setString(3, description);
@@ -265,7 +266,45 @@ public class Product extends HttpServlet {
                 pstCate.setInt(5, Integer.parseInt(stock));
                 pstCate.setInt(6, Integer.parseInt(publisher));
                 pstCate.setInt(7, Integer.parseInt(author));
-                pstCate.execute();
+
+                pstCate.executeUpdate();
+
+                ResultSet rs = pstCate.getGeneratedKeys();
+                rs.next();
+                long id = rs.getLong(1);
+                if (img1 != null) {
+                    img1 = img1.substring(img1.lastIndexOf("/") +1 , img1.length());
+                    System.out.println(img1);
+                    String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                    PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                    pstImg.setLong(1, id);
+                    pstImg.setString(2, img1);
+                    pstImg.executeUpdate();
+
+                }
+                if (img2 != null) {
+                    img2 = img2.substring(img2.lastIndexOf("/") +1 , img2.length());
+                    String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                    PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                    pstImg.setLong(1, id);
+                    pstImg.setString(2, img2);
+                    pstImg.executeUpdate();
+                }
+                if (img3 != null) {
+                    img3 = img3.substring(img3.lastIndexOf("/") +1 , img3.length());
+                    String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                    PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                    pstImg.setLong(1, id);
+                    pstImg.setString(2, img3);
+                    pstImg.executeUpdate();
+                }
+
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -274,8 +313,7 @@ public class Product extends HttpServlet {
             }
 
             response.sendRedirect("/admin/product");
-        }
-        else if (request.getServletPath().equals("/admin/product/edit")) {
+        } else if (request.getServletPath().equals("/admin/product/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String name = request.getParameter("name");
@@ -310,8 +348,7 @@ public class Product extends HttpServlet {
 
             }
             response.sendRedirect("/admin/product");
-        }
-        else if (request.getServletPath().equals("/admin/categories/add")) {
+        } else if (request.getServletPath().equals("/admin/categories/add")) {
             String name = request.getParameter("name");
             try {
                 Statement s = ConnectionDB.connect();
@@ -327,9 +364,7 @@ public class Product extends HttpServlet {
                 e.printStackTrace();
             }
             response.sendRedirect("/admin/product");
-        }
-
-        else if (request.getServletPath().equals("/admin/categories/edit")) {
+        } else if (request.getServletPath().equals("/admin/categories/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String name = request.getParameter("name");
@@ -340,7 +375,7 @@ public class Product extends HttpServlet {
                     String sqlCategory = "UPDATE categories SET name=? where id=?";
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, name);
-                    pstCate.setString(2,id);
+                    pstCate.setString(2, id);
                     pstCate.execute();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -351,4 +386,6 @@ public class Product extends HttpServlet {
             response.sendRedirect("/admin/product");
         }
     }
+
+
 }

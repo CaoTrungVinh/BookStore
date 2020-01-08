@@ -26,7 +26,7 @@
                     <div class="profiles">
                         <% User user = (User) request.getAttribute("user");
                         %>
-                        <p class="image"><img src="" height="45"
+                        <p class="image"><img src="https://salt.tikicdn.com/desktop/img/avatar.png?v=3" height="45"
                                               width="45" alt=""></p>
                         <p class="name">Account for</p>
                         <h6><%=user.getUserName()%>
@@ -41,33 +41,33 @@
                             <li <% if (request.getAttribute("route").equals("edit")) {%>
                                     class="active" <%}%> >
                                 <a href="<%= Util.fullPath("account/edit")%>"><i class="fa fa-user"
-                                                                                 aria-hidden="true"></i><span>Your account</span>
+                                                                                 aria-hidden="true"></i><span>Thông tin tài khoản</span>
                                     <!-- <span class='noti-nav'>Mới</span> --></a>
                             </li>
                             <li <% if (request.getAttribute("route").equals("address")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/address") %>"> <i class="fa fa-map-marker"
                                                                                       aria-hidden="true"></i>
-                                    <span>Your address</span> </a>
+                                    <span>Sổ địa chỉ</span> </a>
                             </li>
                             <li <% if (request.getAttribute("route").equals("order")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/order") %>"><i class="fa fa-pie-chart"
-                                                                                   aria-hidden="true"></i><span>Orders history</span></a>
+                                                                                   aria-hidden="true"></i><span>Quản lý đơn hàng</span></a>
                             </li>
 
                             <li <% if (request.getAttribute("route").equals("wishlist")) {%>
                                     class="active" <%}%>>
                                 <a href="<%= Util.fullPath("account/wishlist") %>"><i class="fa fa-star"
                                                                                       aria-hidden="true"></i>
-                                    <span> Wish list </span></a>
+                                    <span>Sản phẩm yêu thích </span></a>
                             </li>
                             <li class="">
                                 <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
-                                    Admin mode</a>
+                                Trang admin</a>
                             </li>
                             <li class="">
-                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

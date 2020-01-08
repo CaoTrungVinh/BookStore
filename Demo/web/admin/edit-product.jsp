@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,8 @@
                         <%
                             ResultSet books = (ResultSet) request.getAttribute("books");
                         %>
-                        <form action="<%= Util.fullPath("admin/product/edit?id="+books.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/product/edit?id="+books.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
 
                             <div class="form-group mb-3">
@@ -55,11 +56,61 @@
                                           rows="3"
                                 ><%= books.getString("description")%></textarea>
                             </div>
+
+                            <div class="form-group mb-3 ">
+                                <label>Images </label>
+                                <div id="imgContainer" class="row border-img">
+
+                                    <%
+                                        ResultSet imgs = (ResultSet) request.getAttribute("imgs");
+                                        for (int i = 1; i <=3; i++) {
+
+                                            if(imgs.next()) {
+
+                                    %>
+                                    <div class="cart-product col-xl-3 col-lg-3 col-md-3"
+                                         id="img<%=imgs.getString("id")%>">
+                                        <div class="cart-product-image">
+                                            <a href="single-product.jsp">
+                                                <img src="<%=imgs.getString("img")%>" alt="">
+                                            </a>
+                                            <div class="cart-product-remove"
+                                                 onclick="removeCartProduct('img<%=imgs.getString("id")%>')">
+                                                <i class="fa fa-times"></i>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <input hidden name="imgPlaceHolder<%=i%>" value="<%=imgs.getString("img")%>">
+
+
+                                    <% }
+                                       else {
+                                    %>
+
+                                    <div id="imgPlaceHolder<%=i%>" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder<%=i%>')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <input hidden name="imgPlaceHolder<%=i%>" value="<%=imgs.getString("img")%>">
+
+                                    <% }
+                                    }
+                                    %>
+
+
+                                </div>
+                            </div>
+
                             <div class="form-group mb-3">
                                 <label
                                 >Category</label
                                 >
-                                <input type="hidden" name="category" id="category" value="<%= books.getString("type")%>">
+                                <input type="hidden" name="category" id="category"
+                                       value="<%= books.getString("type")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectCetagories"
@@ -85,7 +136,8 @@
                                 <label
                                 >Publisher</label
                                 >
-                                <input type="hidden" name="publisher" id="publisher" value="<%= books.getString("publisher")%>">>
+                                <input type="hidden" name="publisher" id="publisher"
+                                       value="<%= books.getString("publisher")%>">>
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectPublisher"
@@ -196,28 +248,8 @@
 <!-- https://getbootstrap.com/ -->
 <script src="/public/admin/js/jquery-editable-select.min.js"></script>
 <script>
-    function selectFileWithCKFinder(elementId) {
-        CKFinder.modal({
-            chooseFiles: true,
-            displayFoldersPanel: false,
-            width: 800,
-            height: 600,
-            onInit: function (finder) {
-                finder.on('files:choose', function (evt) {
-                    var file = evt.data.files.first();
-                    var output = document.getElementById(elementId);
-                    output.value = file.getUrl();
-                });
 
-                finder.on('file:choose:resizedImage', function (evt) {
-                    var output = document.getElementById(elementId);
-                    output.value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-
-    var editor
+    var editor;
 
     function onFormSubmit() {
         if (editor) {
@@ -228,16 +260,46 @@
         }
     }
 
+    function addImage(id, fileUrl) {
+        document.getElementById(id).innerHTML =
+            '<div class="cart-product-image"><a href="single-product.jsp"><img src="'
+            + fileUrl + '" alt=""></a><div class="cart-product-remove" onclick="removeCartProduct(\''
+            +id+'\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="'+ id+'" value="'+fileUrl+'">';
+
+
+    }
+
+    function removeCartProduct(id) {
+        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\'' + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
+    }
+
+    function ckFinder(id) {
+        var finder = new CKFinder();
+        finder.basePath = '/ckfinder/';
+        finder.selectActionFunction = function (fileUrl, data, allFiles) {
+            addImage(id,fileUrl);
+        };
+        finder.popup();
+    }
+
     $(function () {
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
-            .create(document.querySelector('#editor'))
-            .then(function (e) {
+            .create(document.querySelector('#editor'), {//Đến đoạn này là editor đã chạy xong
+                cloudServices: {
+                    tokenUrl: 'http://localhost:8080/',
+                    uploadUrl: 'https://public/admin/img'
+                }
+            })
+            .then(function (e) { //Đoạn này bug nên nó chết
                 editor = e;
-            }).catch(function (eror) {
-            console.log(error);
-        });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        //Dẫn đến dưới này k chạy
 
         $('#selectCetagories').editableSelect()
             .on('select.editable-select', function (e, el) {
@@ -255,6 +317,7 @@
                 $('#author').val(el.data('cc'));
             });
     });
+
 
 </script>
 </body>

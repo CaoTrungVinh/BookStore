@@ -7,8 +7,11 @@ public class ConnectionDB {
 
     public static Statement connect() throws ClassNotFoundException, SQLException {
         if (con == null || con.isClosed()) {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demoweb?useUnicode=true&characterEncoding=utf-8", "root", "");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = System.getenv("DB_URL") != null? System.getenv("DB_URL"): "jdbc:mysql://localhost:3306/demoweb?useUnicode=true&characterEncoding=utf-8";
+            String username = System.getenv("DB_USERNAME") != null? System.getenv("DB_USERNAME"): "root";
+            String password = System.getenv("DB_PASSWORD") != null? System.getenv("DB_PASSWORD"): "";
+            con = DriverManager.getConnection(url, username, password);
             return con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } else {
             return con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
