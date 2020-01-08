@@ -76,7 +76,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big mt-5">
     <div class="row">
@@ -94,7 +94,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
-                                >Product Name
+                                >Product Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -107,7 +107,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="editor"
-                                >Description</label
+                                >Description<a style="color: red"> *</a></label
                                 >
                                 <textarea id="editor"
                                           name="description"
@@ -116,7 +116,7 @@
                                 ></textarea>
                             </div>
                             <div class="form-group mb-3 ">
-                                <label>Images </label>
+                                <label>Images<a style="color: red"> *</a> </label>
                                 <div id="imgContainer" class="row border-img">
 
 
@@ -148,7 +148,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Category</label
+                                >Category<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="category" id="category">
                                 <select
@@ -167,7 +167,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Publisher</label
+                                >Publisher<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="publisher" id="publisher">
                                 <select
@@ -187,7 +187,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Author</label
+                                >Author<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="author" id="author">
                                 <select
@@ -207,7 +207,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="expire_date">Price
+                                    <label for="expire_date">Price<a style="color: red"> *</a>
                                     </label>
                                     <input
                                             id="expire_date"
@@ -221,7 +221,7 @@
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                                     <label
                                             for="stock"
-                                    >Units In Stock
+                                    >Units In Stock<a style="color: red"> *</a>
                                     </label>
                                     <input
                                             id="stock"

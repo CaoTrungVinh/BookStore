@@ -71,7 +71,7 @@
                 </td>
 
 
-                <td class="text-center"><%= user.getString("idgroup").equals("1")? "User" : "Admin"%> </td>
+                <td class="text-center"><%= user.getString("idgroup").equals("1")? "Customer" : "Admin"%> </td>
 
                 <td class="text-center">
                     <% if(user.getString("is_active").equals("1")) {%>

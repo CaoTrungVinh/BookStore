@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-account.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -138,7 +138,7 @@
 
                             <div class="form-group mb-3">
                                 <label
-                                >Active<a style="color: red"> *</a></label
+                                >Role<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="is_active" id="is_active">
                                 <select

@@ -14,20 +14,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto h-100">
                 <li class="nav-item">
-                    <a class="nav-link active" href="<%= Util.fullPath("admin") %>">
+                    <a class="nav-link " href="<%= Util.fullPath("admin") %>">
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= Util.fullPath("admin/product") %>">
+                    <a class="nav-link " href="<%= Util.fullPath("admin/product") %>">
                         <i class="fas fa-shopping-cart"></i>
                         Products
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= Util.fullPath("admin/producer") %>">
+                    <a class="nav-link " href="<%= Util.fullPath("admin/producer") %>">
                         <%--                        <i class="fas fa-shopping-cart"></i>--%>
                         <i class="fas fa-industry"></i>
                         Producer
@@ -37,7 +37,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<%= Util.fullPath("admin/account") %>">
+                    <a class="nav-link active" href="<%= Util.fullPath("admin/account") %>">
                         <i class="far fa-user"></i>
                         Accounts
                     </a>

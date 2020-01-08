@@ -15,7 +15,7 @@
 </head>
 
 <body id="reportsPage">
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container mt-5">
     <div class="row tm-content-row">
@@ -34,11 +34,6 @@
                             <th scope="col">IN STOCK</th>
                             <th scope="col">RATING</th>
                             <th scope="col">ACTIVE</th>
-                            <%--                            <th scope="col">PRODUCT NAME</th>--%>
-                            <%--                            <th scope="col">PRICE</th>--%>
-                            <%--                            <th scope="col">IN STOCK</th>--%>
-                            <%--                            <th scope="col">RATING</th>--%>
-                            <%--                            <th scope="col">ACTIVE</th>--%>
                             <th scope="col">&nbsp;</th>
                         </tr>
                         </thead>
