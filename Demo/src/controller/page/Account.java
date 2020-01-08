@@ -110,13 +110,13 @@ public class Account extends HttpServlet {
                     if (is_change_pass != null) {
 
 
-                        if (PasswordAuthentication.check(oldPass, rs.getString("password"))) {
+                        if (oldPass != null && !oldPass.equals("") && PasswordAuthentication.check(oldPass, rs.getString("password"))) {
 
-                            if (newPass.length() < 8 && newPass.length() > 32) {
+                            if (newPass.length() < 8 || newPass.length() > 32) {
                                 System.out.println("new pass");
-                                request.setAttribute("errNewPass", "Password length must be between 8 and 32 character");
-                                request.setAttribute("noti", "Update successfully");
-                                response.sendRedirect("/account/edit?id" + id);
+                                HttpSession session = request.getSession();
+                                session.setAttribute("edit-account-noti", "Password length must be between 8 and 32 character");
+                                response.sendRedirect("/account/edit?id=" + id);
                                 return;
                             }
 
@@ -134,18 +134,18 @@ public class Account extends HttpServlet {
 
                             } else {
                                 System.out.println("re pass");
-                                request.setAttribute("errRePass", "Password not match");
-                                request.setAttribute("noti", "Update fail");
-                                response.sendRedirect("/account/edit?id" + id);
+                                HttpSession session = request.getSession();
+                                session.setAttribute("edit-account-noti", "Password not match");
+                                response.sendRedirect("/account/edit?id=" + id);
                                 return;
                             }
 
 
                         } else {
                             System.out.println("old pass");
-                            request.setAttribute("errOldPass", "Old password not correct");
-                            request.setAttribute("noti", "Update fail");
-                            response.sendRedirect("/account/edit?id" + id);
+                            HttpSession session = request.getSession();
+                            session.setAttribute("edit-account-noti", "Old password not correct");
+                            response.sendRedirect("/account/edit?id=" + id);
                             return;
                         }
                     }
@@ -180,13 +180,11 @@ public class Account extends HttpServlet {
                     System.out.println("userdob: " + dateofbirth);
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-
-
+                    session.setAttribute("edit-account-noti", "Update successfully");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            request.setAttribute("noti", "Update successfully");
             response.sendRedirect("/account/edit?id=" + id);
         }
 

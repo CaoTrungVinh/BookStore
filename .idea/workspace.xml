@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="">
+    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" afterDir="false" />
@@ -172,7 +172,7 @@
       <workItem from="1573462818225" duration="42000" />
       <workItem from="1574941241034" duration="93000" />
       <workItem from="1578489999425" duration="730000" />
-      <workItem from="1578490831117" duration="23052000" />
+      <workItem from="1578490831117" duration="27674000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
@@ -195,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578512788782</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Translate to English">
+      <created>1578514321406</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1578514321406</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +225,7 @@
     <MESSAGE value="Add deploy config" />
     <MESSAGE value="Refactor" />
     <MESSAGE value="Add connection pooling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add connection pooling" />
+    <MESSAGE value="Translate to English" />
+    <option name="LAST_COMMIT_MESSAGE" value="Translate to English" />
   </component>
 </project>
