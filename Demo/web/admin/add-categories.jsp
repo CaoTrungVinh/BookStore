@@ -15,7 +15,7 @@
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
-        <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-xl-6 col-lg-10 col-md-12 col-sm-12 mx-auto" style="border: 1px solid #CED4DA; padding: 100px">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
                 <div class="row">
                     <div class="col-12">
@@ -28,7 +28,7 @@
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Producer Name
+                                        for="name">Producer Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"

@@ -31,7 +31,7 @@
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Producer Name
+                                        for="name">Producer Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                        for="name">Address
+                                        for="name">Address<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="address"
@@ -56,7 +56,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="contact"
-                                >Contact</label
+                                >Contact<a style="color: red"> *</a></label
                                 >
                                 <input
                                         id="contact"

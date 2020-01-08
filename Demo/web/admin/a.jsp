@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Page - Admin</title>
+    <title>Order Page - Admin</title>
 
     <jsp:include page="head.jsp"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -16,30 +16,23 @@
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
             type="button" style="margin-right: 8%;margin-top: 3.4%; float: right">
-        <a href="<%=Util.fullPath("admin/account/add")%>" style="color: white; text-decoration: none;">New account</a>
+        <a href="<%=Util.fullPath("admin/orders/add")%>" style="color: white; text-decoration: none;">New orders</a>
     </button>
     <thead>
-
     <tr>
         <th class="th-sm">STT
         </th>
-        <th class="th-sm">NAME
+        <th class="th-sm">CUSTOMER
         </th>
-        <th class="th-sm">FULL NAME
+        <th class="th-sm">ORDERDATE
         </th>
-        <th class="th-sm">EMAIL
+        <th class="th-sm">SUBTOTAL
         </th>
-        <th class="th-sm">GENDER
+        <th class="th-sm">SHIPPING
         </th>
-<%--        <th class="th-sm">BIRTH DAY--%>
-<%--        </th>--%>
-        <th class="th-sm">ADDRESS
+        <th class="th-sm">TOTAL
         </th>
-        <th class="th-sm">PHONE
-        </th>
-<%--        <th class="th-sm">GROUP--%>
-<%--        </th>--%>
-        <th class="th-sm">ACTIVE
+        <th class="th-sm">STATUS
         </th>
         <th class="th-sm">
         </th>
@@ -47,51 +40,49 @@
     </thead>
     <tbody>
     <%
-        ResultSet users = (ResultSet) request.getAttribute("users");
+        ResultSet orders = (ResultSet) request.getAttribute("orders");
+//        ResultSet customer = (ResultSet) request.getAttribute("customer");
         int stt = 0;
-        while (users.next()) {
+        while (orders.next()) {
             stt++;
     %>
     <tr>
-        <td scope="row" class="text-center"><%= stt%> </td>
-        <td><%= users.getString("name")%></td>
-        <td><%= users.getString("fullname")%></td>
-        <td><%= users.getString("email")%></td>
-        <td><%= users.getString("gender")%></td>
-
-<%--        <td></td>--%>
-
-        <td><%= users.getString("address")%></td>
-        <td><%= users.getString("phone")%></td>
-<%--        <td><%= users.getString("idgroup")%></td>--%>
-
-        <td class="text-center">
-            <% if (users.getString("is_active").equals("1")) {%>
-            <i class="fa fa-check" style="color: #2196F3">
-            </i>
-            <% } else {%>
-            <i class="fa fa-minus-circle" style="color: red !important;">
-            </i>
-            <% } %>
+        <td scope="row" class="text-center"><%= stt%>
         </td>
-
-        <td class="text-center" style="width: 70px; text-align: center">
+        <td>
+            <%--            <%--%>
+            <%--                ResultSet customer = (ResultSet) request.getAttribute("customer");--%>
+            <%--                while (customer.next()) {--%>
+            <%--            %>--%>
+            <%= orders.getString("id_customer")%>
+            <%--            <% } %>--%>
+        </td>
+        <td><%= orders.getString("orderDate")%>
+        </td>
+        <td><%= orders.getString("subtotal")%>
+        </td>
+        <td><%= orders.getString("shipping")%>
+        </td>
+        <td><%= orders.getString("total")%>
+        </td>
+        <td><%= orders.getString("statusID")%>
+        </td>
+        <td style="text-align: center; width: 100px">
             <a class="delete"
-               href="<%= Util.fullPath("admin/account/edit?id=" + users.getString("id")) %>"
+               href="<%= Util.fullPath("admin/orders/edit?id=" + orders.getString("id")) %>"
                class="tm-product-delete-link">
                 <i class="fas fa-edit"></i>
             </a>
 
-            <a
-                    href="<%= Util.fullPath("admin/account/delete?id=" + users.getString("id")) %>"
-                    class="tm-product-delete-link delete">
+            <a class="delete"
+               href="<%= Util.fullPath("admin/orders/delete?id=" + orders.getString("id")) %>"
+               class="tm-product-delete-link">
                 <i class="far fa-trash-alt tm-product-delete-icon"></i>
             </a>
         </td>
     </tr>
     <% } %>
     </tbody>
-
 </table>
 
 <jsp:include page="footer.jsp"/>
