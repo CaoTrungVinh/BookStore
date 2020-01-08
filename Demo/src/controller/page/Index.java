@@ -19,13 +19,13 @@ public class Index extends HttpServlet {
         String type = request.getParameter("type");
         try {
             Connection conn = ConnectionDB.getConnection();
-            String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ORDER BY  DATEDIFF(CURDATE(), DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(createdAt)), '%Y-%m-%d')) LIMIT 10";
+            String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description, books.discount FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ORDER BY  DATEDIFF(CURDATE(), DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(createdAt)), '%Y-%m-%d')) LIMIT 10";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet bookNew = pst.executeQuery();
             request.setAttribute("bookNew", bookNew);
 
             Connection cTopRating = ConnectionDB.getConnection();
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 and books.rating> 99 GROUP BY img.id_book LIMIT 10";
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description, books.discount  FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 and books.rating> 99 GROUP BY img.id_book LIMIT 10";
             PreparedStatement pstTopRating = cTopRating.prepareStatement(sql);
             response.getWriter().println(sql);
             ResultSet bookcTopRating = pstTopRating.executeQuery();

@@ -6,132 +6,8 @@
 <head>
     <title>Book Store</title>
     <jsp:include page="/customer/view/head.jsp"/>
+    <link rel="stylesheet" href="/public/customer/css/index.css">
 </head>
-<style>
-    .star-rating, .back-stars, .front-stars {
-        display: flex;
-    }
-
-    .star-rating {
-        align-items: center;
-        font-size: 3em;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    .star-rating i {
-        font-size: 16px;
-        padding: 3px;
-    }
-
-    .back-stars {
-        color: #5B5B5B;
-        position: relative;
-        /*text-shadow: 1px 2px 4px #843a3a;*/
-    }
-
-    .front-stars {
-        color: #32B5F3;
-        overflow: hidden;
-        position: absolute;
-        /*text-shadow: 2px 2px 5px #d29b09;*/
-        top: 0;
-        transition: all 0.5s;
-    }
-
-    .list-pager {
-        margin-top: 15px;
-        margin-bottom: 0;
-        text-align: right
-    }
-
-    .list-pager ul {
-        list-style: none;
-        margin: 0;
-        text-align: right;
-        padding: 0
-    }
-
-    .list-pager ul li .current, .list-pager ul li a.normal {
-        display: inline-block;
-        margin: 0 5px;
-        border-radius: 50%;
-        width: 27px;
-        height: 27px;
-        text-align: center;
-        font-size: 12px;
-        line-height: 28px
-    }
-
-    .list-pager ul li {
-        font-weight: 400;
-        display: inline-block;
-        vertical-align: top
-    }
-
-    .list-pager ul li .current {
-        font-weight: 400;
-        background: #189eff;
-        color: #fff
-    }
-
-    .list-pager ul li a.normal {
-        font-weight: 500;
-        background: #f7f7f7;
-        color: #333;
-        text-decoration: none
-    }
-
-    .list-pager ul li a.normal i.fa {
-        padding-left: 8px;
-        font-size: 20px;
-        color: #444
-    }
-
-    .list-pager ul li a.normal:hover {
-        background: #c1e7ff
-    }
-
-    .list-pager ul li a.next, .list-pager ul li a.prev {
-        margin: 0 5px;
-        color: #393939;
-        text-align: center;
-        height: 27px;
-        width: 27px;
-        line-height: 27px;
-        background: #fff;
-        display: inline-block;
-        text-decoration: none
-    }
-
-    .list-pager ul li a.prev {
-        font-size: 14px;
-        border: 1px solid #c6c6c6;
-        border-radius: 50%;
-        padding: 0 8px 0 6px
-    }
-
-    .list-pager ul li a.prev i.fa {
-        font-size: 22px;
-        vertical-align: middle
-    }
-
-    .list-pager ul li a.next {
-        font-size: 14px;
-        border: 1px solid #c6c6c6;
-        border-radius: 50%;
-        padding: 0 6px 0 8px
-    }
-
-    .list-pager ul li a.next i.fa {
-        font-size: 22px;
-        vertical-align: middle
-    }
-
-    .icon-center i {
-        padding-bottom: 4px !important;
-    }
-</style>
 <body>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -292,7 +168,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="first-item active">
-                            <a href="#arrival" aria-controls="arrival" role="tab" data-toggle="tab">New Arrival</a>
+                            <a href="#arrival" aria-controls="arrival" role="tab" data-toggle="tab">New book</a>
                         </li>
                         <li role="presentation">
                             <a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">Favorite Product</a>
@@ -313,29 +189,15 @@
                             <div class="col-md-3">
                                 <div class="single-banner">
                                     <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
-                                                 style="padding-top: 30px">
-<%--                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>--%>
-                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>
-                                            <div class="star-rating">
-                                                <div class="back-stars">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                        <a href="<%=Util.fullPath("single-product?id=" +bookNew.getString("id"))%>"
+                                           class="single-banner-image-wrapper">
+                                            <img alt=""
+                                                 src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
+                                                 style="padding-top: 10px">
+                                            <%--                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>--%>
 
-                                                    <div class="front-stars" style="width: <%= bookNew.getInt(6)%>%">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </a>
+
                                         <div class="product-description">
                                             <div class="functional-buttons">
                                                 <a title="Add to Cart"
@@ -353,16 +215,57 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="banner-bottom text-center" style="height: 120px">
-                                        <a href="#"><%= bookNew.getString(2)%>
+                                    <div class="banner-bottom text-center" style="height: 180px">
+                                        <a href="<%=Util.fullPath("single-product?id=" +bookNew.getString("id"))%>"><%= bookNew.getString(2)%>
                                         </a>
+                                        <div class="star-rating">
+                                            <div class="back-stars">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                <div class="front-stars" style="width: <%= bookNew.getInt(6)%>%">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="price-box">
+
+                                            <% if (bookNew.getString(8) != null) {%>
+                                            <p class="s-price price">
+                                                                     <span class="special-price"><span
+                                                                             class="amount special-price">  <%= Util.showPrice(Util.price(bookNew.getString(3), bookNew.getString(8)))%> VND</span></span>
+
+                                                <span class="percent "> -<%= bookNew.getString(8)%>%</span>
+
+                                                <pan class="original "><%=  Util.showPrice(bookNew.getInt(3))%>VND
+                                                </pan>
+                                            </p>
+                                            <% } else { %>
+                                            <p class="s-price ">
+                                                                    <span class="special-price"><span
+                                                                            class="amount"> <%=  Util.showPrice(bookNew.getInt(3))%> VND</span></span>
+                                            </p>
+                                            <% } %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
                         <% } %>
                     </div>
                 </div>
+
                 <div role="tabpanel" class="tab-pane fade" id="sale">
                     <div class="featured-product-list indicator-style">
                         <%
@@ -373,35 +276,18 @@
                             <div class="col-md-3">
                                 <div class="single-banner">
                                     <div class="product-wrapper">
-                                        <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="/public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
-                                                 style="padding-top: 30px">
-                                            <div class="price"><span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>
-                                            <div class="star-rating">
-                                                <div class="back-stars">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <div class="front-stars"
-                                                         style="width: <%= bookTopRating.getInt(6)%>%">
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
+                                        <a href="<%=Util.fullPath("single-product?id=" +bookTopRating.getString("id"))%>"
+                                           class="single-banner-image-wrapper">
+                                            <img alt=""
+                                                 src="/public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
+                                                 style="padding-top: 10px">
+                                            <%--                                            <div class="price">--%>
+                                            <%--                                                <span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>--%>
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">
-                                                <a title="Add to Cart">
-                                                    onclick="addToCard(<%=bookTopRating.getInt("id")%>,1)
+                                                <a title="Add to Cart"
+                                                   onclick="addToCard(<%=bookTopRating.getInt("id")%>,1)">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </a>
                                                 <a title="Add to Wishlist"
@@ -415,9 +301,47 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="banner-bottom text-center" style="height: 120px">
-                                        <a href="#"><%= bookTopRating.getString(2)%>
+                                    <div class="banner-bottom text-center" style="height: 180px">
+                                        <a href="<%=Util.fullPath("single-product?id=" +bookTopRating.getString("id"))%>"><%= bookTopRating.getString(2)%>
                                         </a>
+                                        <div class="star-rating">
+                                            <div class="back-stars">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                <div class="front-stars"
+                                                     style="width: <%= bookTopRating.getInt(6)%>%">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="price-box">
+
+                                            <% if (bookTopRating.getString(8) != null) {%>
+                                            <p class="s-price price">
+                                                                     <span class="special-price"><span
+                                                                             class="amount special-price">  <%= Util.showPrice(Util.price(bookTopRating.getString(3), bookTopRating.getString(8)))%> VND</span></span>
+
+                                                <span class="percent "> -<%= bookTopRating.getString(8)%>%</span>
+
+                                                <pan class="original "><%=  Util.showPrice(bookTopRating.getInt(3))%>
+                                                    VND
+                                                </pan>
+                                            </p>
+                                            <% } else { %>
+                                            <p class="s-price ">
+                                                                    <span class="special-price"><span
+                                                                            class="amount"> <%=  Util.showPrice(bookTopRating.getInt(3))%> VND</span></span>
+                                            </p>
+                                            <% } %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -621,6 +545,7 @@
                         <div class="product-images">
                             <div class="main-image images">
                                 <img alt="" src="public/customer/img/quick-view.jpg">
+                                <%--                                <img alt="" src="public/customer/img/shop/images/<%= bookNew.getString(4)%>">--%>
                             </div>
                         </div>
                         <div class="product-info">
@@ -668,6 +593,7 @@
         </div>
     </div>
 </div>
+
 <!--End of Quickview Product-->
 <!-- all js here -->
 <!-- jquery latest version -->

@@ -34,11 +34,11 @@
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
                     <h2 class="tm-block-title">Orders List</h2>
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                        <%--                        <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"--%>
-                        <%--                                type="button" style="margin-right: 100px;margin-top: 17px; float: right">--%>
-                        <%--                            <a href="<%=Util.fullPath("admin/orders/add")%>"--%>
-                        <%--                               style="color: white; text-decoration: none;">New orders</a>--%>
-                        <%--                        </button>--%>
+<%--                                                <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"--%>
+<%--                        type="button" style="margin-right: 100px;margin-top: 17px; float: right">--%>
+<%--                        <a href="<%=Util.fullPath("admin/orders/add")%>"--%>
+<%--                           style="color: white; text-decoration: none;">New orders</a>--%>
+<%--                        </button>--%>
                         <thead>
                         <tr>
                             <th class="th-sm">STT
