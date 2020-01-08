@@ -15,6 +15,8 @@ public class User {
     private String gender;
     private String address;
     private String phone;
+    private String password;
+    private String dateofbirth;
     private String avt;
     private int idgroup; // 1 is user, 2 is admin
     private int active; //0 is not active, 1 is active
@@ -27,6 +29,22 @@ public class User {
         cart = new Cart();
         wishlist = new WishList();
 
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(String dateofbirth) {
+        this.dateofbirth = dateofbirth;
     }
 
     public WishList getWishlist() {

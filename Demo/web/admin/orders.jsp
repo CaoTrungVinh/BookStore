@@ -1,5 +1,6 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page pageEncoding="utf-8" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
 <div class="" id="home" style="background: #f5f5f5">
 
     <jsp:include page="header.jsp"/>
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="col">
                 <p class="mt-5 mb-5">Welcome back, <b>Admin</b></p>
@@ -24,8 +25,8 @@
         <div class="row tm-content-row">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
                 <div class="tm-bg-primary-dark tm-block">
-                    <h2 class="tm-block-title">Latest Hits</h2>
-                    <canvas id="lineChart"></canvas>
+                    <h2 class="tm-block-title">Doanh thu theo tháng</h2>
+                    <canvas id="revenueChart"></canvas>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
@@ -201,29 +202,59 @@
 <!-- https://getbootstrap.com/ -->
 <script src="/public/admin/js/tooplate-scripts.js"></script>
 <script>
-    Chart.defaults.global.defaultFontColor = '#90949C';
-    let ctxLine,
-        ctxBar,
-        ctxPie,
-        optionsLine,
-        optionsBar,
-        optionsPie,
-        configLine,
-        configBar,
-        configPie,
-        lineChart;
-    barChart, pieChart;
-    // DOM is ready
-    $(function () {
-        drawLineChart(); // Line Chart
-        drawBarChart(); // Bar Chart
-        drawPieChart(); // Pie Chart
+    function drawRevenueChart(month, revenue) {
 
-        $(window).resize(function () {
-            updateLineChart();
-            updateBarChart();
+        var revenueChart = new Chart(document.getElementById('revenueChart'), {
+            type: 'bar',
+            data: {
+                labels: month,
+                datasets: [{
+                    label: 'Doanh thu',
+                    data: revenue,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+
+                            beginAtZero: true,
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Lợi nhuận (VNĐ)"
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+
+                            sampleSize: 12,
+                            autoSkip:false,
+                            callback: function(value, index, values) {
+                                return 'Tháng ' + value;
+                            }
+                        }
+                    }]
+                }
+            }
         });
-    })
+    }
+
+    function loadRevenueChart(year) {
+        var url = year ? "/admin/orders/statistic?type=revenue&year=" + year : "/admin/orders/statistic?type=revenue";
+
+        $.getJSON(url, function (data) {
+            console.log(data);
+            drawRevenueChart(data.map.month.myArrayList, data.map.revenue.myArrayList);
+        });
+    }
+
+    $(function () {
+        loadRevenueChart(null);
+    });
 </script>
 </body>
 </html>

@@ -64,7 +64,7 @@
 
         .add-img {
             max-width: 100%;
-            height: 100%;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -117,48 +117,32 @@
                             </div>
                             <div class="form-group mb-3 ">
                                 <label>Images </label>
-                                <div class="row border-img">
+                                <div id="imgContainer" class="row border-img">
 
 
-                                    <div class="cart-product col-xl-3 col-lg-3 col-md-3" id="cartproductid2">
-                                        <div class="cart-product-image">
-                                            <a href="single-product.jsp">
-                                                <img src="/public/customer/img/shop/4ad8e7b0-4ebd-45f2-9245-a20db761f59b.jpg"
-                                                     alt="">
-                                            </a>
-                                            <div class="cart-product-remove" onclick="removeCartProduct(2)">
-                                                <i class="fa fa-times"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-product col-xl-3 col-lg-3 col-md-3" id="cartproductid2">
-                                        <div class="cart-product-image">
-                                            <a href="single-product.jsp">
-                                                <img src="/public/customer/img/shop/4ad8e7b0-4ebd-45f2-9245-a20db761f59b.jpg"
-                                                     alt="">
-                                            </a>
-                                            <div class="cart-product-remove" onclick="removeCartProduct(2)">
-                                                <i class="fa fa-times"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-product col-xl-3 col-lg-3 col-md-3" id="cartproductid2">
-                                        <div class="cart-product-image">
-                                            <a href="single-product.jsp">
-                                                <img src="/public/customer/img/shop/4ad8e7b0-4ebd-45f2-9245-a20db761f59b.jpg"
-                                                     alt="">
-                                            </a>
-                                            <div class="cart-product-remove" onclick="removeCartProduct(2)">
-                                                <i class="fa fa-times"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cart-product col-xl-3 col-lg-3 col-md-3">
 
-                                        <div class="add-img" onclick="ckFinder()" style="cursor: pointer">
+
+
+
+                                    <div id="imgPlaceHolder1" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder1')" style="cursor: pointer">
                                             <i class="fa fa-plus"></i>
                                         </div>
                                     </div>
+                                    <div id="imgPlaceHolder2" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder2')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <div id="imgPlaceHolder3" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder3')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+
+                                    <input hidden name="imgPlaceHolder1" value="">
+                                    <input hidden name="imgPlaceHolder2" value="">
+                                    <input hidden name="imgPlaceHolder3" value="">
 
                                 </div>
                             </div>
@@ -250,25 +234,6 @@
                             </div>
 
                     </div>
-                    <%--                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">--%>
-
-
-                    <%--                        <div class="tm-product-img-dummy mx-auto">--%>
-                    <%--                            <i--%>
-                    <%--                                    class="fas fa-cloud-upload-alt tm-upload-icon"--%>
-                    <%--                                    onclick=" ckFinder();"--%>
-                    <%--                            ></i>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="custom-file mt-3 mb-3">--%>
-                    <%--                            <input id="fileInput" type="file" name="miages[]" multiple style="display:none;"/>--%>
-                    <%--                            <input--%>
-                    <%--                                    type="button"--%>
-                    <%--                                    class="btn btn-primary btn-block mx-auto"--%>
-                    <%--                                    value="UPLOAD PRODUCT IMAGE"--%>
-                    <%--                                    onclick="ckFinder();"--%>
-                    <%--                            />--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
                     <div class="col-8">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
                     </div>
@@ -292,7 +257,7 @@
 
 <script>
 
-    var editor
+    var editor;
 
     function onFormSubmit() {
         if (editor) {
@@ -303,21 +268,29 @@
         }
     }
 
-    function ckFinder() {
-        var finder = new CKFinder();
-        finder.basePath = '/ckfinder/';
-        finder.selectActionData = function (fileURL, data, allFiles) {
-            console.log(
-                fileURL, data, allFiles
-            );
-        };
-        finder.popup();
+    function addImage(id, fileUrl) {
+        document.getElementById(id).innerHTML =
+            '<div class="cart-product-image"><a href="single-product.jsp"><img src="'
+            + fileUrl + '" alt=""></a><div class="cart-product-remove" onclick="removeCartProduct(\''
+            +id+'\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="'+ id+'" value="'+fileUrl+'">';
+
 
     }
 
+    function removeCartProduct(id) {
+        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\'' + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
+    }
+
+    function ckFinder(id) {
+        var finder = new CKFinder();
+        finder.basePath = '/ckfinder/';
+        finder.selectActionFunction = function (fileUrl, data, allFiles) {
+            addImage(id,fileUrl);
+        };
+        finder.popup();
+    }
+
     $(function () {
-
-
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
