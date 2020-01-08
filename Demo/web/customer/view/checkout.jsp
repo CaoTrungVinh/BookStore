@@ -46,7 +46,7 @@
                             <div class="col-xs-3 img-thumnail-custom">
                                 <p class="image">
                                     <img class="img-responsive"
-                                         src="/public/customer/img/shop/<%=product.getImg()%>">
+                                         src="/public/customer/img/shop/images/<%=product.getImg()%>">
                                 </p>
                             </div>
                             <div class="col-right">

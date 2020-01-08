@@ -72,7 +72,7 @@
                                          id="img<%=imgs.getString("id")%>">
                                         <div class="cart-product-image">
                                             <a href="single-product.jsp">
-                                                <img src="<%=imgs.getString("img")%>" alt="">
+                                                <img src="/public/customer/img/shop/<%=imgs.getString("img")%>" alt="">
                                             </a>
                                             <div class="cart-product-remove"
                                                  onclick="removeCartProduct('img<%=imgs.getString("id")%>')">
@@ -262,7 +262,7 @@
 
     function addImage(id, fileUrl) {
         document.getElementById(id).innerHTML =
-            '<div class="cart-product-image"><a href="single-product.jsp"><img src="'
+            '<div class="cart-product-image"><a href="single-product.jsp"><img src="/public/customer/img/shop/'
             + fileUrl + '" alt=""></a><div class="cart-product-remove" onclick="removeCartProduct(\''
             +id+'\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="'+ id+'" value="'+fileUrl+'">';
 

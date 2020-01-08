@@ -316,7 +316,7 @@
                                             <a href="<%=Util.fullPath("single-product?id=" +book.getString("id"))%>"
                                                class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                                <img alt="" src="/public/customer/img/shop/<%= book.getString(4)%>"
+                                                <img alt="" src="/public/customer/img/shop/images/<%= book.getString(4)%>"
                                                      style="margin-top: 30px">
 
 
@@ -385,7 +385,7 @@
                                                         <div class="product-images">
                                                             <div class="main-image images">
                                                                 <img alt=""
-                                                                     src="/public/customer/img/shop/<%= book.getString(4)%>">
+                                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>">
 
                                                             </div>
                                                         </div>
@@ -471,7 +471,7 @@
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
                                             <a href="single-product.jsp" title="East of eden">
-                                                <img src="/public/customer/img/shop/<%= book.getString(4)%>" alt="">
+                                                <img src="/public/customer/img/shop/images/<%= book.getString(4)%>" alt="">
                                             </a>
                                         </div>
                                     </div>

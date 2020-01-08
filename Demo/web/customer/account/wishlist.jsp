@@ -17,7 +17,7 @@
                     <p class="image">
                         <a href="<%=Util.fullPath("single-product?id=" +item.getId())%>">
                             <img class="img-responsive"
-                                 src="/public/customer/img/shop/<%=item.getImg()%>"
+                                 src="/public/customer/img/shop/images/<%=item.getImg()%>"
                                  width="130" height="182" alt="sample text">
                         </a>
                     </p>

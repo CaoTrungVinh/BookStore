@@ -314,7 +314,7 @@
                                 <div class="single-banner">
                                     <div class="product-wrapper">
                                         <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="/public/customer/img/shop/<%= bookNew.getString(4)%>"
+                                            <img alt="" src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
                                                  style="padding-top: 30px">
                                             <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>
                                             <div class="star-rating">
@@ -373,7 +373,7 @@
                                 <div class="single-banner">
                                     <div class="product-wrapper">
                                         <a href="#" class="single-banner-image-wrapper">
-                                            <img alt="" src="/public/customer/img/shop/<%= bookTopRating.getString(4)%>"
+                                            <img alt="" src="/public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
                                                  style="padding-top: 30px">
                                             <div class="price"><span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>
                                             <div class="star-rating">

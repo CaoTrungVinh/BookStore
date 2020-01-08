@@ -70,7 +70,7 @@
                         <div role="tabpanel" class="tab-pane <%=i==1?"active":""%>" id="<%=img.getString("id")%>">
                             <a class="venobox" href="/public/customer/img/shop/<%= img.getString("img")%>"
                                data-gall="gallery" title="">
-                                <img src="/public/customer/img/shop/<%= img.getString("img")%>" alt="">
+                                <img src="/public/customer/img/shop/images/<%= img.getString("img")%>" alt="">
                             </a>
                         </div>
 
@@ -97,7 +97,7 @@
                         <li role="presentation" class="<%=i==1?"active":""%>"><a href="#<%=img.getString("id")%>"
                                                                                  aria-controls="one" role="tab"
                                                                                  data-toggle="tab">
-                            <img height="160" width="150" src="/public/customer/img/shop/<%= img.getString("img")%>"
+                            <img height="160" width="150" src="/public/customer/img/shop/images/<%= img.getString("img")%>"
                                  alt="">
                         </a></li>
                         <% } %>
@@ -218,7 +218,7 @@
                             <a href="<%=Util.fullPath("single-product?id=" +listBook.getString("id"))%>"
                                class="single-banner-image-wrapper">
                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                <img alt="" src="/public/customer/img/shop/<%= listBook.getString(4)%>"
+                                <img alt="" src="/public/customer/img/shop/images/<%= listBook.getString(4)%>"
                                      style="margin-top: 30px">
 
 
@@ -285,7 +285,7 @@
                                         <div class="product-images">
                                             <div class="main-image images">
                                                 <img alt=""
-                                                     src="/public/customer/img/shop/<%= listBook.getString(4)%>">
+                                                     src="/public/customer/img/shop/images/<%= listBook.getString(4)%>">
 
                                             </div>
                                         </div>

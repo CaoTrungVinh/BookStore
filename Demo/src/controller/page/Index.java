@@ -18,6 +18,7 @@ public class Index extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
         try {
+
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
             String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book";
@@ -38,6 +39,8 @@ public class Index extends HttpServlet {
             e.printStackTrace();
 
         }
+
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -71,7 +71,7 @@
                                 </td>
                                 <td class="product-image">
                                     <a href="#">
-                                        <img src="/public/customer/img/shop/<%= p.getImg()%>" style="height: 140px"
+                                        <img src="/public/customer/img/shop/images/<%= p.getImg()%>" style="height: 140px"
                                              alt="">
                                     </a>
                                 </td>
