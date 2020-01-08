@@ -58,11 +58,17 @@
                                        value=""></div>
                         </aside>
 
+                        <aside class="widget widget-categories" style="text-align: center;">
+                         <span> <a href="<%= Util.fullPath("list-book?idKM=km") %>"><img src="http://www.khuyenmaihcmc.vn/img/notfound.jpg" width="200" height="50">
+                         </a></span>
+                        </aside>
+
                         <aside class="widget widget-categories">
                             <h2 class="sidebar-title text-center">CATEGORY</h2>
                             <ul class="sidebar-menu">
                                 <% ResultSet rs = (ResultSet) request.getAttribute("rs");
                                     Integer idType = (Integer) request.getAttribute("idType");
+                                    String idKm = (String) request.getAttribute("idKM");
                                     while (rs.next()) {
                                 %>
                                 <li>
@@ -235,17 +241,21 @@
                                 <% Integer nOfPages = (Integer) request.getAttribute("nOfPages");
 //                                    Integer idType = (Integer) request.getAttribute("idType");
 //                                    Integer idNsx = (Integer) request.getAttribute("idNsx");
-
+                                    System.out.println(idKm);
                                     Integer currentPage1 = (Integer) request.getAttribute("currentPage");
 
                                     int start1 = currentPage1;
                                     String url = "list-book?type=" + idType + "&page=";
-                                    if (idType == 0 && idNsx == 0) {
+                                    if (idType == 0 && idNsx == 0 && !idKm.equals("km")) {
                                         url = "list-book?page=";
                                     } else if (idType != 0) {
                                         url = "list-book?type=" + idType + "&page=";
                                     } else if (idNsx != 0) {
                                         url = "list-book?nsx=" + idNsx + "&page=";
+                                    }
+                                    else if (idKm.equals("km")) {
+                                        System.out.println("ok");
+                                        url = "list-book?idKM=" + idKm + "&page=";
                                     }
                                     if ((currentPage1) == nOfPages) {
                                         start1 = currentPage1 - 2;

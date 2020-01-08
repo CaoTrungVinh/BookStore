@@ -4,8 +4,19 @@
     <% User user = (User) request.getAttribute("user");
     %>
     <h1 class="have-margin">Account information</h1>
+
+
     <div class="account-profile register-form">
-        <form class="content" action="<%= Util.fullPath("/account/edit?id="+user.getId()) %>" method="post" action=""
+        <% if (session.getAttribute("edit-account-noti")!=null) {
+            System.out.println(session.getAttribute("edit-account-noti"));
+        %>
+        <div><%=session.getAttribute("edit-account-noti")%></div>
+        <div style="height: 5px"></div>
+        <%
+                session.removeAttribute("edit-account-noti");
+            }
+        %>
+        <form class="content" action="<%= Util.fullPath("account/edit?id="+user.getId()) %>" method="post"
               id="edit-account">
             <div class="form-group">
                 <label class="control-label">Full name</label>
