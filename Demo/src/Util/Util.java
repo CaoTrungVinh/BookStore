@@ -1,16 +1,12 @@
 package Util;
 
 import Model.Cart;
-import controller.cart.Update;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class Util {
@@ -34,6 +30,7 @@ public class Util {
         return showPrice(price / 1000) + "." + (pricestr.substring(pricestr.length() - 3));
 
     }
+
     public static String formatCurrency(String money) {
         double m = 0;
         try {
@@ -41,9 +38,23 @@ public class Util {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(m);
+    }
+
+    public static int price(String money, String discount) {
+        double m = 0;
+        double d = 0;
+        try {
+            m = Double.parseDouble(money);
+            d = Double.parseDouble(discount) / 100;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        return (int) (m * (1-d));
     }
 
     public static void updateOrderDB(Connection conn, Cart cart) throws SQLException {

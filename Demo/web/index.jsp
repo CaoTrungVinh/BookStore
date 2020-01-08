@@ -394,6 +394,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                         </a>
                                         <div class="product-description">
                                             <div class="functional-buttons">

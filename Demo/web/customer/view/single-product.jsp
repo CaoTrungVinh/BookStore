@@ -137,8 +137,22 @@
                     </div>
 
                     <div class="single-product-price">
-                        <h2><%= Util.formatCurrency(book.getString("price"))%>
+                        <% if (book.getString("discount") != null) {%>
+                        <p class="s-price price">
+                        <h2 style="color: red" ><%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>VND</h2>
+                    </br>
+                           Save:<span class="percent " style="color: red"> -<%= book.getString("discount")%>%</span>
+                    </br>
+                           Origin price:<span class="original" style=" text-decoration: line-through"> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
+                        </p>
+                        <% } else { %>
+                        <h2><%= Util.showPrice(book.getInt("price"))%>
                         </h2>
+
+
+                        <% } %>
+
+
                     </div>
                     <div class="product-attributes clearfix">
                                 <span class="pull-left" id="quantity-wanted-p">

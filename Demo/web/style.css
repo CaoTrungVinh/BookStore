@@ -2722,6 +2722,7 @@ a.wish-btn {
     display: inline-block;
     margin-bottom: 40px;
     text-decoration: underline;
+    padding-top: 25%;
 }
 
 a.see-all {

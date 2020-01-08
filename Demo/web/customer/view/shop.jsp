@@ -1,8 +1,5 @@
-<%@ page import="Model.Cart" %>
-<%@ page import="Model.User" %>
 <%@ page import="Util.Util" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Map" %>
 <%@ page pageEncoding="utf-8" %>
 <!doctype html>
 <html class="no-js" lang="">
@@ -316,13 +313,11 @@
                                             <a href="<%=Util.fullPath("single-product?id=" +book.getString("id"))%>"
                                                class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                                <img alt="" src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                <img alt=""
+                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>"
                                                      style="margin-top: 30px">
 
 
-                                                <div class="price"><span><%=  Util.formatCurrency(book.getString("price"))%>
-                                                </span>
-                                                </div>
                                             </a>
                                             <div class="product-description">
                                                 <div class="functional-buttons">
@@ -364,6 +359,21 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="price"><span>
+
+                                                    <% if (book.getString("discount") != null) {%>
+<p class="price">
+    <%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>VND
+    <span class="percent "> -<%= book.getString("discount")%>%</span>
+
+    <span class="original "> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
+</p>
+                                                    <% } else { %>
+                                                    <%=  Util.showPrice(book.getInt("price"))%>VND
+                                                    <% } %>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -393,9 +403,29 @@
                                                             <h1><%= book.getString(2)%>
                                                             </h1> <%--Gán title --%>
                                                             <div class="price-box">
-                                                                <p class="s-price"><span class="special-price"><span
-                                                                        class="amount"><%=  Util.formatCurrency(book.getString("price"))%></span></span>
-                                                                </p> <%--Gán price--%>
+
+                                                                <% if (book.getString("discount") != null) {%>
+                                                                <p class="s-price price">
+                                                                     <span class="special-price"><span
+                                                                             class="amount special-price">  <%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>VND</span></span>
+
+                                                                    <span class="percent "> -<%= book.getString("discount")%>%</span>
+
+                                                                    <span class="original "> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
+                                                                </p>
+                                                                <% } else { %>
+                                                                <p class="s-price ">
+                                                                    <span class="special-price"><span
+                                                                        class="amount"> <%=  Util.showPrice(book.getInt("price"))%>VND</span></span>
+                                                                </p>
+
+
+                                                                <% } %>
+
+
+<%--                                                                <p class="s-price"><span class="special-price"><span--%>
+<%--                                                                        class="amount"><%=  Util.formatCurrency(book.getString("price"))%></span></span>--%>
+<%--                                                                </p> &lt;%&ndash;Gán price&ndash;%&gt;--%>
                                                             </div>
                                                             <a href="<%=Util.fullPath("single-product?id=" +book.getString("id"))%>"
                                                                class="see-all">See all
@@ -471,7 +501,8 @@
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
                                             <a href="single-product.jsp" title="East of eden">
-                                                <img src="/public/customer/img/shop/images/<%= book.getString(4)%>" alt="">
+                                                <img src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                     alt="">
                                             </a>
                                         </div>
                                     </div>

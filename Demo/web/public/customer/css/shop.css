@@ -1,3 +1,31 @@
+
+.price {
+    align-self: stretch;
+    color: rgb(36, 36, 36)!important;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0px;
+    padding: 8px 0px 0px;
+    top: auto !important;
+    right: auto !important;
+    width: 100%;
+}
+.price .percent {
+    margin-left: 8px;
+    color: rgb(120, 120, 120);
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+.price .original {
+    display: block;
+    margin-left: 0px;
+    color: rgb(120, 120, 120);
+    font-size: 13px;
+    font-weight: 300;
+    text-decoration: line-through;
+}
 .star-rating, .back-stars, .front-stars {
     display: flex;
 }
