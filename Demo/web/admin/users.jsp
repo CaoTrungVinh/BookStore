@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/public/admin/css/table.css">
 </head>
 <body id="reportsPage">
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-account.jsp"/>
 
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
@@ -31,14 +31,14 @@
         </th>
         <th class="th-sm">GENDER
         </th>
-<%--        <th class="th-sm">BIRTH DAY--%>
-<%--        </th>--%>
+        <%--        <th class="th-sm">BIRTH DAY--%>
+        <%--        </th>--%>
         <th class="th-sm">ADDRESS
         </th>
         <th class="th-sm">PHONE
         </th>
-<%--        <th class="th-sm">GROUP--%>
-<%--        </th>--%>
+        <th class="th-sm">ROLE
+        </th>
         <th class="th-sm">ACTIVE
         </th>
         <th class="th-sm">
@@ -53,17 +53,21 @@
             stt++;
     %>
     <tr>
-        <td scope="row" class="text-center"><%= stt%> </td>
-        <td><%= users.getString("name")%></td>
-        <td><%= users.getString("fullname")%></td>
-        <td><%= users.getString("email")%></td>
-        <td><%= users.getString("gender")%></td>
-
-<%--        <td></td>--%>
+        <td scope="row" class="text-center"><%= stt%>
+        </td>
+        <td><%= users.getString("name")%>
+        </td>
+        <td><%= users.getString("fullname")%>
+        </td>
+        <td><%= users.getString("email")%>
+        </td>
+        <td><%= users.getString("gender")%>
+        </td>
 
         <td><%= users.getString("address")%></td>
         <td><%= users.getString("phone")%></td>
 <%--        <td><%= users.getString("idgroup")%></td>--%>
+        <td class="text-center"><%= users.getString("is_active").equals("1")? "Admin" : "Customer"%> </td>
 
         <td class="text-center">
             <% if (users.getString("is_active").equals("1")) {%>

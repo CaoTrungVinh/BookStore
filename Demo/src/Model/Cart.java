@@ -9,18 +9,18 @@ public class Cart {
     int quantity;
     int id_order;
 
+    public Cart() {
+        this.data = new HashMap<>();
+        id_order = -1;
+        quantity = 0;
+    }
+
     public int getId_order() {
         return id_order;
     }
 
     public void setId_order(int id_order) {
         this.id_order = id_order;
-    }
-
-    public Cart() {
-        this.data = new HashMap<>();
-        id_order = -1;
-        quantity = 0;
     }
 
     public Product get(int id) {

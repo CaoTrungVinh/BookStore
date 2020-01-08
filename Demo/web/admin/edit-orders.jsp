@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +30,7 @@
                         <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>"
                               method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
+
                             <div class="form-group mb-3">
                                 <label
                                 >Customer<a style="color: red"> *</a></label>
@@ -50,6 +51,7 @@
                                     <% } %>
                                 </select>
                             </div>
+
                             <div class="form-group mb-3">
                                 <label
                                         for="subtotal"
@@ -75,7 +77,7 @@
                                         type="text"
                                         class="form-control novalidate"
                                         value="<%= orders.getString("shipping")%>"
-                                                                        required
+                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">

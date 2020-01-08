@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
 </head>
 
 <body id="reportsPage">
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-producer.jsp"/>
 
 
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0">
@@ -48,7 +48,8 @@
         <td scope="row" class="text-center"><%= stt%>
         </td>
         <td style="width: 400px">
-            <a href="<%= Util.fullPath("admin/producer/see?id=" + publishers.getString("id")) %>"><%= publishers.getString("name")%></a>
+            <a href="<%= Util.fullPath("admin/producer/see?id=" + publishers.getString("id")) %>"><%= publishers.getString("name")%>
+            </a>
 
         </td>
         <td><%= publishers.getString("address")%>

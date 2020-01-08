@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Base64;
 
 @WebServlet("/forgot-pass")
 public class ForgotPass extends HttpServlet {
@@ -25,7 +25,8 @@ public class ForgotPass extends HttpServlet {
         String email = Util.getParameterGeneric(request, "email", "");
         try {
             String sql = "select * from users where email= '" + email + "'";
-            Statement statement = ConnectionDB.connect();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
             String hashMail = "";
             if (resultSet.next()) {
@@ -34,8 +35,6 @@ public class ForgotPass extends HttpServlet {
             SendingEmail sendingEmail = new SendingEmail("reset-pass", email, hashMail);
             sendingEmail.start();
             request.getRequestDispatcher("/customer/view/verify.jsp").forward(request, response);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -26,7 +26,7 @@
                 <th>Phone</th>
                 <th>Gender</th>
                 <th>Address</th>
-<%--                <th>DOB</th>--%>
+                <%--                <th>DOB</th>--%>
 
                 <th>Role</th>
                 <th></th>
@@ -71,14 +71,14 @@
                 </td>
 
 
-                <td class="text-center"><%= user.getString("idgroup").equals("1")? "User" : "Admin"%> </td>
+                <td class="text-center"><%= user.getString("idgroup").equals("1")? "Customer" : "Admin"%> </td>
 
                 <td class="text-center">
-                    <% if(user.getString("is_active").equals("1")) {%>
-                    <i class="fa fa-check" style="color: #2196F3" >
+                    <% if (user.getString("is_active").equals("1")) {%>
+                    <i class="fa fa-check" style="color: #2196F3">
                     </i>
                     <% } else {%>
-                    <i class="fa fa-minus-circle" style="color: red !important;" >
+                    <i class="fa fa-minus-circle" style="color: red !important;">
                     </i>
                     <% } %>
                 </td>
@@ -87,7 +87,7 @@
                     <a href="#" class="edit"><i
                             class="fa fa-pencil"
                             data-toggle="tooltip" title="Edit"></i></a>
-                    <a href="#" class="delete" ><i
+                    <a href="#" class="delete"><i
                             class="fa fa-trash"
                             data-toggle="tooltip"
                             title="Delete"></i></a>

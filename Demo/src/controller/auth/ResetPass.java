@@ -1,9 +1,6 @@
 package controller.auth;
 
 import Util.Util;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import controller.page.Login;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -12,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @WebServlet("/reset-pass")
 public class ResetPass extends HttpServlet {
@@ -26,8 +23,7 @@ public class ResetPass extends HttpServlet {
         email = Util.getParameterGeneric(request, "key1", "");
         hash = Util.getParameterGeneric(request, "key2", "");
         try {
-            Statement statement = ConnectionDB.connect();
-            Connection conn = statement.getConnection();
+            Connection conn = ConnectionDB.getConnection();
             String sql = "select email, email_hashed, is_active from users where email=? and email_hashed=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, email);
@@ -36,12 +32,10 @@ public class ResetPass extends HttpServlet {
             if (rs.next()) {
                 request.setAttribute("email", email);
                 request.getRequestDispatcher("/customer/view/reset-pass.jsp").forward(request, response);
-            }else{
+            } else {
                 request.getRequestDispatcher("/customer/view/route-not-defined.jsp").forward(request, response);
             }
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,12 +46,11 @@ public class ResetPass extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String pass = Util.getParameterGeneric(request, "pass", "");
         String repass = Util.getParameterGeneric(request, "repass", "");
-        System.out.println(pass+repass);
+        System.out.println(pass + repass);
 
         if (pass.equals(repass)) {
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 PreparedStatement pst = conn.prepareStatement("select pass from users where email=? and email_hashed=?");
                 pst.setString(1, email);
                 pst.setString(2, hash);

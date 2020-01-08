@@ -1,4 +1,4 @@
-<%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <div class="content-right">
     <h1 class="have-margin">
         Tạo sổ địa chỉ
@@ -6,62 +6,64 @@
     </h1>
     <div class="account-address-form address-form">
         <form class="form-horizontal bv-form" role="form" action="/customer/address/create"
-            method="post" id="address-info" novalidate="novalidate"><button type="submit"
-                class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
+              method="post" id="address-info" novalidate="novalidate">
+            <button type="submit"
+                    class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
             <input type="hidden" name="TIKI_CSRF_TOKEN" value="TGxUUE5jTy9KZUdBdFhwY2hOMlVwZz09">
 
             <div class="form-group row  has-feedback">
                 <label for="full_name"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Họ và
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Họ và
                     Tên:</label>
                 <div class="col-lg-8 col-md-8">
                     <input name="full_name" type="text" class="form-control" id="full_name"
-                        placeholder="Nhập họ và tên" value="Nguyễn Tánh" data-bv-field="full_name"><i
+                           placeholder="Nhập họ và tên" value="Nguyễn Tánh" data-bv-field="full_name"><i
                         class="form-control-feedback" data-bv-icon-for="full_name"
                         style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="full_name"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Họ
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Họ
                         tên</small></div>
             </div>
 
             <div class="form-group row ">
                 <label for="company"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Công
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Công
                     ty:</label>
                 <div class="col-lg-8 col-md-8">
                     <input name="company" type="text" class="form-control" id="company"
-                        placeholder="Nhập công ty" value="">
+                           placeholder="Nhập công ty" value="">
                 </div>
             </div>
 
             <div class="form-group row  has-feedback">
                 <label for="telephone"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Số điện
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Số điện
                     thoại:</label>
                 <div class="col-lg-8 col-md-8">
                     <input name="telephone" type="tel" class="form-control" id="telephone"
-                        placeholder="Nhập số điện thoại" value="" data-bv-field="telephone"><i
+                           placeholder="Nhập số điện thoại" value="" data-bv-field="telephone"><i
                         class="form-control-feedback" data-bv-icon-for="telephone"
                         style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="telephone"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Số điện
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Số điện
                         thoại</small><small class="help-block" data-bv-validator="regexp"
-                        data-bv-for="telephone" data-bv-result="NOT_VALIDATED" style="display: none;">Số
-                        điện thoại không hợp lệ (chỉ chấp nhận
-                        số)</small><small class="help-block" data-bv-validator="stringLength"
-                        data-bv-for="telephone" data-bv-result="NOT_VALIDATED" style="display: none;">Số
-                        điện thoại chỉ được chứa 9 - 15 chữ
-                        số</small></div>
+                                            data-bv-for="telephone" data-bv-result="NOT_VALIDATED"
+                                            style="display: none;">Số
+                    điện thoại không hợp lệ (chỉ chấp nhận
+                    số)</small><small class="help-block" data-bv-validator="stringLength"
+                                      data-bv-for="telephone" data-bv-result="NOT_VALIDATED" style="display: none;">Số
+                    điện thoại chỉ được chứa 9 - 15 chữ
+                    số</small></div>
             </div>
 
             <div class="form-group row  has-feedback">
                 <label for="region_id"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Tỉnh/Thành
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Tỉnh/Thành
                     phố:</label>
 
                 <div class="col-lg-8 col-md-8">
                     <select name="region_id" class="form-control" id="region_id"
-                        data-bv-field="region_id">
+                            data-bv-field="region_id">
                         <option value="">Chọn Tỉnh/Thành phố</option>
                         <option value="294">Hồ Chí Minh</option>
                         <option value="297">Hà Nội</option>
@@ -127,57 +129,57 @@
                         <option value="317">Đồng Nai</option>
                         <option value="318">Đồng Tháp</option>
                     </select><i class="form-control-feedback" data-bv-icon-for="region_id"
-                        style="display: none;"></i>
+                                style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="region_id"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn Tỉnh/Thành
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn Tỉnh/Thành
                         phố</small></div>
             </div>
 
 
             <div class="form-group  has-feedback">
                 <label for="city_id"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Quận
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Quận
                     huyện:</label>
 
                 <div class="col-lg-8 col-md-8">
                     <select name="city_id" class="form-control" id="city_id" data-bv-field="city_id">
                         <option value="">Chọn Quận/Huyện</option>
                     </select><i class="form-control-feedback" data-bv-icon-for="city_id"
-                        style="display: none;"></i>
+                                style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="city_id"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn
                         Quận/Huyện</small></div>
             </div>
 
             <div class="form-group  has-feedback">
                 <label for="ward_id"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Phường
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Phường
                     xã:</label>
 
                 <div class="col-lg-8 col-md-8">
                     <select name="ward_id" class="form-control" id="ward_id" data-bv-field="ward_id">
                         <option value="">Chọn Phường/Xã</option>
                     </select><i class="form-control-feedback" data-bv-icon-for="ward_id"
-                        style="display: none;"></i>
+                                style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="ward_id"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng chọn
                         Phường/Xã</small></div>
             </div>
 
             <div class="form-group row  has-feedback">
                 <label for="street"
-                    class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Địa
+                       class="col-lg-4 col-md-4 control-label visible-md-block visible-lg-block">Địa
                     chỉ:</label>
                 <div class="col-lg-8 col-md-8">
                     <textarea class="form-control" id="street" name="street" cols="30" rows="10"
-                        placeholder="Nhập địa chỉ" data-bv-field="street"></textarea><i
+                              placeholder="Nhập địa chỉ" data-bv-field="street"></textarea><i
                         class="form-control-feedback" data-bv-icon-for="street"
                         style="display: none;"></i>
                     <small class="help-block" data-bv-validator="notEmpty" data-bv-for="street"
-                        data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Địa
+                           data-bv-result="NOT_VALIDATED" style="display: none;">Vui lòng nhập Địa
                         chỉ</small><small class="help-block" data-bv-validator="regexp"
-                        data-bv-for="street" data-bv-result="NOT_VALIDATED" style="display: none;">Địa
-                        chỉ của bạn không hợp lệ </small>
+                                          data-bv-for="street" data-bv-result="NOT_VALIDATED" style="display: none;">Địa
+                    chỉ của bạn không hợp lệ </small>
                 </div>
             </div>
             <div class="form-group row form-group-radio group-radio-k-address">
@@ -185,12 +187,14 @@
                 <div class="col-lg-8 input-wrap">
                     <div class="radio radio-float" style="width: 50%;float: left;">
                         <label for="delivery_address_type_2"><input type="radio"
-                                name="delivery_address_type" value="1" checked>Nhà riêng / Chung
+                                                                    name="delivery_address_type" value="1" checked>Nhà
+                            riêng / Chung
                             cư</label>
                     </div>
                     <div class="radio radio-float" style="width: 50%;float: left;">
                         <label for="delivery_address_type_2"><input type="radio"
-                                name="delivery_address_type" value="2">Cơ quan / Công ty</label>
+                                                                    name="delivery_address_type" value="2">Cơ quan /
+                            Công ty</label>
                     </div>
                     <div class="clearfix"></div>
                 </div>

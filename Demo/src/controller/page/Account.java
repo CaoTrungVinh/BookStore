@@ -27,10 +27,7 @@ public class Account extends HttpServlet {
         ResultSet rs;
         Statement statement = null;
         try {
-            statement = ConnectionDB.connect();
-            conn = statement.getConnection();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            conn = ConnectionDB.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -57,7 +54,7 @@ public class Account extends HttpServlet {
                 sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
                 rs = statement.executeQuery(sql);
                 while (rs.next()) {
-                    Statement statement2 = ConnectionDB.connect();
+                    Statement statement2 = conn.createStatement();
                     ResultSet rs2 = statement2.executeQuery("SELECT books.title FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
                     ArrayList<String> products = new ArrayList<String>();
                     while (rs2.next()) {
@@ -67,7 +64,7 @@ public class Account extends HttpServlet {
                     ordereds.add(ordered);
                 }
                 request.setAttribute("ordereds", ordereds);
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
             request.setAttribute("route", "order");
@@ -103,8 +100,7 @@ public class Account extends HttpServlet {
                 System.out.println(dateofbirth);
 
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlUser = "SELECT * FROM users Where id=?";
                     PreparedStatement u = conn.prepareStatement(sqlUser);
                     u.setString(1, id);
@@ -116,7 +112,7 @@ public class Account extends HttpServlet {
 
                         if (PasswordAuthentication.check(oldPass, rs.getString("password"))) {
 
-                            if(newPass.length()< 6 && newPass.length() > 32) {
+                            if (newPass.length() < 6 && newPass.length() > 32) {
                                 System.out.println("new pass");
                                 request.setAttribute("errNewPass", "Mật khẩu phải từ 6-32 kí tự");
                                 request.setAttribute("noti", "Cập nhật không thành công");
@@ -142,9 +138,7 @@ public class Account extends HttpServlet {
                                 request.setAttribute("noti", "Cập nhật không thành công");
                                 response.sendRedirect("/account/edit?id" + id);
                                 return;
-
                             }
-
 
 
                         } else {
@@ -159,7 +153,6 @@ public class Account extends HttpServlet {
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
 
-
                     pstCate.setString(1, name);
                     pstCate.setString(2, email);
                     pstCate.setString(3, fullname);
@@ -170,10 +163,10 @@ public class Account extends HttpServlet {
                     pstCate.setString(8, id);
                     pstCate.execute();
 
-                     sqlUser = "SELECT * FROM users Where id=?";
-                     u = conn.prepareStatement(sqlUser);
+                    sqlUser = "SELECT * FROM users Where id=?";
+                    u = conn.prepareStatement(sqlUser);
                     u.setString(1, id);
-                     rs = u.executeQuery();
+                    rs = u.executeQuery();
                     rs.next();
 
                     user.setId(rs.getInt("id"));
@@ -190,8 +183,6 @@ public class Account extends HttpServlet {
 
 
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();

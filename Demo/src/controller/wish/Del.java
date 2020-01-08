@@ -22,7 +22,8 @@ public class Del extends HttpServlet {
         int bookID = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));
         int idWish = user.getWishlist().getId();
         try {
-            Statement statement = ConnectionDB.connect();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             String sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + idWish + "' AND id_book = '" + bookID + "'";
             ResultSet rs = statement.executeQuery(sql);
             if (rs.next()) {
@@ -30,8 +31,6 @@ public class Del extends HttpServlet {
             }
             user.getWishlist().remove(bookID);
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

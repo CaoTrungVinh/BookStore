@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +28,8 @@
                         <%
                             ResultSet categories = (ResultSet) request.getAttribute("categories");
                         %>
-                        <form action="<%= Util.fullPath("admin/categories/see?id="+categories.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/categories/see?id="+categories.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label

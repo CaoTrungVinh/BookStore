@@ -10,7 +10,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Util {
-    static final String HOST = "http://localhost:8080/";
+    static final String HOST = "/";
 
     public static String fullPath(String path) {
         return HOST + path;

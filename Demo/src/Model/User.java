@@ -1,12 +1,5 @@
 package Model;
 
-import java.sql.*;
-
-import db.ConnectionDB;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 public class User {
     private int id;
     private String id_fb;
@@ -72,16 +65,16 @@ public class User {
         return gender;
     }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     public String getId_fb() {
         return id_fb;
     }
 
     public void setId_fb(String id_fb) {
         this.id_fb = id_fb;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public Cart getCart() {

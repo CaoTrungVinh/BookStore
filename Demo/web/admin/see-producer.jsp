@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,8 @@
                         <%
                             ResultSet publishers = (ResultSet) request.getAttribute("publishers");
                         %>
-                        <form action="<%= Util.fullPath("admin/producer/see?id="+publishers.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/producer/see?id="+publishers.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -69,7 +70,9 @@
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase"
-                                style="margin-top: 30px"><a style="color: white" href="<%= Util.fullPath("admin/producer") %>">COME BACK</a></button>
+                                style="margin-top: 30px"><a style="color: white"
+                                                            href="<%= Util.fullPath("admin/producer") %>">COME BACK</a>
+                        </button>
                     </div>
                     </form>
                 </div>

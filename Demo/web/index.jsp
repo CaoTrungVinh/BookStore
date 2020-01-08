@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="no-js" lang="">
@@ -295,7 +295,7 @@
                             <a href="#arrival" aria-controls="arrival" role="tab" data-toggle="tab">New Arrival</a>
                         </li>
                         <li role="presentation">
-                            <a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">Top Rating</a>
+                            <a href="#sale" aria-controls="sale" role="tab" data-toggle="tab">Favorite Product</a>
                         </li>
                     </ul>
                 </div>
@@ -316,6 +316,7 @@
                                         <a href="#" class="single-banner-image-wrapper">
                                             <img alt="" src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
                                                  style="padding-top: 30px">
+<%--                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>--%>
                                             <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>
                                             <div class="star-rating">
                                                 <div class="back-stars">

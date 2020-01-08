@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+    <jsp:include page="header.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -67,7 +67,7 @@
                                         name="shipping"
                                         type="text"
                                         class="form-control novalidate"
-                                                                        required
+                                        required
                                 />
                             </div>
                             <div class="form-group mb-3">

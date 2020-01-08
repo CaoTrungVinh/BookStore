@@ -1,7 +1,6 @@
 package controller.cart;
 
 import Model.Cart;
-import Model.Product;
 import Model.User;
 import Util.Util;
 import db.ConnectionDB;
@@ -13,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 @WebServlet("/DelProduct")
@@ -28,8 +29,8 @@ public class Del extends HttpServlet {
         try {
 
             String sql;
-            Statement statement = ConnectionDB.connect();
-//            Connection conn = statement.getConnection();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             ResultSet rs;
 
             HttpSession session = request.getSession();
@@ -52,8 +53,6 @@ public class Del extends HttpServlet {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

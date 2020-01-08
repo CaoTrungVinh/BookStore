@@ -1,4 +1,3 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -24,7 +23,8 @@
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-12 col-lg-6 col-md-12">
-                        <form action="<%= Util.fullPath("admin/categories/add") %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/categories/add") %>" method="POST"
+                              onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -40,7 +40,8 @@
 
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Categories Now</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Categories Now
+                        </button>
                     </div>
                     </form>
                 </div>

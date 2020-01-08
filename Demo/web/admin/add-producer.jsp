@@ -1,4 +1,3 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-producer.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -63,7 +62,9 @@
 
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">Add Producer Now</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">
+                            Add Producer Now
+                        </button>
                     </div>
                     </form>
                 </div>

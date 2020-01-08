@@ -1,6 +1,9 @@
 package controller.page;
 
-import Model.*;
+import Model.Cart;
+import Model.Product;
+import Model.User;
+import Model.WishList;
 import Util.Util;
 import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
@@ -12,29 +15,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = Util.getParameterGeneric(request, "email", "");
-        String pass = Util.getParameterGeneric(request, "pass", "");
-        login(request, response, email, pass);
-
-
-    }
-
     public static void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
         try {
             String sql;
-            Statement statement = ConnectionDB.connect();
-            Connection conn = statement.getConnection();
-
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
 
             sql = "select * from users where email=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -118,5 +111,17 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = Util.getParameterGeneric(request, "email", "");
+        String pass = Util.getParameterGeneric(request, "pass", "");
+        login(request, response, email, pass);
+
+
     }
 }

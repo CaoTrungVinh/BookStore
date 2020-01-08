@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-producer.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -27,7 +27,8 @@
                         <%
                             ResultSet publishers = (ResultSet) request.getAttribute("publishers");
                         %>
-                        <form action="<%= Util.fullPath("admin/producer/edit?id="+publishers.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/producer/edit?id="+publishers.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -68,7 +69,9 @@
                             </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">UPDATE</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">
+                            UPDATE
+                        </button>
                     </div>
                     </form>
                 </div>

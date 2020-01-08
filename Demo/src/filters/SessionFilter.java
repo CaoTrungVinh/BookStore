@@ -1,13 +1,12 @@
 package filters;
 
-        import Model.Cart;
+import Model.Cart;
 
-        import javax.servlet.*;
-        import javax.servlet.annotation.WebFilter;
-        import javax.servlet.http.*;
-        import java.io.IOException;
-        import java.util.ArrayList;
-        import java.util.StringTokenizer;
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @WebFilter(filterName = "SessionFilter", urlPatterns = "/*")
 public class SessionFilter implements Filter {
@@ -16,7 +15,7 @@ public class SessionFilter implements Filter {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        HttpSession session =  ((HttpServletRequest) request).getSession();
+        HttpSession session = ((HttpServletRequest) request).getSession();
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
             cart = new Cart();
