@@ -6,54 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Add connection pooling">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_tomcat_tomcat_jdbc_9_0_30.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Web_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_dbcp2_2_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_dbcp2_2_7_0.xml" afterDir="false" />
+    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/a.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/a.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-producer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-producer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/producers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/producers.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/products.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/see-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/see-categories.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/see-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/see-producer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/admin/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/add-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/add-address.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/address.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/my-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/my-account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/order-history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/order-history.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/wishlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/wishlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/404.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/about.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/my-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/my-account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/shop.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/single-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/single-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/thank-you.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/thank-you.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/wishlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/wishlist.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/test.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +30,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -216,7 +172,7 @@
       <workItem from="1573462818225" duration="42000" />
       <workItem from="1574941241034" duration="93000" />
       <workItem from="1578489999425" duration="730000" />
-      <workItem from="1578490831117" duration="21533000" />
+      <workItem from="1578490831117" duration="23052000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
@@ -232,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578507906264</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add connection pooling">
+      <created>1578512788782</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578512788782</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
