@@ -43,7 +43,7 @@ public class Account extends HttpServlet {
         Model.User user = (Model.User) request.getSession().getAttribute("user");
         request.setAttribute("user", user);
 
-        System.out.println(user.getDateofbirth());
+//        System.out.println(user.getDateofbirth());
 
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             request.setAttribute("route", "edit");
@@ -100,6 +100,7 @@ public class Account extends HttpServlet {
                 System.out.println(name + "\t" + email + "\t" + fullname + "\t" + gender + "\t" + address + phone + "\t" + dateofbirth);
 
                 System.out.println(is_change_pass);
+                System.out.println(dateofbirth);
 
                 try {
                     Statement s = ConnectionDB.connect();
@@ -169,11 +170,11 @@ public class Account extends HttpServlet {
                     pstCate.setString(8, id);
                     pstCate.execute();
 
-//                    String sqlUser = "SELECT * FROM users Where id=?";
-//                    PreparedStatement u = conn.prepareStatement(sqlUser);
-//                    u.setString(1, id);
-//                    ResultSet rs = u.executeQuery();
-//                    rs.next();
+                     sqlUser = "SELECT * FROM users Where id=?";
+                     u = conn.prepareStatement(sqlUser);
+                    u.setString(1, id);
+                     rs = u.executeQuery();
+                    rs.next();
 
                     user.setId(rs.getInt("id"));
                     user.setUserName(rs.getString("name"));
@@ -183,7 +184,7 @@ public class Account extends HttpServlet {
 //                    user.setAddress(rs.getString("address"));
                     user.setPhone(rs.getString("phone"));
                     user.setDateofbirth(rs.getString("dateofbirth"));
-
+                    System.out.println("userdob: " + dateofbirth);
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
 
@@ -197,7 +198,7 @@ public class Account extends HttpServlet {
                 }
             }
             request.setAttribute("noti", "Cập nhật thành công");
-            response.sendRedirect("/account/edit?id" + id);
+            response.sendRedirect("/account/edit?id=" + id);
         }
 
 

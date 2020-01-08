@@ -272,8 +272,9 @@ public class Product extends HttpServlet {
                 ResultSet rs = pstCate.getGeneratedKeys();
                 rs.next();
                 long id = rs.getLong(1);
-                if(img1!=null) {
-
+                if (img1 != null) {
+                    img1 = img1.substring(img1.lastIndexOf("/") +1 , img1.length());
+                    System.out.println(img1);
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -283,7 +284,8 @@ public class Product extends HttpServlet {
                     pstImg.executeUpdate();
 
                 }
-                if(img2!=null) {
+                if (img2 != null) {
+                    img2 = img2.substring(img2.lastIndexOf("/") +1 , img2.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -292,7 +294,8 @@ public class Product extends HttpServlet {
                     pstImg.setString(2, img2);
                     pstImg.executeUpdate();
                 }
-                if(img3!=null) {
+                if (img3 != null) {
+                    img3 = img3.substring(img3.lastIndexOf("/") +1 , img3.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -383,4 +386,6 @@ public class Product extends HttpServlet {
             response.sendRedirect("/admin/product");
         }
     }
+
+
 }
