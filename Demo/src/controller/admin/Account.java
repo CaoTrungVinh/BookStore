@@ -122,7 +122,6 @@ public class Account extends HttpServlet {
                 pstCate.setString(6, password);
                 pstCate.setString(7, address);
                 pstCate.setString(8, phone);
-//                pstCate.setString(9, idgroup);
                 pstCate.setString(9, is_active);
                 pstCate.execute();
             } catch (SQLException e) {
@@ -142,13 +141,16 @@ public class Account extends HttpServlet {
                 String email = request.getParameter("email");
                 String fullname = request.getParameter("fullname");
                 String gender = request.getParameter("gender");
+                String pass = request.getParameter("pass");
                 String address = request.getParameter("address");
                 String phone = request.getParameter("phone");
                 String is_active = request.getParameter("is_active");
                 try {
+                    String email_hashed = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());
+                    String  password = PasswordAuthentication.getSaltedHash(pass);
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
-                    String sqlCategory = "UPDATE users SET name=?,email=?,fullname=?,gender=?,address=?,phone=?,is_active=? where id=?";
+                    String sqlCategory = "UPDATE users SET name=?,email=?,fullname=?,gender=?,email_hashed=?,password=?,address=?,phone=?,is_active=? where id=?";
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
 
 
@@ -156,10 +158,12 @@ public class Account extends HttpServlet {
                     pstCate.setString(2, email);
                     pstCate.setString(3, fullname);
                     pstCate.setString(4, gender);
-                    pstCate.setString(5, address);
-                    pstCate.setString(6, phone);
-                    pstCate.setString(7, is_active);
-                    pstCate.setString(8, id);
+                    pstCate.setString(5, email_hashed);
+                    pstCate.setString(6, password);
+                    pstCate.setString(7, address);
+                    pstCate.setString(8, phone);
+                    pstCate.setString(9, is_active);
+                    pstCate.setString(10, id);
                     pstCate.execute();
                 } catch (SQLException e) {
                     e.printStackTrace();

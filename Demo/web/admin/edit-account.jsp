@@ -92,6 +92,20 @@
                                 </select>
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label
+                                        for="pass"
+                                >Password
+                                </label>
+                                <input
+                                        id="pass"
+                                        name="pass"
+                                        type="password"
+                                        class="form-control novalidate"
+                                        value="********"
+                                                                        required
+                                />
+                            </div>
 
                             <div class="form-group mb-3">
                                 <label

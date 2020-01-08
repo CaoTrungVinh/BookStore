@@ -142,11 +142,7 @@ public class Account extends HttpServlet {
                                 request.setAttribute("noti", "Cập nhật không thành công");
                                 response.sendRedirect("/account/edit?id" + id);
                                 return;
-
                             }
-
-
-
                         } else {
                             System.out.println("old pass");
                             request.setAttribute("errOldPass", "Mật khẩu cũ không đúng");
@@ -158,7 +154,6 @@ public class Account extends HttpServlet {
                     String sqlCategory = "UPDATE users SET name=?,email=?,fullname=?,gender=?,address=?,phone=?,dateofbirth=? where id=?";
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
-
 
                     pstCate.setString(1, name);
                     pstCate.setString(2, email);

@@ -30,6 +30,7 @@
                         <form action="<%= Util.fullPath("admin/orders/edit?id="+orders.getString("id")) %>"
                               method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
+
                             <div class="form-group mb-3">
                                 <label
                                 >Customer<a style="color: red"> *</a></label>
@@ -50,6 +51,7 @@
                                     <% } %>
                                 </select>
                             </div>
+
                             <div class="form-group mb-3">
                                 <label
                                         for="subtotal"

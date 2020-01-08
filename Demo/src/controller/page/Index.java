@@ -21,14 +21,15 @@ public class Index extends HttpServlet {
 
             Statement s = ConnectionDB.connect();
             Connection conn = s.getConnection();
-            String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book";
+//            String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book";
+            String sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ORDER BY  DATEDIFF(CURDATE(), DATE_FORMAT(FROM_UNIXTIME(UNIX_TIMESTAMP(createdAt)), '%Y-%m-%d')) LIMIT 10";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet bookNew = pst.executeQuery();
             request.setAttribute("bookNew", bookNew);
 
             Statement sTopRating = ConnectionDB.connect();
             Connection cTopRating = sTopRating.getConnection();
-            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 and books.rating> 99 GROUP BY img.id_book";
+            sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM img inner JOIN books ON img.id_book = books.id WHERE active = 1 and books.rating> 99 GROUP BY img.id_book LIMIT 10";
             PreparedStatement pstTopRating = cTopRating.prepareStatement(sql);
             response.getWriter().println(sql);
             ResultSet bookcTopRating = pstTopRating.executeQuery();
