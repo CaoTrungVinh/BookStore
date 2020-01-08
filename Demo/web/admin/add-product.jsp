@@ -8,12 +8,77 @@
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+    <style>
+        .border-img {
+            border: 1px solid #cccccc;
+            margin-left: 0;
+            margin-right: 0;
+            background-color: #ffffff;
+        }
+
+        .cart-product {
+
+            font-weight: normal;
+            overflow: hidden;
+            padding: 15px;
+            position: relative;
+            width: 150px;
+        }
+
+        .cart-product-image {
+            float: left;
+            margin-right: 15px;
+            width: 82px;
+        }
+
+        .cart-product-image a {
+            border: 1px solid #ebebeb;
+            float: left;
+        }
+
+        .cart-product-remove {
+            position: absolute;
+            right: 32px;
+            top: 10px;
+            width: 15px;
+        }
+
+        .cart-product-remove i {
+            background: #44434399;
+            border-radius: 100%;
+            color: #ffffff;
+            cursor: pointer;
+            display: table-cell;
+            font-size: 10px;
+            height: 15px;
+            text-align: center;
+            transition: all 0.3s ease 0s;
+            vertical-align: middle;
+            width: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-img {
+            max-width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: #aaa;
+        }
+
+    </style>
 </head>
 
 <body>
 <jsp:include page="header.jsp"/>
 
-<div class="container tm-mt-big tm-mb-big">
+<div class="container tm-mt-big tm-mb-big mt-5">
     <div class="row">
         <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
             <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
@@ -22,8 +87,8 @@
                         <h2 class="tm-block-title d-inline-block">Add Product</h2>
                     </div>
                 </div>
-                <div class="row tm-edit-product-row">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="row tm-edit-product-row justify-content-center">
+                    <div class="col-xl-8 col-lg-8 col-md-12">
                         <form action="<%= Util.fullPath("admin/product/add") %>" method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
@@ -50,13 +115,44 @@
                                           rows="3"
                                 ></textarea>
                             </div>
+                            <div class="form-group mb-3 ">
+                                <label>Images </label>
+                                <div id="imgContainer" class="row border-img">
+
+
+
+
+
+
+                                    <div id="imgPlaceHolder1" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder1')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <div id="imgPlaceHolder2" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder2')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+                                    <div id="imgPlaceHolder3" class="cart-product col-xl-4 col-lg-4 col-md-4">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder3')" style="cursor: pointer">
+                                            <i class="fa fa-plus"></i>
+                                        </div>
+                                    </div>
+
+                                    <input hidden name="imgPlaceHolder1" value="">
+                                    <input hidden name="imgPlaceHolder2" value="">
+                                    <input hidden name="imgPlaceHolder3" value="">
+
+                                </div>
+                            </div>
                             <div class="form-group mb-3">
                                 <label
                                 >Category</label
                                 >
                                 <input type="hidden" name="category" id="category">
                                 <select
-                                        class="custom-select tm-select-accounts"
+                                        class="custom-select tm-select-accounts bg-white"
                                         id="selectCetagories"
                                         required
                                 >
@@ -75,7 +171,7 @@
                                 >
                                 <input type="hidden" name="publisher" id="publisher">
                                 <select
-                                        class="custom-select tm-select-accounts"
+                                        class="custom-select tm-select-accounts bg-white"
                                         id="selectPublisher"
                                         required
                                 >
@@ -95,7 +191,7 @@
                                 >
                                 <input type="hidden" name="author" id="author">
                                 <select
-                                        class="custom-select tm-select-accounts"
+                                        class="custom-select tm-select-accounts bg-white"
                                         id="selectAuthor"
                                         required
                                 >
@@ -136,39 +232,9 @@
                                     />
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
 
-                                <label>Decentralization</label>
-
-                                <br>
-                                <input type="radio" value="0" name="group" id="hide2" checked="checked">
-                                <label for="hide2">Admin</label>
-                                <br>
-                                <input type="radio" value="1" name="group" id="hide1">
-                                <label for="hide1">Customer</label>
-
-                            </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-
-
-                        <div class="tm-product-img-dummy mx-auto">
-                            <i
-                                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                                    onclick=" ckFinder();"
-                            ></i>
-                        </div>
-                        <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" name="miages[]" multiple style="display:none;"/>
-                            <input
-                                    type="button"
-                                    class="btn btn-primary btn-block mx-auto"
-                                    value="UPLOAD PRODUCT IMAGE"
-                                    onclick="ckFinder();"
-                            />
-                        </div>
-                    </div>
-                    <div class="col-12">
+                    <div class="col-8">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
                     </div>
                     </form>
@@ -191,7 +257,7 @@
 
 <script>
 
-    var editor
+    var editor;
 
     function onFormSubmit() {
         if (editor) {
@@ -201,22 +267,39 @@
             console.log("NULL");
         }
     }
-    function ckFinder() {
+
+    function addImage(id, fileUrl) {
+        document.getElementById(id).innerHTML =
+            '<div class="cart-product-image"><a href="single-product.jsp"><img src="'
+            + fileUrl + '" alt=""></a><div class="cart-product-remove" onclick="removeCartProduct(\''
+            +id+'\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="'+ id+'" value="'+fileUrl+'">';
+
+
+    }
+
+    function removeCartProduct(id) {
+        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\'' + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
+    }
+
+    function ckFinder(id) {
         var finder = new CKFinder();
         finder.basePath = '/ckfinder/';
+        finder.selectActionFunction = function (fileUrl, data, allFiles) {
+            addImage(id,fileUrl);
+        };
         finder.popup();
     }
 
-    //IDE bị ngu, không nhận cú pháp => của ES6, nên phải dùng cú pháp này
-    //Nếu không bấm format nó sẽ nhảy ngu
     $(function () {
-
-
-
         window.jQuery = $;
         // $("#expire_date").datepicker();
         ClassicEditor
-            .create(document.querySelector('#editor')) //Đến đoạn này là editor đã chạy xong
+            .create(document.querySelector('#editor'), {//Đến đoạn này là editor đã chạy xong
+                cloudServices: {
+                    tokenUrl: 'http://localhost:8080/',
+                    uploadUrl: 'https://public/admin/img'
+                }
+            })
             .then(function (e) { //Đoạn này bug nên nó chết
                 editor = e;
             })
@@ -242,7 +325,6 @@
                 $('#author').val(el.data('cc'));
             });
     });
-
 
 
 </script>

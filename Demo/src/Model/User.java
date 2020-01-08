@@ -9,12 +9,15 @@ import java.util.ArrayList;
 
 public class User {
     private int id;
+    private String id_fb;
     private String email;
     private String userName;
     private String fullName;
     private String gender;
     private String address;
     private String phone;
+    private String password;
+    private String dateofbirth;
     private String avt;
     private int idgroup; // 1 is user, 2 is admin
     private int active; //0 is not active, 1 is active
@@ -22,11 +25,26 @@ public class User {
     private WishList wishlist;
 
 
-
     public User() {
         cart = new Cart();
         wishlist = new WishList();
 
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public void setDateofbirth(String dateofbirth) {
+        this.dateofbirth = dateofbirth;
     }
 
     public WishList getWishlist() {
@@ -38,13 +56,20 @@ public class User {
     }
 
     public int getTotalPrice() {
-       return  (int) this.cart.getTotalPrice();
+        return (int) this.cart.getTotalPrice();
     }
-
 
 
     public String getGender() {
         return gender;
+    }
+
+    public String getId_fb() {
+        return id_fb;
+    }
+
+    public void setId_fb(String id_fb) {
+        this.id_fb = id_fb;
     }
 
     public void setGender(String gender) {
@@ -136,7 +161,6 @@ public class User {
     public void addToShoppingCard(Product product) {
         this.cart.put(product);
     }
-
 
 
     @Override

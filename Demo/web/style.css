@@ -3114,12 +3114,12 @@ input:focus {
 }
 
 
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 .star-rating, .back-stars, .front-stars {
     display: flex;
 }
@@ -3151,5 +3151,26 @@ input[type=number]::-webkit-outer-spin-button {
     transition: all 0.5s;
 }
 
+.commentfb {
+
+    background-color: white;
+    border: 1px solid #dddfe2;
+    border-radius: 3px;
+    margin-top: 50px;
+    display: flex;
+    padding: 30px;
+
+}
+
+
+._4uyl ._1cb {
+    background-color: #f7f7f7;
+}
+.alert-danger-my{
+    color: #a94442;
+    margin-top: -15px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
 
 
