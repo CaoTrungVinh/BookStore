@@ -1,5 +1,5 @@
-<%@ page import="Util.Util" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/public/admin/css/table.css">
 </head>
 <body id="reportsPage">
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-account.jsp"/>
 
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
@@ -37,8 +37,8 @@
         </th>
         <th class="th-sm">PHONE
         </th>
-        <%--        <th class="th-sm">GROUP--%>
-        <%--        </th>--%>
+        <th class="th-sm">ROLE
+        </th>
         <th class="th-sm">ACTIVE
         </th>
         <th class="th-sm">
@@ -64,13 +64,10 @@
         <td><%= users.getString("gender")%>
         </td>
 
-        <%--        <td></td>--%>
-
-        <td><%= users.getString("address")%>
-        </td>
-        <td><%= users.getString("phone")%>
-        </td>
-        <%--        <td><%= users.getString("idgroup")%></td>--%>
+        <td><%= users.getString("address")%></td>
+        <td><%= users.getString("phone")%></td>
+<%--        <td><%= users.getString("idgroup")%></td>--%>
+        <td class="text-center"><%= users.getString("is_active").equals("1")? "Admin" : "Customer"%> </td>
 
         <td class="text-center">
             <% if (users.getString("is_active").equals("1")) {%>

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">

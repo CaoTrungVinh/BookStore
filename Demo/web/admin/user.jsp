@@ -1,4 +1,5 @@
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
 <div class="" id="home">
     <jsp:include page="header.jsp"/>
 
-    <div class="container mt-5" style="min-height: 500px">
+    <div class="container mt-5"  style="min-height: 500px">
 
         <table id="user" class="table table-striped table-bordered table-sm">
 
@@ -44,8 +45,7 @@
 
             %>
             <tr>
-                <td class="text-center"><%= stt%>
-                </td>
+                <td class="text-center"><%= stt%></td>
                 <td class="tm-product-name">
                     <a href="#"><%= user.getString("id")%>
                     </a>
@@ -71,8 +71,7 @@
                 </td>
 
 
-                <td class="text-center"><%= user.getString("idgroup").equals("1") ? "User" : "Admin"%>
-                </td>
+                <td class="text-center"><%= user.getString("idgroup").equals("1")? "Customer" : "Admin"%> </td>
 
                 <td class="text-center">
                     <% if (user.getString("is_active").equals("1")) {%>

@@ -78,7 +78,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -101,7 +101,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
-                                >Product Name
+                                >Product Name<a style="color: red"> *</a>
                                 </label>
                                 <input
                                         id="name"
@@ -115,7 +115,7 @@
                             <div class="form-group mb-3">
                                 <label
                                         for="editor"
-                                >Description</label
+                                >Description<a style="color: red"> *</a></label
                                 >
                                 <textarea id="editor"
                                           name="description"
@@ -125,7 +125,7 @@
                             </div>
 
                             <div class="form-group mb-3 ">
-                                <label>Images </label>
+                                <label>Images<a style="color: red"> *</a> </label>
                                 <div id="imgContainer" class="row border-img">
 
                                     <%
@@ -170,7 +170,7 @@
 
                             <div class="form-group mb-3">
                                 <label
-                                >Category</label
+                                >Category<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="category" id="category"
                                        value="<%= books.getString("type")%>">
@@ -197,10 +197,10 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Publisher</label
+                                >Publisher<a style="color: red"> *</a></label
                                 >
                                 <input type="hidden" name="publisher" id="publisher"
-                                       value="<%= books.getString("publisher")%>">>
+                                       value="<%= books.getString("publisher")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectPublisher"
@@ -221,9 +221,8 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label
-                                >Author</label
-                                >
-                                <input type="hidden" name="author" id="author" value="<%= books.getString("author")%>">>
+                                >Author <a style="color: red"> *</a></label>
+                                <input type="hidden" name="author" id="author" value="<%= books.getString("author")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectAuthor"
@@ -246,7 +245,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label>Price
+                                    <label>Price<a style="color: red"> *</a>
                                     </label>
                                     <input
                                             value="<%= books.getString("price")%>"
@@ -259,7 +258,7 @@
                                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                                     <label
                                             for="stock"
-                                    >Units In Stock
+                                    >Units In Stock<a style="color: red"> *</a>
                                     </label>
                                     <input
                                             value="<%= books.getString("in_stock")%>"
@@ -273,7 +272,7 @@
                             </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-8">
                         <button type="submit" class="btn btn-primary btn-block text-uppercase">UPDATE</button>
                     </div>
 

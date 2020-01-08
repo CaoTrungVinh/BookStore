@@ -15,6 +15,7 @@
 <div class="" id="home" style="background: #f5f5f5">
 
     <jsp:include page="header.jsp"/>
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -22,7 +23,7 @@
             </div>
         </div>
         <!-- row -->
-        <h2 class="tm-block-title">Doanh thu theo tháng</h2>
+        <h2 class="tm-block-title">Monthly revenue</h2>
         <div class="row tm-content-row">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-8 tm-block-col" style="margin: auto">
                 <div class="tm-bg-primary-dark tm-block">
@@ -33,11 +34,11 @@
                 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
                     <h2 class="tm-block-title">Orders List</h2>
                     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-<%--                        <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"--%>
-<%--                                type="button" style="margin-right: 100px;margin-top: 17px; float: right">--%>
-<%--                            <a href="<%=Util.fullPath("admin/orders/add")%>"--%>
-<%--                               style="color: white; text-decoration: none;">New orders</a>--%>
-<%--                        </button>--%>
+                        <%--                        <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"--%>
+                        <%--                                type="button" style="margin-right: 100px;margin-top: 17px; float: right">--%>
+                        <%--                            <a href="<%=Util.fullPath("admin/orders/add")%>"--%>
+                        <%--                               style="color: white; text-decoration: none;">New orders</a>--%>
+                        <%--                        </button>--%>
                         <thead>
                         <tr>
                             <th class="th-sm">STT
@@ -46,11 +47,11 @@
                             </th>
                             <th class="th-sm">ORDERDATE
                             </th>
-                            <th class="th-sm">SUBTOTAL
+                            <th class="th-sm" style="width: 100px">SUBTOTAL
                             </th>
-                            <th class="th-sm">SHIPPING
+                            <th class="th-sm" style="width: 100px">SHIPPING
                             </th>
-                            <th class="th-sm">TOTAL
+                            <th class="th-sm" style="width: 75px">TOTAL
                             </th>
                             <th class="th-sm">STATUS
                             </th>
@@ -195,7 +196,7 @@
             data: {
                 labels: month,
                 datasets: [{
-                    label: 'Doanh thu',
+                    label: 'Revenue',
                     data: revenue,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
@@ -211,7 +212,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: "Lợi nhuận (VNĐ)"
+                            labelString: "Revenue (VNĐ)"
                         }
                     }],
                     xAxes: [{
@@ -220,7 +221,7 @@
                             sampleSize: 12,
                             autoSkip: false,
                             callback: function (value, index, values) {
-                                return 'Tháng ' + value;
+                                return 'Month ' + value;
                             }
                         }
                     }]
