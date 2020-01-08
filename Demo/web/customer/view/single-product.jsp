@@ -97,7 +97,8 @@
                         <li role="presentation" class="<%=i==1?"active":""%>"><a href="#<%=img.getString("id")%>"
                                                                                  aria-controls="one" role="tab"
                                                                                  data-toggle="tab">
-                            <img height="160" width="150" src="/public/customer/img/shop/images/<%= img.getString("img")%>"
+                            <img height="160" width="150"
+                                 src="/public/customer/img/shop/images/<%= img.getString("img")%>"
                                  alt="">
                         </a></li>
                         <% } %>
@@ -139,11 +140,13 @@
                     <div class="single-product-price">
                         <% if (book.getString("discount") != null) {%>
                         <p class="s-price price">
-                        <h2 style="color: red" ><%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>VND</h2>
-                    </br>
-                           Save:<span class="percent " style="color: red"> -<%= book.getString("discount")%>%</span>
-                    </br>
-                           Origin price:<span class="original" style=" text-decoration: line-through"> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
+                        <h2 style="color: red"><%= Util.showPrice(Util.price(book.getString("price"), book.getString("discount")))%>
+                            VND</h2>
+                        </br>
+                        Save:<span class="percent " style="color: red"> -<%= book.getString("discount")%>%</span>
+                        </br>
+                        Origin price:<span class="original"
+                                           style=" text-decoration: line-through"> <%=  Util.showPrice(book.getInt("price"))%>VND</span>
                         </p>
                         <% } else { %>
                         <h2><%= Util.showPrice(book.getInt("price"))%>
@@ -236,7 +239,8 @@
                                      style="margin-top: 30px">
 
 
-                                <div class="price"><span><%=  Util.formatCurrency(listBook.getString("price"))%></span>
+                                <div class="price" style="text-align: center;
+    bottom: -130px;"><span><%=  Util.showPrice(listBook.getInt("price"))%>VND</span>
                                 </div>
                             </a>
                             <div class="product-description">
