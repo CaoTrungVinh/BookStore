@@ -278,7 +278,8 @@
     }
 
     function removeCartProduct(id) {
-        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\'' + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
+        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\''
+            + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
     }
 
     function ckFinder(id) {

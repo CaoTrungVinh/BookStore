@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,71 @@
 
     <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
+    <style>
+
+        .border-img {
+            border: 1px solid #cccccc;
+            margin-left: 0;
+            margin-right: 0;
+            background-color: #ffffff;
+        }
+
+        .cart-product {
+
+            font-weight: normal;
+            overflow: hidden;
+            padding: 15px;
+            position: relative;
+            width: 150px;
+        }
+
+        .cart-product-image {
+            float: left;
+            margin-right: 15px;
+            width: 82px;
+        }
+
+        .cart-product-image a {
+            border: 1px solid #ebebeb;
+            float: left;
+        }
+
+        .cart-product-remove {
+            position: absolute;
+            right: 32px;
+            top: 10px;
+            width: 15px;
+        }
+
+        .cart-product-remove i {
+            background: #44434399;
+            border-radius: 100%;
+            color: #ffffff;
+            cursor: pointer;
+            display: table-cell;
+            font-size: 10px;
+            height: 15px;
+            text-align: center;
+            transition: all 0.3s ease 0s;
+            vertical-align: middle;
+            width: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-img {
+            max-width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: #aaa;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,12 +87,13 @@
                         <h2 class="tm-block-title d-inline-block">See Product </h2>
                     </div>
                 </div>
-                <div class="row tm-edit-product-row">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="row tm-edit-product-row justify-content-center">
+                    <div class="col-xl-8 col-lg-8 col-md-12">
                         <%
                             ResultSet books = (ResultSet) request.getAttribute("books");
                         %>
-                        <form action="<%= Util.fullPath("admin/product/see?id="+books.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/product/see?id="+books.getString("id")) %>" method="POST"
+                              onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
 
                             <div class="form-group mb-3">
@@ -55,11 +121,36 @@
                                           rows="3"
                                 ><%= books.getString("description")%></textarea>
                             </div>
+                            <div class="form-group mb-3 ">
+                                <label>Images </label>
+                                <div id="imgContainer" class="row border-img">
+                                <%
+                                        ResultSet imgs = (ResultSet) request.getAttribute("imgs");
+
+                                            while (imgs.next()) {
+
+                                    %>
+                            <div class="cart-product col-xl-3 col-lg-3 col-md-3">
+                                <div class="cart-product-image">
+                                    <a href="single-product.jsp">
+                                        <img src="/public/customer/img/shop/images/<%=imgs.getString("img")%>"
+                                             alt="">
+                                    </a>
+
+                                </div>
+                            </div>
+                                <% }
+                                    %>
+                                </div>
+                                </div>
+
+
                             <div class="form-group mb-3">
                                 <label
                                 >Category</label
                                 >
-                                <input type="hidden" name="category" id="category" value="<%= books.getString("type")%>">
+                                <input type="hidden" name="category" id="category"
+                                       value="<%= books.getString("type")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectCetagories"
@@ -86,7 +177,8 @@
                                 <label
                                 >Publisher</label
                                 >
-                                <input type="hidden" name="publisher" id="publisher" value="<%= books.getString("publisher")%>">
+                                <input type="hidden" name="publisher" id="publisher"
+                                       value="<%= books.getString("publisher")%>">
                                 <select
                                         class="custom-select tm-select-accounts"
                                         id="selectPublisher"
@@ -157,23 +249,6 @@
                                     />
                                 </div>
                             </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                        <div class="tm-product-img-dummy mx-auto">
-                            <i
-                                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                                    onclick="document.getElementById('fileInput').click();"
-                            ></i>
-                        </div>
-                        <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" name="miages[]" multiple style="display:none;"/>
-                            <input
-                                    type="button"
-                                    class="btn btn-primary btn-block mx-auto"
-                                    value="UPLOAD PRODUCT IMAGE"
-                                    onclick="selectFileWithCKFinder( 'fileInput' );"
-                            />
-                        </div>
                     </div>
 
                     <div class="col-12">
