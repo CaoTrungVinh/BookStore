@@ -12,6 +12,8 @@ public class ConnectionDB {
             String username = System.getenv("DB_USERNAME") != null? System.getenv("DB_USERNAME"): "root";
             String password = System.getenv("DB_PASSWORD") != null? System.getenv("DB_PASSWORD"): "";
             con = DriverManager.getConnection(url, username, password);
+            PreparedStatement pst =con.prepareStatement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+            pst.execute();
             return con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } else {
             return con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
