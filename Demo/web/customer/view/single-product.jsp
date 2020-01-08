@@ -9,11 +9,60 @@
     <jsp:include page="head.jsp"/>
     <link rel="stylesheet" href="/public/customer/css/shop.css">
     <style>
+        .rating-widget {
+            padding-top: 20px;
+        }
         .white-panel {
             border-radius: 4px;
             background: #fff;
             padding: 20px 10px;
         }
+
+        .success-box {
+            margin: 50px 0;
+            padding: 10px 10px;
+            border: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+
+        .success-box > div {
+            vertical-align: top;
+            display: inline-block;
+            color: #888;
+        }
+
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul > li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size: 2.5em; /* Change the size of the stars */
+            color: #ccc; /* Color on idle state */
+        }
+
+        /* Hover state of the stars */
+        .rating-stars ul > li.star.hover > i.fa {
+            color: rgba(49, 176, 237, 0.52);
+        }
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color: #32B5F3;
+        }
+
     </style>
 </head>
 <body style="background: #f4f4f4">
@@ -109,6 +158,11 @@
             </div>
             <div class="col-md-6 col-sm-5">
                 <div class="single-product-details ">
+                    <script>
+                        id =<%=book.getInt("id")  %>;
+                        count =<%=book.getInt("ratingCounter")  %>;
+                        rating =<%=book.getInt("rating")  %>;
+                    </script>
                     <h4><%= book.getString("title")%>
                     </h4>
                     <div class="star-rating" style="justify-content: left">
@@ -210,6 +264,61 @@
 
             </div>
         </div>
+
+        <section class='rating-widget'>
+            <h3>Rating Product</h3>
+            <div>
+                <p id="avgRating"> Average Rating: <%= book.getInt("rating")%>% </p>
+                <div class="star-rating" style="justify-content: left">
+                    <div class="back-stars">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+
+                        <div class="front-stars" style="width: <%= book.getInt("rating")%>%">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Rating Stars Box -->
+            <div class='rating-stars text-center'>
+                <ul id='stars'>
+                    <li class='star' title='Poor' data-value='1'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' data-value='2'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' data-value='3'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' data-value='4'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' data-value='5'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div class='success-box'>
+                <div class='clearfix'></div>
+
+                <div class='text-message'></div>
+                <div class='clearfix'></div>
+            </div>
+
+
+        </section>
+
+
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous"
                 src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
@@ -390,6 +499,64 @@
     }
 
     changeCommentsUrl();
+
+    $('#stars li').on('mouseover', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+        // Now highlight all the stars that's not after the current hovered star
+        $(this).parent().children('li.star').each(function (e) {
+            if (e < onStar) {
+                $(this).addClass('hover');
+            } else {
+                $(this).removeClass('hover');
+            }
+        });
+
+    }).on('mouseout', function () {
+        $(this).parent().children('li.star').each(function (e) {
+            $(this).removeClass('hover');
+        });
+    });
+
+
+    /* 2. Action to perform on click */
+    $('#stars li').on('click', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
+
+        for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass('selected');
+        }
+
+        for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass('selected');
+        }
+
+        // JUST RESPONSE (Not needed)
+        var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+        var msg = "";
+        if (ratingValue > 1) {
+            msg = "Thanks! You rated this " + ratingValue + " stars.";
+
+        } else {
+            msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+        }
+        responseMessage(msg);
+        $.ajax("/single-product/rate?rate=" + ratingValue + "&id=" + id);
+        count++;
+        phanTramRating = ratingValue * 100 / 5;
+        ra = Math.round((rating + phanTramRating) / count);
+        $("#avgRating").text("Average Rating: " + ra + "%");
+        console.log(ra);
+    });
+
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
+
+
 
 </script>
 </body>
