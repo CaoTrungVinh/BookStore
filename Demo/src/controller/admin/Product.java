@@ -78,7 +78,7 @@ public class Product extends HttpServlet {
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
                     String sqlAuthor = "SELECT * FROM authors";
-                    String sqlImg = "SELECT * FROM img";
+                    String sqlImg = "SELECT * FROM img where id_book=?";
                     // rút ra cuốn sách cần edit
                     PreparedStatement pstBooks = conn.prepareStatement(sqlBooks);
                     pstBooks.setString(1, id);
@@ -95,6 +95,7 @@ public class Product extends HttpServlet {
                     ResultSet authors = pstAuthor.executeQuery();
 //img
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+                    pstImg.setString(1, id);
                     ResultSet img = pstImg.executeQuery();
 
 
@@ -121,6 +122,7 @@ public class Product extends HttpServlet {
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
                     String sqlAuthor = "SELECT * FROM authors";
+                    String sqlImg = "SELECT * FROM img WHERE id_book =?";
                     // rút ra cuốn sách cần edit
                     PreparedStatement pstBooks = conn.prepareStatement(sqlBooks);
                     pstBooks.setString(1, id);
@@ -135,11 +137,16 @@ public class Product extends HttpServlet {
 //tác giả
                     PreparedStatement pstAuthor = conn.prepareStatement(sqlAuthor);
                     ResultSet authors = pstAuthor.executeQuery();
+//                    img
+                    PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+                    pstImg.setString(1, id);
+                    ResultSet img = pstImg.executeQuery();
 
                     request.setAttribute("books", books);
                     request.setAttribute("categories", categories);
                     request.setAttribute("publisher", publisher);
                     request.setAttribute("authors", authors);
+                    request.setAttribute("imgs", img);
 
                     request.getRequestDispatcher("/admin/see-product.jsp").forward(request, response);
                 } catch (SQLException e) {
@@ -272,8 +279,13 @@ public class Product extends HttpServlet {
                 ResultSet rs = pstCate.getGeneratedKeys();
                 rs.next();
                 long id = rs.getLong(1);
-                if (img1 != null) {
-                    img1 = img1.substring(img1.lastIndexOf("/") +1 , img1.length());
+                System.out.println("img1: " + img1);
+                System.out.println("img2: " + img2);
+                System.out.println("img3: " + img3);
+                System.out.println(img2.equals(""));
+                if (img1 != null && !img1.equals("")) {
+                    System.out.println("img1 ok");
+                    img1 = img1.substring(img1.lastIndexOf("/") + 1, img1.length());
                     System.out.println(img1);
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
@@ -284,8 +296,9 @@ public class Product extends HttpServlet {
                     pstImg.executeUpdate();
 
                 }
-                if (img2 != null) {
-                    img2 = img2.substring(img2.lastIndexOf("/") +1 , img2.length());
+                if (img2 != null && !img2.equals("")) {
+                    System.out.println("img2 ok");
+                    img2 = img2.substring(img2.lastIndexOf("/") + 1, img2.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -294,8 +307,9 @@ public class Product extends HttpServlet {
                     pstImg.setString(2, img2);
                     pstImg.executeUpdate();
                 }
-                if (img3 != null) {
-                    img3 = img3.substring(img3.lastIndexOf("/") +1 , img3.length());
+                if (img3 != null && !img3.equals("")) {
+                    System.out.println("img3 ok");
+                    img3 = img3.substring(img3.lastIndexOf("/") + 1, img3.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -323,6 +337,10 @@ public class Product extends HttpServlet {
                 String author = request.getParameter("author");
                 String price = request.getParameter("price");
                 String stock = request.getParameter("stock");
+                String img1 = request.getParameter("imgPlaceHolder1");
+                String img2 = request.getParameter("imgPlaceHolder2");
+                String img3 = request.getParameter("imgPlaceHolder3");
+
                 try {
                     Statement s = ConnectionDB.connect();
                     Connection conn = s.getConnection();
@@ -336,8 +354,40 @@ public class Product extends HttpServlet {
                     pstCate.setInt(6, Integer.parseInt(publisher));
                     pstCate.setInt(7, Integer.parseInt(author));
                     pstCate.setString(8, id);
-
                     pstCate.execute();
+
+                    if (img1 != null && !img1.equals("")) {
+                        img1 = img1.substring(img1.lastIndexOf("/") + 1, img1.length());
+                        System.out.println(img1);
+                        String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                        PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                        pstImg.setString(1, id);
+                        pstImg.setString(2, img1);
+                        pstImg.executeUpdate();
+
+                    }
+                    if (img2 != null && !img2.equals("")) {
+                        img2 = img2.substring(img2.lastIndexOf("/") + 1, img2.length());
+                        String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                        PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                        pstImg.setString(1, id);
+                        pstImg.setString(2, img2);
+                        pstImg.executeUpdate();
+                    }
+                    if (img3 != null && !img3.equals("")) {
+                        img3 = img3.substring(img3.lastIndexOf("/") + 1, img3.length());
+                        String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
+
+                        PreparedStatement pstImg = conn.prepareStatement(sqlImg);
+
+                        pstImg.setString(1, id);
+                        pstImg.setString(2, img3);
+                        pstImg.executeUpdate();
+                    }
 
 
                 } catch (SQLException e) {
