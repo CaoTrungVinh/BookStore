@@ -28,6 +28,14 @@ public class User {
     public User() {
         cart = new Cart();
         wishlist = new WishList();
+        id = 0;
+        email = "";
+        userName = "";
+        gender = "";
+        address = "";
+        phone = "";
+        avt = "";
+        idgroup = 1;
 
     }
 
