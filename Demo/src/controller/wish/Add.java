@@ -30,16 +30,16 @@ public class Add extends HttpServlet {
             int bookID = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));
             int idWish = user.getWishlist().getId();
             try {
-                Statement statement = ConnectionDB.connect();
-                Connection conn = statement.getConnection();
+                Connection conn = ConnectionDB.getConnection();
+                Statement statement = conn.createStatement();
                 String sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + idWish + "' AND id_book = '" + bookID + "'";
                 ResultSet rs = statement.executeQuery(sql);
-                if (rs.next()){
+                if (rs.next()) {
                     response.setStatus(500);
                     response.getWriter().write("This book has already in your wish list");
                     response.getWriter().flush();
                     response.getWriter().close();
-                }else{
+                } else {
                     sql = "INSERT INTO orderdetails (id_order, id_book) VALUES(?,?)";
                     PreparedStatement preparedStatement = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
                     preparedStatement.setInt(1, idWish);
@@ -61,9 +61,6 @@ public class Add extends HttpServlet {
                 }
 
 
-
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

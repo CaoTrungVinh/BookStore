@@ -4,7 +4,6 @@ import Model.Cart;
 import Model.User;
 import Util.Util;
 import db.ConnectionDB;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -13,8 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @WebServlet("/cart-update")
 public class Update extends HttpServlet {
@@ -32,7 +32,7 @@ public class Update extends HttpServlet {
         Cart cart = null;
 
         try {
-            statement = ConnectionDB.connect();
+            statement = ConnectionDB.getConnection().createStatement();
 
             User user = (User) request.getSession().getAttribute("user");
             boolean isLogin = user != null;
@@ -49,8 +49,6 @@ public class Update extends HttpServlet {
             }
 
             Util.updateOrderDB(statement.getConnection(), cart);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

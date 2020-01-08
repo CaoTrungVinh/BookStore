@@ -1,26 +1,25 @@
 package controller.tool;
 
 
-import java.util.Properties;
 import javax.mail.*;
-import javax.mail.PasswordAuthentication;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 public class SendingEmail extends Thread {
     private String userEmail;
     private String myHash;
     private String servletName;
 
-    @Override
-    public void run() {
-        sendMail();
-    }
-
     public SendingEmail(String servletName, String userEmail, String myHash) {
         this.userEmail = userEmail;
         this.myHash = myHash;
         this.servletName = servletName;
+    }
+
+    @Override
+    public void run() {
+        sendMail();
     }
 
     private void sendMail() {

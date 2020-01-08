@@ -15,7 +15,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 @WebServlet("/search")
 public class Search extends HttpServlet {
@@ -26,7 +25,8 @@ public class Search extends HttpServlet {
         int maxP = Integer.parseInt(Util.getParameterGeneric(request, "max", ""));
         int minP = Integer.parseInt(Util.getParameterGeneric(request, "min", ""));
         try {
-            Statement statement = ConnectionDB.connect();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             String sql = "SELECT * FROM books JOIN img on img.id_book = books.id WHERE title LIKE '%" + value + "%' AND books.price BETWEEN " + minP + " AND " + maxP + " GROUP BY books.id";
             ResultSet rs = statement.executeQuery(sql);
             JSONArray items = new JSONArray();
@@ -48,8 +48,6 @@ public class Search extends HttpServlet {
             response.getWriter().flush();
             response.getWriter().close();
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

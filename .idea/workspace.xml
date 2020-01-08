@@ -6,17 +6,330 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Web_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail_javax_mail_api_1_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_8_0_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_tomcat_tomcat_catalina_9_0_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_json_json_20190722.xml" afterDir="false" />
+    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Refactor">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Web_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_dbcp2_2_7_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Web_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Web_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/WishList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/WishList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/admin/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/admin/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/admin/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/admin/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/admin/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/admin/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/admin/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/admin/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/auth/FB_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/auth/FB_login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/auth/ResetPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/auth/ResetPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Del.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Del.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Pay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/ForgotPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/ForgotPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/ListBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/ListBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/SingleProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/SingleProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/wish/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/wish/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/wish/Del.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/wish/Del.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/filters/EncodingFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/filters/EncodingFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/filters/SessionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/filters/SessionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/a.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/a.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-producer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/add-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-producer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/edit-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/edit-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/orders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/producers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/producers.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/products.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/see-categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/see-categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/see-producer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/see-producer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/see-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/see-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/admin/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/admin/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/ckeditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/ckeditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/popups.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/popups.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/public_api.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/public_api.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/sample.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/sample.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/skin_bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/skin_bootstrap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/skin_v1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/skin_v1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/standalone.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/standalone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/standalone_v1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/standalone_v1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/tagusage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/_samples/tagusage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/ckfinder.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/ckfinder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/014.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/014.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/015.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/015.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/cs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/014.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/014.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/015.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/015.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/en/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es-mx/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/es/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/fi/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/files/other/help.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/files/other/help.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/files/other/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/files/other/help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/lt/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/001.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/001.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/002.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/002.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/003.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/003.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/004.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/004.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/005.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/005.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/006.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/006.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/007.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/007.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/008.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/008.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/009.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/009.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/010.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/010.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/011.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/011.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/012.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/012.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/013.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/013.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/014.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/014.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/015.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/015.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/license.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/license.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/suggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/suggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/files/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/help/pl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/cy.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/cy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/es-mx.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/es-mx.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/gu.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/gu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nn.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/nn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/lang/zh-tw.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/lang/zh-tw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/lang/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/lang/en.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/lang/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/lang/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/plugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/dummy/plugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/addon/mode/overlay.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/addon/mode/overlay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/lib/codemirror.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/lib/codemirror.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/lib/codemirror.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/lib/codemirror.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/clike/clike.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/clike/clike.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/css/css.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/css/css.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/htmlmixed/htmlmixed.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/htmlmixed/htmlmixed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/javascript/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/javascript/javascript.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/markdown/markdown.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/markdown/markdown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/perl/perl.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/perl/perl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/python/python.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/python/python.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/rst/rst.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/rst/rst.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/ruby/ruby.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/ruby/ruby.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/sass/sass.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/sass/sass.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/sql/sql.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/sql/sql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/stex/stex.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/stex/stex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/xml/xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/codemirror/mode/xml/xml.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/plugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/fileeditor/plugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/gallery/colorbox/colorbox.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/gallery/colorbox/colorbox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/imageresize/plugin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/plugins/imageresize/plugin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/ckfinder/skins/bootstrap/assets/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/ckfinder/skins/bootstrap/assets/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/add-address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/add-address.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/address.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/address.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/my-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/my-account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/order-history.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/order-history.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/wishlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/wishlist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/404.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/404.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/about.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/my-account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/my-account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/shop.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/single-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/single-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/thank-you.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/thank-you.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/wishlist.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/wishlist.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/css/table.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/css/table.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/css/templatemo-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/css/templatemo-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/external/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/external/jquery/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.structure.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/jquery-ui.theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/jquery-ui-datepicker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/js/tooplate-scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/js/tooplate-scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-brands-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-regular-400.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/fa-solid-900.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/font-fileuploader.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/admin/webfonts/font-fileuploader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/flaticon.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/flaticon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/my-account.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/my-account.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/owl.carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/owl.carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/pe-icon-7-stroke.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/pe-icon-7-stroke.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/css/shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/css/shop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/fonts/Flaticon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/fonts/Flaticon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/fonts/fontawesome-webfont.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/js/jquery.bootstrap-touchspin.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/js/jquery.bootstrap-touchspin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/js/jquery.meanmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/js/jquery.meanmenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/lib/css/nivo-slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/lib/css/nivo-slider.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/lib/css/preview.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/lib/css/preview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/lib/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/lib/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/lib/js/jquery.nivo.slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/lib/js/jquery.nivo.slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/venobox/venobox.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/venobox/venobox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/venobox/venobox.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/venobox/venobox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/test.jsp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +343,14 @@
     </execution>
   </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="myduyenn218 &lt;myduyenn218@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -42,6 +361,7 @@
   </component>
   <component name="ProjectId" id="1W79vMAMx1T9rj8YizwqzDvifwy" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -72,7 +392,7 @@
   <component name="RunManager">
     <configuration name="Local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="Web:war exploded">
           <settings>
@@ -153,7 +473,9 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Web:war exploded" />
+        </option>
       </method>
     </configuration>
   </component>
@@ -170,8 +492,16 @@
       <workItem from="1573462818225" duration="42000" />
       <workItem from="1574941241034" duration="93000" />
       <workItem from="1578489999425" duration="730000" />
-      <workItem from="1578490831117" duration="3848000" />
+      <workItem from="1578490831117" duration="16592000" />
     </task>
+    <task id="LOCAL-00001" summary="Add deploy config">
+      <created>1578494895412</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578494895412</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,5 +519,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add deploy config" />
+    <MESSAGE value="Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
   </component>
 </project>

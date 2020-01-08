@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 @WebServlet("/single-product")
@@ -22,8 +25,7 @@ public class SingleProduct extends HttpServlet {
 
 
         try {
-            Statement s = ConnectionDB.connect();
-            Connection conn = s.getConnection();
+            Connection conn = ConnectionDB.getConnection();
             String sql = "SELECT * FROM books WHERE id=? and active = 1";
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, id);
@@ -33,7 +35,7 @@ public class SingleProduct extends HttpServlet {
             String author = book.getString("author");
 //            System.out.println(type);
             book.first();
-            String sqlBooks ="SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
+            String sqlBooks = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
                     " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = ? GROUP BY img.id_book ";
 
             PreparedStatement pstBooks = conn.prepareStatement(sqlBooks);
@@ -64,9 +66,8 @@ public class SingleProduct extends HttpServlet {
 
             request.getRequestDispatcher("/customer/view/single-product.jsp").forward(request, response);
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 

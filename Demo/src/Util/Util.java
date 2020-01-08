@@ -1,20 +1,16 @@
 package Util;
 
 import Model.Cart;
-import controller.cart.Update;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class Util {
-    static final String HOST = "http://localhost:8080/";
+    static final String HOST = "/";
 
     public static String fullPath(String path) {
         return HOST + path;
@@ -34,6 +30,7 @@ public class Util {
         return showPrice(price / 1000) + "." + (pricestr.substring(pricestr.length() - 3));
 
     }
+
     public static String formatCurrency(String money) {
         double m = 0;
         try {

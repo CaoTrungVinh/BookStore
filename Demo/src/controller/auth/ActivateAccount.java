@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 @WebServlet("/active-account")
 public class ActivateAccount extends HttpServlet {
@@ -19,8 +21,7 @@ public class ActivateAccount extends HttpServlet {
         String hash = request.getParameter("key2");
 
         try {
-            Statement s = ConnectionDB.connect();
-            Connection conn = s.getConnection();
+            Connection conn = ConnectionDB.getConnection();
             PreparedStatement pst = conn.prepareStatement("select email, email_hashed, is_active from users where email=? and email_hashed=? and is_active='0'");
             pst.setString(1, email);
             pst.setString(2, hash);

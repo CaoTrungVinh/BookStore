@@ -20,8 +20,7 @@ public class Product extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         if (request.getServletPath().equals("/admin/product")) {
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sql = "SELECT * FROM books WHERE active = 1 ";
                 String sqlCategory = "SELECT * FROM categories WHERE active = 1";
 //                String sql = "SELECT * FROM books";
@@ -37,14 +36,11 @@ public class Product extends HttpServlet {
                 request.setAttribute("categories", categories);
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/products.jsp").forward(request, response);
         } else if (request.getServletPath().equals("/admin/product/add")) {
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                 String sqlPublisher = "SELECT * FROM publishers";
                 String sqlAuthor = "SELECT * FROM authors";
@@ -63,8 +59,6 @@ public class Product extends HttpServlet {
                 request.setAttribute("authors", authors);
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/add-product.jsp").forward(request, response);
 
@@ -72,8 +66,7 @@ public class Product extends HttpServlet {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlBooks = "SELECT * FROM books where id=?";
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
@@ -108,16 +101,13 @@ public class Product extends HttpServlet {
                     request.getRequestDispatcher("/admin/edit-product.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/product/see")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlBooks = "SELECT * FROM books where id=?";
                     String sqlCategory = "SELECT * FROM categories WHERE active = 1";
                     String sqlPublisher = "SELECT * FROM publishers";
@@ -151,16 +141,13 @@ public class Product extends HttpServlet {
                     request.getRequestDispatcher("/admin/see-product.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/product/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "DELETE FROM books WHERE id = ?";
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
@@ -170,8 +157,6 @@ public class Product extends HttpServlet {
                     response.sendRedirect("/admin/product");
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/categories/add")) {
@@ -180,8 +165,7 @@ public class Product extends HttpServlet {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "SELECT * FROM categories WHERE id=?";
 
                     PreparedStatement pst = conn.prepareStatement(sqlCategory);
@@ -193,16 +177,13 @@ public class Product extends HttpServlet {
                     request.getRequestDispatcher("/admin/edit-categories.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/categories/see")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "SELECT * FROM categories WHERE id=?";
 
                     PreparedStatement pst = conn.prepareStatement(sqlCategory);
@@ -214,16 +195,13 @@ public class Product extends HttpServlet {
                     request.getRequestDispatcher("/admin/see-categories.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/categories/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "DELETE FROM categories WHERE id = ?";
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
@@ -234,8 +212,6 @@ public class Product extends HttpServlet {
 
                     response.sendRedirect("/admin/product");
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             }
@@ -261,8 +237,7 @@ public class Product extends HttpServlet {
             String img3 = request.getParameter("imgPlaceHolder3");
 
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sqlCategory = "INSERT INTO books (title, type, description, price, in_stock, publisher, author, active, rating) VALUE (?, ?, ?, ?, ?, ?,?,1, 0)";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory, Statement.RETURN_GENERATED_KEYS);
@@ -279,12 +254,8 @@ public class Product extends HttpServlet {
                 ResultSet rs = pstCate.getGeneratedKeys();
                 rs.next();
                 long id = rs.getLong(1);
-                System.out.println("img1: " + img1);
-                System.out.println("img2: " + img2);
-                System.out.println("img3: " + img3);
                 System.out.println(img2.equals(""));
                 if (img1 != null && !img1.equals("")) {
-                    System.out.println("img1 ok");
                     img1 = img1.substring(img1.lastIndexOf("/") + 1, img1.length());
                     System.out.println(img1);
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
@@ -297,7 +268,6 @@ public class Product extends HttpServlet {
 
                 }
                 if (img2 != null && !img2.equals("")) {
-                    System.out.println("img2 ok");
                     img2 = img2.substring(img2.lastIndexOf("/") + 1, img2.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
@@ -308,7 +278,6 @@ public class Product extends HttpServlet {
                     pstImg.executeUpdate();
                 }
                 if (img3 != null && !img3.equals("")) {
-                    System.out.println("img3 ok");
                     img3 = img3.substring(img3.lastIndexOf("/") + 1, img3.length());
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
@@ -321,8 +290,6 @@ public class Product extends HttpServlet {
 
 
             } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
@@ -342,8 +309,7 @@ public class Product extends HttpServlet {
                 String img3 = request.getParameter("imgPlaceHolder3");
 
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "UPDATE books SET title=?,type=?,description=?,price=?,in_stock=?,publisher=?,author=? where id=?";
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, name);
@@ -392,8 +358,6 @@ public class Product extends HttpServlet {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
 
             }
@@ -401,16 +365,13 @@ public class Product extends HttpServlet {
         } else if (request.getServletPath().equals("/admin/categories/add")) {
             String name = request.getParameter("name");
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sqlCategory = "INSERT INTO categories (name, active) VALUE (?,1)";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                 pstCate.setString(1, name);
                 pstCate.execute();
             } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
             response.sendRedirect("/admin/product");
@@ -420,16 +381,13 @@ public class Product extends HttpServlet {
                 String name = request.getParameter("name");
                 response.getWriter().println(name);
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "UPDATE categories SET name=? where id=?";
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, name);
                     pstCate.setString(2, id);
                     pstCate.execute();
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             }

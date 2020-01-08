@@ -9,9 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Base64;
 import java.util.regex.Pattern;
 
@@ -40,9 +41,9 @@ public class Register extends HttpServlet {
             String sql;
             try {
                 // kiểm tra email đã tồn tại chưa
-                Statement s = ConnectionDB.connect();
+                conn = ConnectionDB.getConnection();
                 String query = "SELECT * from `users` where email =\"" + email + "\"";
-                ResultSet rs = s.executeQuery(query);
+                ResultSet rs = conn.createStatement().executeQuery(query);
 
                 rs.last();
 
@@ -57,7 +58,6 @@ public class Register extends HttpServlet {
                 } else {
                     sql = "INSERT INTO users(name, email, email_hashed, password" +
                             ", phone) VALUES(?,?,?,?,?)";
-                    conn = s.getConnection();
                     PreparedStatement pstmt = conn.prepareStatement(sql);
 
                     String hashMail = Base64.getEncoder().encodeToString((email + java.time.LocalDateTime.now()).getBytes());

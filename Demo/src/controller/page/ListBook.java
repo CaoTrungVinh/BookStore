@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 @WebServlet("/list-book")
@@ -48,23 +51,18 @@ public class ListBook extends HttpServlet {
         }
 
         try {
-            Statement s = ConnectionDB.connect();
-            Connection conn = s.getConnection();
+            Connection conn = ConnectionDB.getConnection();
             String sql = "SELECT id, name FROM categories WHERE active = 1";
             PreparedStatement pst = conn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             request.setAttribute("rs", rs);
 
-            Statement sNSX = ConnectionDB.connect();
-            Connection connNSX = sNSX.getConnection();
             String sqlconnNSX = "SELECT id, name FROM publishers";
             PreparedStatement pstconnNSX = conn.prepareStatement(sqlconnNSX);
             ResultSet rsconnNSX = pstconnNSX.executeQuery();
             request.setAttribute("rsconnNSX", rsconnNSX);
 
-
-            Statement s1 = ConnectionDB.connect();
-            Connection conn1 = s1.getConnection();
+            Connection conn1 = ConnectionDB.getConnection();
             sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating, books.description FROM" +
                     " img inner JOIN books ON img.id_book = books.id WHERE active = 1 GROUP BY img.id_book ";
 
@@ -110,7 +108,8 @@ public class ListBook extends HttpServlet {
             request.setAttribute("idType", idType);
             request.setAttribute("idNsx", idNsx);
 
-            rs = s.executeQuery("SELECT MAX(price) as max, MIN(price) as min FROM books");
+
+            rs = conn.createStatement().executeQuery("SELECT MAX(price) as max, MIN(price) as min FROM books");
             if (rs.next()) {
                 request.setAttribute("maxP", rs.getDouble("max"));
                 request.setAttribute("minP", rs.getDouble("min"));
@@ -118,9 +117,8 @@ public class ListBook extends HttpServlet {
             request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
 
 
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
 

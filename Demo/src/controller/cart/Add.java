@@ -1,10 +1,9 @@
 package controller.cart;
 
-import Model.Product;
 import Model.Cart;
+import Model.Product;
 import Model.User;
 import Util.Util;
-import com.google.gson.Gson;
 import db.ConnectionDB;
 import org.json.JSONObject;
 
@@ -31,8 +30,8 @@ public class Add extends HttpServlet {
         Statement statement = null;
         Product product = null;
         try {
-            statement = ConnectionDB.connect();
-            conn = statement.getConnection();
+            conn = ConnectionDB.getConnection();
+            statement = conn.createStatement();
             ResultSet rs;
 
             if (isLogin) {
@@ -76,8 +75,6 @@ public class Add extends HttpServlet {
             cart.put(product);
 
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

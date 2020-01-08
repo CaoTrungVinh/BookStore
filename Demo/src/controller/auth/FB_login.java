@@ -31,12 +31,11 @@ public class FB_login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String access_token = (String) request.getParameter("access_token");
 
-
         try {
 
             String sql;
-            Statement statement = ConnectionDB.connect();
-            Connection conn = statement.getConnection();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             ResultSet rs;
             PreparedStatement preparedStatement;
 

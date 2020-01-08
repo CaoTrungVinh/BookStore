@@ -1,9 +1,5 @@
 package Model;
 
-import db.ConnectionDB;
-
-import java.sql.*;
-
 public class Product {
     private int id;
     private String title;
@@ -125,7 +121,6 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
-
 
 
     @Override

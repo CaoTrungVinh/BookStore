@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @WebServlet("/cartPay")
 public class Pay extends HttpServlet {
@@ -24,7 +26,8 @@ public class Pay extends HttpServlet {
         String sql;
 
         try {
-            Statement statement = ConnectionDB.connect();
+            Connection conn = ConnectionDB.getConnection();
+            Statement statement = conn.createStatement();
             sql = "UPDATE orders SET  orders.statusID = 2 WHERE orders.id = '" + idOrder + "'";
             statement.executeUpdate(sql);
 
@@ -41,8 +44,6 @@ public class Pay extends HttpServlet {
             }
 
             request.getRequestDispatcher("/customer/view/successPayment.jsp").forward(request, response);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }

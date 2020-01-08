@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +25,7 @@ import java.util.Date;
         "/admin/orders/add", "/admin/orders/edit", "/admin/orders/see", "/admin/orders/statistic"})
 
 public class Orders extends HttpServlet {
-    private  Gson gson = new Gson();
+    private Gson gson = new Gson();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -31,8 +33,7 @@ public class Orders extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         if (request.getServletPath().equals("/admin")) {
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
 //                String sqlCategory = "SELECT * FROM orders";
 
                 String sqlCategory = "SELECT orders.id,users.fullname,orders.orderDate,orders.subtotal,orders.shipping,orders.total,statuses.`status`  FROM orders INNER JOIN users ON orders.id_customer = users.id INNER JOIN statuses  ON orders.statusID = statuses.id";
@@ -43,14 +44,11 @@ public class Orders extends HttpServlet {
                 request.setAttribute("orders", orders);
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/orders.jsp").forward(request, response);
         } else if (request.getServletPath().equals("/admin/orders/add")) {
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sqlcustomer = "SELECT * FROM users";
                 String sqlstatuses = "SELECT * FROM statuses";
 
@@ -64,16 +62,13 @@ public class Orders extends HttpServlet {
                 request.setAttribute("statuses", statuses);
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
             request.getRequestDispatcher("/admin/add-orders.jsp").forward(request, response);
         } else if (request.getServletPath().equals("/admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlcustomer = "SELECT * FROM users";
                     String sqlstatuses = "SELECT * FROM statuses";
                     String sqlorders = "SELECT * FROM orders WHERE id=?";
@@ -95,16 +90,13 @@ public class Orders extends HttpServlet {
                     request.getRequestDispatcher("/admin/edit-orders.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
             }
         } else if (request.getServletPath().equals("/admin/orders/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "DELETE FROM orders WHERE id = ?";
 
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
@@ -113,8 +105,6 @@ public class Orders extends HttpServlet {
 
                     response.sendRedirect("/admin");
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
             }
@@ -147,8 +137,7 @@ public class Orders extends HttpServlet {
                             year = Calendar.getInstance().get(Calendar.YEAR);
                         }
 
-                        Statement s = ConnectionDB.connect();
-                        Connection conn = s.getConnection();
+                        Connection conn = ConnectionDB.getConnection();
                         String dataQuery = "SELECT MONTH(orderDate) as month, SUM(total) as revenue FROM orders WHERE YEAR(orderDate) = ? GROUP BY MONTH(orderDate);";
 
                         PreparedStatement pstCate = conn.prepareStatement(dataQuery);
@@ -176,8 +165,6 @@ public class Orders extends HttpServlet {
                         return;
                     } catch (SQLException e) {
                         e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
                     }
                 }
             }
@@ -200,8 +187,7 @@ public class Orders extends HttpServlet {
             String orderDate = formatter.format(date);
 
             try {
-                Statement s = ConnectionDB.connect();
-                Connection conn = s.getConnection();
+                Connection conn = ConnectionDB.getConnection();
                 String sqlCategory = "INSERT INTO orders (id_customer, orderDate, subtotal, shipping, total, statusID) VALUE (?, ?, ?, ?, ?, ?)";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
@@ -214,13 +200,9 @@ public class Orders extends HttpServlet {
                 pstCate.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
             response.sendRedirect("/admin");
-        }
-
-        else if (request.getServletPath().equals("/admin/orders/edit")) {
+        } else if (request.getServletPath().equals("/admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String id_customer = request.getParameter("id_customer");
@@ -230,8 +212,7 @@ public class Orders extends HttpServlet {
                 String total = request.getParameter("total");
                 String statusID = request.getParameter("statusID");
                 try {
-                    Statement s = ConnectionDB.connect();
-                    Connection conn = s.getConnection();
+                    Connection conn = ConnectionDB.getConnection();
                     String sqlCategory = "UPDATE orders SET id_customer=?,subtotal=?,shipping=?,total=?,statusID=? where id=?";
 //                    PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
 //                    pstCate.setInt(1, Integer.parseInt(id_customer));
@@ -252,8 +233,6 @@ public class Orders extends HttpServlet {
 
                     pstCate.execute();
                 } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }
 
