@@ -90,6 +90,10 @@
 
 
 <script type="text/javascript">
+    var pwStrengthErrorThreshold = 50;
+    var pwStrengthWarningThreshold = 75;
+    var pwstrength;
+
     jQuery("#inputNewPassword1").keyup(function () {
         var pwStrengthErrorThreshold = 50;
         var pwStrengthWarningThreshold = 75;
@@ -107,7 +111,7 @@
         var numupper = pw.replace(/[A-Z]/g, "");
         var upper = (pw.length - numupper.length);
         if (upper > 3) upper = 3;
-        var pwstrength = ((pwlength * 10) - 20) + (numeric * 10) + (numsymbols * 15) + (upper * 10);
+        pwstrength = ((pwlength * 10) - 20) + (numeric * 10) + (numsymbols * 15) + (upper * 10);
         if (pwstrength < 0) pwstrength = 0;
         if (pwstrength > 100) pwstrength = 100;
 
@@ -147,7 +151,8 @@
                 $newPassword2.removeClass('has-error')
                     .addClass('has-success');
                 jQuery("#inputNewPassword2").next('.form-control-feedback').removeClass('fa fa-times').addClass('fa fa-check');
-                jQuery(' input[type="submit"]').removeAttr('disabled');
+                if (pwstrength >= pwStrengthErrorThreshold)
+                    jQuery(' input[type="submit"]').removeAttr('disabled');
             } else {
                 $newPassword2.removeClass('has-error has-success');
                 jQuery("#inputNewPassword2").next('.form-control-feedback').removeClass('fa fa-times fa fa-times');
@@ -157,7 +162,8 @@
     }
 
     jQuery(document).ready(function () {
-        jQuery('.using-password-strength input[type="submit"]').attr('disabled', 'disabled'); jQuery("#inputNewPassword2").keyup(function () {
+        jQuery('.using-password-strength input[type="submit"]').attr('disabled', 'disabled');
+        jQuery("#inputNewPassword2").keyup(function () {
             validatePassword2();
         });
     });

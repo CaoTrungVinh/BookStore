@@ -55,6 +55,7 @@
                                 <%--                                <h2 class="sidebar-search text-center">Search</h2>--%>
 
                                 <input type="text"
+                                       id="search"
                                        class="form-control"
                                        placeholder="Search a Product"
                                        value=""></div>
@@ -135,7 +136,7 @@
                                         <input type="text" id="amount" name="price" placeholder="Add Your Price"/>
                                         <div class="widget-buttom">
                                             <input type="submit" value="Filter"/>
-                                            <input type="reset" value="CLEAR"/>
+                                            <input type="reset" value="CLEAR" id="clean"/>
                                         </div>
                                     </div>
                                 </div>
@@ -210,10 +211,12 @@
                     <div class="shop-tab-list">
                         <div class="shop-tab-pill pull-left">
                             <ul>
-                                <li class="active" id="left"><a data-toggle="pill" href="#home"><i class="fa fa-th"></i><span>Grid</span></a>
+                                <li class="active" id="left"><a data-toggle="pill" href="#home" id="homebtn"><i
+                                        class="fa fa-th"></i><span>Grid</span></a>
                                 </li>
                                 <li><a data-toggle="pill" href="#menu1"><i
                                         class="fa fa-th-list"></i><span>List</span></a></li>
+                                <a data-toggle="pill" href="#searchWrapper" class="hidden" id="showSearch"></a>
                             </ul>
                         </div>
                         <div class="shop-tab-pill pull-right">
@@ -504,7 +507,11 @@
                                 <% } %>
                             </div>
                         </div>
+                        <div id="searchWrapper" class="row tab-pane fade">
+                            <div class="shop-single-product-area" id="searchContent">
 
+                            </div>
+                        </div>
 
                         <div class="list-pager">
                             <ul>
@@ -605,7 +612,6 @@
 <!-- jquery latest version -->
 <jsp:include page="jquery.jsp"/>
 <script>
-
     function seemore(e) {
         var x = document.getElementById('seemore');
         if (x.style.display === 'none') {
@@ -616,6 +622,125 @@
             e.innerHTML = "Xem thêm <i class=\"fa fa-angle-down\"></i>";
         }
     }
+
+    var minP = <%=request.getAttribute("minP")%>;
+    var maxP = <%=request.getAttribute("maxP")%>;
+    var currentMax = maxP;
+    var currentMin = minP;
+    initPriceRange();
+
+    function initPriceRange() {
+        $("#slider-range").slider("option", "max", maxP);
+        $("#slider-range").slider("option", "min", minP);
+        $("#slider-range").slider("option", "values", [currentMin, currentMax]);
+        $("#amount").val(showPrice(currentMin) + "VND" + " - " + showPrice(currentMax) + "VND");
+    }
+
+
+    $("#slider-range").on("slidechange", function (event, ui) {
+        currentMin = ui.values[0];
+        currentMax = ui.values[1];
+        search($('#search').val());
+    });
+
+
+    $('#search').change(function () {
+        search($(this).val())
+    })
+    $('#search').keyup(function () {
+        search($(this).val())
+    })
+
+
+    function search(str) {
+        (str === "") && $('#homebtn').click();
+        var node = $('#searchContent')[0];
+        while (node.hasChildNodes()) {
+            node.removeChild(node.lastChild);
+        }
+        $.ajax({
+            type: "POST",
+            url: "//localhost:8080/search",
+            data: {"str": str, "min": currentMin, "max": currentMax},
+            success: function (data) {
+                var items = JSON.parse(data)
+                for (var key in items) {
+                    showSearchResult(items[key]);
+                }
+                $("#showSearch").click();
+            }
+        });
+    }
+
+    function showSearchResult(item) {
+        var html = "<div class=\"col-md-4 col-sm-6\">\n" +
+            "                                    <div class=\"single-banner\">\n" +
+            "                                        <div class=\"product-wrapper\">\n" +
+            "                                            <a href=\"" + fullPath("single-product?id=" + item.id) + "\"\n" +
+            "                                               class=\"single-banner-image-wrapper\">\n" +
+            "                                                <%--                                                <img alt=\"\" src=\"public/customer/img/featured/1.jpg\">--%>\n" +
+            "                                                <img alt=\"\" src=\"/public/customer/img/shop/" + item.img + "\"\n" +
+            "                                                     style=\"margin-top: 30px\">\n" +
+            "\n" +
+            "\n" +
+            "                                                <div class=\"price\"><span>" + showPrice(item.price) + "\n" +
+            "                                                </span>\n" +
+            "                                                </div>\n" +
+            "                                            </a>\n" +
+            "                                            <div class=\"product-description\">\n" +
+            "                                                <div class=\"functional-buttons\">\n" +
+            "                                                    <a onclick=\"addToCard(" + item.id + ",1)\"\n" +
+            "                                                       title=\"Add to Cart\">\n" +
+            "                                                        <i class=\"fa fa-shopping-cart\"></i>\n" +
+            "                                                    </a>\n" +
+            "                                                    <a onclick=\"add2Wishlist(" + item.id + ")\"\n" +
+            "                                                       title=\"Add to Wishlist\">\n" +
+            "                                                        <i class=\"fa fa-heart-o\"></i>\n" +
+            "                                                    </a>\n" +
+            "                                                    <a title=\"Quick view\" data-toggle=\"modal\"\n" +
+            "                                                       data-target=\"#preview" + item.id + "\">\n" +
+            "                                                        <%--Khai báo dòng này sẽ mở 1 cái modal có id là previewid, ví dụ book có ìd là 10 thì data-tagert là preview10, tức là mở modal có là preview10--%>\n" +
+            "                                                        <i class=\"fa fa-compress\"></i>\n" +
+            "                                                    </a>\n" +
+            "                                                </div>\n" +
+            "                                            </div>\n" +
+            "                                        </div>\n" +
+            "                                        <div class=\"banner-bottom text-center\" style=\"height: 150px;\">\n" +
+            "                                            <div class=\"banner-bottom-title\">\n" +
+            "                                                <a href=\"" + fullPath("single-product?id=" + item.id) + "\">" + item.title + "\n" +
+            "                                                </a>\n" +
+            "                                            </div>\n" +
+            "                                            <div class=\"star-rating\">\n" +
+            "                                                <div class=\"back-stars\">\n" +
+            "                                                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "\n" +
+            "                                                    <div class=\"front-stars\" style=\"width: " + parseInt(item.rating) + "%\">\n" +
+            "                                                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                        <i class=\"fa fa-star\" aria-hidden=\"true\"></i>\n" +
+            "                                                    </div>\n" +
+            "                                                </div>\n" +
+            "                                            </div>\n" +
+            "                                        </div>\n" +
+            "                                    </div>\n" +
+            "                                </div>";
+
+        $('#searchContent').append(html);
+    }
+
+
+    $('#clean').click(function () {
+        $("#slider-range").slider("option", "values", [minP, maxP]);
+        $('#search').val("");
+        $('#homebtn').click();
+    })
+
 </script>
 
 </body>

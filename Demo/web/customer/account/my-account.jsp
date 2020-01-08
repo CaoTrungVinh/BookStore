@@ -28,7 +28,7 @@
                         %>
                         <p class="image"><img src="https://salt.tikicdn.com/desktop/img/avatar.png?v=3" height="45"
                                               width="45" alt=""></p>
-                        <p class="name">Tài khoản của</p>
+                        <p class="name">Account for</p>
                         <h6><%= user.getUserName()%>
                         </h6>
                     </div>

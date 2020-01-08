@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class User {
     private int id;
+    private String id_fb;
     private String email;
     private String userName;
     private String fullName;
@@ -22,7 +23,6 @@ public class User {
     private int active; //0 is not active, 1 is active
     private Cart cart;
     private WishList wishlist;
-
 
 
     public User() {
@@ -56,13 +56,20 @@ public class User {
     }
 
     public int getTotalPrice() {
-       return  (int) this.cart.getTotalPrice();
+        return (int) this.cart.getTotalPrice();
     }
-
 
 
     public String getGender() {
         return gender;
+    }
+
+    public String getId_fb() {
+        return id_fb;
+    }
+
+    public void setId_fb(String id_fb) {
+        this.id_fb = id_fb;
     }
 
     public void setGender(String gender) {
@@ -154,7 +161,6 @@ public class User {
     public void addToShoppingCard(Product product) {
         this.cart.put(product);
     }
-
 
 
     @Override

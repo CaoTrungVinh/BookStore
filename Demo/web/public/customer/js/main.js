@@ -1,3 +1,26 @@
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: '1060067031013824',
+        cookie: true,
+        xfbml: true,
+        version: 'v5.0'
+    });
+
+    FB.AppEvents.logPageView();
+
+};
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
 (function ($) {
     "use strict";
     /*----------------------------
@@ -150,15 +173,15 @@
     ------------------------------ */
     $("#slider-range").slider({
         range: true,
-        min: 40,
-        max: 600,
-        values: [60, 496],
+        // min: minPriceInRupees,
+        // max: maxPriceInRupees,
+        // values: [currentMinValue, currentMaxValue],
         slide: function (event, ui) {
-            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            $("#amount").val(showPrice(ui.values[0]) + "VND" + " - " + showPrice(ui.values[1]) + "VND");
         }
     });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-        " - $" + $("#slider-range").slider("values", 1));
+    $("#amount").val($("#slider-range").slider("values", 0) + "VND" +
+        " - " + $("#slider-range").slider("values", 1) + "VND");
     /*----------------------------------
      Create an account toggle function
      ----------------------------------*/
@@ -396,10 +419,10 @@ function addHTMLproductWish(data) {
         "                                        </a>\n" +
         "                                    </div>\n" +
         "                                    <div class=\"cart-product-info\">\n" +
-        "                                        <a href=\"single-product.jsp\">" + shortOfTitleCart(bookItem.title) +
+        "                                        <a href=\"\">" + shortOfTitleCart(bookItem.title) +
         "\n" +
         "                                        </a>\n" +
-        "                                        <a href=\"single-product.jsp\">" + bookItem.type +
+        "                                        <a href=\"\">" + bookItem.type +
         "\n" +
         "                                        </a>\n" +
         "                                        <span class=\"cart-price\">" + showPrice(bookItem.price) +
@@ -439,4 +462,11 @@ function removeWishlistItem(id) {
     changeCounterWish(-1);
     $("#wishproductid" + id).remove();
     showSnackbar("Remove wish product successfully");
+}
+
+
+var HOST = "http://localhost:8080/";
+
+function fullPath(path) {
+    return HOST + path;
 }

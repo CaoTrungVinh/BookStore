@@ -3,7 +3,7 @@
 <div class="content-right">
     <% User user = (User) request.getAttribute("user");
     %>
-    <h1 class="have-margin">Thông tin tài khoản</h1>
+    <h1 class="have-margin">Account information</h1>
     <div class="account-profile register-form">
         <form class="content" action="<%= Util.fullPath("/account/edit?id="+user.getId()) %>" method="post" action=""
               id="edit-account">
