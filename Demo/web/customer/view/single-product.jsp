@@ -17,6 +17,7 @@
     </style>
 </head>
 <body style="background: #f4f4f4">
+
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -192,56 +193,11 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-9">
-                <div class="p-details-tab-content">
-                    <div class="p-details-tab">
-                        <ul class="p-details-nav-tab" role="tablist">
-                            <li role="presentation" class="active"><a href="#more-info" aria-controls="more-info"
-                                                                      role="tab" data-toggle="tab">Description</a></li>
-                            <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">Review</a>
-                            </li>
-                            <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab"
-                                                       data-toggle="tab">Tab</a></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="tab-content review">
-                        <div role="tabpanel" class="tab-pane active" id="more-info">
-                            <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine
-                                designs delivering stylish separates and statement dresses which have since evolved into
-                                a full ready-to-wear collection in which every item is a vital part of a woman's
-                                wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable
-                                signature style. All the beautiful pieces are made in Italy and manufactured with the
-                                greatest attention. Now Fashion extends to a range of accessories including shoes, hats,
-                                belts and more!</p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="data">
-                            <table class="table-data-sheet">
-                                <tbody>
-                                <tr class="odd">
-                                    <td>Compositions</td>
-                                    <td>Cotton</td>
-                                </tr>
-                                <tr class="even">
-                                    <td>Styles</td>
-                                    <td>Casual</td>
-                                </tr>
-                                <tr class="odd">
-                                    <td>Properties</td>
-                                    <td>Short Sleeve</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="reviews">
-                            <div id="product-comments-block-tab">
-                                <a href="#" class="comment-btn"><span>Be the first to write your review!</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous"
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
+        <div class="commentfb row" id="comments">
+            <div class="fb-comments" data-href="http://localhost:8080/single-product" data-numposts="5"></div>
         </div>
     </div>
 </div>
@@ -408,6 +364,15 @@
         console.log(quantity);
         addToCard(id, quantity)
     }
+
+    function changeCommentsUrl() {
+        var comments = $('#comments');
+        comments.html("");
+        comments.html("<div class=\"fb-comments\" data-href=\"" + window.location.href + "\" data-numposts=\"5\"></div>");
+    }
+
+    changeCommentsUrl();
+
 </script>
 </body>
 </html>

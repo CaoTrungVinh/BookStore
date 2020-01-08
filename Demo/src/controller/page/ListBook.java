@@ -73,7 +73,7 @@ public class ListBook extends HttpServlet {
                 sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND TYPE = " + idType + " GROUP BY img.id_book ";
             }
-            if(idNsx!=0) {
+            if (idNsx != 0) {
                 sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description FROM" +
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND publisher = " + idNsx + " GROUP BY img.id_book ";
 
@@ -103,12 +103,18 @@ public class ListBook extends HttpServlet {
 
             }
 
+
             request.setAttribute("book", book);
             request.setAttribute("currentPage", pageNum);
             request.setAttribute("nOfPages", nOfPages);
             request.setAttribute("idType", idType);
             request.setAttribute("idNsx", idNsx);
 
+            rs = s.executeQuery("SELECT MAX(price) as max, MIN(price) as min FROM books");
+            if (rs.next()) {
+                request.setAttribute("maxP", rs.getDouble("max"));
+                request.setAttribute("minP", rs.getDouble("min"));
+            }
             request.getRequestDispatcher("customer/view/shop.jsp").forward(request, response);
 
 
