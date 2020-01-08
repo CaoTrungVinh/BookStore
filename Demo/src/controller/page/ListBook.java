@@ -19,8 +19,9 @@ public class ListBook extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
         String nsx = request.getParameter("nsx");
-//        String search = request.getParameter("selectSearch");
+        String idKM = request.getParameter("idKM");
         String page = request.getParameter("page");
+        System.out.println("idkm: "+idKM);
         response.getWriter().println(page);
         int idType = 0;
         int pageNum = 1;
@@ -73,6 +74,11 @@ public class ListBook extends HttpServlet {
                         " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND publisher = " + idNsx + " GROUP BY img.id_book ";
 
             }
+            if (idKM != null) {
+                sql = "SELECT books.id, books.title, books.price, img.img, img.id, books.rating,books.description, books.discount FROM" +
+                        " img inner JOIN books ON img.id_book = books.id  WHERE active = 1 AND books.discount IS NOT NULL GROUP BY img.id_book ";
+
+            }
 //            else if(search != null) {
 //                sql += " and search =" + search;
 //            }
@@ -104,6 +110,7 @@ public class ListBook extends HttpServlet {
             request.setAttribute("nOfPages", nOfPages);
             request.setAttribute("idType", idType);
             request.setAttribute("idNsx", idNsx);
+            request.setAttribute("idKM", "km");
 
 
             rs = conn.createStatement().executeQuery("SELECT MAX(price) as max, MIN(price) as min FROM books");
