@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,8 @@
                         <%
                             ResultSet users = (ResultSet) request.getAttribute("users");
                         %>
-                        <form action="<%= Util.fullPath("admin/account/edit?id="+users.getString("id")) %>" method="POST" onsubmit="onFormSubmit"
+                        <form action="<%= Util.fullPath("admin/account/edit?id="+users.getString("id")) %>"
+                              method="POST" onsubmit="onFormSubmit"
                               class="tm-edit-product-form">
                             <div class="form-group mb-3">
                                 <label
@@ -82,11 +83,11 @@
                                         id="selectgender"
                                         required>
                                     <option
-<%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
+                                    <%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
                                             data-cc="Nam">Male
                                     </option>
                                     <option
-<%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
+                                    <%--                                            <%= statuses.getString("id").equals(users.getString("gender")) ? "selected" : "" %>--%>
                                             data-cc="Nu">Female
                                     </option>
                                 </select>
@@ -118,7 +119,7 @@
                                         type="text"
                                         class="form-control novalidate"
                                         value="<%= users.getString("address")%>"
-<%--                                        required--%>
+                                <%--                                        required--%>
                                 />
                             </div>
                             <div class="form-group mb-3">
@@ -132,7 +133,7 @@
                                         type="number"
                                         class="form-control novalidate"
                                         value="<%= users.getString("phone")%>"
-<%--                                        required--%>
+                                <%--                                        required--%>
                                 />
                             </div>
 

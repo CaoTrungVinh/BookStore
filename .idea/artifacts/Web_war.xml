@@ -6,6 +6,11 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/Demo/web/WEB-INF/classes/META-INF/MANIFEST.MF" />
       </element>
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="org.apache.tomcat:tomcat-jdbc:9.0.30" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

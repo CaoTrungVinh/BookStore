@@ -25,17 +25,17 @@
 <script>
     $(document).ready(function () {
         $('#login').click(function () {
-            var user=$('#userid').val();
-            var pwd=$('#pswrd').val();
+            var user = $('#userid').val();
+            var pwd = $('#pswrd').val();
             $.ajax({
                 type: "POST",
-                url:"Test",   // this is my servlet
-                data:{"user":user,"password":pwd},
+                url: "Test",   // this is my servlet
+                data: {"user": user, "password": pwd},
                 success: function (data) {
-                    if(data=='True'){
+                    if (data == 'True') {
                         alert(data);
                         console.log('true')
-                    }else{
+                    } else {
                         alert('Fail....');
                     }
                 }

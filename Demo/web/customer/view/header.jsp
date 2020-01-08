@@ -1,10 +1,9 @@
-<%@ page import="controller.page.ListBook" %>
-<%@ page import="Util.Util" %>
 <%@ page import="Model.Cart" %>
+<%@ page import="Model.Product" %>
 <%@ page import="Model.User" %>
+<%@ page import="Util.Util" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="Model.Product" %>
 <!--Header Area Start-->
 <div id="alert-login" class="bootbox modal fade bootbox-alert in hide" role="dialog"
      style="display: block; padding-right: 16px; background: rgba(255,255,255,0.3)">
@@ -124,7 +123,8 @@
                             <% if (request.getSession().getAttribute("user") == null) { %>
                             <a href="<%= Util.fullPath("login")%>"><i class="fa fa-sign-in"></i>
                                     <% } else { %>
-                                <a href="<%= Util.fullPath("account/edit?id="+ ((User)(request.getSession().getAttribute("user"))).getId())%>"><i class="flaticon-people"></i>
+                                <a href="<%= Util.fullPath("account/edit?id="+ ((User)(request.getSession().getAttribute("user"))).getId())%>"><i
+                                        class="flaticon-people"></i>
                                     <% } %>
 
                                 </a>
@@ -220,7 +220,8 @@
                                         </a>
                                         <span class="cart-price"><%=Util.showPrice(item.getPrice())%></span>
                                     </div>
-                                    <div class="cart-product-remove" onclick="removeWishlistItemAjax(<%=item.getId()%>)">
+                                    <div class="cart-product-remove"
+                                         onclick="removeWishlistItemAjax(<%=item.getId()%>)">
                                         <i class="fa fa-times"></i>
                                     </div>
                                 </div>

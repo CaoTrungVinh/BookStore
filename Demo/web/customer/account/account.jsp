@@ -8,27 +8,27 @@
         <form class="content" action="<%= Util.fullPath("/account/edit?id="+user.getId()) %>" method="post" action=""
               id="edit-account">
             <div class="form-group">
-                <label class="control-label" >Họ tên </label>
+                <label class="control-label">Họ tên </label>
                 <div class="input-wrap">
                     <input type="text" name="name" class="form-control" id="name"
                            value="<%= user.getUserName()%>">
                     <span class="help-block"></span>
                 </div>
-                <label class="control-label" >Email </label>
+                <label class="control-label">Email </label>
                 <div class="input-wrap">
                     <input type="text" name="email" class="form-control" id="email"
                            value="<%= user.getEmail()%>" placeholder="email">
                     <span class="help-block"></span>
                 </div>
             </div>
-<%--            <div class="form-group">--%>
-<%--                <label class="control-label" for="full_name">Full name </label>--%>
-<%--                <div class="input-wrap">--%>
-<%--                    <input type="text" name="fullname" class="form-control" id="full_name"--%>
-<%--                           value="<%= user.getFullName()%>" placeholder="Full name">--%>
-<%--                    <span class="help-block"></span>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <%--            <div class="form-group">--%>
+            <%--                <label class="control-label" for="full_name">Full name </label>--%>
+            <%--                <div class="input-wrap">--%>
+            <%--                    <input type="text" name="fullname" class="form-control" id="full_name"--%>
+            <%--                           value="<%= user.getFullName()%>" placeholder="Full name">--%>
+            <%--                    <span class="help-block"></span>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
             <div class="form-group">
                 <label class="control-label" for="full_name">Số điện thoại </label>
                 <div class="input-wrap">

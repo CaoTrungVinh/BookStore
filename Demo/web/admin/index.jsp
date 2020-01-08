@@ -58,7 +58,8 @@
                             <th scope="row"><b>#122349</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>Oliver Trag</b></td>
                             <td><b>London, UK</b></td>
@@ -70,7 +71,8 @@
                             <th scope="row"><b>#122348</b></th>
                             <td>
                                 <div class="tm-status-circle pending">
-                                </div>Pending
+                                </div>
+                                Pending
                             </td>
                             <td><b>Jacob Miller</b></td>
                             <td><b>London, UK</b></td>
@@ -82,7 +84,8 @@
                             <th scope="row"><b>#122347</b></th>
                             <td>
                                 <div class="tm-status-circle cancelled">
-                                </div>Cancelled
+                                </div>
+                                Cancelled
                             </td>
                             <td><b>George Wilson</b></td>
                             <td><b>London, UK</b></td>
@@ -94,7 +97,8 @@
                             <th scope="row"><b>#122346</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>William Aung</b></td>
                             <td><b>London, UK</b></td>
@@ -106,7 +110,8 @@
                             <th scope="row"><b>#122345</b></th>
                             <td>
                                 <div class="tm-status-circle pending">
-                                </div>Pending
+                                </div>
+                                Pending
                             </td>
                             <td><b>Harry Ryan</b></td>
                             <td><b>London, UK</b></td>
@@ -118,7 +123,8 @@
                             <th scope="row"><b>#122344</b></th>
                             <td>
                                 <div class="tm-status-circle pending">
-                                </div>Pending
+                                </div>
+                                Pending
                             </td>
                             <td><b>Michael Jones</b></td>
                             <td><b>London, UK</b></td>
@@ -130,7 +136,8 @@
                             <th scope="row"><b>#122343</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>Timmy Davis</b></td>
                             <td><b>London, UK</b></td>
@@ -142,7 +149,8 @@
                             <th scope="row"><b>#122342</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>Oscar Phyo</b></td>
                             <td><b>London, UK</b></td>
@@ -154,7 +162,8 @@
                             <th scope="row"><b>#122341</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>Charlie Brown</b></td>
                             <td><b>London, UK</b></td>
@@ -166,7 +175,8 @@
                             <th scope="row"><b>#122340</b></th>
                             <td>
                                 <div class="tm-status-circle cancelled">
-                                </div>Cancelled
+                                </div>
+                                Cancelled
                             </td>
                             <td><b>Wilson Cookies</b></td>
                             <td><b>London, UK</b></td>
@@ -178,7 +188,8 @@
                             <th scope="row"><b>#122339</b></th>
                             <td>
                                 <div class="tm-status-circle moving">
-                                </div>Moving
+                                </div>
+                                Moving
                             </td>
                             <td><b>Richard Clamon</b></td>
                             <td><b>London, UK</b></td>

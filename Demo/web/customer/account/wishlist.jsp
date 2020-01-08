@@ -1,6 +1,6 @@
-<%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page import="Model.Product" pageEncoding="utf-8" %>
+<%@ page import="Util.Util" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.Product" %>
 
 <div class="content-right">
     <% ArrayList<Product> wishlist = (ArrayList<Product>) request.getAttribute("wishlist");

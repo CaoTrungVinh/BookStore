@@ -1,5 +1,5 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
+<%@ page import="java.sql.ResultSet" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,14 +31,14 @@
         </th>
         <th class="th-sm">GENDER
         </th>
-<%--        <th class="th-sm">BIRTH DAY--%>
-<%--        </th>--%>
+        <%--        <th class="th-sm">BIRTH DAY--%>
+        <%--        </th>--%>
         <th class="th-sm">ADDRESS
         </th>
         <th class="th-sm">PHONE
         </th>
-<%--        <th class="th-sm">GROUP--%>
-<%--        </th>--%>
+        <%--        <th class="th-sm">GROUP--%>
+        <%--        </th>--%>
         <th class="th-sm">ACTIVE
         </th>
         <th class="th-sm">
@@ -53,17 +53,24 @@
             stt++;
     %>
     <tr>
-        <td scope="row" class="text-center"><%= stt%> </td>
-        <td><%= users.getString("name")%></td>
-        <td><%= users.getString("fullname")%></td>
-        <td><%= users.getString("email")%></td>
-        <td><%= users.getString("gender")%></td>
+        <td scope="row" class="text-center"><%= stt%>
+        </td>
+        <td><%= users.getString("name")%>
+        </td>
+        <td><%= users.getString("fullname")%>
+        </td>
+        <td><%= users.getString("email")%>
+        </td>
+        <td><%= users.getString("gender")%>
+        </td>
 
-<%--        <td></td>--%>
+        <%--        <td></td>--%>
 
-        <td><%= users.getString("address")%></td>
-        <td><%= users.getString("phone")%></td>
-<%--        <td><%= users.getString("idgroup")%></td>--%>
+        <td><%= users.getString("address")%>
+        </td>
+        <td><%= users.getString("phone")%>
+        </td>
+        <%--        <td><%= users.getString("idgroup")%></td>--%>
 
         <td class="text-center">
             <% if (users.getString("is_active").equals("1")) {%>

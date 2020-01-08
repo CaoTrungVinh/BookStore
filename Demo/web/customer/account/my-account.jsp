@@ -1,5 +1,5 @@
-<%@ page import="Util.Util" pageEncoding="utf-8" %>
-<%@ page import="Model.User" %>
+<%@ page import="Model.User" pageEncoding="utf-8" %>
+<%@ page import="Util.Util" %>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -64,10 +64,11 @@
                             </li>
                             <li class="">
                                 <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
-                                Trang admin</a>
+                                    Trang admin</a>
                             </li>
                             <li class="">
-                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng xuất</a>
+                                <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
+                                    xuất</a>
                             </li>
                         </ul>
                     </div>

@@ -34,7 +34,6 @@
                 </li>
 
 
-
                 <li class="nav-item">
                     <a class="nav-link" href="<%= Util.fullPath("admin/account") %>">
                         <i class="far fa-user"></i>

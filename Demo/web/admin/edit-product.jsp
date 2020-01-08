@@ -147,6 +147,8 @@
                                                 <i class="fa fa-times"></i>
                                             </div>
                                         </div>
+
+
                                     </div>
                                     <input hidden name="imgPlaceHolder<%=i%>" value="<%=imgs.getString("img")%>">
                                     <% } else {

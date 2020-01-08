@@ -1,6 +1,5 @@
-<%@ page import="Util.Util" pageEncoding="utf-8" %>
+<%@ page import="Model.Ordered" pageEncoding="utf-8" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Model.Ordered" %>
 
 
 <%
@@ -49,7 +48,8 @@
                 </td>
                 <td><%=item.getDate()%>
                 </td>
-                <td><%=item.getProducts()%></td>
+                <td><%=item.getProducts()%>
+                </td>
                 <td><%=item.getTotalPrice()%> đ</td>
                 <td>
                         <span class="order-status">

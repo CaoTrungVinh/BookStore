@@ -1,4 +1,3 @@
-
 <%@ page import="Util.Util" pageEncoding="utf-8" %>
 <div class="content-right">
     <h1 class="have-margin">
@@ -19,7 +18,7 @@
                 <p class="phone"><span>Phone number:</span> 0868374742</p>
                 <p class="action">
                     <a class="btn btn-default btn-custom1 js-edit edit-customer-address "
-                        href="https://tiki.vn/customer/address/edit?id=5588240&amp;_lc=Vk4wMzkwMjQwMDg%3D">Edit</a>
+                       href="https://tiki.vn/customer/address/edit?id=5588240&amp;_lc=Vk4wMzkwMjQwMDg%3D">Edit</a>
                 </p>
 
 
@@ -33,7 +32,7 @@
                 <p class="phone"><span>Phone number:</span> 0868374742</p>
                 <p class="action">
                     <a class="btn btn-default btn-custom1 js-edit edit-customer-address "
-                        href="https://tiki.vn/customer/address/edit?id=6482155&amp;_lc=Vk4wMzkwMjQwMDg%3D">Edit</a>
+                       href="https://tiki.vn/customer/address/edit?id=6482155&amp;_lc=Vk4wMzkwMjQwMDg%3D">Edit</a>
                     <a data-id="6482155" class="btn btn-default btn-custom1 btn-delete-address">Delete</a>
                 </p>
 

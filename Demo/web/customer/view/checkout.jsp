@@ -1,8 +1,8 @@
-<%@ page import="Util.Util" pageEncoding="utf-8" %>
-<%@ page import="Model.User" %>
-<%@ page import="Model.Cart" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="Model.Cart" pageEncoding="utf-8" %>
 <%@ page import="Model.Product" %>
+<%@ page import="Model.User" %>
+<%@ page import="Util.Util" %>
+<%@ page import="java.util.Map" %>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -95,13 +95,15 @@
                                                 type="button"
                                                 onclick="changeQuantityProduct(-1, <%=product.getId()%>)">-</button>
                                         </span>
-                                        <input id="touch<%=product.getId()%>" type="number" min="1" value="<%=product.getQuantity()%>"
+                                        <input id="touch<%=product.getId()%>" type="number" min="1"
+                                               value="<%=product.getQuantity()%>"
                                                name="touchspin"
                                                class="form-control">
                                         <span
                                                 class="input-group-btn input-group-append"><button
                                                 class="btn btn-primary bootstrap-touchspin-up"
-                                                type="button" onclick="changeQuantityProduct(1, <%=product.getId()%>)">+</button>
+                                                type="button"
+                                                onclick="changeQuantityProduct(1, <%=product.getId()%>)">+</button>
                                         </span>
                                     </div>
                                 </div>
@@ -137,7 +139,8 @@
                                 </div>
                             </div>
 
-                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout" href="<%=Util.fullPath("cartPay")%>">
+                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout"
+                               href="<%=Util.fullPath("cartPay")%>">
                                 Proceed to ordering
                             </a>
                         </div>

@@ -120,22 +120,21 @@
                                 <div id="imgContainer" class="row border-img">
 
 
-
-
-
-
                                     <div id="imgPlaceHolder1" class="cart-product col-xl-4 col-lg-4 col-md-4">
-                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder1')" style="cursor: pointer">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder1')"
+                                             style="cursor: pointer">
                                             <i class="fa fa-plus"></i>
                                         </div>
                                     </div>
                                     <div id="imgPlaceHolder2" class="cart-product col-xl-4 col-lg-4 col-md-4">
-                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder2')" style="cursor: pointer">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder2')"
+                                             style="cursor: pointer">
                                             <i class="fa fa-plus"></i>
                                         </div>
                                     </div>
                                     <div id="imgPlaceHolder3" class="cart-product col-xl-4 col-lg-4 col-md-4">
-                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder3')" style="cursor: pointer">
+                                        <div class="add-img" onclick="ckFinder('imgPlaceHolder3')"
+                                             style="cursor: pointer">
                                             <i class="fa fa-plus"></i>
                                         </div>
                                     </div>
@@ -272,21 +271,20 @@
         document.getElementById(id).innerHTML =
             '<div class="cart-product-image"><a href="single-product.jsp"><img src="'
             + fileUrl + '" alt=""></a><div class="cart-product-remove" onclick="removeCartProduct(\''
-            +id+'\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="'+ id+'" value="'+fileUrl+'">';
+            + id + '\')"><i class="fa fa-times"></i></div></div>' + ' <input hidden name="' + id + '" value="' + fileUrl + '">';
 
 
     }
 
     function removeCartProduct(id) {
-        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\''
-            + id+ '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
+        document.getElementById(id).innerHTML = '<div class="add-img" onclick="ckFinder(\'' + id + '\')" style="cursor: pointer"> <i class="fa fa-plus"></i></div>'
     }
 
     function ckFinder(id) {
         var finder = new CKFinder();
         finder.basePath = '/ckfinder/';
         finder.selectActionFunction = function (fileUrl, data, allFiles) {
-            addImage(id,fileUrl);
+            addImage(id, fileUrl);
         };
         finder.popup();
     }

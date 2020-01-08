@@ -218,8 +218,8 @@
                         ticks: {
 
                             sampleSize: 12,
-                            autoSkip:false,
-                            callback: function(value, index, values) {
+                            autoSkip: false,
+                            callback: function (value, index, values) {
                                 return 'Tháng ' + value;
                             }
                         }

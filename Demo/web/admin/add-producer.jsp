@@ -1,4 +1,3 @@
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="Util.Util" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +62,9 @@
 
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">Add Producer Now</button>
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase" style="margin-top: 30px">
+                            Add Producer Now
+                        </button>
                     </div>
                     </form>
                 </div>

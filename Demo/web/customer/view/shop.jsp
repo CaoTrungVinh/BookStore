@@ -1,8 +1,5 @@
-<%@ page import="Model.Cart" %>
-<%@ page import="Model.User" %>
 <%@ page import="Util.Util" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Map" %>
 <%@ page pageEncoding="utf-8" %>
 <!doctype html>
 <html class="no-js" lang="">
