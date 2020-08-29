@@ -27,5 +27,6 @@
     <orderEntry type="library" name="org.apache.tomcat:tomcat-catalina:9.0.30" level="project" />
     <orderEntry type="library" name="javax.mail:javax.mail-api:1.6.2" level="project" />
     <orderEntry type="library" name="org.apache.tomcat:tomcat-jdbc:9.0.30" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

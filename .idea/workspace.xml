@@ -5,13 +5,11 @@
       <artifact name="Web:war exploded" />
     </artifacts-to-build>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/account/account.jsp" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +38,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1W79vMAMx1T9rj8YizwqzDvifwy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
@@ -49,25 +51,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Demo/web/WEB-INF/classes" />
+    <property name="last_opened_file_path" value="$USER_HOME$/app/apache-tomcat-9.0.37/lib" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.29770115" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false">
@@ -120,6 +116,21 @@
           <option name="VM_PARAMETERS" value="" />
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
+        <EnvironmentVariables>
+          <option name="NAME" value="DB_URL" />
+          <option name="VALUE" value="jdbc:mysql://localhost:3306/demoweb?useUnicode=true&amp;characterEncoding=utf-8" />
+          <option name="IS_PREDEFINED" value="false" />
+        </EnvironmentVariables>
+        <EnvironmentVariables>
+          <option name="NAME" value="DB_USERNAME" />
+          <option name="VALUE" value="admin" />
+          <option name="IS_PREDEFINED" value="false" />
+        </EnvironmentVariables>
+        <EnvironmentVariables>
+          <option name="NAME" value="DB_PASSWORD" />
+          <option name="VALUE" value="admin" />
+          <option name="IS_PREDEFINED" value="false" />
+        </EnvironmentVariables>
       </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -137,17 +148,17 @@
         </SHUTDOWN>
         <EnvironmentVariables>
           <option name="NAME" value="DB_URL" />
-          <option name="VALUE" value="jdbc:mysql://remotemysql.com:3306/8Lp9c8yaqQ?useUnicode=true&amp;characterEncoding=utf-8" />
+          <option name="VALUE" value="jdbc:mysql://localhost:3306/demoweb?useUnicode=true&amp;characterEncoding=utf-8" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_USERNAME" />
-          <option name="VALUE" value="8Lp9c8yaqQ" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_PASSWORD" />
-          <option name="VALUE" value="pf3EbKiUKp" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
       </ConfigurationWrapper>
@@ -159,6 +170,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -173,6 +185,9 @@
       <workItem from="1574941241034" duration="93000" />
       <workItem from="1578489999425" duration="730000" />
       <workItem from="1578490831117" duration="27674000" />
+      <workItem from="1598603591095" duration="420000" />
+      <workItem from="1598628046755" duration="4469000" />
+      <workItem from="1598632547053" duration="1459000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
@@ -206,20 +221,19 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add deploy config" />
@@ -227,5 +241,110 @@
     <MESSAGE value="Add connection pooling" />
     <MESSAGE value="Translate to English" />
     <option name="LAST_COMMIT_MESSAGE" value="Translate to English" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598633221557">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1598633221557" />
+    <state x="207" y="143" width="620" height="516" key="FileChooserDialogImpl" timestamp="1598603639657">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="207" y="143" width="620" height="516" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1598603639657" />
+    <state width="1040" height="279" key="GridCell.Tab.0.bottom" timestamp="1598634005375">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1598634005375" />
+    <state width="1040" height="279" key="GridCell.Tab.0.center" timestamp="1598634005375">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1598634005375" />
+    <state width="1040" height="279" key="GridCell.Tab.0.left" timestamp="1598634005375">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1598634005375" />
+    <state width="1040" height="279" key="GridCell.Tab.0.right" timestamp="1598634005375">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1598634005375" />
+    <state width="1040" height="279" key="GridCell.Tab.1.bottom" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.1.center" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.1.left" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.1.right" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.2.bottom" timestamp="1598634005377">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.2.bottom/0.27.1366.741@0.27.1366.741" timestamp="1598634005377" />
+    <state width="1040" height="279" key="GridCell.Tab.2.center" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.2.center/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.2.left" timestamp="1598634005376">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.2.left/0.27.1366.741@0.27.1366.741" timestamp="1598634005376" />
+    <state width="1040" height="279" key="GridCell.Tab.2.right" timestamp="1598634005377">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.2.right/0.27.1366.741@0.27.1366.741" timestamp="1598634005377" />
+    <state width="1040" height="279" key="GridCell.Tab.3.bottom" timestamp="1598633842523">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.3.bottom/0.27.1366.741@0.27.1366.741" timestamp="1598633842523" />
+    <state width="1040" height="279" key="GridCell.Tab.3.center" timestamp="1598633842523">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.3.center/0.27.1366.741@0.27.1366.741" timestamp="1598633842523" />
+    <state width="1040" height="279" key="GridCell.Tab.3.left" timestamp="1598633842522">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.3.left/0.27.1366.741@0.27.1366.741" timestamp="1598633842522" />
+    <state width="1040" height="279" key="GridCell.Tab.3.right" timestamp="1598633842523">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1040" height="279" key="GridCell.Tab.3.right/0.27.1366.741@0.27.1366.741" timestamp="1598633842523" />
+    <state x="0" y="27" key="SettingsEditor" timestamp="1598603654801">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="0" y="27" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1598603654801" />
+    <state width="673" height="347" key="XDebugger.FullValuePopup" timestamp="1598633196045">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="673" height="347" key="XDebugger.FullValuePopup/0.27.1366.741@0.27.1366.741" timestamp="1598633196045" />
+    <state x="233" y="128" width="900" height="640" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598630643666">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="233" y="128" width="900" height="640" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.1366.741@0.27.1366.741" timestamp="1598630643666" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Demo/web/customer/view/single-product.jsp</url>
+          <line>76</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Demo/web/customer/view/header.jsp</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

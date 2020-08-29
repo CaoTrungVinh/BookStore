@@ -9,6 +9,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
           <element id="library" level="project" name="org.apache.tomcat:tomcat-jdbc:9.0.30" />
+          <element id="library" level="project" name="lib" />
         </element>
       </element>
     </root>

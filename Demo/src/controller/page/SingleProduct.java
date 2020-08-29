@@ -31,7 +31,9 @@ public class SingleProduct extends HttpServlet {
                 String idProduct = request.getParameter("id");
                 String rate = request.getParameter("rate");
                 int rating = 0;
+                int idInt= 0;
                 try {
+                    idInt = Integer.parseInt(idProduct);
                     rating = Integer.parseInt(rate);
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
@@ -51,7 +53,7 @@ public class SingleProduct extends HttpServlet {
                 sql = "UPDATE books SET rating=? WHERE id= ?";
                 PreparedStatement pst1 = conn.prepareStatement(sql);
                 pst1.setInt(1, ra);
-                pst1.setString(2, id);
+                pst1.setInt(2, idInt);
                 pst1.executeUpdate();
                 System.out.println("ok");
             } else {
@@ -93,7 +95,7 @@ public class SingleProduct extends HttpServlet {
                 request.setAttribute("author", reauthor);
                 request.setAttribute("book", book);
                 request.setAttribute("listBook", listBook);
-
+                System.out.println("VÔ DETAIL NÈ");
 
                 request.getRequestDispatcher("/customer/view/single-product.jsp").forward(request, response);
             }
