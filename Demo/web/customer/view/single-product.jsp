@@ -117,7 +117,7 @@
                                 i++;
                         %>
                         <div role="tabpanel" class="tab-pane <%=i==1?"active":""%>" id="<%=img.getString("id")%>">
-                            <a class="venobox" href="/public/customer/img/shop/<%= img.getString("img")%>"
+                            <a class="venobox" href="/public/customer/img/shop/images/<%= img.getString("img")%>"
                                data-gall="gallery" title="">
                                 <img src="/public/customer/img/shop/images/<%= img.getString("img")%>" alt="">
                             </a>
