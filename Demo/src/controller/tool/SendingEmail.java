@@ -1,20 +1,90 @@
 package controller.tool;
 
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.activation.DataSource;
+import java.io.File;
 import java.util.Properties;
 
 public class SendingEmail extends Thread {
     private String userEmail;
     private String myHash;
     private String servletName;
+    private File privatekeyFile;
 
     public SendingEmail(String servletName, String userEmail, String myHash) {
         this.userEmail = userEmail;
         this.myHash = myHash;
         this.servletName = servletName;
+    }
+
+    public SendingEmail(String userEmail, File privatekeyFile) {
+        this.userEmail = userEmail;
+        this.privatekeyFile = privatekeyFile;
+
+    }
+
+    public void sendMailKey() {
+        final String email = "nvtanh4vipm@gmail.com";
+        final String password = "vipmember";
+
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        // below mentioned mail.smtp.port is optional
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(email, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(email));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.userEmail));
+            message.setSubject("Email Key Store");
+
+            // Create the message part
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Now set the actual message
+            messageBodyPart.setText("KeyStore please save file!");
+
+            // Create a multipar message
+            Multipart multipart = new MimeMultipart();
+
+            // Set text message part
+            multipart.addBodyPart(messageBodyPart);
+
+            // Part two is attachment
+            messageBodyPart = new MimeBodyPart();
+
+            DataSource source = (DataSource) new FileDataSource(privatekeyFile);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName("KeyStore");
+            multipart.addBodyPart(messageBodyPart);
+
+            // Send the complete message parts
+            message.setContent(multipart);
+
+            // Send message
+            Transport.send(message);
+
+            privatekeyFile.delete();
+        } catch (Exception var6) {
+            System.out.println("Error at SendingEmail.java: " + var6);
+        }
+
     }
 
     @Override

@@ -267,7 +267,8 @@ function changeQuantityProduct(flag, id) {
     var selector = "#touch" + id;
     if ($(selector).val() == 1 && flag == -1) {
         return
-    } else
+    } else{
+        console.log("updtae carrt");
         $.ajax({
             type: "POST",
             url: "cart-update",   // this is my servlet
@@ -280,6 +281,8 @@ function changeQuantityProduct(flag, id) {
                 changeCounterCart(flag);
             }
         });
+    }
+
 }
 
 function changeCounterCart(flag) {
@@ -290,7 +293,7 @@ function changeCounterCart(flag) {
 function removeCartProduct(id) {
     $.ajax({
         type: "POST",
-        url: "//localhost:8080/DelProduct",   // this is my servlet
+        url: "/DelProduct",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             if (data == "true") {
@@ -305,7 +308,7 @@ function removeCartProduct(id) {
 function addToCard(id, quantity) {
     $.ajax({
         type: "POST",
-        url: "//localhost:8080/add-cart",   // this is my servlet
+        url: "/add-cart",   // this is my servlet
         data: {"bookID": id, "quantity": quantity},
         success: function (data) {
             increaseCounterCart(quantity);
@@ -386,7 +389,7 @@ function hideAlertLogin() {
 function add2Wishlist(id) {
     $.ajax({
         type: "POST",
-        url: "//localhost:8080/addWish",   // this is my servlet
+        url: "/addWish",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             changeCounterWish(1);
@@ -447,7 +450,7 @@ function addToCardFromWishlist(id) {
 function removeWishlistItemAjax(id) {
     $.ajax({
         type: "POST",
-        url: "//localhost:8080/delWish",   // this is my servlet
+        url: "/delWish",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             changeCounterWish(-1);

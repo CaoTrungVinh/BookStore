@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,12 +28,11 @@ public class Update extends HttpServlet {
         int bookID = Integer.parseInt(Util.getParameterGeneric(request, "bookID", ""));
 
         String sql;
-        Statement statement;
         ResultSet rs;
         Cart cart = null;
 
         try {
-            statement = ConnectionDB.getConnection().createStatement();
+            System.out.println("UPDATE ORDER NHA!!!");
 
             User user = (User) request.getSession().getAttribute("user");
             boolean isLogin = user != null;
@@ -41,14 +41,18 @@ public class Update extends HttpServlet {
 
             //edit database
             sql = "SELECT * FROM orderdetails WHERE  orderdetails.id_book =  '" + bookID + "' and  orderdetails.id_order  = '" + cart.getId_order() + "' ";
+//            statement = ConnectionDB.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            PreparedStatement statement = ConnectionDB.getConnection().prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             rs = statement.executeQuery(sql);
             if (rs.next()) {
                 int currentQuantity = rs.getInt("quantity");
+                System.out.println(currentQuantity + flag);
                 rs.updateInt("quantity", currentQuantity + flag);
                 rs.updateRow();
             }
 
             Util.updateOrderDB(statement.getConnection(), cart);
+            System.out.println("UPDATE ORDER NHA!!!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

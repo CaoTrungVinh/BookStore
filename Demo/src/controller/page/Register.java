@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,6 +70,7 @@ public class Register extends HttpServlet {
                     pstmt.setString(3, hashMail);
                     pstmt.setString(4, hashPass);
                     pstmt.setString(5, phone);
+
                     int i = pstmt.executeUpdate();
                     if (i != 0) {
                         SendingEmail sendingEmail = new SendingEmail("active-account", email, hashMail);
