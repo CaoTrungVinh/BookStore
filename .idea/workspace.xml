@@ -28,31 +28,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English">
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/cart/ConfirmOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/tool/Tool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/web/customer/view/confirm-Order.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/web/customer/view/signature.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/auth/ActivateAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/auth/ActivateAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/Model/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/Model/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/Model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/auth/ActivateAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/auth/ActivateAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,6 +254,7 @@
       <workItem from="1598962452687" duration="300000" />
       <workItem from="1598964893012" duration="8631000" />
       <workItem from="1598976179224" duration="1224000" />
+      <workItem from="1598977440279" duration="447000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
