@@ -1,5 +1,10 @@
 package Model;
 
+import db.ConnectionDB;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,11 +13,31 @@ public class Cart {
     public HashMap<Integer, Product> data;
     int quantity;
     int id_order;
+    Promotion promotion;
+    double shipFees;
 
-    public Cart() {
-        this.data = new HashMap<>();
-        id_order = -1;
-        quantity = 0;
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+        try {
+            PreparedStatement pre = ConnectionDB.getConnection().prepareStatement("SELECT * FROM orders WHERE orders.id =?");
+            pre.setInt(1, id_order);
+            ResultSet rs = pre.executeQuery();
+            if (rs.next()) {
+                rs.updateInt("promotion", promotion.getId());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getId_order() {
@@ -21,6 +46,14 @@ public class Cart {
 
     public void setId_order(int id_order) {
         this.id_order = id_order;
+    }
+
+    public Cart() {
+        this.data = new HashMap<>();
+        id_order = -1;
+        quantity = 0;
+        promotion = null;
+        shipFees = 0;
     }
 
     public Product get(int id) {
@@ -50,6 +83,13 @@ public class Cart {
         return sum;
     }
 
+    public double getShipFees() {
+        return shipFees;
+    }
+
+    public void setShipFees(double shipFees) {
+        this.shipFees = shipFees;
+    }
 
     public Collection<Product> list() {
         return data.values();
@@ -61,6 +101,22 @@ public class Cart {
             rs += entry.getValue().getTotalPrice();
         }
         return rs;
+    }
+
+    public int getTotalPayment() {
+        return (int) (getTotalPrice() + shipFees - getDiscount());
+    }
+
+    private double getDiscount() {
+        if (getTotalPrice() > promotion.getPriceCondition() && promotion.getType() == 1) {
+            double tmp = (promotion.getAmount() < shipFees) ? shipFees - promotion.getAmount() : 0;
+            setShipFees(tmp);
+            return 0;
+        }
+        if (promotion.getType() == 2) {
+            return promotion.getAmount();
+        }
+        return 0;
     }
 
     public int getQuantity() {
@@ -89,4 +145,6 @@ public class Cart {
         item.setQuantity(item.getQuantity() + flag);
         if (item.getQuantity() <= 0) remove(bookID);
     }
+
+
 }

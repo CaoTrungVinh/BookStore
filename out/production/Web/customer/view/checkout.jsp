@@ -140,9 +140,15 @@
                             </div>
 
                             <a type="button" class="btn btn-large btn-block btn-danger btn-checkout"
-                               href="<%=Util.fullPath("cartPay")%>">
+                                    <%if (request.getSession().getAttribute("user") != null) {%>
+                               href="<%=Util.fullPath("ConfirmOrder")%>" <%} else {%>
+                               onclick="showAlertLogin()" <%}%>>
                                 Proceed to ordering
                             </a>
+<%--                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout"--%>
+<%--                               href="<%=Util.fullPath("cartPay")%>">--%>
+<%--                                Proceed to ordering--%>
+<%--                            </a>--%>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">

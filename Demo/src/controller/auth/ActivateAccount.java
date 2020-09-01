@@ -38,7 +38,7 @@ public class ActivateAccount extends HttpServlet {
 
             byte[] key = priv.getEncoded();
 
-            File file = new File(request.getServletContext().getRealPath("public") + "/" + email.split("@")[0] + ".txt");
+            File file = new File(request.getServletContext().getRealPath("public") + "/privateKey" + email.split("@")[0] + ".txt");
             if (!file.exists()) {
 
                 file.createNewFile();
@@ -49,6 +49,18 @@ public class ActivateAccount extends HttpServlet {
             keyfos.close();
 
             byte[] keyPub = pubKey.getEncoded();
+            File filePub = new File(request.getServletContext().getRealPath("public") + "/pubLicKey" + email.split("@")[0] + ".txt");
+            if (!filePub.exists()) {
+
+                filePub.createNewFile();
+                System.out.println("CREATE FILE SUCCESSFULLY");
+            }
+            FileOutputStream keyfosP = new FileOutputStream(filePub);
+            keyfosP.write(keyPub);
+            keyfosP.close();
+
+
+
             Connection conn = ConnectionDB.getConnection();
             PreparedStatement pst = conn.prepareStatement("select email, email_hashed, is_active from users where email=? and email_hashed=? and is_active='0'");
             pst.setString(1, email);
@@ -65,8 +77,8 @@ public class ActivateAccount extends HttpServlet {
                     request.setAttribute("verify200", "Account Successfully Verified.");
 
                     //send mail
-                    SendingEmail senMail = new SendingEmail(email, file);
-                    senMail.sendMailKey();
+                    SendingEmail senMail = new SendingEmail();
+                    senMail.sendMailKey(email, file, filePub);
 
                     request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
                 } else {
