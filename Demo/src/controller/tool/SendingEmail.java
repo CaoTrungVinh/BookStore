@@ -16,7 +16,6 @@ public class SendingEmail extends Thread {
     private String userEmail;
     private String myHash;
     private String servletName;
-    private File privatekeyFile;
 
     public SendingEmail(String servletName, String userEmail, String myHash) {
         this.userEmail = userEmail;
@@ -24,16 +23,17 @@ public class SendingEmail extends Thread {
         this.servletName = servletName;
     }
 
-    public SendingEmail(String userEmail, File privatekeyFile) {
-        this.userEmail = userEmail;
-        this.privatekeyFile = privatekeyFile;
+    public SendingEmail() {
 
     }
 
-    public void sendMailKey() {
-        final String email = "nvtanh4vipm@gmail.com";
-        final String password = "vipmember";
+    public void sendMailKey(String userEmail, String pathFilePri, String pathFilePub) {
+        final String email = "myduyenn218@gmail.com";
+        final String password = "myduyenn2188";
 
+        File filePri = new File(pathFilePri);
+
+        File filePub = new File(pathFilePub);
         Properties props = new Properties();
 
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -51,7 +51,7 @@ public class SendingEmail extends Thread {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.userEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
             message.setSubject("Email Key Store");
 
             // Create the message part
@@ -69,9 +69,15 @@ public class SendingEmail extends Thread {
             // Part two is attachment
             messageBodyPart = new MimeBodyPart();
 
-            DataSource source = (DataSource) new FileDataSource(privatekeyFile);
+            DataSource source = (DataSource) new FileDataSource(filePri);
             messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName("KeyStore");
+            messageBodyPart.setFileName("KeyStore Private Key");
+            multipart.addBodyPart(messageBodyPart);
+// Part three is attachment
+            messageBodyPart = new MimeBodyPart();
+            source = (DataSource) new FileDataSource(filePub);
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName("KeyStore Public Key");
             multipart.addBodyPart(messageBodyPart);
 
             // Send the complete message parts
@@ -80,7 +86,8 @@ public class SendingEmail extends Thread {
             // Send message
             Transport.send(message);
 
-            privatekeyFile.delete();
+            filePri.delete();
+            filePub.delete();
         } catch (Exception var6) {
             System.out.println("Error at SendingEmail.java: " + var6);
         }
@@ -93,8 +100,8 @@ public class SendingEmail extends Thread {
     }
 
     private void sendMail() {
-        final String email = "nvtanh4vipm@gmail.com";
-        final String password = "vipmember";
+        final String email = "myduyenn218@gmail.com";
+        final String password = "ucnwpbwrnuubmziw";
 
         Properties props = new Properties();
 
@@ -117,9 +124,15 @@ public class SendingEmail extends Thread {
             message.setSubject("Email Verification Link");
             message.setText("Click this link to confirm your email address and complete setup for your account.\n\nVerification Link: http://localhost:8080/" + servletName + "?key1=" + this.userEmail + "&key2=" + this.myHash);
             Transport.send(message);
+            System.out.println("SEND OK");
         } catch (Exception var6) {
             System.out.println("Error at SendingEmail.java: " + var6);
         }
     }
 
+    public static void main(String[] args) {
+        SendingEmail sen = new SendingEmail();
+        sen.sendMail();
+
+    }
 }

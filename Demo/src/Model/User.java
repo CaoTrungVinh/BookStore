@@ -65,16 +65,19 @@ public class User {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     public String getId_fb() {
         return id_fb;
     }
 
     public void setId_fb(String id_fb) {
+        if (id_fb == null) return;
         this.id_fb = id_fb;
+    }
+
+    public void setGender(String gender) {
+        if (gender == null) return;
+        this.gender = gender;
     }
 
     public Cart getCart() {
@@ -90,6 +93,7 @@ public class User {
     }
 
     public void setFullName(String fullName) {
+        if (fullName == null) return;
         this.fullName = fullName;
     }
 
@@ -98,6 +102,7 @@ public class User {
     }
 
     public void setAddress(String address) {
+        if (address == null) return;
         this.address = address;
     }
 
@@ -106,6 +111,7 @@ public class User {
     }
 
     public void setPhone(String phone) {
+        if (phone == null) return;
         this.phone = phone;
     }
 
@@ -123,6 +129,7 @@ public class User {
     }
 
     public void setEmail(String email) {
+        if (email == null) return;
         this.email = email;
     }
 
@@ -139,6 +146,7 @@ public class User {
     }
 
     public void setUserName(String userName) {
+        if (userName == null) return;
         this.userName = userName;
     }
 
