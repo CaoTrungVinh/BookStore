@@ -27,10 +27,13 @@ public class SendingEmail extends Thread {
 
     }
 
-    public void sendMailKey(String userEmail, File filePri, File filePub) {
-        final String email = "nvtanh4vipm@gmail.com";
-        final String password = "vipmember";
+    public void sendMailKey(String userEmail, String pathFilePri, String pathFilePub) {
+        final String email = "myduyenn218@gmail.com";
+        final String password = "myduyenn2188";
 
+        File filePri = new File(pathFilePri);
+
+        File filePub = new File(pathFilePub);
         Properties props = new Properties();
 
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -97,8 +100,8 @@ public class SendingEmail extends Thread {
     }
 
     private void sendMail() {
-        final String email = "nvtanh4vipm@gmail.com";
-        final String password = "vipmember";
+        final String email = "myduyenn218@gmail.com";
+        final String password = "ucnwpbwrnuubmziw";
 
         Properties props = new Properties();
 
@@ -121,9 +124,15 @@ public class SendingEmail extends Thread {
             message.setSubject("Email Verification Link");
             message.setText("Click this link to confirm your email address and complete setup for your account.\n\nVerification Link: http://localhost:8080/" + servletName + "?key1=" + this.userEmail + "&key2=" + this.myHash);
             Transport.send(message);
+            System.out.println("SEND OK");
         } catch (Exception var6) {
             System.out.println("Error at SendingEmail.java: " + var6);
         }
     }
 
+    public static void main(String[] args) {
+        SendingEmail sen = new SendingEmail();
+        sen.sendMail();
+
+    }
 }

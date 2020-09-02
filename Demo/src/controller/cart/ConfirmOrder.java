@@ -3,6 +3,7 @@ package controller.cart;
 import Model.Cart;
 import Model.User;
 import Util.Util;
+import controller.tool.FileOrder;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -69,18 +70,22 @@ public class ConfirmOrder extends HttpServlet {
                 user.getCart().setId_order(rs.getInt("id"));
             }
             // file info order
-            String pathFile = request.getServletContext().getRealPath("public") + "/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
-            File file = new File(pathFile);
-            if (!file.exists()) {
-
-                file.createNewFile();
-                System.out.println("CREATE FILE SUCCESSFULLY");
-            }
-            FileOutputStream keyfos = new FileOutputStream(file);
-            keyfos.write("abc".getBytes());
-            keyfos.close();
-            System.out.println("PATH FILE: "+file.getPath());
-            request.setAttribute("fileinfo","public/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt");
+//            String pathFile = request.getServletContext().getRealPath("public") + "/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
+//            File file = new File(pathFile);
+//            if (!file.exists()) {
+//
+//                file.createNewFile();
+//                System.out.println("CREATE FILE SUCCESSFULLY");
+//            }
+//            FileOutputStream keyfos = new FileOutputStream(file);
+//            keyfos.write("abc".getBytes());
+//            keyfos.close();
+//            System.out.println("PATH FILE: "+file.getPath());
+            //
+            String contentFile = "nội dung order của user"; // Tánh trả về
+            FileOrder fileOrder = new FileOrder();
+            String pathFileDownload= fileOrder.createFileOrder(request, user, contentFile);
+            request.setAttribute("fileinfo",pathFileDownload);
 
             request.getRequestDispatcher("/customer/view/signature.jsp").forward(request, response);
 

@@ -44,6 +44,8 @@
                             Product product = entry.getValue();%>
                         <div class="row shopping-cart-item">
                             <div class="col-xs-3 img-thumnail-custom">
+                                <input type='checkbox' class='checkbox' id="checkbox" name="checkbox"
+                                       style="float: left;  margin-top: 35%;margin-right: 10px;"/>
                                 <p class="image">
                                     <img class="img-responsive"
                                          src="/public/customer/img/shop/images/<%=product.getImg()%>">
@@ -143,8 +145,6 @@
                                     <%if (request.getSession().getAttribute("user") != null) {%>
                                href="<%=Util.fullPath("ConfirmOrder")%>" <%} else {%>
                                onclick="showAlertLogin()" <%}%>>
-                                Proceed to ordering
-                            </a>
 <%--                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout"--%>
 <%--                               href="<%=Util.fullPath("cartPay")%>">--%>
 <%--                                Proceed to ordering--%>
@@ -203,7 +203,34 @@
 <jsp:include page="../view/jquery.jsp"/>
 
 <script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (!$('input:checkbox').is('checked')) {
+            $('input:checkbox').prop('checked', true);
+        } else {
+            $('input:checkbox').prop('checked', false);
+        }
+    });
+    $(":checkbox").click(function () {
+// store the values from the form checkbox box, then send via ajax below
+        var check_active = $(this).is(':checked') ? 1 : 0;
+        var check_id = $(this).attr('value');
 
+        $.ajax({
+            type: "POST",
+            url: "/checkout",
+            data: {id: check_id, active: check_active},
+            success: function () {
+                $('form#submit').hide(function () {
+                    $('div.shopping-cart').fadeIn();
+                });
+                alert('fhshfhsabhfajf');
+            }
+        });
+        return true;
+    });
+
+</script>
 
 </body>
 </html>
