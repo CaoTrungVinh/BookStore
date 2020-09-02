@@ -10,8 +10,8 @@
 </head>
 <body style="background-color: #f5f5f5;">
 <div class="text-center p-5">
-    <h1>Payment Successfully</h1>
-    <p class="lead">Your payment was successfully!! You can now continue shopping</p>
+    <h1>Payment Successful</h1>
+    <p class="lead">Your payment was successful!! You can now continue shopping</p>
     <p class="lead"><a href="<%=Util.fullPath("")%>" class="btn btn-lg btn-primary">CONTINUE SHOPPING</a></p>
 </div>
 </body>

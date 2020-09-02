@@ -28,6 +28,7 @@ public class Account extends HttpServlet {
         Statement statement = null;
         try {
             conn = ConnectionDB.getConnection();
+            statement = conn.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }

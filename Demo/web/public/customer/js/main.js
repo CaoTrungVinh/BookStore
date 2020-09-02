@@ -268,15 +268,13 @@ function changeQuantityProduct(flag, id) {
     if ($(selector).val() == 1 && flag == -1) {
         return
     } else{
-        console.log("updtae carrt");
         $.ajax({
             type: "POST",
             url: "cart-update",   // this is my servlet
             data: {"flag": flag, "bookID": id},
             success: function (data) {
                 var respon = $.parseJSON(data);
-                console.log(respon.price + "đ");
-                $('#giatamtinh,#thanhtien').text(respon.price + JSON.parse(JSON.stringify("đ")));
+                $('#giatamtinh,#thanhtien').text(respon.price);
                 $(selector).val((parseInt($(selector).val()) + flag));
                 changeCounterCart(flag);
             }

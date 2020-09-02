@@ -38,12 +38,18 @@
                         )</span>
                     </h2>
                 </div>
-                <div class="col-xs-8 cart-col-1">
-                    <form id="shopping-cart">
+                <form id="shopping-cart" action="<%=Util.fullPath("cartPay")%>" method="POST">
+                    <div class="col-xs-8 cart-col-1">
+                        <%--                    <form id="shopping-cart">--%>
                         <% for (Map.Entry<Integer, Product> entry : cart.getData().entrySet()) {
                             Product product = entry.getValue();%>
                         <div class="row shopping-cart-item">
                             <div class="col-xs-3 img-thumnail-custom">
+                                <input type='checkbox' class='checkbox' id="checkbox<%=product.getId()%>"
+                                       price="<%=product.getTotalPrice()%>"
+                                       value="<%=product.getId()%>"
+                                       name="payids"
+                                       style="float: left;  margin-top: 35%;margin-right: 10px;"/>
                                 <p class="image">
                                     <img class="img-responsive"
                                          src="/public/customer/img/shop/images/<%=product.getImg()%>">
@@ -78,12 +84,9 @@
                                     </p>
                                 </div>
                                 <div class="badge-tikinow-a">
+
                                     <div class="box-price">
                                         <p class="price"><%=Util.showPrice(product.getPrice())%>đ</p>
-                                        <%--                                        <p class="price2">--%>
-                                        <%--                                            27.000đ--%>
-                                        <%--                                        </p>--%>
-                                        <%--                                        <span class="sale">-22%</span>--%>
                                     </div>
                                 </div>
 
@@ -98,7 +101,8 @@
                                         <input id="touch<%=product.getId()%>" type="number" min="1"
                                                value="<%=product.getQuantity()%>"
                                                name="touchspin"
-                                               class="form-control">
+                                               class="form-control"
+                                               style="padding: 0px;width: 28px;text-align: center;">
                                         <span
                                                 class="input-group-btn input-group-append"><button
                                                 class="btn btn-primary bootstrap-touchspin-up"
@@ -111,64 +115,41 @@
                             </div>
                         </div>
                         <% } %>
-                    </form>
-                </div>
-                <div class="col-xs-4 cart-col-2">
-                    <div id="right-affix" class="affix-top">
+                        <%--                    --%>
+                    </div>
+                    <div class="col-xs-4 cart-col-2">
+                        <div id="right-affix" class="affix-top">
 
-                        <div class="each-row">
+                            <div class="each-row">
 
-                            <div class="box-style fee">
+                                <div class="box-style fee">
 
-                                <p class="list-info-price">
-                                    <span>Provisional pricing: </span>
-                                    <strong id="giatamtinh"><%=Util.showPrice(cart.getTotalPrice())%>đ</strong>
-                                </p>
-                            </div>
-                            <div class="box-style fee">
-                                <div class="total2 clearfix">
-                                    <span class="text-label">Total payment: </span>
-                                    <div class="amount">
-                                        <p>
-                                            <strong id="thanhtien"><%=Util.showPrice(cart.getTotalPrice())%>đ</strong>
-                                        </p>
-                                        <p class="text-right">
-                                            <small>(VAT included (where applicable))</small>
-                                        </p>
-                                    </div>
+                                    <p class="list-info-price">
+                                        <span>Provisional pricing: </span>
+                                        <span id="giatamtinh"><%=Util.showPrice(cart.getTotalPrice())%></span>đ
+                                    </p>
                                 </div>
-                            </div>
-
-                            <a type="button" class="btn btn-large btn-block btn-danger btn-checkout"
-                               href="<%=Util.fullPath("cartPay")%>">
-                                Proceed to ordering
-                            </a>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="panel-group coupon" id="accordion">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title"> CODE OF DISCOUNT / GIFT</h4>
-                                        </div>
-                                        <div id="collapseOne3" class="panel-collapsex`">
-                                            <div class="panel-body">
-                                                <div class="input-group">
-                                                    <input id="coupon" placeholder="type here.." type="text"
-                                                           class="form-control" value="">
-                                                    <span class="input-group-btn">
-														<button class="btn btn-default btn-coupon"
-                                                                type="button">Submit</button>
-													</span>
-                                                </div>
-                                            </div>
+                                <div class="box-style fee">
+                                    <div class="total2 clearfix">
+                                        <span class="text-label">Total payment: </span>
+                                        <div class="amount">
+                                            <p>
+                                                <strong id="thanhtien"><%=Util.showPrice(cart.getTotalPrice())%>
+                                                </strong>đ
+                                            </p>
+                                            <p class="text-right">
+                                                <small>(VAT included (where applicable))</small>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
+
+                                <input type="submit" class="btn btn-large btn-block btn-danger btn-checkout"
+                                       value="Proceed to ordering"/>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <% } else { %>
             <div class="alert alert-danger"><i class="fa fa-times-circle" aria-hidden="true"
@@ -197,7 +178,42 @@
 <jsp:include page="../view/jquery.jsp"/>
 
 <script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (!$('input:checkbox.checkbox').is('checked')) {
+            $('input:checkbox.checkbox').prop('checked', true);
+        } else {
+            $('input:checkbox.checkbox').prop('checked', false);
+        }
+    });
+    $(":checkbox").click(function () {
+// store the values from the form checkbox box, then send via ajax below
+        var check_active = $(this).is(':checked') ? 1 : 0;
+        var check_id = $(this).attr('id');
+        price = parseInt($(this).attr('value'));
 
+        if (check_active == 1) {
+            $("#thanhtien,#giatamtinh").text(showPrice(parseInt(toNumberFromVND($("#thanhtien").text())) + price));
+        } else {
+            $("#thanhtien,#giatamtinh").text(showPrice(parseInt(toNumberFromVND($("#thanhtien").text())) - price));
+
+        }
+    });
+    <%--$("#submitorder").click(function () {--%>
+    <%--    var ids = [];--%>
+    <%--    $.each($("input:checked.checkbox"), function () {--%>
+    <%--        ids.push($(this).val());--%>
+    <%--    });--%>
+    <%--    if (ids.length != 0) {--%>
+    <%--        $.post('<%=Util.fullPath("cartPay")%>', ids);--%>
+    <%--        console.log("senddd cart pay...")--%>
+
+    <%--    }--%>
+    <%--    // href to server--%>
+    <%--});--%>
+
+
+</script>
 
 </body>
 </html>
