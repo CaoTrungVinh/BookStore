@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <title>Login Page - Product Admin Template</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 </head>
 
 <body>
@@ -111,7 +111,7 @@
     </div>
 </div>
 
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 
 <script src="public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->

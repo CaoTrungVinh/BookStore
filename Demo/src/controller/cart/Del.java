@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-@WebServlet("./DelProduct")
+@WebServlet("/DelProduct")
 public class Del extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

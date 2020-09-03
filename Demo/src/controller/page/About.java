@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("./about")
+@WebServlet("/about")
 public class About extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("./customer/view/about.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/view/about.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

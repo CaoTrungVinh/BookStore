@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet("./reset-pass")
+@WebServlet("/reset-pass")
 public class ResetPass extends HttpServlet {
     String email;
     String hash;
@@ -31,9 +31,9 @@ public class ResetPass extends HttpServlet {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 request.setAttribute("email", email);
-                request.getRequestDispatcher("./customer/view/reset-pass.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/reset-pass.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("./customer/view/route-not-defined.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/route-not-defined.jsp").forward(request, response);
             }
 
         } catch (SQLException e) {
@@ -62,13 +62,13 @@ public class ResetPass extends HttpServlet {
                 }
 
                 request.setAttribute("mess", "Change pass successfully");
-                request.getRequestDispatcher("./customer/view/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
 
             } catch (Exception var10) {
             }
         } else {
             request.setAttribute("err", "mật khẩu không khớp");
-            request.getRequestDispatcher("./customer/view/reset-pass.jsp").forward(request, response);
+            request.getRequestDispatcher("/customer/view/reset-pass.jsp").forward(request, response);
         }
 
 

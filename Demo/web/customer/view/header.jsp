@@ -28,7 +28,7 @@
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="header-logo">
                     <a href="<%= Util.fullPath("")%>">
-                        <img src="./public/customer/img/logo.png" alt="">
+                        <img src="/public/customer/img/logo.png" alt="">
                     </a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="./public/customer/img/shop/images/1.jpg" alt="">
+                                            <img src="/public/customer/img/shop/images/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -66,7 +66,7 @@
                                 <div class="cart-product">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="./public/customer/img/shop/images/1.jpg" alt="">
+                                            <img src="/public/customer/img/shop/images/1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -149,7 +149,7 @@
                                 <div class="cart-product" id="cartproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="./public/customer/img/shop/images/<%=item.getImg()%>" alt="">
+                                            <img src="/public/customer/img/shop/images/<%=item.getImg()%>" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">
@@ -210,7 +210,7 @@
                                 <div class="cart-product" id="wishproductid<%=item.getId()%>">
                                     <div class="cart-product-image">
                                         <a href="single-product.jsp">
-                                            <img src="./public/customer/img/shop/images/<%=item.getImg()%>" alt="">
+                                            <img src="/public/customer/img/shop/images/<%=item.getImg()%>" alt="">
                                         </a>
                                     </div>
                                     <div class="cart-product-info">

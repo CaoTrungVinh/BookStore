@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-@WebServlet(urlPatterns = {"./admin/producer", "./admin/producer/delete", "./admin/producer/add", "./admin/producer/edit", "./admin/producer/see"})
+@WebServlet(urlPatterns = {"/admin/producer", "/admin/producer/delete", "/admin/producer/add", "/admin/producer/edit", "/admin/producer/see"})
 public class Producer extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class Producer extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
 
-        if (request.getServletPath().equals("./admin/producer")) {
+        if (request.getServletPath().equals("/admin/producer")) {
             try {
                 Connection conn = ConnectionDB.getConnection();
                 String sqlCategory = "SELECT * FROM publishers";
@@ -32,11 +32,11 @@ public class Producer extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("./admin/producers.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin/producers.jsp").forward(request, response);
 
-        } else if (request.getServletPath().equals("./admin/producer/add")) {
-            request.getRequestDispatcher("./admin/add-producer.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("./admin/producer/edit")) {
+        } else if (request.getServletPath().equals("/admin/producer/add")) {
+            request.getRequestDispatcher("/admin/add-producer.jsp").forward(request, response);
+        } else if (request.getServletPath().equals("/admin/producer/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -49,12 +49,12 @@ public class Producer extends HttpServlet {
                     publishers.first();
 
                     request.setAttribute("publishers", publishers);
-                    request.getRequestDispatcher("./admin/edit-producer.jsp").forward(request, response);
+                    request.getRequestDispatcher("/admin/edit-producer.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("./admin/producer/see")) {
+        } else if (request.getServletPath().equals("/admin/producer/see")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -67,12 +67,12 @@ public class Producer extends HttpServlet {
                     publishers.first();
 
                     request.setAttribute("publishers", publishers);
-                    request.getRequestDispatcher("./admin/see-producer.jsp").forward(request, response);
+                    request.getRequestDispatcher("/admin/see-producer.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("./admin/producer/delete")) {
+        } else if (request.getServletPath().equals("/admin/producer/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -81,7 +81,7 @@ public class Producer extends HttpServlet {
                     PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                     pstCate.setString(1, id);
                     pstCate.execute();
-                    response.sendRedirect("./admin/producer");
+                    response.sendRedirect("/admin/producer");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -93,7 +93,7 @@ public class Producer extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        if (request.getServletPath().equals("./admin/producer/add")) {
+        if (request.getServletPath().equals("/admin/producer/add")) {
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String contact = request.getParameter("contact");
@@ -109,8 +109,8 @@ public class Producer extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            response.sendRedirect("./admin/producer");
-        } else if (request.getServletPath().equals("./admin/producer/edit")) {
+            response.sendRedirect("/admin/producer");
+        } else if (request.getServletPath().equals("/admin/producer/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String name = request.getParameter("name");
@@ -132,7 +132,7 @@ public class Producer extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("./admin/producer");
+            response.sendRedirect("/admin/producer");
         }
     }
 }

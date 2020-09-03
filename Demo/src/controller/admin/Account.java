@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Base64;
 
-@WebServlet(urlPatterns = {"./admin/account", "./admin/account/delete",
-        "./admin/account/add", "./admin/account/edit", "./admin/account/see"})
+@WebServlet(urlPatterns = {"/admin/account", "/admin/account/delete",
+        "/admin/account/add", "/admin/account/edit", "/admin/account/see"})
 
 public class Account extends HttpServlet {
 
@@ -23,7 +23,7 @@ public class Account extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
 
-        if (request.getServletPath().equals("./admin/account")) {
+        if (request.getServletPath().equals("/admin/account")) {
             try {
                 Connection conn = ConnectionDB.getConnection();
                 String sql = "SELECT * FROM users";
@@ -36,8 +36,8 @@ public class Account extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("./admin/users.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("./admin/account/delete")) {
+            request.getRequestDispatcher("/admin/users.jsp").forward(request, response);
+        } else if (request.getServletPath().equals("/admin/account/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -48,14 +48,14 @@ public class Account extends HttpServlet {
                     pstCate.setString(1, id);
                     pstCate.execute();
 
-                    response.sendRedirect("./admin/account");
+                    response.sendRedirect("/admin/account");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("./admin/account/add")) {
-            request.getRequestDispatcher("./admin/add-account.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("./admin/account/edit")) {
+        } else if (request.getServletPath().equals("/admin/account/add")) {
+            request.getRequestDispatcher("/admin/add-account.jsp").forward(request, response);
+        } else if (request.getServletPath().equals("/admin/account/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -67,7 +67,7 @@ public class Account extends HttpServlet {
                     ResultSet users = pstusers.executeQuery();
                     users.first();
                     request.setAttribute("users", users);
-                    request.getRequestDispatcher("./admin/edit-account.jsp").forward(request, response);
+                    request.getRequestDispatcher("/admin/edit-account.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -79,7 +79,7 @@ public class Account extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        if (request.getServletPath().equals("./admin/account/add")) {
+        if (request.getServletPath().equals("/admin/account/add")) {
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String fullname = request.getParameter("fullname");
@@ -111,8 +111,8 @@ public class Account extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            response.sendRedirect("./admin/account");
-        } else if (request.getServletPath().equals("./admin/account/edit")) {
+            response.sendRedirect("/admin/account");
+        } else if (request.getServletPath().equals("/admin/account/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String name = request.getParameter("name");
@@ -146,7 +146,7 @@ public class Account extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("./admin/account");
+            response.sendRedirect("/admin/account");
         }
     }
 }

@@ -4,7 +4,7 @@
 <html class="no-js" lang="">
 <head>
     <title>Forgot password</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
     <style>
         .page-header {
             display: flex;
@@ -72,7 +72,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"./>
+<jsp:include page="header.jsp"/>
 <!--Header Area End-->
 <!-- Loging Area Start -->
 <%--<div class="login-account section-padding">--%>
@@ -123,10 +123,10 @@
 </div>
 <!-- Loging Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"./>
+<jsp:include page="jquery.jsp"/>
 </body>
 </html>

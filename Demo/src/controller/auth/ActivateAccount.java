@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@WebServlet("./active-account")
+@WebServlet("/active-account")
 public class ActivateAccount extends HttpServlet {
 
 
@@ -25,8 +25,8 @@ public class ActivateAccount extends HttpServlet {
 
             //generate pub-priv Key
             GenKey gen = new GenKey();
-            String pathFilePub = request.getServletContext().getRealPath("public") + "./pubLicKey" + email.split("@")[0] + ".txt";
-            String pathFilePriv = request.getServletContext().getRealPath("public") + "./privateKey" + email.split("@")[0] + ".txt";
+            String pathFilePub = request.getServletContext().getRealPath("public") + "/pubLicKey" + email.split("@")[0] + ".txt";
+            String pathFilePriv = request.getServletContext().getRealPath("public") + "/privateKey" + email.split("@")[0] + ".txt";
 /// generate key and send mail
             gen.generateKey(pathFilePriv, pathFilePub);
 //            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
@@ -40,7 +40,7 @@ public class ActivateAccount extends HttpServlet {
 //
 //            byte[] key = priv.getEncoded();
 //
-//            File file = new File(request.getServletContext().getRealPath("public") + "./privateKey" + email.split("@")[0] + ".txt");
+//            File file = new File(request.getServletContext().getRealPath("public") + "/privateKey" + email.split("@")[0] + ".txt");
 //            if (!file.exists()) {
 //
 //                file.createNewFile();
@@ -51,7 +51,7 @@ public class ActivateAccount extends HttpServlet {
 //            keyfos.close();
 //
 //            byte[] keyPub = pubKey.getEncoded();
-//            File filePub = new File(request.getServletContext().getRealPath("public") + "./pubLicKey" + email.split("@")[0] + ".txt");
+//            File filePub = new File(request.getServletContext().getRealPath("public") + "/pubLicKey" + email.split("@")[0] + ".txt");
 //            if (!filePub.exists()) {
 //
 //                filePub.createNewFile();
@@ -80,7 +80,7 @@ public class ActivateAccount extends HttpServlet {
                     //send mail
                     SendingEmail senMail = new SendingEmail();
                     senMail.sendMailKey(email, pathFilePriv, pathFilePub);
-                    request.getRequestDispatcher("./customer/view/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
                 } else {
                     response.sendRedirect("");
                 }

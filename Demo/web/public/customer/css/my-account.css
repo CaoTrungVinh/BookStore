@@ -6858,7 +6858,7 @@ input[type=submit].btn-block {
 }
 
 .breadcrumb>li+li:before {
-    content: "./Â ";
+    content: "/Â ";
     padding: 0 5px;
     color: #ccc
 }

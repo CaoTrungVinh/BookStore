@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-@WebServlet(urlPatterns = {"./single-product", "./single-product/rate"})
+@WebServlet(urlPatterns = {"/single-product", "/single-product/rate"})
 public class SingleProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,7 +27,7 @@ public class SingleProduct extends HttpServlet {
         try {
             Connection conn = ConnectionDB.getConnection();
 
-            if (request.getServletPath().equals("./single-product/rate")) {
+            if (request.getServletPath().equals("/single-product/rate")) {
                 String idProduct = request.getParameter("id");
                 String rate = request.getParameter("rate");
                 int rating = 0;
@@ -97,7 +97,7 @@ public class SingleProduct extends HttpServlet {
                 request.setAttribute("listBook", listBook);
                 System.out.println("VÔ DETAIL NÈ");
 
-                request.getRequestDispatcher("./customer/view/single-product.jsp").forward(request, response);
+                request.getRequestDispatcher("/customer/view/single-product.jsp").forward(request, response);
             }
 
         } catch (SQLException e) {

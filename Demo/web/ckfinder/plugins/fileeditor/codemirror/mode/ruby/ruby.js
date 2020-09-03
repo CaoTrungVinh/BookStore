@@ -45,9 +45,9 @@ CodeMirror.defineMode("ruby", function(config) {
     var ch = stream.next(), m;
     if (ch == "`" || ch == "'" || ch == '"') {
       return chain(readQuoted(ch, "string", ch == '"' || ch == "`"), stream, state);
-    } else if (ch == "./") {
+    } else if (ch == "/") {
       var currentIndex = stream.current().length;
-      if (stream.skipTo("./")) {
+      if (stream.skipTo("/")) {
         var search_till = stream.current().length;
         stream.backUp(stream.current().length - currentIndex);
         var balance = 0;  // balance brackets

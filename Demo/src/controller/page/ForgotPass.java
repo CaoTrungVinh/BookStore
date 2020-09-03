@@ -15,10 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet("./forgot-pass")
+@WebServlet("/forgot-pass")
 public class ForgotPass extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("./customer/view/forgotpass.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/view/forgotpass.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +34,7 @@ public class ForgotPass extends HttpServlet {
             }
             SendingEmail sendingEmail = new SendingEmail("reset-pass", email, hashMail);
             sendingEmail.start();
-            request.getRequestDispatcher("./customer/view/verify.jsp").forward(request, response);
+            request.getRequestDispatcher("/customer/view/verify.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }

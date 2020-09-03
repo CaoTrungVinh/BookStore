@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
     <title>See Product</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 
-    <link href="./public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
+    <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <style>
 
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-<jsp:include page="header.jsp"./>
+<jsp:include page="header.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big">
     <div class="row">
@@ -133,7 +133,7 @@
                             <div class="cart-product col-xl-3 col-lg-3 col-md-3">
                                 <div class="cart-product-image">
                                     <a href="single-product.jsp">
-                                        <img src="./public/customer/img/shop/images/<%=imgs.getString("img")%>"
+                                        <img src="/public/customer/img/shop/images/<%=imgs.getString("img")%>"
                                              alt="">
                                     </a>
 
@@ -264,15 +264,15 @@
     </div>
 </div>
 
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 
-<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="./public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="/public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
 <!-- https://jqueryui.com/download/ -->
-<script src="./public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script src="./public/admin/js/jquery-editable-select.min.js"></script>
+<script src="/public/admin/js/jquery-editable-select.min.js"></script>
 <script>
     function selectFileWithCKFinder(elementId) {
         CKFinder.modal({

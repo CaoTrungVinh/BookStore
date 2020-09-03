@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet("./search")
+@WebServlet("/search")
 public class Search extends HttpServlet {
 
 

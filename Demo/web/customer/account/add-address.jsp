@@ -5,7 +5,7 @@
         <!-- <a href="#" class="add">Thêm địa chỉ mới</a> -->
     </h1>
     <div class="account-address-form address-form">
-        <form class="form-horizontal bv-form" role="form" action="./customer/address/create"
+        <form class="form-horizontal bv-form" role="form" action="/customer/address/create"
               method="post" id="address-info" novalidate="novalidate">
             <button type="submit"
                     class="bv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>

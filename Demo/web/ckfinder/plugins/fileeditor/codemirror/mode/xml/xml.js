@@ -88,7 +88,7 @@ CodeMirror.defineMode("xml", function(config, parserConfig) {
         state.tokenize = inBlock("meta", "?>");
         return "meta";
       } else {
-        type = stream.eat("./") ? "closeTag" : "openTag";
+        type = stream.eat("/") ? "closeTag" : "openTag";
         state.tokenize = inTag;
         return "tag bracket";
       }
@@ -113,7 +113,7 @@ CodeMirror.defineMode("xml", function(config, parserConfig) {
 
   function inTag(stream, state) {
     var ch = stream.next();
-    if (ch == ">" || (ch == "./" && stream.eat(">"))) {
+    if (ch == ">" || (ch == "/" && stream.eat(">"))) {
       state.tokenize = inText;
       type = ch == ">" ? "endTag" : "selfcloseTag";
       return "tag bracket";

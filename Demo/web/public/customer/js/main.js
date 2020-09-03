@@ -292,7 +292,7 @@ function changeCounterCart(flag) {
 function removeCartProduct(id) {
     $.ajax({
         type: "POST",
-        url: "./DelProduct",   // this is my servlet
+        url: "/DelProduct",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             if (data == "true") {
@@ -307,7 +307,7 @@ function removeCartProduct(id) {
 function addToCard(id, quantity) {
     $.ajax({
         type: "POST",
-        url: "./add-cart",   // this is my servlet
+        url: "/add-cart",   // this is my servlet
         data: {"bookID": id, "quantity": quantity},
         success: function (data) {
             increaseCounterCart(quantity);
@@ -388,7 +388,7 @@ function hideAlertLogin() {
 function add2Wishlist(id) {
     $.ajax({
         type: "POST",
-        url: "./addWish",   // this is my servlet
+        url: "/addWish",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             changeCounterWish(1);
@@ -417,7 +417,7 @@ function addHTMLproductWish(data) {
     var html = " <div class=\"cart-product\" id=\"wishproductid" + bookItem.id + "\">\n" +
         "                                    <div class=\"cart-product-image\">\n" +
         "                                        <a href=\"single-product.jsp\">\n" +
-        "                                            <img src=\"./public/customer/img/shop/" + bookItem.img + "\" alt=\"\">\n" +
+        "                                            <img src=\"/public/customer/img/shop/" + bookItem.img + "\" alt=\"\">\n" +
         "                                        </a>\n" +
         "                                    </div>\n" +
         "                                    <div class=\"cart-product-info\">\n" +
@@ -449,7 +449,7 @@ function addToCardFromWishlist(id) {
 function removeWishlistItemAjax(id) {
     $.ajax({
         type: "POST",
-        url: "./delWish",   // this is my servlet
+        url: "/delWish",   // this is my servlet
         data: {"bookID": id},
         success: function (data) {
             changeCounterWish(-1);

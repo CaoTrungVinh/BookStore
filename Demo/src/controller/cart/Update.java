@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet("./cart-update")
+@WebServlet("/cart-update")
 public class Update extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-@WebServlet("./list-book")
+@WebServlet("/list-book")
 public class ListBook extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

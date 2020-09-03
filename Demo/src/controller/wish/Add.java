@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet("./addWish")
+@WebServlet("/addWish")
 public class Add extends HttpServlet {
 
 

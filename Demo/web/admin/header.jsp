@@ -1,4 +1,4 @@
-<%--    <jsp:include page="header.jsp"./>--%>
+<%--    <jsp:include page="header.jsp"/>--%>
 <%@ page import="Util.Util" %>
 <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
@@ -44,7 +44,7 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link d-block" href="./admin/login.jsp">
+                    <a class="nav-link d-block" href="/admin/login.jsp">
                         Admin, <b>Logout</b>
                     </a>
                 </li>
@@ -54,6 +54,6 @@
 
 </nav>
 
-<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="./public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>

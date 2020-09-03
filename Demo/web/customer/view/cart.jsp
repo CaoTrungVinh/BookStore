@@ -5,7 +5,7 @@
 <html class="no-js" lang="">
 <head>
     <title>Shopping Cart || Witter Multipage Responsive Template</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -15,7 +15,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"./>
+<jsp:include page="header.jsp"/>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -71,7 +71,7 @@
                                 </td>
                                 <td class="product-image">
                                     <a href="#">
-                                        <img src="./public/customer/img/shop/images/<%= p.getImg()%>" style="height: 140px"
+                                        <img src="/public/customer/img/shop/images/<%= p.getImg()%>" style="height: 140px"
                                              alt="">
                                     </a>
                                 </td>
@@ -154,10 +154,10 @@
 </div>
 <!-- Discount Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"./>
+<jsp:include page="jquery.jsp"/>
 </body>
 </html>

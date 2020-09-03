@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-@WebServlet("./cartPay")
+@WebServlet("/cartPay")
 public class Pay extends HttpServlet {
 
 
@@ -82,7 +82,7 @@ public class Pay extends HttpServlet {
             Ordered ordered = new Ordered(id_ordered,new Timestamp(new Date().getTime()) ,products, totalMoney,"2");
 
 
-            request.getRequestDispatcher("./customer/view/successPayment.jsp").forward(request, response);
+            request.getRequestDispatcher("/customer/view/successPayment.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }

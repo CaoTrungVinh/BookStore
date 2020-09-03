@@ -9,13 +9,13 @@
 <head>
 
     <title>Checkout</title>
-    <jsp:include page="../view/head.jsp"./>
-    <link rel="stylesheet" href="./public/customer/css/checkout.css">
-    <script src="./public/customer/js/vendor/jquery-1.12.0.min.js"></script>
+    <jsp:include page="../view/head.jsp"/>
+    <link rel="stylesheet" href="/public/customer/css/checkout.css">
+    <script src="/public/customer/js/vendor/jquery-1.12.0.min.js"></script>
 </head>
 <body>
 
-<jsp:include page="../view/header.jsp"./>
+<jsp:include page="../view/header.jsp"/>
 <div class="tiki-cart">
     <div class="wrap">
         <div class="container have-height">
@@ -49,10 +49,10 @@
                                        price="<%=product.getTotalPrice()%>"
                                        value="<%=product.getId()%>"
                                        name="payids"
-                                       style="float: left;  margin-top: 35%;margin-right: 10px;"./>
+                                       style="float: left;  margin-top: 35%;margin-right: 10px;"/>
                                 <p class="image">
                                     <img class="img-responsive"
-                                         src="./public/customer/img/shop/images/<%=product.getImg()%>">
+                                         src="/public/customer/img/shop/images/<%=product.getImg()%>">
                                 </p>
                             </div>
                             <div class="col-right">
@@ -147,7 +147,7 @@
                                 </div>
 
                                 <input type="submit" class="btn btn-large btn-block btn-danger btn-checkout"
-                                       value="Proceed to ordering"./>
+                                       value="Proceed to ordering"/>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="empty-cart">
                         <span class="mascot-image"></span>
                         <p class="message">You have no items in your shopping cart.</p>
-                        <a href="./" class="btn btn-yellow">Continue shopping</a>
+                        <a href="/" class="btn btn-yellow">Continue shopping</a>
                     </div>
                 </div>
             </div>
@@ -173,13 +173,13 @@
     </div>
 </div>
 <!-- Footer Area Start -->
-<jsp:include page="../view/footer.jsp"./>
+<jsp:include page="../view/footer.jsp"/>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="../view/jquery.jsp"./>
+<jsp:include page="../view/jquery.jsp"/>
 
-<script src="./public/customer/js/jquery.bootstrap-touchspin.js"></script>
+<script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         if (!$('input:checkbox.checkbox').is('checked')) {

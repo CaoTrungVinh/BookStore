@@ -85,7 +85,7 @@ Updated copyrights, fixed URLs inside source code, other minor fixes.
 - Fixed: Classic upload for popup sample did not work in IE9.
 - Fixed: Dialog windows could not be opened after opening CKFinder twice in a popup.
 - Fixed: Various "access denied" errors appeared from time to time in IE when CKFinder was running in a popup.
-- Fixed: CKFinderAPI.disableFolderContextMenuOption() did not work for "createSubFolder"./"renameFolder" items.
+- Fixed: CKFinderAPI.disableFolderContextMenuOption() did not work for "createSubFolder"/"renameFolder" items.
 - Fixed: In some cases, and empty (undefined) error message was shown to the user when an error occured.
 - Updated colorbox library used by the gallery plugin to the latest version, compatible with latest versions of jQuery.
 [Java] - Updated Thumbnailator to the latest stable version. Current version is 0.4.5.

@@ -53,12 +53,12 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       if (stream.match(number)) return "number"
       stream.next()
     }
-    if (ch == "./") {
+    if (ch == "/") {
       if (stream.eat("*")) {
         state.tokenize = tokenComment;
         return tokenComment(stream, state);
       }
-      if (stream.eat("./")) {
+      if (stream.eat("/")) {
         stream.skipToEnd();
         return "comment";
       }
@@ -102,7 +102,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
   function tokenComment(stream, state) {
     var maybeEnd = false, ch;
     while (ch = stream.next()) {
-      if (ch == "./" && maybeEnd) {
+      if (ch == "/" && maybeEnd) {
         state.tokenize = null;
         break;
       }
@@ -238,9 +238,9 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     },
 
     electricInput: indentSwitch ? /^\s*(?:case .*?:|default:|\{\}?|\})$/ : /^\s*[{}]$/,
-    blockCommentStart: "./*",
+    blockCommentStart: "/*",
     blockCommentEnd: "*/",
-    lineComment: ".//",
+    lineComment: "//",
     fold: "brace"
   };
 });

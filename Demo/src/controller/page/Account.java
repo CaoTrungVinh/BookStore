@@ -17,8 +17,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = {"./account", "./account/edit", "./account/address", "./account/add-address", "./account/order", "./account/wishlist"})
-//@WebServlet("./account")
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist"})
+//@WebServlet("/account")
 public class Account extends HttpServlet {
 
 
@@ -43,13 +43,13 @@ public class Account extends HttpServlet {
         request.setAttribute("user", user);
 
 
-        if (request.getServletPath().equals("./account") || request.getServletPath().equals("./account/edit")) {
+        if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             request.setAttribute("route", "edit");
-        } else if (request.getServletPath().equals("./account/address")) {
+        } else if (request.getServletPath().equals("/account/address")) {
             request.setAttribute("route", "address");
-        } else if (request.getServletPath().equals("./account/add-address")) {
+        } else if (request.getServletPath().equals("/account/add-address")) {
             request.setAttribute("route", "add-address");
-        } else if (request.getServletPath().equals("./account/order")) {
+        } else if (request.getServletPath().equals("/account/order")) {
             try {
                 ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
                 sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
@@ -74,18 +74,18 @@ public class Account extends HttpServlet {
                 e.printStackTrace();
             }
             request.setAttribute("route", "order");
-        } else if (request.getServletPath().equals("./account/wishlist")) {
+        } else if (request.getServletPath().equals("/account/wishlist")) {
             request.setAttribute("wishlist", user.getWishlist().getWishlist());
             request.setAttribute("route", "wishlist");
         }
-        request.getRequestDispatcher("./customer/account/my-account.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/account/my-account.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        if (request.getServletPath().equals("./account/edit")) {
+        if (request.getServletPath().equals("/account/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String name = request.getParameter("name");
@@ -122,7 +122,7 @@ public class Account extends HttpServlet {
                                 System.out.println("new pass");
                                 HttpSession session = request.getSession();
                                 session.setAttribute("edit-account-noti", "Password length must be between 8 and 32 character");
-                                response.sendRedirect("./account/edit?id=" + id);
+                                response.sendRedirect("/account/edit?id=" + id);
                                 return;
                             }
 
@@ -142,7 +142,7 @@ public class Account extends HttpServlet {
                                 System.out.println("re pass");
                                 HttpSession session = request.getSession();
                                 session.setAttribute("edit-account-noti", "Password not match");
-                                response.sendRedirect("./account/edit?id=" + id);
+                                response.sendRedirect("/account/edit?id=" + id);
                                 return;
                             }
 
@@ -151,7 +151,7 @@ public class Account extends HttpServlet {
                             System.out.println("old pass");
                             HttpSession session = request.getSession();
                             session.setAttribute("edit-account-noti", "Old password not correct");
-                            response.sendRedirect("./account/edit?id=" + id);
+                            response.sendRedirect("/account/edit?id=" + id);
                             return;
                         }
                     }
@@ -191,7 +191,7 @@ public class Account extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("./account/edit?id=" + id);
+            response.sendRedirect("/account/edit?id=" + id);
         }
 
 

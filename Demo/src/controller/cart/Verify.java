@@ -18,14 +18,14 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Base64;
 
-@WebServlet("./verify")
+@WebServlet("/verify")
 public class Verify extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        User user = (User) request.getSession().getAttribute("user");
 //        request.setAttribute("name", user.getFullName());
 //        request.setAttribute("phone", user.getPhone());
 //        request.setAttribute("address", user.getAddress());
-//        request.getRequestDispatcher("./customer/view/confirm-Order.jsp").forward(request, response);
+//        request.getRequestDispatcher("/customer/view/confirm-Order.jsp").forward(request, response);
 
     }
 

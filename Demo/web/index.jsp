@@ -5,8 +5,8 @@
 <html class="no-js" lang="">
 <head>
     <title>Book Store</title>
-    <jsp:include page="./customer/view/head.jsp"./>
-    <link rel="stylesheet" href="./public/customer/css/index.css">
+    <jsp:include page="/customer/view/head.jsp"/>
+    <link rel="stylesheet" href="/public/customer/css/index.css">
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -17,7 +17,7 @@
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
 
-<jsp:include page="./customer/view/header.jsp"./>
+<jsp:include page="/customer/view/header.jsp"/>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -25,8 +25,8 @@
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider" class="slides">
-            <img src="public/customer/img/slider/1.jpg" alt="" title="#slider-direction-1"./>
-            <img src="public/customer/img/slider/2.jpg" alt="" title="#slider-direction-2"./>
+            <img src="public/customer/img/slider/1.jpg" alt="" title="#slider-direction-1"/>
+            <img src="public/customer/img/slider/2.jpg" alt="" title="#slider-direction-2"/>
         </div>
         <!-- direction 1 -->
         <div id="slider-direction-1" class="text-center slider-direction">
@@ -192,7 +192,7 @@
                                         <a href="<%=Util.fullPath("single-product?id=" +bookNew.getString("id"))%>"
                                            class="single-banner-image-wrapper">
                                             <img alt=""
-                                                 src="./public/customer/img/shop/images/<%= bookNew.getString(4)%>"
+                                                 src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
                                                  style="padding-top: 10px">
                                             <%--                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>--%>
 
@@ -279,7 +279,7 @@
                                         <a href="<%=Util.fullPath("single-product?id=" +bookTopRating.getString("id"))%>"
                                            class="single-banner-image-wrapper">
                                             <img alt=""
-                                                 src="./public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
+                                                 src="/public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
                                                  style="padding-top: 10px">
                                             <%--                                            <div class="price">--%>
                                             <%--                                                <span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>--%>
@@ -453,7 +453,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="./public/customer/img/post/1.jpg" width="270px" height="200px"
+                            <img src="/public/customer/img/post/1.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -468,7 +468,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="./public/customer/img/post/2.jpg" width="270px" height="200px"
+                            <img src="/public/customer/img/post/2.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -479,7 +479,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="./public/customer/img/post/3.jpg" width="270px" height="200px"
+                            <img src="/public/customer/img/post/3.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -490,7 +490,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="./public/customer/img/post/4.jpg" width="270px" height="200px"
+                            <img src="/public/customer/img/post/4.jpg" width="270px" height="200px"
                                  alt="" style="height: 350px">
                         </a>
                         <div class="blog-info text-center">
@@ -528,7 +528,7 @@
 <!-- News Letter Area End -->
 <!-- Footer Area Start -->
 
-<jsp:include page="./customer/view/footer.jsp"./>
+<jsp:include page="/customer/view/footer.jsp"/>
 <!-- Footer Area End -->
 <!--Quickview Product Start -->
 <div id="quickview-wrapper">
@@ -598,6 +598,6 @@
 <!-- all js here -->
 <!-- jquery latest version -->
 
-<jsp:include page="./customer/view/jquery.jsp"./>
+<jsp:include page="/customer/view/jquery.jsp"/>
 </body>
 </html>

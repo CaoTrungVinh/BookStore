@@ -4,9 +4,9 @@
 <html lang="en">
 <head>
     <title>Add Product</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 
-    <link href="./public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
+    <link href="/public/admin/css/jquery-editable-select.min.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <style>
         .border-img {
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-<jsp:include page="header-product.jsp"./>
+<jsp:include page="header-product.jsp"/>
 
 <div class="container tm-mt-big tm-mb-big mt-5">
     <div class="row">
@@ -243,16 +243,16 @@
     </div>
 </div>
 
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 
-<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="./public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
+<script src="/public/admin/jquery-ui-datepicker/jquery-ui.min.js"></script>
 <!-- https://jqueryui.com/download/ -->
-<script src="./public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script src="./public/admin/js/jquery-editable-select.min.js"></script>
-<script src="./ckfinder/ckfinder.js"></script>
+<script src="/public/admin/js/jquery-editable-select.min.js"></script>
+<script src="/ckfinder/ckfinder.js"></script>
 
 <script>
 

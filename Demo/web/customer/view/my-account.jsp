@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 <head>
     <title>About Us || Witter Multipage Responsive Template</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -12,7 +12,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"./>
+<jsp:include page="header.jsp"/>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -71,7 +71,7 @@
                                                 <input type="text" placeholder="Address *">
                                             </p>
                                             <p class="form-row">
-                                                <input type="text" placeholder="City *"./>
+                                                <input type="text" placeholder="City *"/>
                                             </p>
                                             <div class="shop-select">
                                                 <label>Country <span class="required">*</span></label>
@@ -87,7 +87,7 @@
                                                 </select>
                                             </div>
                                             <p class="form-row">
-                                                <input type="text" placeholder="Mobile phone *"./>
+                                                <input type="text" placeholder="Mobile phone *"/>
                                             </p>
                                             <p class="required">** You must register at least one phone number.</p>
                                             <p class="form-row order-notes">
@@ -95,7 +95,7 @@
                                             </p>
                                             <p class="form-row">
                                                 <input type="text"
-                                                       placeholder="Please assign an address title for future reference. *"./>
+                                                       placeholder="Please assign an address title for future reference. *"/>
                                             </p>
                                             <a title="Save" class="btn button button-small" href="../../index.jsp">
 														<span>
@@ -180,7 +180,7 @@
                                                 <div class="radio-inline">
                                                     <label class="top">
 																<span class="checked">
-																	<input type="radio"./>
+																	<input type="radio"/>
 																</span>
                                                         Mr.
                                                     </label>
@@ -188,17 +188,17 @@
                                                 <div class="radio-inline">
                                                     <label class="top">
 																<span class="checked">
-																	<input type="radio"./>
+																	<input type="radio"/>
 																</span>
                                                         Mrs.
                                                     </label>
                                                 </div>
                                             </div>
                                             <p class="form-row">
-                                                <input type="text" placeholder="Your Full Name *"./>
+                                                <input type="text" placeholder="Your Full Name *"/>
                                             </p>
                                             <p class="form-row">
-                                                <input type="text" placeholder="E-mail address"./>
+                                                <input type="text" placeholder="E-mail address"/>
                                             </p>
                                             <div class="country-select shop-select">
                                                 <label>Date of Birth</label>
@@ -291,23 +291,23 @@
                                                 </div>
                                             </div>
                                             <p class="form-row">
-                                                <input type="text" placeholder="Current Password"./>
+                                                <input type="text" placeholder="Current Password"/>
                                             </p>
                                             <p class="form-row">
-                                                <input type="text" placeholder="New Password"./>
+                                                <input type="text" placeholder="New Password"/>
                                             </p>
                                             <p class="form-row">
-                                                <input type="text" placeholder="Confirmation"./>
+                                                <input type="text" placeholder="Confirmation"/>
                                             </p>
                                             <div class="checkbox">
                                                 <label>
-                                                    <span><input type="checkbox"./></span>
+                                                    <span><input type="checkbox"/></span>
                                                     Sign up for our newsletter!
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <span><input type="checkbox"./></span>
+                                                    <span><input type="checkbox"/></span>
                                                     Receive special offers from our partners!
                                                 </label>
                                             </div>
@@ -366,10 +366,10 @@
 </div>
 <!-- My Account Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"./>
+<jsp:include page="footer.jsp"/>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"./>
+<jsp:include page="jquery.jsp"/>
 </body>
 </html>

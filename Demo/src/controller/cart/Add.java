@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 
-@WebServlet("./add-cart")
+@WebServlet("/add-cart")
 public class Add extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int bookID = Integer.parseInt((String) Util.getParameterGeneric(request, "bookID", ""));

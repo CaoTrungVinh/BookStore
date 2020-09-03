@@ -3,12 +3,12 @@
 
 <head>
     <title>Product Admin - Dashboard HTML Template</title>
-    <jsp:include page="head.jsp"./>
+    <jsp:include page="head.jsp"/>
 </head>
 
 <body id="reportsPage">
 <div class="" id="home">
-<%--    <jsp:include page="header.jsp"./>--%>
+<%--    <jsp:include page="header.jsp"/>--%>
     <%@ page import="Util.Util" %>
     <nav class="navbar navbar-expand-xl">
         <div class="container h-100">
@@ -55,7 +55,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link d-block" href="./admin/login.jsp">
+                        <a class="nav-link d-block" href="/admin/login.jsp">
                             Admin, <b>Logout</b>
                         </a>
                     </li>
@@ -65,9 +65,9 @@
 
     </nav>
 
-    <script src="./public/admin/js/jquery-3.3.1.min.js"></script>
+    <script src="/public/admin/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
-    <script src="./public/admin/js/bootstrap.min.js"></script>
+    <script src="/public/admin/js/bootstrap.min.js"></script>
 
     <div class="container">
         <div class="row">
@@ -263,7 +263,7 @@
         </div>
     </div>
 
-    <jsp:include page="footer.jsp"./>
+    <jsp:include page="footer.jsp"/>
 </div>
 
 <script src="public/admin/js/jquery-3.3.1.min.js"></script>

@@ -406,7 +406,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     },
 
     electricChars: "}",
-    blockCommentStart: "./*",
+    blockCommentStart: "/*",
     blockCommentEnd: "*/",
     fold: "brace"
   };
@@ -690,7 +690,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
   function tokenCComment(stream, state) {
     var maybeEnd = false, ch;
     while ((ch = stream.next()) != null) {
-      if (maybeEnd && ch == "./") {
+      if (maybeEnd && ch == "/") {
         state.tokenize = null;
         break;
       }
@@ -711,7 +711,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     colorKeywords: colorKeywords,
     valueKeywords: valueKeywords,
     tokenHooks: {
-      "./": function(stream, state) {
+      "/": function(stream, state) {
         if (!stream.eat("*")) return false;
         state.tokenize = tokenCComment;
         return tokenCComment(stream, state);
@@ -731,8 +731,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     fontProperties: fontProperties,
     allowNested: true,
     tokenHooks: {
-      "./": function(stream, state) {
-        if (stream.eat("./")) {
+      "/": function(stream, state) {
+        if (stream.eat("/")) {
           stream.skipToEnd();
           return ["comment", "comment"];
         } else if (stream.eat("*")) {
@@ -773,8 +773,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     fontProperties: fontProperties,
     allowNested: true,
     tokenHooks: {
-      "./": function(stream, state) {
-        if (stream.eat("./")) {
+      "/": function(stream, state) {
+        if (stream.eat("/")) {
           stream.skipToEnd();
           return ["comment", "comment"];
         } else if (stream.eat("*")) {
@@ -812,7 +812,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     valueKeywords: valueKeywords,
     supportsAtComponent: true,
     tokenHooks: {
-      "./": function(stream, state) {
+      "/": function(stream, state) {
         if (!stream.eat("*")) return false;
         state.tokenize = tokenCComment;
         return tokenCComment(stream, state);

@@ -14,14 +14,14 @@
 <div class="formStyle">
 
     <label>Username</label>
-    <input type="text" id="userid"./>
+    <input type="text" id="userid"/>
     <small>(e.g. guest)</small>
 
     <label>Password</label>
-    <input type="password" id="pswrd"./>
-    <input type="submit" value="Login" id="login"./>
+    <input type="password" id="pswrd"/>
+    <input type="submit" value="Login" id="login"/>
 </div>
-<jsp:include page="./customer/view/jquery.jsp"./>
+<jsp:include page="/customer/view/jquery.jsp"/>
 <script>
     $(document).ready(function () {
         $('#login').click(function () {

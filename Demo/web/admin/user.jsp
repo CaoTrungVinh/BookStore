@@ -4,13 +4,13 @@
 <html lang="en">
 <head>
     <title>Accounts - Product Admin Template</title>
-    <jsp:include page="head.jsp"./>
-    <link rel="stylesheet" href="./public/admin/css/table.css">
+    <jsp:include page="head.jsp"/>
+    <link rel="stylesheet" href="/public/admin/css/table.css">
 </head>
 
 <body id="reportsPage">
 <div class="" id="home">
-    <jsp:include page="header.jsp"./>
+    <jsp:include page="header.jsp"/>
 
     <div class="container mt-5"  style="min-height: 500px">
 
@@ -99,15 +99,15 @@
         </table>
     </div>
 
-    <jsp:include page="footer.jsp"./>
+    <jsp:include page="footer.jsp"/>
 </div>
 
 
-<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="./public/admin/js/bootstrap.min.js"></script>
+<script src="/public/admin/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script>
@@ -126,7 +126,7 @@
                     text: 'New product',
                     className: "btn btn-primary",
                     action: function () {
-                        window.location.href = "./admin/product/add";
+                        window.location.href = "/admin/product/add";
                     }
                 }
             ]

@@ -20,7 +20,7 @@ CodeMirror.defineMode("sass", function(config) {
   var keywordsRegexp = new RegExp("^" + keywords.join("|"));
 
   var operators = ["\\(", "\\)", "=", ">", "<", "==", ">=", "<=", "\\+", "-",
-                   "\\!=", "./", "\\*", "%", "and", "or", "not", ";","\\{","\\}",":"];
+                   "\\!=", "/", "\\*", "%", "and", "or", "not", ";","\\{","\\}",":"];
   var opRegexp = tokenRegexp(operators);
 
   var pseudoElementsRegexp = /^::?[a-zA-Z_][\w\-]*/;
@@ -121,11 +121,11 @@ CodeMirror.defineMode("sass", function(config) {
     var ch = stream.peek();
 
     // Comment
-    if (stream.match("./*")) {
+    if (stream.match("/*")) {
       state.tokenizer = comment(stream.indentation(), true);
       return state.tokenizer(stream, state);
     }
-    if (stream.match(".//")) {
+    if (stream.match("//")) {
       state.tokenizer = comment(stream.indentation(), false);
       return state.tokenizer(stream, state);
     }
