@@ -6,8 +6,8 @@
 <head>
     <title>Shop || Witter Multipage Responsive Template</title>
 
-    <jsp:include page="head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/shop.css">
+    <jsp:include page="head.jsp"./>
+    <link rel="stylesheet" href="./public/customer/css/shop.css">
 
 </head>
 <body>
@@ -16,7 +16,7 @@
 <![endif]-->
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"./>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -163,10 +163,10 @@
                                 <div class="price-filter">
                                     <div id="slider-range"></div>
                                     <div class="price-slider-amount">
-                                        <input type="text" id="amount" name="price" placeholder="Add Your Price"/>
+                                        <input type="text" id="amount" name="price" placeholder="Add Your Price"./>
                                         <div class="widget-buttom">
-                                            <input type="submit" value="Filter"/>
-                                            <input type="reset" value="CLEAR" id="clean"/>
+                                            <input type="submit" value="Filter"./>
+                                            <input type="reset" value="CLEAR" id="clean"./>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@
                     <%--                            <h2 class="sidebar-title">TOP SELLERS</h2>--%>
                     <%--                            <div class="single-seller">--%>
                     <%--                                <div class="seller-img">--%>
-                    <%--                                    <img src="img/shop/1.jpg" alt=""/>--%>
+                    <%--                                    <img src="img/shop/1.jpg" alt=""./>--%>
                     <%--                                </div>--%>
                     <%--                                <div class="seller-details">--%>
                     <%--                                    <a href="shop.jsp"><h5>Cold mountain</h5></a>--%>
@@ -218,7 +218,7 @@
                     <%--                            </div>--%>
                     <%--                            <div class="single-seller">--%>
                     <%--                                <div class="seller-img">--%>
-                    <%--                                    <img src="img/shop/2.jpg" alt=""/>--%>
+                    <%--                                    <img src="img/shop/2.jpg" alt=""./>--%>
                     <%--                                </div>--%>
                     <%--                                <div class="seller-details">--%>
                     <%--                                    <a href=""><h5>The historian</h5></a>--%>
@@ -351,7 +351,7 @@
                                                class="single-banner-image-wrapper">
                                                 <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
                                                 <img alt=""
-                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                     src="./public/customer/img/shop/images/<%= book.getString(4)%>"
                                                     style="margin-top: 10px">
 
 
@@ -432,7 +432,7 @@
                                                         <div class="product-images">
                                                             <div class="main-image images">
                                                                 <img alt=""
-                                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>">
+                                                                     src="./public/customer/img/shop/images/<%= book.getString(4)%>">
 
                                                             </div>
                                                         </div>
@@ -538,7 +538,7 @@
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
                                             <a href="single-product.jsp" title="East of eden">
-                                                <img src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                <img src="./public/customer/img/shop/images/<%= book.getString(4)%>"
                                                      alt="">
                                             </a>
                                         </div>
@@ -674,11 +674,11 @@
 </div>
 <!-- Shop Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"/>
+<jsp:include page="jquery.jsp"./>
 <script>
     function seemore(e) {
         var x = document.getElementById('seemore');
@@ -728,7 +728,7 @@
         }
         $.ajax({
             type: "POST",
-            url: "//localhost:8080/search",
+            url: ".//localhost:8080/search",
             data: {"str": str, "min": currentMin, "max": currentMax},
             success: function (data) {
                 var items = JSON.parse(data)
@@ -747,7 +747,7 @@
             "                                            <a href=\"" + fullPath("single-product?id=" + item.id) + "\"\n" +
             "                                               class=\"single-banner-image-wrapper\">\n" +
             "                                                <%--                                                <img alt=\"\" src=\"public/customer/img/featured/1.jpg\">--%>\n" +
-            "                                                <img alt=\"\" src=\"/public/customer/img/shop/" + item.img + "\"\n" +
+            "                                                <img alt=\"\" src=\"./public/customer/img/shop/" + item.img + "\"\n" +
             "                                                     style=\"margin-top: 30px\">\n" +
             "\n" +
             "\n" +

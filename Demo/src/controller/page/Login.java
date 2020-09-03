@@ -20,7 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-@WebServlet("/login")
+@WebServlet("./login")
 public class Login extends HttpServlet {
 
     public static void login(HttpServletRequest request, HttpServletResponse response, String email, String pass) throws ServletException, IOException {
@@ -102,19 +102,19 @@ public class Login extends HttpServlet {
 
             } else {
                 request.setAttribute("err", "Sai email hoặc mật khẩu.");
-                request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+                request.getRequestDispatcher("./customer/view/login.jsp").forward(request, response);
                 response.getWriter().println("Đăng nhập không thành công");
             }
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("err", "Sai email hoặc mật khẩu.");
-            request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+            request.getRequestDispatcher("./customer/view/login.jsp").forward(request, response);
             response.getWriter().println("Đăng nhập không thành công");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/customer/view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("./customer/view/login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <title>Accounts - Product Admin Template</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
 </head>
 
 <body id="reportsPage">
 <div class="" id="home">
-    <jsp:include page="header-account.jsp"/>
+    <jsp:include page="header-account.jsp"./>
     <div class="container mt-5">
         <div class="row tm-content-row">
             <div class="col-12 tm-block-col">
@@ -114,12 +114,12 @@
         </div>
     </div>
 
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="footer.jsp"./>
 </div>
 
-<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="/public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
 </body>
 </html>

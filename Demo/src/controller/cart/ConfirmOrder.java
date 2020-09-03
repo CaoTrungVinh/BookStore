@@ -23,14 +23,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-@WebServlet("/ConfirmOrder")
+@WebServlet("./ConfirmOrder")
 public class ConfirmOrder extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         request.setAttribute("name", user.getFullName());
         request.setAttribute("phone", user.getPhone());
         request.setAttribute("address", user.getAddress());
-        request.getRequestDispatcher("/customer/view/confirm-Order.jsp").forward(request, response);
+        request.getRequestDispatcher("./customer/view/confirm-Order.jsp").forward(request, response);
 
     }
 
@@ -95,7 +95,7 @@ public class ConfirmOrder extends HttpServlet {
             Ordered ordered = new Ordered(id_ordered, new Timestamp(new Date().getTime()), products, totalMoney, "2");
 
             // file info order
-//            String pathFile = request.getServletContext().getRealPath("public") + "/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
+//            String pathFile = request.getServletContext().getRealPath("public") + "./ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
 //            File file = new File(pathFile);
 //            if (!file.exists()) {
 //
@@ -108,14 +108,14 @@ public class ConfirmOrder extends HttpServlet {
 //            System.out.println("PATH FILE: "+file.getPath());
 
 
-
             // user + ordered
-            String contentFile = ""; // Tánh trả về
+            System.out.println(user + "\r\n" + ordered);
+            String contentFile = user + "\r\n" + ordered; // Tánh trả về
             FileOrder fileOrder = new FileOrder();
             String pathFileDownload = fileOrder.createFileOrder(request, user, contentFile);
             request.setAttribute("fileinfo", pathFileDownload);
 
-            request.getRequestDispatcher("/customer/view/signature.jsp").forward(request, response);
+            request.getRequestDispatcher("./customer/view/signature.jsp").forward(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();

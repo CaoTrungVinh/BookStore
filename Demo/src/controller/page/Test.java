@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/Test")
+@WebServlet("./Test")
 public class Test extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("running");
         response.setContentType("text/html;charset=UTF-8");
-           request.getRequestDispatcher("/customer/view/404.jsp").forward(request, response);
+           request.getRequestDispatcher("./customer/view/404.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

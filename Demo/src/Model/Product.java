@@ -124,7 +124,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return quantity + " x " + title + " x " + quantity;
+        return quantity + " x " + title + " x " + price;
     }
 
     public String toString2() {

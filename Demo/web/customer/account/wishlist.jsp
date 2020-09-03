@@ -17,7 +17,7 @@
                     <p class="image">
                         <a href="<%=Util.fullPath("single-product?id=" +item.getId())%>">
                             <img class="img-responsive"
-                                 src="/public/customer/img/shop/images/<%=item.getImg()%>"
+                                 src="./public/customer/img/shop/images/<%=item.getImg()%>"
                                  width="130" height="182" alt="sample text">
                         </a>
                     </p>
@@ -87,7 +87,7 @@
             <div class="empty-cart">
                 <span class="mascot-image"></span>
                 <p class="message">You have no items in your wishlish.</p>
-                <a href="/" class="btn btn-yellow">Continue shopping</a>
+                <a href="./" class="btn btn-yellow">Continue shopping</a>
             </div>
         </div>
     </div>

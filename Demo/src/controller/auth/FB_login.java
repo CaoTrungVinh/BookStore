@@ -24,7 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-@WebServlet("/FB_login")
+@WebServlet("./FB_login")
 public class FB_login extends HttpServlet {
 
 

@@ -3,7 +3,7 @@
 <html class="no-js" lang="">
 <head>
     <title>Creat An Account || Witter Multipage Responsive Template</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
     <style>
 
         input::-webkit-outer-spin-button,
@@ -176,7 +176,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"./>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -226,11 +226,11 @@
 </div>
 <!-- Loging Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"/>
+<jsp:include page="jquery.jsp"./>
 
 
 </body>

@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 <head>
     <title>404 page not found || Witter Multipage Responsive Template</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"./>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -45,7 +45,7 @@
                 <div class="error-text text-center">
                     <h1>OPPS! PAGE NOT FOUND</h1>
 
-                    <img src="/public/logo.png">
+                    <img src="./public/logo.png">
 
                     <a href="../../index.jsp">BACK TO HOME PAGE</a>
                 </div>
@@ -55,10 +55,10 @@
 </div>
 <!-- 404 Error Page End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"/>
+<jsp:include page="jquery.jsp"./>
 </body>
 </html>

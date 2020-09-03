@@ -11,7 +11,7 @@ public class FileOrder {
 
     public String createFileOrder(HttpServletRequest request, User user, String contentFile) {
 
-        String pathFile = request.getServletContext().getRealPath("public") + "/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
+        String pathFile = request.getServletContext().getRealPath("public") + "./ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
         File file = new File(pathFile);
         if (!file.exists()) {
 

@@ -3,7 +3,7 @@
 <head>
     <title>Contact || Witter Multipage Responsive Template</title>
 
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -13,7 +13,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"./>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -84,9 +84,9 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="contact-form-left">
-                                <input type="text" placeholder="Your Name" name="name" id="name"/>
-                                <input type="email" placeholder="Your Email" name="email" id="email"/>
-                                <input type="text" placeholder="Your phone" name="phone" id="phone"/>
+                                <input type="text" placeholder="Your Name" name="name" id="name"./>
+                                <input type="email" placeholder="Your Email" name="email" id="email"./>
+                                <input type="text" placeholder="Your phone" name="phone" id="phone"./>
                             </div>
                         </div>
                         <div class="col-md-7">
@@ -105,11 +105,11 @@
 </div>
 <!-- Contact Form Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"/>
+<jsp:include page="jquery.jsp"./>
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
     function initialize() {

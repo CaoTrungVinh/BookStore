@@ -67,7 +67,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
     } else if (/^[\(\),\;\[\]]/.test(ch)) {
       // no highlightning
       return null;
-    } else if (support.commentSlashSlash && ch == "/" && stream.eat("/")) {
+    } else if (support.commentSlashSlash && ch == "./" && stream.eat("./")) {
       // 1-line comment
       stream.skipToEnd();
       return "comment";
@@ -77,7 +77,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       // ref: https://kb.askmonty.org/en/comment-syntax/
       stream.skipToEnd();
       return "comment";
-    } else if (ch == "/" && stream.eat("*")) {
+    } else if (ch == "./" && stream.eat("*")) {
       // multi-line comments
       // ref: https://kb.askmonty.org/en/comment-syntax/
       state.tokenize = tokenComment;
@@ -106,7 +106,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       var word = stream.current().toLowerCase();
       // dates (standard SQL syntax)
       // ref: http://dev.mysql.com/doc/refman/5.5/en/date-and-time-literals.html
-      if (dateSQL.hasOwnProperty(word) && (stream.match(/^( )+'[^']*'/) || stream.match(/^( )+"[^"]*"/)))
+      if (dateSQL.hasOwnProperty(word) && (stream.match(/^( )+'[^']*'/) || stream.match(/^( )+"[^"]*"./)))
         return "number";
       if (atoms.hasOwnProperty(word)) return "atom";
       if (builtin.hasOwnProperty(word)) return "builtin";
@@ -134,7 +134,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
     while (true) {
       if (stream.skipTo("*")) {
         stream.next();
-        if (stream.eat("/")) {
+        if (stream.eat("./")) {
           state.tokenize = tokenBase;
           break;
         }
@@ -196,9 +196,9 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       else return cx.indent + (closing ? 0 : config.indentUnit);
     },
 
-    blockCommentStart: "/*",
+    blockCommentStart: "./*",
     blockCommentEnd: "*/",
-    lineComment: support.commentSlashSlash ? "//" : support.commentHash ? "#" : null
+    lineComment: support.commentSlashSlash ? ".//" : support.commentHash ? "#" : null
   };
 });
 
@@ -233,7 +233,7 @@ CodeMirror.defineMode("sql", function(config, parserConfig) {
       stream.match(/^.*'/);
       return "variable-2";
     } else if (stream.eat('"')) {
-      stream.match(/^.*"/);
+      stream.match(/^.*"./);
       return "variable-2";
     } else if (stream.eat("`")) {
       stream.match(/^.*`/);

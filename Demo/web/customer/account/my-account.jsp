@@ -6,8 +6,8 @@
 <head>
 
     <title>My Account</title>
-    <jsp:include page="../view/head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/my-account.css">
+    <jsp:include page="../view/head.jsp"./>
+    <link rel="stylesheet" href="./public/customer/css/my-account.css">
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -17,7 +17,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="../view/header.jsp"/>
+<jsp:include page="../view/header.jsp"./>
 <div class="tiki-account">
     <div class="wrap">
         <div class="container-full">
@@ -78,27 +78,27 @@
                     switch (route) {
                         case "address":
                 %>
-                <jsp:include page="address.jsp"/>
+                <jsp:include page="address.jsp"./>
                 <%
                         break;
                     case "add-address":
                 %>
-                <jsp:include page="add-address.jsp"/>
+                <jsp:include page="add-address.jsp"./>
                 <%
                         break;
                     case "order":
                 %>
-                <jsp:include page="order-history.jsp"/>
+                <jsp:include page="order-history.jsp"./>
                 <%
                         break;
                     case "wishlist":
                 %>
-                <jsp:include page="wishlist.jsp"/>
+                <jsp:include page="wishlist.jsp"./>
                 <%
                         break;
                     case "edit":
                 %>
-                <jsp:include page="account.jsp"/>
+                <jsp:include page="account.jsp"./>
                 <% break;
                 } %>
 
@@ -108,11 +108,11 @@
 </div>
 <!-- Loging Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="../view/footer.jsp"/>
+<jsp:include page="../view/footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="../view/jquery.jsp"/>
+<jsp:include page="../view/jquery.jsp"./>
 <script>
     $("#is_change_pass").click(function (event) {
         if ($("#is_change_pass").prop('checked') == true)

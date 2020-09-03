@@ -18,13 +18,13 @@ import java.util.Base64;
 import java.util.regex.Pattern;
 
 
-@WebServlet("/register")
+@WebServlet("./register")
 public class Register extends HttpServlet {
     String email, name, pass, re_pass, phone;
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+        request.getRequestDispatcher("./customer/view/register.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,10 +52,10 @@ public class Register extends HttpServlet {
                     request.setAttribute("err-email", "Email has exist.");
                     request.setAttribute("old-email", email);
                     request.setAttribute("username", name);
-                    request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+                    request.getRequestDispatcher("./customer/view/register.jsp").forward(request, response);
                 } else if (!(pass.equals(re_pass))) { // kiểm tra pass khớp
                     request.setAttribute("err-pass", "Passwords not matches!!");
-                    request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+                    request.getRequestDispatcher("./customer/view/register.jsp").forward(request, response);
                 } else {
                     sql = "INSERT INTO users(name, email, email_hashed, password" +
                             ", phone) VALUES(?,?,?,?,?)";
@@ -75,9 +75,9 @@ public class Register extends HttpServlet {
                     if (i != 0) {
                         SendingEmail sendingEmail = new SendingEmail("active-account", email, hashMail);
                         sendingEmail.start();
-                        response.sendRedirect("/customer/view/verify.jsp");
+                        response.sendRedirect("./customer/view/verify.jsp");
                     } else {
-                        request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+                        request.getRequestDispatcher("./customer/view/register.jsp").forward(request, response);
                     }
                 }
             } catch (Exception e) {
@@ -111,7 +111,7 @@ public class Register extends HttpServlet {
             request.setAttribute("old-email", email);
             request.setAttribute("username", name);
             request.setAttribute("phone", phone);
-            request.getRequestDispatcher("/customer/view/register.jsp").forward(request, response);
+            request.getRequestDispatcher("./customer/view/register.jsp").forward(request, response);
         }
 
         return rs;

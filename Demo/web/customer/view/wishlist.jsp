@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 <head>
     <title>WishList || Witter Multipage Responsive Template</title>
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -12,7 +12,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"./>
 <!--Header Area End-->
 <!-- Mobile Menu Start -->
 <!-- Mobile Menu End -->
@@ -81,10 +81,10 @@
                                 <div class="price-filter">
                                     <div id="slider-range"></div>
                                     <div class="price-slider-amount">
-                                        <input type="text" id="amount" name="price" placeholder="Add Your Price"/>
+                                        <input type="text" id="amount" name="price" placeholder="Add Your Price"./>
                                         <div class="widget-buttom">
-                                            <input type="submit" value="Filter"/>
-                                            <input type="reset" value="CLEAR"/>
+                                            <input type="submit" value="Filter"./>
+                                            <input type="reset" value="CLEAR"./>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                             <h2 class="sidebar-title">TOP SELLERS</h2>
                             <div class="single-seller">
                                 <div class="seller-img">
-                                    <img src="img/shop/1.jpg" alt=""/>
+                                    <img src="img/shop/1.jpg" alt=""./>
                                 </div>
                                 <div class="seller-details">
                                     <a href="shop.jsp"><h5>Book’s</h5></a>
@@ -135,7 +135,7 @@
                             </div>
                             <div class="single-seller">
                                 <div class="seller-img">
-                                    <img src="img/shop/2.jpg" alt=""/>
+                                    <img src="img/shop/2.jpg" alt=""./>
                                 </div>
                                 <div class="seller-details">
                                     <a href=""><h5>Book’s</h5></a>
@@ -278,10 +278,10 @@
 </div>
 <!-- Shop Area End -->
 <!-- Footer Area Start -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 <!-- Footer Area End -->
 <!-- all js here -->
 <!-- jquery latest version -->
-<jsp:include page="jquery.jsp"/>
+<jsp:include page="jquery.jsp"./>
 </body>
 </html>

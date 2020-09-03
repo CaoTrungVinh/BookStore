@@ -6,15 +6,15 @@
 <head>
     <title>Order Page - Admin</title>
 
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/public/admin/css/table.css">
+    <link rel="stylesheet" href="./public/admin/css/table.css">
 </head>
 <body id="reportsPage">
 <div class="" id="home" style="background: #f5f5f5">
 
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="header.jsp"./>
 
     <div class="container">
         <div class="row">
@@ -109,14 +109,14 @@
         </div>
     </div>
 
-    <jsp:include page="footer.jsp"/>
+    <jsp:include page="footer.jsp"./>
 </div>
 
-<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="/public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script>
@@ -141,7 +141,7 @@
                     text: 'New product',
                     className: "btn btn-primary",
                     action: function () {
-                        window.location.href = "/admin/producer/add";
+                        window.location.href = "./admin/producer/add";
                     }
                 }
             ]
@@ -181,13 +181,13 @@
 </script>
 
 
-<script src="/public/admin/js/moment.min.js"></script>
+<script src="./public/admin/js/moment.min.js"></script>
 <!-- https://momentjs.com/ -->
-<script src="/public/admin/js/Chart.min.js"></script>
+<script src="./public/admin/js/Chart.min.js"></script>
 <!-- http://www.chartjs.org/docs/latest/ -->
-<script src="/public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script src="/public/admin/js/tooplate-scripts.js"></script>
+<script src="./public/admin/js/tooplate-scripts.js"></script>
 <script>
     function drawRevenueChart(month, revenue) {
 
@@ -231,7 +231,7 @@
     }
 
     function loadRevenueChart(year) {
-        var url = year ? "/admin/orders/statistic?type=revenue&year=" + year : "/admin/orders/statistic?type=revenue";
+        var url = year ? "./admin/orders/statistic?type=revenue&year=" + year : "./admin/orders/statistic?type=revenue";
 
         $.getJSON(url, function (data) {
             console.log(data);

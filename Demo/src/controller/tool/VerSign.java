@@ -35,7 +35,7 @@ public class VerSign {
             Signature sig = Signature.getInstance("SHA1withDSA", "SUN");
             sig.initVerify(publicKey);
 
-            FileInputStream datafis = new FileInputStream("/home/myduyen/Desktop/a.txt");
+            FileInputStream datafis = new FileInputStream("./home/myduyen/Desktop/a.txt");
             BufferedInputStream bufin = new BufferedInputStream(datafis);
             byte[] buffer = new byte[1024];
             int len;

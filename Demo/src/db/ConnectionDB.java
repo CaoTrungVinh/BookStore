@@ -14,8 +14,8 @@ public class ConnectionDB {
         PoolProperties p = new PoolProperties();
         p.setUrl(System.getenv("DB_URL") != null ? System.getenv("DB_URL") : "jdbc:mysql://localhost:3306/demoweb?useUnicode=true&characterEncoding=utf-8");
         p.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        p.setUsername(System.getenv("DB_USERNAME") != null ? System.getenv("DB_USERNAME") : "admin");
-        p.setPassword(System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "admin");
+        p.setUsername(System.getenv("DB_USERNAME") != null ? System.getenv("DB_USERNAME") : "root");
+        p.setPassword(System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "tanh1998");
         p.setJmxEnabled(true);
         p.setTestWhileIdle(false);
         p.setTestOnBorrow(true);

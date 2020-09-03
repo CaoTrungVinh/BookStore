@@ -68,13 +68,13 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   }();
 
   var isOperatorChar = /[+\-*&%=<>!?|~^]/;
-  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/;
+  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"./;
 
   function readRegexp(stream) {
     var escaped = false, next, inSet = false;
     while ((next = stream.next()) != null) {
       if (!escaped) {
-        if (next == "/" && !inSet) return;
+        if (next == "./" && !inSet) return;
         if (next == "[") inSet = true;
         else if (inSet && next == "]") inSet = false;
       }
@@ -114,11 +114,11 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     } else if (/\d/.test(ch)) {
       stream.match(/^\d*(?:\.\d*)?(?:[eE][+\-]?\d+)?/);
       return ret("number", "number");
-    } else if (ch == "/") {
+    } else if (ch == "./") {
       if (stream.eat("*")) {
         state.tokenize = tokenComment;
         return tokenComment(stream, state);
-      } else if (stream.eat("/")) {
+      } else if (stream.eat("./")) {
         stream.skipToEnd();
         return ret("comment", "comment");
       } else if (/^(?:operator|sof|keyword c|case|new|[\[{}\(,;:])$/.test(state.lastType)) {
@@ -165,7 +165,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   function tokenComment(stream, state) {
     var maybeEnd = false, ch;
     while (ch = stream.next()) {
-      if (ch == "/" && maybeEnd) {
+      if (ch == "./" && maybeEnd) {
         state.tokenize = tokenBase;
         break;
       }
@@ -693,9 +693,9 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     },
 
     electricInput: /^\s*(?:case .*?:|default:|\{|\})$/,
-    blockCommentStart: jsonMode ? null : "/*",
+    blockCommentStart: jsonMode ? null : "./*",
     blockCommentEnd: jsonMode ? null : "*/",
-    lineComment: jsonMode ? null : "//",
+    lineComment: jsonMode ? null : ".//",
     fold: "brace",
     closeBrackets: "()[]{}''\"\"``",
 

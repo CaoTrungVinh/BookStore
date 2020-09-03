@@ -21,8 +21,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-@WebServlet(urlPatterns = {"/admin", "/admin/orders/delete",
-        "/admin/orders/add", "/admin/orders/edit", "/admin/orders/see", "/admin/orders/statistic"})
+@WebServlet(urlPatterns = {"./admin", "./admin/orders/delete",
+        "./admin/orders/add", "./admin/orders/edit", "./admin/orders/see", "./admin/orders/statistic"})
 
 public class Orders extends HttpServlet {
     private Gson gson = new Gson();
@@ -31,7 +31,7 @@ public class Orders extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        if (request.getServletPath().equals("/admin")) {
+        if (request.getServletPath().equals("./admin")) {
             try {
                 Connection conn = ConnectionDB.getConnection();
 //                String sqlCategory = "SELECT * FROM orders";
@@ -45,8 +45,8 @@ public class Orders extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/admin/orders.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("/admin/orders/add")) {
+            request.getRequestDispatcher("./admin/orders.jsp").forward(request, response);
+        } else if (request.getServletPath().equals("./admin/orders/add")) {
             try {
                 Connection conn = ConnectionDB.getConnection();
                 String sqlcustomer = "SELECT * FROM users";
@@ -63,8 +63,8 @@ public class Orders extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("/admin/add-orders.jsp").forward(request, response);
-        } else if (request.getServletPath().equals("/admin/orders/edit")) {
+            request.getRequestDispatcher("./admin/add-orders.jsp").forward(request, response);
+        } else if (request.getServletPath().equals("./admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -87,12 +87,12 @@ public class Orders extends HttpServlet {
                     request.setAttribute("customer", customer);
                     request.setAttribute("statuses", statuses);
                     request.setAttribute("orders", orders);
-                    request.getRequestDispatcher("/admin/edit-orders.jsp").forward(request, response);
+                    request.getRequestDispatcher("./admin/edit-orders.jsp").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("/admin/orders/delete")) {
+        } else if (request.getServletPath().equals("./admin/orders/delete")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 try {
@@ -103,12 +103,12 @@ public class Orders extends HttpServlet {
                     pstCate.setString(1, id);
                     pstCate.execute();
 
-                    response.sendRedirect("/admin");
+                    response.sendRedirect("./admin");
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-        } else if (request.getServletPath().equals("/admin/orders/statistic")) {
+        } else if (request.getServletPath().equals("./admin/orders/statistic")) {
             String type = request.getParameter("type");
             PrintWriter out = response.getWriter();
             response.setContentType("application/json");  // return data
@@ -175,7 +175,7 @@ public class Orders extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        if (request.getServletPath().equals("/admin/orders/add")) {
+        if (request.getServletPath().equals("./admin/orders/add")) {
             String id_customer = request.getParameter("id_customer");
             String subtotal = request.getParameter("subtotal");
             String shipping = request.getParameter("shipping");
@@ -201,8 +201,8 @@ public class Orders extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            response.sendRedirect("/admin");
-        } else if (request.getServletPath().equals("/admin/orders/edit")) {
+            response.sendRedirect("./admin");
+        } else if (request.getServletPath().equals("./admin/orders/edit")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 String id_customer = request.getParameter("id_customer");
@@ -237,7 +237,7 @@ public class Orders extends HttpServlet {
                 }
 
             }
-            response.sendRedirect("/admin");
+            response.sendRedirect("./admin");
         }
     }
 }

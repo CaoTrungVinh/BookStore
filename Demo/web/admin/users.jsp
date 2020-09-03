@@ -5,13 +5,13 @@
 <head>
     <title>Account Page - Admin</title>
 
-    <jsp:include page="head.jsp"/>
+    <jsp:include page="head.jsp"./>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/public/admin/css/table.css">
+    <link rel="stylesheet" href="./public/admin/css/table.css">
 </head>
 <body id="reportsPage">
-<jsp:include page="header-account.jsp"/>
+<jsp:include page="header-account.jsp"./>
 
 <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <button class="dt-button btn btn-primary" tabindex="0" aria-controls="product"
@@ -98,14 +98,14 @@
 
 </table>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footer.jsp"./>
 
 
-<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="/public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 
@@ -132,7 +132,7 @@
                     text: 'New product',
                     className: "btn btn-primary",
                     action: function () {
-                        window.location.href = "/admin/producer/add";
+                        window.location.href = "./admin/producer/add";
                     }
                 }
             ]
