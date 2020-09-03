@@ -179,24 +179,17 @@
 <div class="login-account section-padding">
     <div class="container">
         <div class="row" style="display: flex; justify-content: center; ">
-            <form class="col-md-7 box" action="<%= Util.fullPath("verify")%>" method="post">
+            <form class="col-md-7 box" action="<%= Util.fullPath("ConfirmOrder")%>" method="post">
                 <div>
                     <h1 class="page-title font-weight-normal mb-5">Ký đơn hàng</h1>
                     <a>
-                        Vui lòng ký xác nhận đơn hàng đã được tải xuống bằng chương trình sau và nhập vào ô sau đây:
+                        Vui lòng ký xác nhận đơn hàng đã được tải xuống bằng chương trình sau:
                     </a>
-                    <input name="signature" value=""/>
-
 
                 </div>
-                <button id="confirm" type="submit" class="btn-block btn-default text-center form-control border-0">
-                    Confirm
+                <button id="confirm" type="submit" class="btn-block btn-default text-center form-control border-0">Confirm
                 </button>
-
-                <a id="link" target="_blank" href="<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>"
-                   download='<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>'></a>
-                <a id="tool" target="_blank" href="signtool://"></a>
-
+                <a id="link" target="_blank" href="<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>" download='<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>'>down</a>
             </form>
         </div>
     </div>
@@ -212,11 +205,7 @@
 
 </body>
 <script>
-    document.getElementById('link').click();
-    setTimeout(function () {
-        alert("tool");
-        document.getElementById('tool').click();
-    }, 2000);
 
+    document.getElementById('link').click();
 </script>
 </html>

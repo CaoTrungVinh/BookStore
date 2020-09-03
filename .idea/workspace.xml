@@ -28,7 +28,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English">
+      <change afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Verify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Demo/web/customer/view/sendsign.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/Tool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/signature.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/signature.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Pay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Pay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/Tool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/signature.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/signature.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/signature.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/signature.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/cart/Pay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/cart/Pay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/customer/view/signature.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/customer/view/signature.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,13 +153,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -231,12 +256,12 @@
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_USERNAME" />
-          <option name="VALUE" value="root" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_PASSWORD" />
-          <option name="VALUE" value="tanh1998" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
       </ConfigurationWrapper>
@@ -249,8 +274,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Tool" />
-      <item itemvalue="Tomcat Server.Local" />
       <item itemvalue="Application.SendingEmail" />
+      <item itemvalue="Tomcat Server.Local" />
     </list>
     <recent_temporary>
       <list>
@@ -294,6 +319,7 @@
       <workItem from="1599058536418" duration="886000" />
       <workItem from="1599059455880" duration="126000" />
       <workItem from="1599061102825" duration="3737000" />
+      <workItem from="1599094874327" duration="4951000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
@@ -349,10 +375,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Translate to English" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599059502473">
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599098701108">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1599059502473" />
+    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1599098701108" />
     <state x="411" y="79" width="544" height="640" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1599059482907">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -369,54 +395,54 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="207" y="143" width="620" height="516" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1598962074287" />
-    <state width="1290" height="199" key="GridCell.Tab.0.bottom" timestamp="1599069119061">
+    <state width="1290" height="231" key="GridCell.Tab.0.bottom" timestamp="1599099825752">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599069119061" />
-    <state width="1290" height="199" key="GridCell.Tab.0.center" timestamp="1599069119061">
+    <state width="1290" height="231" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599099825752" />
+    <state width="1290" height="231" key="GridCell.Tab.0.center" timestamp="1599099825752">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1599069119061" />
-    <state width="1290" height="199" key="GridCell.Tab.0.left" timestamp="1599069119061">
+    <state width="1290" height="231" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1599099825752" />
+    <state width="1290" height="231" key="GridCell.Tab.0.left" timestamp="1599099825752">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1599069119061" />
-    <state width="1290" height="199" key="GridCell.Tab.0.right" timestamp="1599069119061">
+    <state width="1290" height="231" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1599099825752" />
+    <state width="1290" height="231" key="GridCell.Tab.0.right" timestamp="1599099825752">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1599069119061" />
-    <state width="1290" height="199" key="GridCell.Tab.1.bottom" timestamp="1599069119062">
+    <state width="1290" height="231" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1599099825752" />
+    <state width="1148" height="147" key="GridCell.Tab.1.bottom" timestamp="1599099825748">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599069119062" />
-    <state width="1290" height="199" key="GridCell.Tab.1.center" timestamp="1599069119062">
+    <state width="1148" height="147" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599099825748" />
+    <state width="1148" height="147" key="GridCell.Tab.1.center" timestamp="1599099825747">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1599069119062" />
-    <state width="1290" height="199" key="GridCell.Tab.1.left" timestamp="1599069119062">
+    <state width="1148" height="147" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1599099825747" />
+    <state width="1148" height="147" key="GridCell.Tab.1.left" timestamp="1599099825747">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1599069119062" />
-    <state width="1290" height="199" key="GridCell.Tab.1.right" timestamp="1599069119062">
+    <state width="1148" height="147" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1599099825747" />
+    <state width="1148" height="147" key="GridCell.Tab.1.right" timestamp="1599099825748">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1290" height="199" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1599069119062" />
-    <state width="1148" height="152" key="GridCell.Tab.2.bottom" timestamp="1599069119054">
+    <state width="1148" height="147" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1599099825748" />
+    <state width="1148" height="147" key="GridCell.Tab.2.bottom" timestamp="1599099825749">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1148" height="152" key="GridCell.Tab.2.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599069119054" />
-    <state width="1148" height="152" key="GridCell.Tab.2.center" timestamp="1599069119054">
+    <state width="1148" height="147" key="GridCell.Tab.2.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599099825749" />
+    <state width="1148" height="147" key="GridCell.Tab.2.center" timestamp="1599099825748">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1148" height="152" key="GridCell.Tab.2.center/0.27.1366.741@0.27.1366.741" timestamp="1599069119054" />
-    <state width="1148" height="152" key="GridCell.Tab.2.left" timestamp="1599069119053">
+    <state width="1148" height="147" key="GridCell.Tab.2.center/0.27.1366.741@0.27.1366.741" timestamp="1599099825748" />
+    <state width="1148" height="147" key="GridCell.Tab.2.left" timestamp="1599099825748">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1148" height="152" key="GridCell.Tab.2.left/0.27.1366.741@0.27.1366.741" timestamp="1599069119053" />
-    <state width="1148" height="152" key="GridCell.Tab.2.right" timestamp="1599069119054">
+    <state width="1148" height="147" key="GridCell.Tab.2.left/0.27.1366.741@0.27.1366.741" timestamp="1599099825748" />
+    <state width="1148" height="147" key="GridCell.Tab.2.right" timestamp="1599099825748">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1148" height="152" key="GridCell.Tab.2.right/0.27.1366.741@0.27.1366.741" timestamp="1599069119054" />
+    <state width="1148" height="147" key="GridCell.Tab.2.right/0.27.1366.741@0.27.1366.741" timestamp="1599099825748" />
     <state width="1148" height="232" key="GridCell.Tab.3.bottom" timestamp="1599062774014">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
