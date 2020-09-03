@@ -87,25 +87,15 @@ public class Account extends HttpServlet {
                 request.setAttribute("ordereds", ordereds);
 
 
-                    String id = request.getParameter("id");
-                    if (id != null && !id.equals("")) {
+                String id = request.getParameter("id");
+                if (id != null && !id.equals("")) {
 
-//                    String sqlOdetail = "SELECT * FROM orderdetails JOIN books ON orderdetails.id_book = books.id where id=? ";
-//                    PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
-//                    pstdetail.setInt(1, Integer.parseInt(id));
-//                    System.out.println(id);
-//                    ResultSet detail = pstdetail.executeQuery();
-                    String sqlOdetail = "SELECT * FROM orders where id=? ";
+                    String sqlOdetail = "SELECT * FROM orderdetails JOIN books ON orderdetails.id_book = books.id JOIN orders ON orderdetails.id_order = orders.id where id_order=? ";
                     PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
                     pstdetail.setInt(1, Integer.parseInt(id));
                     System.out.println(id);
                     ResultSet detail = pstdetail.executeQuery();
 
-                    String sqlde = "SELECT * FROM orders JOIN orderdetails ON orders.id = orderdetails.id_order JOIN books ON orderdetails.id_book = books.id WHERE orders.id = orderdetails.id_order";
-                    PreparedStatement pstde = conn.prepareStatement(sqlde);
-                    ResultSet rsDetails = pstde.executeQuery();
-//
-                    request.setAttribute("rsDetails", rsDetails);
                     request.setAttribute("detail", detail);
                 }
             } catch (SQLException e) {

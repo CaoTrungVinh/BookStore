@@ -45,30 +45,23 @@
         <table class="table-responsive-2 list">
             <thead>
             <tr>
-                <th>id orders</th>
-                <th>id books</th>
+                <th>Order date</th>
                 <th>Book</th>
                 <th>Total</th>
             </tr>
             </thead>
             <tbody>
-<%--            <%--%>
-<%--                ResultSet detail = (ResultSet) request.getAttribute("detail");--%>
-<%--                while (detail.next()) {--%>
-<%--            %>--%>
             <%
-                ResultSet rsDetails = (ResultSet) request.getAttribute("rsDetails");
-                while (rsDetails.next()) {
+                ResultSet detail = (ResultSet) request.getAttribute("detail");
+                while (detail.next()) {
             %>
             <tr>
-                <%--                <td><%= detail.getString("id")%> </td>--%>
-                <td><%= rsDetails.getString("id_book")%></td>
-                <td><%= rsDetails.getString("title")%></td>
-                <td><%= rsDetails.getString("price")%> đ</td>
+                <td><%= detail.getString("orderDate")%> </td>
+                <td><%= detail.getString("title")%></td>
+                <td><%= detail.getString("price")%> đ</td>
             </tr>
 
             <% } %>
-<%--            <% } %>--%>
             <tr>
                 <td><a href="#">Hủy đơn hàng</a></td>
             </tr>
