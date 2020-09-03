@@ -28,36 +28,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="073db3d3-03be-4c7d-90b7-f31760c0cf42" name="Default Changelist" comment="Translate to English">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/auth/GenKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/tool/FileOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/tool/Sign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demo/src/controller/tool/VerSign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/auth/ActivateAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/Ordered.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/Ordered.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Add.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/ConfirmOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/ConfirmOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/SendingEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/controller/tool/Tool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/tool/Tool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/db/ConnectionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/auth/ActivateAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/auth/ActivateAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Pay.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Pay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/cart/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/cart/Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/src/controller/page/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/web/public/customer/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Demo/web/public/customer/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Ordered.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Ordered.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Add.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/ConfirmOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/ConfirmOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/tool/SendingEmail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Pay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Pay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Update.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/cart/Update.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/page/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/controller/page/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/public/customer/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/WEB-INF/classes/public/customer/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/customer/view/checkout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/auth/ActivateAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/auth/ActivateAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/public/customer/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Web_war_exploded/public/customer/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/Model/Ordered.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/Model/Ordered.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/Model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/Model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/Model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/Model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/cart/Add.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/cart/Add.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Web/controller/cart/ConfirmOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/cart/ConfirmOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/SendingEmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/tool/Tool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/cart/Pay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/cart/Pay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/cart/Update.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/cart/Update.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/controller/page/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/controller/page/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/customer/view/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Web/public/customer/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Web/public/customer/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,17 +159,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -278,8 +271,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Tool" />
-      <item itemvalue="Tomcat Server.Local" />
       <item itemvalue="Application.SendingEmail" />
+      <item itemvalue="Tomcat Server.Local" />
     </list>
     <recent_temporary>
       <list>
@@ -323,6 +316,7 @@
       <workItem from="1599058536418" duration="886000" />
       <workItem from="1599059455880" duration="126000" />
       <workItem from="1599061102825" duration="3051000" />
+      <workItem from="1599103431898" duration="2996000" />
     </task>
     <task id="LOCAL-00001" summary="Add deploy config">
       <created>1578494895412</created>
@@ -378,10 +372,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Translate to English" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599059502473">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state x="159" y="0" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599071790550">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="159" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599071790550" />
     <state x="141" y="27" width="1084" height="741" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1599059502473" />
+    <state x="531" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1599105745908">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="531" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599105745908" />
     <state x="411" y="79" width="544" height="640" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1599059482907">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -398,53 +397,65 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="207" y="143" width="620" height="516" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1598962074287" />
-    <state width="1290" height="231" key="GridCell.Tab.0.bottom" timestamp="1599064085279">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.0.bottom" timestamp="1599106278803">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599106278803" />
     <state width="1290" height="231" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599064085279" />
-    <state width="1290" height="231" key="GridCell.Tab.0.center" timestamp="1599064085279">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.0.center" timestamp="1599106278803">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599106278803" />
     <state width="1290" height="231" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1599064085279" />
-    <state width="1290" height="231" key="GridCell.Tab.0.left" timestamp="1599064085278">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.0.left" timestamp="1599106278803">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599106278803" />
     <state width="1290" height="231" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1599064085278" />
-    <state width="1290" height="231" key="GridCell.Tab.0.right" timestamp="1599064085279">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.0.right" timestamp="1599106278803">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599106278803" />
     <state width="1290" height="231" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1599064085279" />
-    <state width="1148" height="153" key="GridCell.Tab.1.bottom" timestamp="1599062903524">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.1.bottom" timestamp="1599106278554">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599106278554" />
     <state width="1148" height="153" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599062903524" />
-    <state width="1148" height="153" key="GridCell.Tab.1.center" timestamp="1599062903524">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.1.center" timestamp="1599106278554">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1599106278554" />
     <state width="1148" height="153" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1599062903524" />
-    <state width="1148" height="153" key="GridCell.Tab.1.left" timestamp="1599062903524">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.1.left" timestamp="1599106278553">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1599106278553" />
     <state width="1148" height="153" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1599062903524" />
-    <state width="1148" height="153" key="GridCell.Tab.1.right" timestamp="1599062903524">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.1.right" timestamp="1599106278554">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599106278554" />
     <state width="1148" height="153" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1599062903524" />
-    <state width="1148" height="153" key="GridCell.Tab.2.bottom" timestamp="1599062903525">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.2.bottom" timestamp="1599106278553">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599106278553" />
     <state width="1148" height="153" key="GridCell.Tab.2.bottom/0.27.1366.741@0.27.1366.741" timestamp="1599062903525" />
-    <state width="1148" height="153" key="GridCell.Tab.2.center" timestamp="1599062903525">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.2.center" timestamp="1599106278553">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1599106278553" />
     <state width="1148" height="153" key="GridCell.Tab.2.center/0.27.1366.741@0.27.1366.741" timestamp="1599062903525" />
-    <state width="1148" height="153" key="GridCell.Tab.2.left" timestamp="1599062903525">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.2.left" timestamp="1599106278553">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1599106278553" />
     <state width="1148" height="153" key="GridCell.Tab.2.left/0.27.1366.741@0.27.1366.741" timestamp="1599062903525" />
-    <state width="1148" height="153" key="GridCell.Tab.2.right" timestamp="1599062903525">
-      <screen x="0" y="27" width="1366" height="741" />
+    <state width="1140" height="211" key="GridCell.Tab.2.right" timestamp="1599106278553">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="1140" height="211" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1599106278553" />
     <state width="1148" height="153" key="GridCell.Tab.2.right/0.27.1366.741@0.27.1366.741" timestamp="1599062903525" />
     <state width="1148" height="232" key="GridCell.Tab.3.bottom" timestamp="1599062774014">
       <screen x="0" y="27" width="1366" height="741" />
@@ -466,6 +477,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="0" y="27" width="992" height="734" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1599059518378" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1599072260141">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1599072260141" />
     <state width="673" height="347" key="XDebugger.FullValuePopup" timestamp="1598633196045">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -478,15 +493,19 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="398" y="118" width="589" height="512" key="find.popup/0.27.1366.741@0.27.1366.741" timestamp="1598842622859" />
+    <state x="611" y="170" key="refactoring.ChangeSignatureDialog" timestamp="1599105368493">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="611" y="170" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1599105368493" />
     <state x="385" y="165" key="run.anything.popup" timestamp="1599067902540">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="385" y="165" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1599067902540" />
     <state x="342" y="175" key="run.anything.popup/0.27.1366.741@0.27.1366.741" timestamp="1598842514877" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598982575230">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599106386699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598982575230" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599106386699" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

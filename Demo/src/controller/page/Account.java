@@ -1,6 +1,7 @@
 package controller.page;
 
 import Model.Ordered;
+import Model.Product;
 import Model.User;
 import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
@@ -41,7 +42,6 @@ public class Account extends HttpServlet {
         Model.User user = (Model.User) request.getSession().getAttribute("user");
         request.setAttribute("user", user);
 
-//        System.out.println(user.getDateofbirth());
 
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             request.setAttribute("route", "edit");
@@ -56,12 +56,17 @@ public class Account extends HttpServlet {
                 rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     Statement statement2 = conn.createStatement();
-                    ResultSet rs2 = statement2.executeQuery("SELECT books.title FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
-                    ArrayList<String> products = new ArrayList<String>();
+                    ResultSet rs2 = statement2.executeQuery("SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
+                    ArrayList<Product> products = new ArrayList<Product>();
                     while (rs2.next()) {
-                        products.add(rs2.getString("title"));
+                        Product p = new Product();
+                        p.setId(rs2.getInt("id"));
+                        p.setTitle(rs2.getString("title"));
+                        p.setQuantity(rs2.getInt("quantity"));
+                        p.setPrice(rs2.getInt("price"));
+                        products.add(p);
                     }
-                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getDate("orderDate"), products, rs.getInt("total"), rs.getString("status"));
+                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getTimestamp("orderDate"), products, rs.getInt("total"), rs.getString("status"));
                     ordereds.add(ordered);
                 }
                 request.setAttribute("ordereds", ordereds);

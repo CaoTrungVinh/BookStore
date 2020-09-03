@@ -45,7 +45,6 @@ public class Update extends HttpServlet {
             rs = statement.executeQuery(sql);
             if (rs.next()) {
                 int currentQuantity = rs.getInt("quantity");
-                System.out.println(currentQuantity + flag);
                 rs.updateInt("quantity", currentQuantity + flag);
                 rs.updateRow();
             }

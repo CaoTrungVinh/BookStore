@@ -1,16 +1,18 @@
 package Model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Ordered {
     private int id;
-    private Date date;
-    private ArrayList<String> products;
+    private Timestamp date;
+    private ArrayList<Product> products;
     private int totalPrice;
     private String status;
 
-    public Ordered(int id, Date date, ArrayList<String> products, int totalPrice, String status) {
+    public Ordered(int id, Timestamp date, ArrayList<Product> products, int totalPrice, String status) {
         this.id = id;
         this.date = date;
         this.products = products;
@@ -26,23 +28,23 @@ public class Ordered {
         this.id = id;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
     public String getProducts() {
         String rs = "";
-        for (String name : products) {
-            rs += name + "<br>";
+        for (Product product : products) {
+            rs += product.toString2() + "<br>";
         }
         return rs.trim();
     }
 
-    public void setProducts(ArrayList<String> products) {
+    public void setProducts(ArrayList<Product> products) {
         this.products = products;
     }
 
@@ -60,6 +62,16 @@ public class Ordered {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Ordered{" +
+                "id=" + id +
+                ", date=" + date +
+                ", products=" + Arrays.toString(products.toArray()) +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }
 

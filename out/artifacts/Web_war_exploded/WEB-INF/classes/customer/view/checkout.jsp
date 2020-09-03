@@ -38,7 +38,7 @@
                         )</span>
                     </h2>
                 </div>
-                <form id="shopping-cart" action="<%=Util.fullPath("cartPay")%>" method="POST">
+                <form id="shopping-cart" action="<%=Util.fullPath("ConfirmOrder")%>" method="POST">
                     <div class="col-xs-8 cart-col-1">
                         <%--                    <form id="shopping-cart">--%>
                         <% for (Map.Entry<Integer, Product> entry : cart.getData().entrySet()) {
@@ -86,7 +86,9 @@
                                 <div class="badge-tikinow-a">
 
                                     <div class="box-price">
-                                        <p class="price"><%=Util.showPrice(product.getPrice())%>đ</p>
+                                        <p class="price"><span
+                                                id="price<%=product.getId()%>"><%=Util.showPrice(product.getPrice())%></span>đ
+                                        </p>
                                     </div>
                                 </div>
 
@@ -186,11 +188,11 @@
             $('input:checkbox.checkbox').prop('checked', false);
         }
     });
+
     $(":checkbox").click(function () {
-// store the values from the form checkbox box, then send via ajax below
         var check_active = $(this).is(':checked') ? 1 : 0;
         var check_id = $(this).attr('id');
-        price = parseInt($(this).attr('value'));
+        price = parseInt($(this).attr('price'));
 
         if (check_active == 1) {
             $("#thanhtien,#giatamtinh").text(showPrice(parseInt(toNumberFromVND($("#thanhtien").text())) + price));
@@ -199,7 +201,6 @@
 
         }
     });
-
 
 
 </script>
