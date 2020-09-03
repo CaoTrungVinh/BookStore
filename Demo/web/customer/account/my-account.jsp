@@ -91,6 +91,11 @@
                 <jsp:include page="order-history.jsp"/>
                 <%
                         break;
+                    case "orderdetail":
+                %>
+                <jsp:include page="order-history-detail.jsp"/>
+                <%
+                        break;
                     case "wishlist":
                 %>
                 <jsp:include page="wishlist.jsp"/>

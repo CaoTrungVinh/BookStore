@@ -55,6 +55,8 @@
                             </th>
                             <th class="th-sm">STATUS
                             </th>
+                            <th class="th-sm">VERIFY
+                            </th>
                             <th class="th-sm">
                             </th>
                         </tr>
@@ -86,6 +88,15 @@
                             </td>
                             <td>
                                 <%= orders.getString(7)%>
+                            </td>
+                            <td  class="text-center">
+                                <% if (orders.getString("verify").equals("TRUE")) {%>
+                                <i class="fa fa-check" style="color: #2196F3">
+                                </i>
+                                <% } else {%>
+                                <i class="fa fa-minus-circle" style="color: red !important;">
+                                </i>
+                                <% } %>
                             </td>
                             <td style="text-align: center; width: 100px">
                                 <a class="delete"

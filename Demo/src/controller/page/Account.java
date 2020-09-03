@@ -1,7 +1,6 @@
 package controller.page;
 
 import Model.Ordered;
-import Model.Product;
 import Model.User;
 import controller.auth.PasswordAuthentication;
 import db.ConnectionDB;
@@ -17,7 +16,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist"})
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/order-detail", "/account/wishlist"})
 //@WebServlet("/account")
 public class Account extends HttpServlet {
 
@@ -42,6 +41,7 @@ public class Account extends HttpServlet {
         Model.User user = (Model.User) request.getSession().getAttribute("user");
         request.setAttribute("user", user);
 
+//        System.out.println(user.getDateofbirth());
 
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             request.setAttribute("route", "edit");
@@ -56,17 +56,12 @@ public class Account extends HttpServlet {
                 rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     Statement statement2 = conn.createStatement();
-                    ResultSet rs2 = statement2.executeQuery("SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
-                    ArrayList<Product> products = new ArrayList<Product>();
+                    ResultSet rs2 = statement2.executeQuery("SELECT books.title FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
+                    ArrayList<String> products = new ArrayList<String>();
                     while (rs2.next()) {
-                        Product p = new Product();
-                        p.setId(rs2.getInt("id"));
-                        p.setTitle(rs2.getString("title"));
-                        p.setQuantity(rs2.getInt("quantity"));
-                        p.setPrice(rs2.getInt("price"));
-                        products.add(p);
+                        products.add(rs2.getString("title"));
                     }
-                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getTimestamp("orderDate"), products, rs.getInt("total"), rs.getString("status"));
+                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getDate("orderDate"), products, rs.getInt("total"), rs.getString("status"));
                     ordereds.add(ordered);
                 }
                 request.setAttribute("ordereds", ordereds);
@@ -74,6 +69,49 @@ public class Account extends HttpServlet {
                 e.printStackTrace();
             }
             request.setAttribute("route", "order");
+        } else if (request.getServletPath().equals("/account/order-detail")) {
+            try {
+                ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
+                sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
+                rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    Statement statement2 = conn.createStatement();
+                    ResultSet rs2 = statement2.executeQuery("SELECT books.title FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
+                    ArrayList<String> products = new ArrayList<String>();
+                    while (rs2.next()) {
+                        products.add(rs2.getString("title"));
+                    }
+                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getDate("orderDate"), products, rs.getInt("total"), rs.getString("status"));
+                    ordereds.add(ordered);
+                }
+                request.setAttribute("ordereds", ordereds);
+
+
+                    String id = request.getParameter("id");
+                    if (id != null && !id.equals("")) {
+
+//                    String sqlOdetail = "SELECT * FROM orderdetails JOIN books ON orderdetails.id_book = books.id where id=? ";
+//                    PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
+//                    pstdetail.setInt(1, Integer.parseInt(id));
+//                    System.out.println(id);
+//                    ResultSet detail = pstdetail.executeQuery();
+                    String sqlOdetail = "SELECT * FROM orders where id=? ";
+                    PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
+                    pstdetail.setInt(1, Integer.parseInt(id));
+                    System.out.println(id);
+                    ResultSet detail = pstdetail.executeQuery();
+
+                    String sqlde = "SELECT * FROM orders JOIN orderdetails ON orders.id = orderdetails.id_order JOIN books ON orderdetails.id_book = books.id WHERE orders.id = orderdetails.id_order";
+                    PreparedStatement pstde = conn.prepareStatement(sqlde);
+                    ResultSet rsDetails = pstde.executeQuery();
+//
+                    request.setAttribute("rsDetails", rsDetails);
+                    request.setAttribute("detail", detail);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            request.setAttribute("route", "orderdetail");
         } else if (request.getServletPath().equals("/account/wishlist")) {
             request.setAttribute("wishlist", user.getWishlist().getWishlist());
             request.setAttribute("route", "wishlist");
