@@ -20,7 +20,7 @@ public class Tool extends JFrame {
     String path_File_Private;
     String path_File_Data;
     private JPanel contentPane;
-    private TextField tfSignature;
+    private JTextArea tfSignature;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -61,8 +61,11 @@ public class Tool extends JFrame {
         Label lb = new Label("Signature");
         result.add(lb);
 //        lb.setBounds(100, 220, 150, 23);
-        tfSignature = new TextField(256);
+        tfSignature = new JTextArea(5,40);
+        tfSignature.setLineWrap(true);
+        tfSignature.setWrapStyleWord(true);
         result.add(tfSignature);
+
 //        tx.setBounds(50, 250, 250, 25);
 
         contentPane.add(result);
@@ -86,6 +89,7 @@ public class Tool extends JFrame {
                 if (status == JFileChooser.APPROVE_OPTION) {
                     file = fileChooser.getSelectedFile();
                     path_File_Private = file.getAbsolutePath();
+                    btnPrivate.setText(file.getName());
                     JOptionPane.showMessageDialog(contentPane, "Choose Private key success", "Success",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -103,6 +107,7 @@ public class Tool extends JFrame {
                 if (status == JFileChooser.APPROVE_OPTION) {
                     file = fileChooser.getSelectedFile();
                     path_File_Data = file.getAbsolutePath();
+                    btnFileData.setText(file.getName());
                     JOptionPane.showMessageDialog(contentPane, "Choose File success", "Success",
                             JOptionPane.INFORMATION_MESSAGE);
                 }
