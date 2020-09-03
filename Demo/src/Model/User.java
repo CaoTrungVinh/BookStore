@@ -175,10 +175,14 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
+                "id=" + id +
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
+                ", avt='" + avt + '\'' +
+                ", idgroup=" + idgroup +
+                ", active=" + active +
                 '}';
     }
 

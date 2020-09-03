@@ -31,10 +31,24 @@ public class Add extends HttpServlet {
         Product product = null;
         try {
             conn = ConnectionDB.getConnection();
-            statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            statement = conn.createStatement();
             ResultSet rs;
 
             if (isLogin) {
+//                sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+////                rs = statement.executeQuery(sql);
+////                if (rs.next()) {
+////                    user.getCart().setId_order(rs.getInt("id"));
+////                } else {
+////                    sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',1)";
+////                    statement.executeUpdate(sql);
+////                    user.getCart().setId_order(1);
+////                    sql = "SELECT id FROM orders WHERE id_customer = '" + user.getId() + "' AND statusID = 1";
+////                    rs = statement.executeQuery(sql);
+////                    if (rs.next()) {
+////                        user.getCart().setId_order(rs.getInt("id"));
+////                    }
+////                }
                 sql = "SELECT * FROM orderdetails WHERE orderdetails.id_order = '" + user.getCart().getId_order() + "' AND id_book = '" + bookID + "'";
                 rs = statement.executeQuery(sql);
                 if (rs.next()) {
