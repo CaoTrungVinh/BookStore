@@ -32,7 +32,6 @@ public class Update extends HttpServlet {
         Cart cart = null;
 
         try {
-            System.out.println("UPDATE ORDER NHA!!!");
 
             User user = (User) request.getSession().getAttribute("user");
             boolean isLogin = user != null;
@@ -52,7 +51,6 @@ public class Update extends HttpServlet {
             }
 
             Util.updateOrderDB(statement.getConnection(), cart);
-            System.out.println("UPDATE ORDER NHA!!!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
