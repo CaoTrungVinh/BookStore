@@ -122,12 +122,18 @@ public class Product {
         this.price = price;
     }
 
+
     @Override
     public String toString() {
-        return quantity + " x " + title + " x " + quantity;
-    }
-
-    public String toString2() {
-        return quantity + " x " + title;
+        return "Wish{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", rating=" + rating +
+                ", type='" + type + '\'' +
+                ", author='" + author + '\'' +
+                ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

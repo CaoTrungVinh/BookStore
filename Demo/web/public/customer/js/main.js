@@ -267,7 +267,7 @@ function changeQuantityProduct(flag, id) {
     var selector = "#touch" + id;
     if ($(selector).val() == 1 && flag == -1) {
         return
-    } else {
+    } else{
         $.ajax({
             type: "POST",
             url: "cart-update",   // this is my servlet
@@ -276,7 +276,6 @@ function changeQuantityProduct(flag, id) {
                 var respon = $.parseJSON(data);
                 $('#giatamtinh,#thanhtien').text(respon.price);
                 $(selector).val((parseInt($(selector).val()) + flag));
-                $("#checkbox" + id).attr('price', parseInt(toNumberFromVND($("#price" + id).text())) * parseInt($(selector).val()));
                 changeCounterCart(flag);
             }
         });

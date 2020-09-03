@@ -36,7 +36,7 @@ public class Orders extends HttpServlet {
                 Connection conn = ConnectionDB.getConnection();
 //                String sqlCategory = "SELECT * FROM orders";
 
-                String sqlCategory = "SELECT orders.id,users.fullname,orders.orderDate,orders.subtotal,orders.shipping,orders.total,statuses.`status`  FROM orders INNER JOIN users ON orders.id_customer = users.id INNER JOIN statuses  ON orders.statusID = statuses.id";
+                String sqlCategory = "SELECT orders.id,users.fullname,orders.orderDate,orders.subtotal,orders.shipping,orders.total,statuses.`status`, orders.verify  FROM orders INNER JOIN users ON orders.id_customer = users.id INNER JOIN statuses  ON orders.statusID = statuses.id";
 
                 PreparedStatement pstCate = conn.prepareStatement(sqlCategory);
                 ResultSet orders = pstCate.executeQuery();

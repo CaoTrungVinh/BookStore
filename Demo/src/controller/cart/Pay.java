@@ -1,8 +1,8 @@
 package controller.cart;
 
-import Model.Ordered;
-import Model.Product;
+import Model.Cart;
 import Model.User;
+import Util.Util;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -12,11 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Map;
 
 @WebServlet("/cartPay")
 public class Pay extends HttpServlet {
@@ -54,32 +49,10 @@ public class Pay extends HttpServlet {
                 }
             }
 
-            int totalMoney = getTotal(user, ids);
-            sql = "UPDATE `orders` SET orderDate = ?, total = ? WHERE id = ?";
-            pStatement = conn.prepareStatement(sql);
-            pStatement.setTimestamp(1, new Timestamp(new Date().getTime()));
-            pStatement.setInt(2, totalMoney);
-            pStatement.setInt(3, id_ordered);
-            pStatement.executeUpdate();
 
             for (String id : ids) {
                 user.getCart().remove(Integer.parseInt(id)); // remove in session
             }
-
-            sql = "SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = " + id_ordered;
-            rs = statement.executeQuery(sql);
-            ArrayList<Product> products = new ArrayList<Product>();
-            while (rs.next()) {
-                Product p = new Product();
-                p.setId(rs.getInt("id"));
-                p.setTitle(rs.getString("title"));
-                p.setQuantity(rs.getInt("quantity"));
-                p.setPrice(rs.getInt("price"));
-                products.add(p);
-            }
-
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-            Ordered ordered = new Ordered(id_ordered,new Timestamp(new Date().getTime()) ,products, totalMoney,"2");
 
 
             request.getRequestDispatcher("/customer/view/successPayment.jsp").forward(request, response);
@@ -87,19 +60,6 @@ public class Pay extends HttpServlet {
             e.printStackTrace();
         }
 
-    }
-
-    private int getTotal(User user, String[] ids) {
-        int rs = 0;
-
-        for (Map.Entry<Integer, Product> entry : user.getCart().data.entrySet()) {
-            for (String id : ids) {
-                if (entry.getKey() == Integer.parseInt(id)) {
-                    rs += entry.getValue().getTotalPrice();
-                }
-            }
-        }
-        return rs;
     }
 
     private boolean contain(String[] ids, int id_order) {
