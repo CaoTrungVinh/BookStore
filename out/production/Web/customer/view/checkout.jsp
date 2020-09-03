@@ -201,6 +201,18 @@
 
         }
     });
+    <%--$("#submitorder").click(function () {--%>
+    <%--    var ids = [];--%>
+    <%--    $.each($("input:checked.checkbox"), function () {--%>
+    <%--        ids.push($(this).val());--%>
+    <%--    });--%>
+    <%--    if (ids.length != 0) {--%>
+    <%--        $.post('<%=Util.fullPath("cartPay")%>', ids);--%>
+    <%--        console.log("senddd cart pay...")--%>
+
+    <%--    }--%>
+    <%--    // href to server--%>
+    <%--});--%>
 
 
 </script>

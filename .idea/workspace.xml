@@ -136,7 +136,7 @@
       <recent name="$PROJECT_DIR$/Demo/web/public" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Local">
+  <component name="RunManager" selected="Application.Tool">
     <configuration name="SendingEmail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.tool.SendingEmail" />
       <module name="Web" />
@@ -253,12 +253,12 @@
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_USERNAME" />
-          <option name="VALUE" value="root" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
         <EnvironmentVariables>
           <option name="NAME" value="DB_PASSWORD" />
-          <option name="VALUE" value="tanh1998" />
+          <option name="VALUE" value="admin" />
           <option name="IS_PREDEFINED" value="false" />
         </EnvironmentVariables>
       </ConfigurationWrapper>
