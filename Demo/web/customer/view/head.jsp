@@ -19,6 +19,9 @@
 
 <!-- all css here -->
 <!-- bootstrap v3.3.6 css -->
+<%--duyen--%>
+<link rel="stylesheet" href="/public/customer/css/check-key.css">
+<%----%>
 <link rel="stylesheet" href="/public/customer/css/bootstrap.min.css">
 <!-- animate css -->
 <link rel="stylesheet" href="/public/customer/css/animate.css">

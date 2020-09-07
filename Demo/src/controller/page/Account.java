@@ -3,6 +3,8 @@ package controller.page;
 import Model.Ordered;
 import Model.User;
 import controller.auth.PasswordAuthentication;
+import controller.tool.SendingEmail;
+import controller.tool.VerSign;
 import db.ConnectionDB;
 
 import javax.servlet.ServletException;
@@ -11,12 +13,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
 
 
-@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/order-detail", "/account/wishlist"})
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/order-detail", "/account/wishlist", "/account/change-key"})
 //@WebServlet("/account")
 public class Account extends HttpServlet {
 
@@ -49,6 +55,8 @@ public class Account extends HttpServlet {
             request.setAttribute("route", "address");
         } else if (request.getServletPath().equals("/account/add-address")) {
             request.setAttribute("route", "add-address");
+        } else if (request.getServletPath().equals("/account/change-key")) {
+            request.setAttribute("route", "change-key");
         } else if (request.getServletPath().equals("/account/order")) {
             try {
                 ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
@@ -220,8 +228,65 @@ public class Account extends HttpServlet {
                 }
             }
             response.sendRedirect("/account/edit?id=" + id);
+
+        } else if (request.getServletPath().equals("/account/change-key")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                String name = request.getParameter("name");
+                String email = request.getParameter("email");
+                String fullname = request.getParameter("fullname");
+                String gender = request.getParameter("gender");
+                String address = request.getParameter("address");
+                String phone = request.getParameter("phone");
+                String dateofbirth = request.getParameter("dateofbirth");
+                System.out.println(name + "\t" + email + "\t" + fullname + "\t" + gender + "\t" + address + phone + "\t" + dateofbirth);
+
+
+                FileOutputStream f = new FileOutputStream(new File(request.getServletContext().getRealPath("\\public") + "\\data.txt"));
+                String data = "Name: " + name + "\n" + "Email: " + email + "\n" + "Giới tính: " + gender + "\n" + "Address: " + address + "\n" + "Phone number: " + phone + "\n" + dateofbirth;
+                System.out.println(data);
+                f.write(data.getBytes());
+                f.flush();
+                f.close();
+                String fullPath = request.getServletContext().getRealPath("\\public\\data.txt");
+                Path path = Paths.get(fullPath);
+                byte[] d = Files.readAllBytes(path);
+
+                response.setContentType("application/octet-stream");
+                response.setHeader("Content-disposition", "attachment; filename=data.txt");
+                response.setContentLength(d.length);
+                InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(d));
+                // Ghi file ra response outputstream.
+                OutputStream outStream = response.getOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outStream.write(buffer, 0, bytesRead);
+                }
+                inputStream.close();
+                outStream.close();
+                Model.User user = (Model.User) request.getSession().getAttribute("user");
+                Connection conn = null;
+                String hashMail = "";
+                try {
+                    conn = ConnectionDB.getConnection();
+                    String sqlUser = "SELECT email_hashed FROM users Where id=" + user.getId();
+                    PreparedStatement u = conn.prepareStatement(sqlUser);
+                    ResultSet rs = u.executeQuery();
+                    rs.next();
+                    hashMail = rs.getString("email_hashed");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                String ver = request.getParameter("ver");
+                VerSign vs = new VerSign();
+                if (vs.verify(ver.getBytes(), user.getId())) {
+                    SendingEmail sendingEmail = new SendingEmail("active-account", email, hashMail);
+                    sendingEmail.start();
+                } else {
+
+                }
+            }
         }
-
-
     }
 }

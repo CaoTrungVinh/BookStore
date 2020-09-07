@@ -7,6 +7,7 @@
 
     <title>My Account</title>
     <jsp:include page="../view/head.jsp"/>
+    <link href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/public/customer/css/my-account.css">
 </head>
 <body>
@@ -66,6 +67,13 @@
                                 <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
                                     Trang admin</a>
                             </li>
+                            <%--                            duyen--%>
+                            <li <% if (request.getAttribute("route").equals("change-key")) {%> class="active"<%}%>>
+                                <a href="<%=Util.fullPath("account/change-key")%>"><i class="fas fa-key"
+                                                                                      aria-hidden="true"></i>
+                                    Đổi key</a>
+                            </li>
+                            <%--                            --%>
                             <li class="">
                                 <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
                                     xuất</a>
@@ -105,6 +113,10 @@
                 %>
                 <jsp:include page="account.jsp"/>
                 <% break;
+                    case "change-key":
+                %>
+                <jsp:include page="change-key.jsp"/>
+                <% break;
                 } %>
 
             </div>
@@ -124,6 +136,7 @@
             $(".password-group").css('display', 'block');
         else $(".password-group").css('display', 'none');
     });
+
 </script>
 </body>
 </html>
