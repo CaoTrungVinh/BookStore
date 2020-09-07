@@ -13,7 +13,7 @@ public class FileOrder {
 
         String pathFile = request.getServletContext().getRealPath("public") + "/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
         File file = new File(pathFile);
-        if (!file.exists()) {
+
 
             try {
                 file.createNewFile();
@@ -25,8 +25,9 @@ public class FileOrder {
                 return "public/ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
             } catch (IOException e) {
                 e.printStackTrace();
+
+                return null;
             }
-        }
-        return null;
+
     }
 }
