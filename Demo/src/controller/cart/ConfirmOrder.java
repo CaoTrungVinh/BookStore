@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -104,17 +105,14 @@ public class ConfirmOrder extends HttpServlet {
 //            FileOutputStream keyfos = new FileOutputStream(file);
 //            keyfos.write("abc".getBytes());
 //            keyfos.close();
-//            System.out.println("PATH FILE: "+file.getPath());
+//            System.out.println("PAT
+//            H FILE: "+file.getPath());
 
 
+            HttpSession session = request.getSession();
+            session.setAttribute("ordered", ordered);
 
-            // user + ordered
-            String contentFile = user + "\r\n" + ordered; // Tánh trả về
-            FileOrder fileOrder = new FileOrder();
-            String pathFileDownload = fileOrder.createFileOrder(request, user, contentFile);
-            request.setAttribute("fileinfo", pathFileDownload);
-
-            request.getRequestDispatcher("/customer/view/confirm-Order.jsp").forward(request, response);
+            doGet(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();

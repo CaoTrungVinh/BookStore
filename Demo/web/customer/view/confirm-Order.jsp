@@ -178,12 +178,12 @@
 <div class="login-account section-padding">
     <div class="container">
         <div class="row" style="display: flex; justify-content: center; ">
-            <form class="col-md-7 box" action="<%= Util.fullPath("ConfirmOrder")%>" method="post">
+            <form class="col-md-7 box" action="<%= Util.fullPath("signature")%>" method="post">
                 <div>
                     <h1 class="page-title font-weight-normal mb-5">Confirm your information</h1>
                     <div class="form-group">
                         <label for="name">Customer's name</label>
-                        <input id="name" type="text" name="full_name" placeholder="email address" class="form-control"
+                        <input id="name" type="text" name="full_name" placeholder="full name" class="form-control"
                                required
                             <% if ((request.getAttribute("name")!=null)) {%>
                                value="<%=request.getAttribute("name")%>"
@@ -192,7 +192,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Number phone</label>
-                        <input id="phone" type="tel" name="telephone" placeholder="password" class="form-control"
+                        <input id="phone" type="tel" name="telephone" placeholder="phone" class="form-control"
                                required
                             <% if ((request.getAttribute("phone")!=null)) {%>
                                value="<%=request.getAttribute("phone")%>"
@@ -203,8 +203,8 @@
                         <label for="address">Address</label>
                         <input class="form-control" id="address" name="address" cols="30" rows="10"
                                placeholder="Enter your address" data-bv-field="street" required
-                                <% if ((request.getAttribute("name") != null)) {%>
-                               value="<%=request.getAttribute("name")%>"
+                                <% if ((request.getAttribute("address") != null)) {%>
+                               value="<%=request.getAttribute("address")%>"
                                 <%}%>
                         >
                     </div>
