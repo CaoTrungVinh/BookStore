@@ -1,11 +1,12 @@
-<%@ page import="Model.Ordered" pageEncoding="utf-8" %>
+<%@ page import="Util.Util" pageEncoding="utf-8" %>
 <%@ page import="java.util.ArrayList" %>
-
+<%@ page import="Model.Ordered" %>
 
 <%
     ArrayList<Ordered> ordereds = (ArrayList<Ordered>) request.getAttribute("ordereds");
     if (ordereds.size() == 0) {
 %>
+
 <div class="content-right">
     <div class="row">
         <div class="col-xs-12">
@@ -25,10 +26,10 @@
         <table class="table-responsive-2 list">
             <thead>
             <tr>
-                <th>
-                    <span class="hidden-xs hidden-sm hidden-md">Order id</span>
-                    <span class="hidden-lg">Code</span>
-                </th>
+                <%--                <th>--%>
+                <%--                    <span class="hidden-xs hidden-sm hidden-md">Order id</span>--%>
+                <%--                    <span class="hidden-lg">Code</span>--%>
+                <%--                </th>--%>
                 <th>Order date</th>
                 <th>Products</th>
                 <th>Total payent</th>
@@ -42,13 +43,16 @@
             <%
                 for (Ordered item : ordereds) { %>
             <tr>
-                <td><a
-                        href="#"><%=item.getId()%>
-                </a>
-                </td>
                 <td><%=item.getDate()%>
                 </td>
-                <td><%=item.getProducts()%>
+                <td>
+                    <%=item.getProducts()%>
+                    <a
+                            href="<%= Util.fullPath("account/order-detail?id=" + item.getId()) %>">Xem chi tiết
+                    </a>
+<%--                    <a--%>
+<%--                            href="<%= Util.fullPath("account/order-detail") %>">Xem chi tiết--%>
+<%--                    </a>--%>
                 </td>
                 <td><%=item.getTotalPrice()%> đ</td>
                 <td>

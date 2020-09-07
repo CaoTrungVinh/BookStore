@@ -22,7 +22,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist", "/account/change-key"})
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist", "/account/change-key", "/account/order-detail"})
 //@WebServlet("/account")
 public class Account extends HttpServlet {
 
@@ -81,7 +81,46 @@ public class Account extends HttpServlet {
                 e.printStackTrace();
             }
             request.setAttribute("route", "order");
-        } else if (request.getServletPath().equals("/account/wishlist")) {
+        }
+        else if (request.getServletPath().equals("/account/order-detail")) {
+            try {
+                ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
+                sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
+                rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    Statement statement2 = conn.createStatement();
+                    ResultSet rs2 = statement2.executeQuery("SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = '" + rs.getInt("id") + "'");
+                    ArrayList<Product> products = new ArrayList<Product>();
+                    while (rs2.next()) {
+                        Product p = new Product();
+                        p.setId(rs2.getInt("id"));
+                        p.setTitle(rs2.getString("title"));
+                        p.setQuantity(rs2.getInt("quantity"));
+                        p.setPrice(rs2.getInt("price"));
+                        products.add(p);
+                    }
+                    Ordered ordered = new Ordered(rs.getInt("id"), rs.getTimestamp("orderDate"), products, rs.getInt("total"), rs.getString("status"));
+                    ordereds.add(ordered);
+                }
+                request.setAttribute("ordereds", ordereds);
+
+                String id = request.getParameter("id");
+                if (id != null && !id.equals("")) {
+
+                    String sqlOdetail = "SELECT * FROM orderdetails JOIN books ON orderdetails.id_book = books.id JOIN orders ON orderdetails.id_order = orders.id where orders.id=? ";
+                    PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
+                    pstdetail.setInt(1, Integer.parseInt(id));
+                    System.out.println(id);
+                    ResultSet detail = pstdetail.executeQuery();
+
+                    request.setAttribute("detail", detail);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            request.setAttribute("route", "orderdetail");
+        }
+        else if (request.getServletPath().equals("/account/wishlist")) {
             request.setAttribute("wishlist", user.getWishlist().getWishlist());
             request.setAttribute("route", "wishlist");
         }
