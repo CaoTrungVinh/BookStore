@@ -2,6 +2,7 @@ package controller.tool;
 
 import db.ConnectionDB;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 
 public class VerSign {
 
-    public boolean verify(byte[] data, int idUser) {
+    public boolean verify(HttpServletRequest request, byte[] data, int idUser) {
 
         try {
             Connection con = ConnectionDB.getConnection();
@@ -35,7 +36,10 @@ public class VerSign {
             Signature sig = Signature.getInstance("SHA1withDSA", "SUN");
             sig.initVerify(publicKey);
 
-            FileInputStream datafis = new FileInputStream("/home/myduyen/Desktop/a.txt");
+            String pathFOrder = request.getServletContext().getRealPath("public") +"/"+  (String) request.getSession().getAttribute("fileinfo");
+
+            System.out.println("PATH SESSONl " + pathFOrder);
+            FileInputStream datafis = new FileInputStream(pathFOrder);
             BufferedInputStream bufin = new BufferedInputStream(datafis);
             byte[] buffer = new byte[1024];
             int len;

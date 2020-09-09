@@ -110,7 +110,7 @@ public class Account extends HttpServlet {
                     String sqlOdetail = "SELECT * FROM orderdetails JOIN books ON orderdetails.id_book = books.id JOIN orders ON orderdetails.id_order = orders.id where orders.id=? ";
                     PreparedStatement pstdetail = conn.prepareStatement(sqlOdetail);
                     pstdetail.setInt(1, Integer.parseInt(id));
-                    System.out.println(id);
+//                    System.out.println(id);
                     ResultSet detail = pstdetail.executeQuery();
 
                     request.setAttribute("detail", detail);
@@ -118,7 +118,7 @@ public class Account extends HttpServlet {
                     String sqlHDH = "SELECT * FROM orders JOIN statuses on orders.statusID = statuses.id where orders.id=? ";
                     PreparedStatement pstHDH = conn.prepareStatement(sqlHDH);
                     pstHDH.setInt(1, Integer.parseInt(id));
-                    System.out.println(id);
+//                    System.out.println(id);
                     ResultSet hdh = pstHDH.executeQuery();
 
                     request.setAttribute("detail", detail);
@@ -191,7 +191,7 @@ public class Account extends HttpServlet {
                                 pstPass.setString(1, hashPass);
                                 pstPass.setString(2, id);
                                 pstPass.execute();
-                                System.out.println("OK");
+//                                System.out.println("OK");
 //                                user.setPassword();
 
                             } else {
@@ -300,7 +300,7 @@ public class Account extends HttpServlet {
                 }
                 String ver = request.getParameter("ver");
                 VerSign vs = new VerSign();
-                if (vs.verify(ver.getBytes(), userss.getId())) {
+                if (vs.verify(request, ver.getBytes(), userss.getId())) {
                     SendingEmail sendingEmail = new SendingEmail("active-account", email, hashMail);
                     sendingEmail.start();
                 } else {

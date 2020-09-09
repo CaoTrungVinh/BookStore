@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.Base64;
 
@@ -70,9 +71,11 @@ public class Signature extends HttpServlet {
             String contentFile = user + "\r\n" + ordered; // Tánh trả về
             System.out.println(contentFile);
             FileOrder fileOrder = new FileOrder();
-            String pathFileDownload = fileOrder.createFileOrder(request, user, contentFile);
+            String pathFileDownload = fileOrder.createFileOrder(request,response, user, contentFile);
             System.out.println(pathFileDownload);
+
             request.setAttribute("fileinfo", pathFileDownload);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

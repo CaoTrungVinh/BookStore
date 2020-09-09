@@ -27,12 +27,12 @@ public class Verify extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // update don hang
-
+        System.out.println("update don hang");
 
         User user = (User) request.getSession().getAttribute("user");
         String signature = request.getParameter("signature");
         VerSign verSign = new VerSign();
-        boolean resultVerify = verSign.verify(Base64.getDecoder().decode(signature.getBytes()), user.getId());
+        boolean resultVerify = verSign.verify(request, Base64.getDecoder().decode(signature.getBytes()), user.getId());
 //save database
         Connection conn = null;
         try {
@@ -40,7 +40,8 @@ public class Verify extends HttpServlet {
             Ordered ordered = (Ordered) request.getSession().getAttribute("ordered");
             String sqlOrder = "UPDATE orders SET verify=? where id=?";
             PreparedStatement pstOrder = conn.prepareStatement(sqlOrder);
-            pstOrder.setString(1, String.valueOf(resultVerify));
+            System.out.println( String.valueOf(resultVerify).toUpperCase());
+            pstOrder.setString(1, String.valueOf(resultVerify).toUpperCase());
             pstOrder.setInt(2, ordered.getId());
             pstOrder.executeUpdate();
         } catch (SQLException throwables) {
@@ -48,7 +49,7 @@ public class Verify extends HttpServlet {
         }
 
 
-        request.getRequestDispatcher("/customer/view/signature.jsp").forward(request, response);
+        request.getRequestDispatcher("/customer/view/successPayment.jsp").forward(request, response);
 
     }
 }

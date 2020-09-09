@@ -37,9 +37,9 @@ public class Sign {
 //        sigfos.write(realSig);
 //        sigfos.close();
 
-        VerSign ve = new VerSign();
-       boolean res = ve.verify(realSig, 27);
-        System.out.println("KET QUA: " + res);
+//        VerSign ve = new VerSign();
+//       boolean res = ve.verify(realSig, 27);
+//        System.out.println("KET QUA: " + res);
         return realSig;
     }
 
