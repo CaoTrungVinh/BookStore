@@ -26,6 +26,40 @@ public class SendingEmail extends Thread {
     public SendingEmail() {
 
     }
+    public void sendMailText(String obj, String text) {
+        final String email = "myduyenn218@gmail.com";
+        final String password = "ucnwpbwrnuubmziw";
+
+        Properties props = new Properties();
+
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        // below mentioned mail.smtp.port is optional
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(email, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(email));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.userEmail));
+            message.setSubject(obj);
+            message.setText(text);
+//            message.setSubject("Cảnh báo: Ai đó đang cố tình giả mạo bạn.");
+//            message.setText("Ai đó đang cố tình giả mạo bạn. Vu lòng kểm tra đăng nhập, nếu là bạn, bạn có thể bỏ qua emal này!");
+
+            Transport.send(message);
+            System.out.println("SEND OK");
+        } catch (Exception var6) {
+            System.out.println("Error at SendingEmail.java: " + var6);
+        }
+    }
+
 
     public void sendMailKey(String userEmail, String pathFilePri, String pathFilePub) {
         final String email = "myduyenn218@gmail.com";

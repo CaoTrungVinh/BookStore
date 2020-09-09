@@ -13,30 +13,30 @@ import java.nio.file.Paths;
 public class FileOrder {
 
     public String createFileOrder(HttpServletRequest request, HttpServletResponse response, User user, String contentFile) {
-String name = "ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
-        String pathFile = request.getServletContext().getRealPath("public") +"/"+ name;
+        String name = "ThongTinOrder" + user.getEmail().split("@")[0] + ".txt";
+        String pathFile = request.getServletContext().getRealPath("public") + "/" + name;
         File file = new File(pathFile);
 
 
-            try {
-                file.createNewFile();
-                FileOutputStream keyfos = new FileOutputStream(file);
-                keyfos.write(contentFile.getBytes());
-                keyfos.close();
+        try {
+            file.createNewFile();
+            FileOutputStream keyfos = new FileOutputStream(file);
+            keyfos.write(contentFile.getBytes());
+            keyfos.close();
+
 //                System.out.println("PATH FILE: " + file.getPath());
 //
-                HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
 //                request.setAttribute("fileinfo", "Thong Tin Order " + user.getEmail().split("@")[0] + ".txt");
-                session.setAttribute("fileinfo", name);
+            session.setAttribute("fileinfo", name);
 
 
+            return name;
+        } catch (IOException e) {
+            e.printStackTrace();
 
-                return name;
-            } catch (IOException e) {
-                e.printStackTrace();
-
-                return null;
-            }
+            return null;
+        }
 
     }
 }
