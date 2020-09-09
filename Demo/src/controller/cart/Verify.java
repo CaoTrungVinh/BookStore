@@ -1,8 +1,7 @@
 package controller.cart;
 
-import Model.Cart;
+import Model.Ordered;
 import Model.User;
-import Util.Util;
 import controller.tool.FileOrder;
 import controller.tool.VerSign;
 import db.ConnectionDB;
@@ -12,32 +11,44 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Base64;
 
 @WebServlet("/verify")
 public class Verify extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        User user = (User) request.getSession().getAttribute("user");
-//        request.setAttribute("name", user.getFullName());
-//        request.setAttribute("phone", user.getPhone());
-//        request.setAttribute("address", user.getAddress());
-//        request.getRequestDispatcher("/customer/view/confirm-Order.jsp").forward(request, response);
+
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-       String signu = (String) request.getAttribute("signature");
-        VerSign verSign = new VerSign();
-        verSign.verify(Base64.getDecoder().decode(signu.getBytes()),user.getId());
-
         // update don hang
 
 
+        User user = (User) request.getSession().getAttribute("user");
+        String signature = request.getParameter("signature");
+        VerSign verSign = new VerSign();
+        boolean resultVerify = verSign.verify(Base64.getDecoder().decode(signature.getBytes()), user.getId());
+//save database
+        Connection conn = null;
+        try {
+            conn = ConnectionDB.getConnection();
+            Ordered ordered = (Ordered) request.getSession().getAttribute("ordered");
+            String sqlOrder = "UPDATE orders SET verify=? where id=?";
+            PreparedStatement pstOrder = conn.prepareStatement(sqlOrder);
+            pstOrder.setString(1, String.valueOf(resultVerify));
+            pstOrder.setInt(2, ordered.getId());
+            pstOrder.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        request.getRequestDispatcher("/customer/view/signature.jsp").forward(request, response);
 
     }
 }

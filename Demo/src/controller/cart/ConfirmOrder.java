@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,7 +34,6 @@ public class ConfirmOrder extends HttpServlet {
         request.getRequestDispatcher("/customer/view/confirm-Order.jsp").forward(request, response);
 
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -58,7 +58,7 @@ public class ConfirmOrder extends HttpServlet {
             }
             int id_order = user.getCart().getId_order();
             // update row in order detail  based on ids
-            sql = "SELECT * FROM `orderdetails` WHERE id_order = " + id_order;
+            sql = "SELECT * FROM orderdetails WHERE id_order = " + id_order;
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 if (contain(ids, rs.getInt("id_book"))) {
@@ -68,7 +68,7 @@ public class ConfirmOrder extends HttpServlet {
             }
 
             int totalMoney = getTotal(user, ids);
-            sql = "UPDATE `orders` SET orderDate = ?, total = ? WHERE id = ?";
+            sql = "UPDATE orders SET orderDate = ?, total = ? WHERE id = ?";
             pStatement = conn.prepareStatement(sql);
             pStatement.setTimestamp(1, new Timestamp(new java.util.Date().getTime()));
             pStatement.setInt(2, totalMoney);
@@ -105,25 +105,20 @@ public class ConfirmOrder extends HttpServlet {
 //            FileOutputStream keyfos = new FileOutputStream(file);
 //            keyfos.write("abc".getBytes());
 //            keyfos.close();
-//            System.out.println("PATH FILE: "+file.getPath());
+//            System.out.println("PAT
+//            H FILE: "+file.getPath());
 
 
+            HttpSession session = request.getSession();
+            session.setAttribute("ordered", ordered);
 
-            // user + ordered
-            String contentFile = ""; // Tánh trả về
-            FileOrder fileOrder = new FileOrder();
-            String pathFileDownload = fileOrder.createFileOrder(request, user, contentFile);
-            request.setAttribute("fileinfo", pathFileDownload);
-
-            request.getRequestDispatcher("/customer/view/signature.jsp").forward(request, response);
+            doGet(request, response);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-
-
     private int getTotal(User user, String[] ids) {
         int rs = 0;
 

@@ -23,69 +23,69 @@ public class Pay extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String[] ids = request.getParameterValues("payids"); // id of order detail which processed to pay [order_details]
-        User user = (User) request.getSession().getAttribute("user");
-        String sql;
-
-        try {
-            Connection conn = ConnectionDB.getConnection();
-            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
-            // add new row in order status = 2. -> get new id
-            sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',2)";
-            PreparedStatement pStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            pStatement.executeUpdate();
-
-
-            ResultSet generatedKeys = pStatement.getGeneratedKeys();
-            int id_ordered = 0; // new id
-            if (generatedKeys.next()) {
-                id_ordered = generatedKeys.getInt(1);
-            }
-            int id_order = user.getCart().getId_order();
-            // update row in order detail  based on ids
-            sql = "SELECT * FROM `orderdetails` WHERE id_order = " + id_order;
-            ResultSet rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                if (contain(ids, rs.getInt("id_book"))) {
-                    rs.updateInt("id_order", id_ordered);
-                    rs.updateRow();  // update order -> ordered
-                }
-            }
-
-            int totalMoney = getTotal(user, ids);
-            sql = "UPDATE `orders` SET orderDate = ?, total = ? WHERE id = ?";
-            pStatement = conn.prepareStatement(sql);
-            pStatement.setTimestamp(1, new Timestamp(new Date().getTime()));
-            pStatement.setInt(2, totalMoney);
-            pStatement.setInt(3, id_ordered);
-            pStatement.executeUpdate();
-
-            for (String id : ids) {
-                user.getCart().remove(Integer.parseInt(id)); // remove in session
-            }
-
-            sql = "SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = " + id_ordered;
-            rs = statement.executeQuery(sql);
-            ArrayList<Product> products = new ArrayList<Product>();
-            while (rs.next()) {
-                Product p = new Product();
-                p.setId(rs.getInt("id"));
-                p.setTitle(rs.getString("title"));
-                p.setQuantity(rs.getInt("quantity"));
-                p.setPrice(rs.getInt("price"));
-                products.add(p);
-            }
-
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-            Ordered ordered = new Ordered(id_ordered,new Timestamp(new Date().getTime()) ,products, totalMoney,"2");
+//
+//        String[] ids = request.getParameterValues("payids"); // id of order detail which processed to pay [order_details]
+//        User user = (User) request.getSession().getAttribute("user");
+//        String sql;
+//
+//        try {
+//            Connection conn = ConnectionDB.getConnection();
+//            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+//
+//            // add new row in order status = 2. -> get new id
+//            sql = "INSERT INTO orders (id_customer, statusID) VALUES('" + user.getId() + "',2)";
+//            PreparedStatement pStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//            pStatement.executeUpdate();
+//
+//
+//            ResultSet generatedKeys = pStatement.getGeneratedKeys();
+//            int id_ordered = 0; // new id
+//            if (generatedKeys.next()) {
+//                id_ordered = generatedKeys.getInt(1);
+//            }
+//            int id_order = user.getCart().getId_order();
+//            // update row in order detail  based on ids
+//            sql = "SELECT * FROM `orderdetails` WHERE id_order = " + id_order;
+//            ResultSet rs = statement.executeQuery(sql);
+//            while (rs.next()) {
+//                if (contain(ids, rs.getInt("id_book"))) {
+//                    rs.updateInt("id_order", id_ordered);
+//                    rs.updateRow();  // update order -> ordered
+//                }
+//            }
+//
+//            int totalMoney = getTotal(user, ids);
+//            sql = "UPDATE `orders` SET orderDate = ?, total = ? WHERE id = ?";
+//            pStatement = conn.prepareStatement(sql);
+//            pStatement.setTimestamp(1, new Timestamp(new Date().getTime()));
+//            pStatement.setInt(2, totalMoney);
+//            pStatement.setInt(3, id_ordered);
+//            pStatement.executeUpdate();
+//
+//            for (String id : ids) {
+//                user.getCart().remove(Integer.parseInt(id)); // remove in session
+//            }
+//
+//            sql = "SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orderdetails.id_order = " + id_ordered;
+//            rs = statement.executeQuery(sql);
+//            ArrayList<Product> products = new ArrayList<Product>();
+//            while (rs.next()) {
+//                Product p = new Product();
+//                p.setId(rs.getInt("id"));
+//                p.setTitle(rs.getString("title"));
+//                p.setQuantity(rs.getInt("quantity"));
+//                p.setPrice(rs.getInt("price"));
+//                products.add(p);
+//            }
+//
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+//            Ordered ordered = new Ordered(id_ordered,new Timestamp(new Date().getTime()) ,products, totalMoney,"2");
 
 
             request.getRequestDispatcher("/customer/view/successPayment.jsp").forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

@@ -66,6 +66,11 @@
                                 <a href="<%=Util.fullPath("admin")%>"><i class="fa fa-lock" aria-hidden="true"></i>
                                     Trang admin</a>
                             </li>
+                            <li <% if (request.getAttribute("route").equals("change-key")) {%> class="active"<%}%>>
+                                <a href="<%=Util.fullPath("account/change-key")%>"><i class="fa fa-key"
+                                                                                      aria-hidden="true"></i>
+                                    Đổi key</a>
+                            </li>
                             <li class="">
                                 <a href="<%=Util.fullPath("logout")%>"><i class="fa fa-sign-out" aria-hidden="true"></i>Đăng
                                     xuất</a>
@@ -91,6 +96,11 @@
                 <jsp:include page="order-history.jsp"/>
                 <%
                         break;
+                    case "orderdetail":
+                %>
+                <jsp:include page="order-history-detail.jsp"/>
+                <%
+                        break;
                     case "wishlist":
                 %>
                 <jsp:include page="wishlist.jsp"/>
@@ -99,6 +109,10 @@
                     case "edit":
                 %>
                 <jsp:include page="account.jsp"/>
+                <% break;
+                    case "change-key":
+                %>
+                <jsp:include page="change-key.jsp"/>
                 <% break;
                 } %>
 
