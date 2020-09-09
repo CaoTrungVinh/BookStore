@@ -3,6 +3,7 @@ package controller.page;
 import Model.Ordered;
 import Model.Product;
 import Model.User;
+import Util.Util;
 import controller.auth.PasswordAuthentication;
 import controller.tool.SendingEmail;
 import controller.tool.VerSign;
@@ -311,17 +312,19 @@ public class Account extends HttpServlet {
                 Connection conn = null;
                 try {
                     conn = ConnectionDB.getConnection();
-                    String sqlhdh = "DELETE FROM orders WHERE id=?";
+
+                    String sqlhdh = "UPDATE orders SET statusID=? where id=?";
 
                     PreparedStatement psthdh = conn.prepareStatement(sqlhdh);
-                    psthdh.setString(1, id);
+                    psthdh.setString(1, String.valueOf(4));
+                    psthdh.setString(2, id);
                     psthdh.execute();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect("/account/order");
+            response.sendRedirect(Util.fullPath("account/order-detail?id="+ id));
         }
     }
 }

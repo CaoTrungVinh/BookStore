@@ -182,11 +182,10 @@
             <form class="col-md-7 box" action="<%= Util.fullPath("verify")%>" method="post">
                 <div>
                     <h3 class="page-title font-weight-normal mb-5">Ký đơn hàng</h3>
-                    <a>
+                    <p>
                         Vui lòng ký xác nhận đơn hàng đã được tải xuống và nhập vào ô sau đây:
-                    </a>
+                    </p>
                     <input style="margin-top: 10px; " name="signature" value="" class="btn-block text-center form-control border-0"/>
-
 
                 </div>
                 <button id="confirm" type="submit" style="margin-top: 40px" class="btn-block btn-default text-center form-control border-0" >
