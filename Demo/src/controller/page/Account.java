@@ -20,7 +20,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 @WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist", "/account/change-key", "/account/order-detail", "/account/order-detail-hdh"})
@@ -126,8 +130,7 @@ public class Account extends HttpServlet {
                 e.printStackTrace();
             }
             request.setAttribute("route", "orderdetail");
-        }
-        else if (request.getServletPath().equals("/account/wishlist")) {
+        } else if (request.getServletPath().equals("/account/wishlist")) {
             request.setAttribute("wishlist", user.getWishlist().getWishlist());
             request.setAttribute("route", "wishlist");
         }
@@ -305,26 +308,81 @@ public class Account extends HttpServlet {
 
                 }
             }
-        }
-        else if (request.getServletPath().equals("/account/order-detail")) {
+        } else if (request.getServletPath().equals("/account/order-detail")) {
             String id = request.getParameter("id");
             if (id != null && !id.equals("")) {
                 Connection conn = null;
                 try {
+
+                    HttpSession session = request.getSession();
+                    User user = (User) session.getAttribute("user");
+                    String fullPath = request.getServletContext().getRealPath("\\public\\") + user.getEmail().split("@")[0] + ".txt";
+                    FileOutputStream f = new FileOutputStream(new File(fullPath));
+
+
+
+                   String sql = "SELECT * FROM orders WHERE orders.id =?";
+                    PreparedStatement pStatement = conn.prepareStatement(sql);
+                    ResultSet rs = pStatement.executeQuery();
+                    rs.next();
+                  String date =  rs.getString("orderDate");
+                  int totalMoney =  rs.getInt("total");
+
+
+                    sql = "SELECT * FROM orderdetails JOIN books ON books.id = orderdetails.id_book WHERE orders.id =?";
+                    ArrayList<Product> products = new ArrayList<Product>();
+                    while (rs.next()) {
+                        Product p = new Product();
+                        p.setId(rs.getInt("id"));
+                        p.setTitle(rs.getString("title"));
+                        p.setQuantity(rs.getInt("quantity"));
+                        p.setPrice(rs.getInt("price"));
+                        products.add(p);
+                    }
+
+
+
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    Ordered ordered = new Ordered(Integer.parseInt(id),null, products, totalMoney, "2");
+
+
+                        String data = ordered.toString();
+                    System.out.println(data);
+                    f.write(data.getBytes());
+                    f.flush();
+                    f.close();
+
+                    Path path = Paths.get(fullPath);
+                    byte[] d = Files.readAllBytes(path);
+
+                    response.setContentType("application/octet-stream");
+                    response.setHeader("Content-disposition", "attachment; filename=" + userss.getEmail() + "_Ordered.txt");
+                    response.setContentLength(d.length);
+                    InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(d));
+                    // Ghi file ra response outputstream.
+                    OutputStream outStream = response.getOutputStream();
+                    byte[] buffer = new byte[4096];
+                    int bytesRead = -1;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        outStream.write(buffer, 0, bytesRead);
+                    }
+                    inputStream.close();
+                    outStream.close();
+
                     conn = ConnectionDB.getConnection();
-
-                    String sqlhdh = "UPDATE orders SET statusID=? where id=?";
-
-                    PreparedStatement psthdh = conn.prepareStatement(sqlhdh);
-                    psthdh.setString(1, String.valueOf(4));
-                    psthdh.setString(2, id);
-                    psthdh.execute();
+//
+//                    String sqlhdh = "UPDATE orders SET statusID=? where id=?";
+//
+//                    PreparedStatement psthdh = conn.prepareStatement(sqlhdh);
+//                    psthdh.setString(1, String.valueOf(4));
+//                    psthdh.setInt(2, Integer.parseInt(id));
+//                    psthdh.executeUpdate();
 
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            response.sendRedirect(Util.fullPath("account/order-detail?id="+ id));
+            response.sendRedirect(Util.fullPath("account/order-detail?id=" + id));
         }
     }
 }
