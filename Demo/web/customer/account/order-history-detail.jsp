@@ -73,7 +73,6 @@
                     <a href="#">Hủy đơn hàng</a>
                     <% } else {%>
                     <a href="#">Đang vận chuyển</a>
-<%--                    <a href="#"><%= hdh.getString("statusID")%>--%>
                     </a>
                     <% } %>
                 </td>
