@@ -55,7 +55,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link d-block" href="/admin/login.jsp">
+                        <a class="nav-link d-block" href="./admin/login.jsp">
                             Admin, <b>Logout</b>
                         </a>
                     </li>
@@ -65,9 +65,9 @@
 
     </nav>
 
-    <script src="/public/admin/js/jquery-3.3.1.min.js"></script>
+    <script src="./public/admin/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
-    <script src="/public/admin/js/bootstrap.min.js"></script>
+    <script src="./public/admin/js/bootstrap.min.js"></script>
 
     <div class="container">
         <div class="row">
@@ -266,15 +266,15 @@
     <jsp:include page="footer.jsp"/>
 </div>
 
-<script src="public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
-<script src="public/admin/js/moment.min.js"></script>
+<script src="./public/admin/js/moment.min.js"></script>
 <!-- https://momentjs.com/ -->
-<script src="public/admin/js/Chart.min.js"></script>
+<script src="./public/admin/js/Chart.min.js"></script>
 <!-- http://www.chartjs.org/docs/latest/ -->
-<script src="public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
-<script src="public/admin/js/tooplate-scripts.js"></script>
+<script src="./public/admin/js/tooplate-scripts.js"></script>
 <script>
     Chart.defaults.global.defaultFontColor = 'white';
     let ctxLine,

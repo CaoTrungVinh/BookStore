@@ -12,7 +12,6 @@ public class Test extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("running");
         response.setContentType("text/html;charset=UTF-8");
            request.getRequestDispatcher("/customer/view/404.jsp").forward(request, response);
     }

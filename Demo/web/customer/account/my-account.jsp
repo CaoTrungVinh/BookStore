@@ -7,7 +7,7 @@
 
     <title>My Account</title>
     <jsp:include page="../view/head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/my-account.css">
+    <link rel="stylesheet" href="public/customer/css/my-account.css">
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -17,7 +17,7 @@
 
 <!-- Add your site or application content here -->
 <!--Header Area Start-->
-<jsp:include page="../view/header.jsp"/>
+<jsp:include page="./customer/view/header.jsp"/>
 <div class="tiki-account">
     <div class="wrap">
         <div class="container-full">

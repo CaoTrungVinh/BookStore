@@ -3,11 +3,11 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
 <!-- https://fonts.google.com/specimen/Roboto -->
-<link rel="stylesheet" href="/public/admin/css/fontawesome.min.css">
+<link rel="stylesheet" href="./public/admin/css/fontawesome.min.css">
 <!-- https://fontawesome.com/ -->
-<link rel="stylesheet" href="/public/admin/css/bootstrap.min.css">
+<link rel="stylesheet" href="./public/admin/css/bootstrap.min.css">
 <!-- https://getbootstrap.com/ -->
-<link rel="stylesheet" href="/public/admin/css/templatemo-style.css">
+<link rel="stylesheet" href="./public/admin/css/templatemo-style.css">
 <!--
 
 

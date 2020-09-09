@@ -7,7 +7,7 @@
 <head>
     <title>Product Details || Witter Multipage Responsive Template</title>
     <jsp:include page="head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/shop.css">
+    <link rel="stylesheet" href="./public/customer/css/shop.css">
     <style>
         .rating-widget {
             padding-top: 20px;
@@ -117,9 +117,9 @@
                                 i++;
                         %>
                         <div role="tabpanel" class="tab-pane <%=i==1?"active":""%>" id="<%=img.getString("id")%>">
-                            <a class="venobox" href="/public/customer/img/shop/images/<%= img.getString("img")%>"
+                            <a class="venobox" href="./public/customer/img/shop/images/<%= img.getString("img")%>"
                                data-gall="gallery" title="">
-                                <img src="/public/customer/img/shop/images/<%= img.getString("img")%>" alt="">
+                                <img src="./public/customer/img/shop/images/<%= img.getString("img")%>" alt="">
                             </a>
                         </div>
 
@@ -147,7 +147,7 @@
                                                                                  aria-controls="one" role="tab"
                                                                                  data-toggle="tab">
                             <img height="160" width="150"
-                                 src="/public/customer/img/shop/images/<%= img.getString("img")%>"
+                                 src="./public/customer/img/shop/images/<%= img.getString("img")%>"
                                  alt="">
                         </a></li>
                         <% } %>
@@ -343,8 +343,8 @@
                         <div class="product-wrapper">
                             <a href="<%=Util.fullPath("single-product?id=" +listBook.getString("id"))%>"
                                class="single-banner-image-wrapper">
-                                <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
-                                <img alt="" src="/public/customer/img/shop/images/<%= listBook.getString(4)%>"
+                                <%--                                                <img alt="" src="./public/customer/img/featured/1.jpg">--%>
+                                <img alt="" src="./public/customer/img/shop/images/<%= listBook.getString(4)%>"
                                      style="margin-top: 30px">
 
 
@@ -412,7 +412,7 @@
                                         <div class="product-images">
                                             <div class="main-image images">
                                                 <img alt=""
-                                                     src="/public/customer/img/shop/images/<%= listBook.getString(4)%>">
+                                                     src="./public/customer/img/shop/images/<%= listBook.getString(4)%>">
 
                                             </div>
                                         </div>
@@ -542,7 +542,7 @@
             msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
         }
         responseMessage(msg);
-        $.ajax("/single-product/rate?rate=" + ratingValue + "&id=" + id);
+        $.ajax("./single-product/rate?rate=" + ratingValue + "&id=" + id);
         count++;
         phanTramRating = ratingValue * 100 / 5;
         ra = Math.round((rating + phanTramRating) / count);

@@ -254,10 +254,8 @@ public class Product extends HttpServlet {
                 ResultSet rs = pstCate.getGeneratedKeys();
                 rs.next();
                 long id = rs.getLong(1);
-                System.out.println(img2.equals(""));
                 if (img1 != null && !img1.equals("")) {
                     img1 = img1.substring(img1.lastIndexOf("/") + 1, img1.length());
-                    System.out.println(img1);
                     String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                     PreparedStatement pstImg = conn.prepareStatement(sqlImg);
@@ -324,7 +322,6 @@ public class Product extends HttpServlet {
 
                     if (img1 != null && !img1.equals("")) {
                         img1 = img1.substring(img1.lastIndexOf("/") + 1, img1.length());
-                        System.out.println(img1);
                         String sqlImg = "INSERT INTO img (id_book, img) VALUE (?, ?)";
 
                         PreparedStatement pstImg = conn.prepareStatement(sqlImg);

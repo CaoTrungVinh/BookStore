@@ -8,7 +8,6 @@
 
     <div class="account-profile register-form">
         <% if (session.getAttribute("edit-account-noti")!=null) {
-            System.out.println(session.getAttribute("edit-account-noti"));
         %>
         <div><%=session.getAttribute("edit-account-noti")%></div>
         <div style="height: 5px"></div>

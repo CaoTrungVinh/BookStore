@@ -31,7 +31,6 @@ public class Account extends HttpServlet {
                 PreparedStatement pst = conn.prepareStatement(sql);
 
                 ResultSet users = pst.executeQuery();
-//                System.out.println(user.getString("name"));
                 request.setAttribute("users", users);
             } catch (SQLException e) {
                 e.printStackTrace();

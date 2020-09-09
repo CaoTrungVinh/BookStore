@@ -135,11 +135,9 @@ public class Account extends HttpServlet {
                                 pstPass.setString(1, hashPass);
                                 pstPass.setString(2, id);
                                 pstPass.execute();
-                                System.out.println("OK");
 //                                user.setPassword();
 
                             } else {
-                                System.out.println("re pass");
                                 HttpSession session = request.getSession();
                                 session.setAttribute("edit-account-noti", "Password not match");
                                 response.sendRedirect("/account/edit?id=" + id);
@@ -148,7 +146,6 @@ public class Account extends HttpServlet {
 
 
                         } else {
-                            System.out.println("old pass");
                             HttpSession session = request.getSession();
                             session.setAttribute("edit-account-noti", "Old password not correct");
                             response.sendRedirect("/account/edit?id=" + id);
@@ -183,7 +180,6 @@ public class Account extends HttpServlet {
 //                    user.setAddress(rs.getString("address"));
                     user.setPhone(rs.getString("phone"));
                     user.setDateofbirth(rs.getString("dateofbirth"));
-                    System.out.println("userdob: " + dateofbirth);
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
                     session.setAttribute("edit-account-noti", "Update successfully");

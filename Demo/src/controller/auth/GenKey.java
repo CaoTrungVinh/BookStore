@@ -31,7 +31,6 @@ public class GenKey {
         if (!filePriv.exists()) {
 
             filePriv.createNewFile();
-            System.out.println("CREATE FILE SUCCESSFULLY");
         }
         FileOutputStream keyfos = new FileOutputStream(filePriv);
         keyfos.write(keyPrivate);
@@ -42,7 +41,6 @@ public class GenKey {
         if (!filePub.exists()) {
 
             filePub.createNewFile();
-            System.out.println("CREATE FILE SUCCESSFULLY");
         }
         FileOutputStream keyfosP = new FileOutputStream(filePub);
         keyfosP.write(keyPub);

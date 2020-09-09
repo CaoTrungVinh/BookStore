@@ -6,7 +6,7 @@
 <head>
     <title>Book Store</title>
     <jsp:include page="/customer/view/head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/index.css">
+    <link rel="stylesheet" href="./public/customer/css/index.css">
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -25,8 +25,8 @@
 <div class="slider-area">
     <div class="bend niceties preview-1">
         <div id="ensign-nivoslider" class="slides">
-            <img src="public/customer/img/slider/1.jpg" alt="" title="#slider-direction-1"/>
-            <img src="public/customer/img/slider/2.jpg" alt="" title="#slider-direction-2"/>
+            <img src="./public/customer/img/slider/1.jpg" alt="" title="#slider-direction-1"/>
+            <img src="./public/customer/img/slider/2.jpg" alt="" title="#slider-direction-2"/>
         </div>
         <!-- direction 1 -->
         <div id="slider-direction-1" class="text-center slider-direction">
@@ -79,7 +79,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-banner">
                         <a href="#">
-                            <img src="public/customer/img/banner/1.jpg" alt="">
+                            <img src="./public/customer/img/banner/1.jpg" alt="">
                         </a>
                         <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
@@ -90,7 +90,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-banner">
                         <a href="#">
-                            <img src="public/customer/img/banner/2.jpg" alt="">
+                            <img src="./public/customer/img/banner/2.jpg" alt="">
                         </a>
                         <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
@@ -101,7 +101,7 @@
                 <div class="col-md-4 hidden-sm">
                     <div class="single-banner">
                         <a href="#">
-                            <img src="public/customer/img/banner/3.jpg" alt="">
+                            <img src="./public/customer/img/banner/3.jpg" alt="">
                         </a>
                         <%--                        <div class="price"><span>$</span>160</div>--%>
                         <div class="banner-bottom text-center">
@@ -192,7 +192,7 @@
                                         <a href="<%=Util.fullPath("single-product?id=" +bookNew.getString("id"))%>"
                                            class="single-banner-image-wrapper">
                                             <img alt=""
-                                                 src="/public/customer/img/shop/images/<%= bookNew.getString(4)%>"
+                                                 src="./public/customer/img/shop/images/<%= bookNew.getString(4)%>"
                                                  style="padding-top: 10px">
                                             <%--                                            <div class="price"><span><%= Util.showPrice(bookNew.getInt(3))%> VND</span></div>--%>
 
@@ -279,7 +279,7 @@
                                         <a href="<%=Util.fullPath("single-product?id=" +bookTopRating.getString("id"))%>"
                                            class="single-banner-image-wrapper">
                                             <img alt=""
-                                                 src="/public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
+                                                 src="./public/customer/img/shop/images/<%= bookTopRating.getString(4)%>"
                                                  style="padding-top: 10px">
                                             <%--                                            <div class="price">--%>
                                             <%--                                                <span><%= Util.showPrice(bookTopRating.getInt(3))%> VND</span></div>--%>
@@ -365,7 +365,7 @@
             <div class="col-md-12">
                 <div class="testimonial-list">
                     <div class="single-testimonial">
-                        <img src="public/customer/img/testimonial/1.jpg" alt="">
+                        <img src="./public/customer/img/testimonial/1.jpg" alt="">
                         <div class="testmonial-info clearfix">
                             <p>Recently, people have been wondering what books to read, because each book is now very
                                 popular in the market, but valuable books are few. Luckily,
@@ -378,7 +378,7 @@
                         </div>
                     </div>
                     <div class="single-testimonial">
-                        <img src="public/customer/img/testimonial/2.jpg" alt="">
+                        <img src="./public/customer/img/testimonial/2.jpg" alt="">
                         <div class="testmonial-info clearfix">
                             <p>This page is full of intellectuals in the country, so the whole book is valuable. The
                                 articles in this newspaper I find very quality too.
@@ -453,7 +453,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="/public/customer/img/post/1.jpg" width="270px" height="200px"
+                            <img src="./public/customer/img/post/1.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -468,7 +468,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="/public/customer/img/post/2.jpg" width="270px" height="200px"
+                            <img src="./public/customer/img/post/2.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -479,7 +479,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="/public/customer/img/post/3.jpg" width="270px" height="200px"
+                            <img src="./public/customer/img/post/3.jpg" width="270px" height="200px"
                                  alt="">
                         </a>
                         <div class="blog-info text-center">
@@ -490,7 +490,7 @@
                 <div class="col-md-3">
                     <div class="single-blog">
                         <a href="single-#">
-                            <img src="/public/customer/img/post/4.jpg" width="270px" height="200px"
+                            <img src="./public/customer/img/post/4.jpg" width="270px" height="200px"
                                  alt="" style="height: 350px">
                         </a>
                         <div class="blog-info text-center">
@@ -544,8 +544,8 @@
                     <div class="modal-product">
                         <div class="product-images">
                             <div class="main-image images">
-                                <img alt="" src="public/customer/img/quick-view.jpg">
-                                <%--                                <img alt="" src="public/customer/img/shop/images/<%= bookNew.getString(4)%>">--%>
+                                <img alt="" src="./public/customer/img/quick-view.jpg">
+                                <%--                                <img alt="" src="./public/customer/img/shop/images/<%= bookNew.getString(4)%>">--%>
                             </div>
                         </div>
                         <div class="product-info">

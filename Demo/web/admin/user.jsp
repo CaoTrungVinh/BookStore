@@ -5,7 +5,7 @@
 <head>
     <title>Accounts - Product Admin Template</title>
     <jsp:include page="head.jsp"/>
-    <link rel="stylesheet" href="/public/admin/css/table.css">
+    <link rel="stylesheet" href="./public/admin/css/table.css">
 </head>
 
 <body id="reportsPage">
@@ -103,11 +103,11 @@
 </div>
 
 
-<script src="/public/admin/js/jquery-3.3.1.min.js"></script>
+<script src="./public/admin/js/jquery-3.3.1.min.js"></script>
 <!-- https://jquery.com/download/ -->
 
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="/public/admin/js/bootstrap.min.js"></script>
+<script src="./public/admin/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
 <script>

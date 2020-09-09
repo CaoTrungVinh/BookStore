@@ -124,7 +124,6 @@ public class SendingEmail extends Thread {
             message.setSubject("Email Verification Link");
             message.setText("Click this link to confirm your email address and complete setup for your account.\n\nVerification Link: http://localhost:8080/" + servletName + "?key1=" + this.userEmail + "&key2=" + this.myHash);
             Transport.send(message);
-            System.out.println("SEND OK");
         } catch (Exception var6) {
             System.out.println("Error at SendingEmail.java: " + var6);
         }

@@ -136,7 +136,6 @@ public class FB_login extends HttpServlet {
             response.append(inputLine);
         }
         in.close();
-        System.out.println(response);
         User user = new User();
         JSONObject myResponse = new JSONObject(response.toString());
         user.setUserName(myResponse.getString("name"));
@@ -144,7 +143,6 @@ public class FB_login extends HttpServlet {
         user.setEmail(myResponse.getString("email"));
         JSONObject picture_reponse = myResponse.getJSONObject("picture");
         JSONObject data_response = picture_reponse.getJSONObject("data");
-        System.out.println("URL : " + data_response.getString("url"));
         user.setAvt(data_response.getString("url"));
         return user;
     }

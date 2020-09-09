@@ -10,8 +10,8 @@
 
     <title>Checkout</title>
     <jsp:include page="../view/head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/checkout.css">
-    <script src="/public/customer/js/vendor/jquery-1.12.0.min.js"></script>
+    <link rel="stylesheet" href="./public/customer/css/checkout.css">
+    <script src="./public/customer/js/vendor/jquery-1.12.0.min.js"></script>
 </head>
 <body>
 
@@ -52,7 +52,7 @@
                                        style="float: left;  margin-top: 35%;margin-right: 10px;"/>
                                 <p class="image">
                                     <img class="img-responsive"
-                                         src="/public/customer/img/shop/images/<%=product.getImg()%>">
+                                         src="./public/customer/img/shop/images/<%=product.getImg()%>">
                                 </p>
                             </div>
                             <div class="col-right">
@@ -164,7 +164,7 @@
                     <div class="empty-cart">
                         <span class="mascot-image"></span>
                         <p class="message">You have no items in your shopping cart.</p>
-                        <a href="/" class="btn btn-yellow">Continue shopping</a>
+                        <a href="./" class="btn btn-yellow">Continue shopping</a>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
 <!-- jquery latest version -->
 <jsp:include page="../view/jquery.jsp"/>
 
-<script src="/public/customer/js/jquery.bootstrap-touchspin.js"></script>
+<script src="./public/customer/js/jquery.bootstrap-touchspin.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         if (!$('input:checkbox.checkbox').is('checked')) {

@@ -31,7 +31,6 @@ public class Sign {
         }
         bufin.close();
         byte[] realSig = dsa.sign();
-        System.out.println("KÝ THÀNH CÔNG");
 
 //        FileOutputStream sigfos = new FileOutputStream(pathFileOut);
 //        sigfos.write(realSig);
@@ -39,7 +38,6 @@ public class Sign {
 
         VerSign ve = new VerSign();
        boolean res = ve.verify(realSig, 27);
-        System.out.println("KET QUA: " + res);
         return realSig;
     }
 

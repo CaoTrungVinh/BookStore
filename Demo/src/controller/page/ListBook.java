@@ -21,7 +21,6 @@ public class ListBook extends HttpServlet {
         String nsx = request.getParameter("nsx");
         String idKM = request.getParameter("idKM");
         String page = request.getParameter("page");
-        System.out.println("idkm: "+idKM);
         response.getWriter().println(page);
         int idType = 0;
         int pageNum = 1;

@@ -13,7 +13,7 @@
             <div class="empty-cart">
                 <span class="mascot-image"></span>
                 <p class="message">You have no items in your order history.</p>
-                <a href="/" class="btn btn-yellow">Continue shopping</a>
+                <a href="./" class="btn btn-yellow">Continue shopping</a>
             </div>
         </div>
     </div>

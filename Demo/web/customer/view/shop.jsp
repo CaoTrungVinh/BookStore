@@ -7,7 +7,7 @@
     <title>Shop || Witter Multipage Responsive Template</title>
 
     <jsp:include page="head.jsp"/>
-    <link rel="stylesheet" href="/public/customer/css/shop.css">
+    <link rel="stylesheet" href="./public/customer/css/shop.css">
 
 </head>
 <body>
@@ -25,9 +25,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="breadcrumbs">
+                <div class="breadcrumbs" style="background: rgba(0, 0, 0, 0) url('./public/customer/img/header-bg.jpg') no-repeat scroll center center;">
                     <h2>SHOP LEFT SIDEBAR</h2>
-                    <ul class="breadcrumbs-list">
+                    <ul class="breadcrumbs-list" >
                         <li>
                             <a title="Return to Home" href="../../index.jsp">Home</a>
                         </li>
@@ -268,7 +268,6 @@
                                 <% Integer nOfPages = (Integer) request.getAttribute("nOfPages");
 //                                    Integer idType = (Integer) request.getAttribute("idType");
 //                                    Integer idNsx = (Integer) request.getAttribute("idNsx");
-                                    System.out.println(idKm);
                                     Integer currentPage1 = (Integer) request.getAttribute("currentPage");
 
                                     int start1 = currentPage1;
@@ -281,7 +280,6 @@
                                         url = "list-book?nsx=" + idNsx + "&page=";
                                     }
                                     else if (idKm.equals("km")) {
-                                        System.out.println("ok");
                                         url = "list-book?idKM=" + idKm + "&page=";
                                     }
                                     if ((currentPage1) == nOfPages) {
@@ -349,9 +347,9 @@
                                         <div class="product-wrapper">
                                             <a href="<%=Util.fullPath("single-product?id=" +book.getString("id"))%>"
                                                class="single-banner-image-wrapper">
-                                                <%--                                                <img alt="" src="public/customer/img/featured/1.jpg">--%>
+                                                <%--                                                <img alt="" src="./public/customer/img/featured/1.jpg">--%>
                                                 <img alt=""
-                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                     src="./public/customer/img/shop/images/<%= book.getString(4)%>"
                                                     style="margin-top: 10px">
 
 
@@ -432,7 +430,7 @@
                                                         <div class="product-images">
                                                             <div class="main-image images">
                                                                 <img alt=""
-                                                                     src="/public/customer/img/shop/images/<%= book.getString(4)%>">
+                                                                     src="./public/customer/img/shop/images/<%= book.getString(4)%>">
 
                                                             </div>
                                                         </div>
@@ -538,7 +536,7 @@
                                     <div class="col-xs-12 col-sm-5 col-md-4">
                                         <div class="left-item">
                                             <a href="single-product.jsp" title="East of eden">
-                                                <img src="/public/customer/img/shop/images/<%= book.getString(4)%>"
+                                                <img src="./public/customer/img/shop/images/<%= book.getString(4)%>"
                                                      alt="">
                                             </a>
                                         </div>

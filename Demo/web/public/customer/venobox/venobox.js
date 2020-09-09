@@ -371,7 +371,7 @@
       var pezzi = dest.split('/');
       var videoid = pezzi[pezzi.length-1];
       var stringAutoplay = autoplay ? "?autoplay=1" : "";
-      content.html('<iframe class="venoframe" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder="0" src="//player.vimeo.com/video/'+videoid+stringAutoplay+'"></iframe>');
+      content.html('<iframe class="venoframe" webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder="0" src=".//player.vimeo.com/video/'+videoid+stringAutoplay+'"></iframe>');
       updateoverlay();
     }
 
@@ -380,7 +380,7 @@
       var pezzi = dest.split('/');
       var videoid = pezzi[pezzi.length-1];
       var stringAutoplay = autoplay ? "?autoplay=1" : "";
-      content.html('<iframe class="venoframe" webkitallowfullscreen mozallowfullscreen allowfullscreen src="//www.youtube.com/embed/'+videoid+stringAutoplay+'"></iframe>');
+      content.html('<iframe class="venoframe" webkitallowfullscreen mozallowfullscreen allowfullscreen src=".//www.youtube.com/embed/'+videoid+stringAutoplay+'"></iframe>');
       updateoverlay();
     }
 

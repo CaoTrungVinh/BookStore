@@ -129,7 +129,6 @@ public class Orders extends HttpServlet {
                                 year = Integer.parseInt(yearParam);
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                out.print("{\"error\": \"Invalid year\"}");
                                 out.flush();
                                 return;
                             }
@@ -160,7 +159,6 @@ public class Orders extends HttpServlet {
                         JSONObject data = new JSONObject();
                         data.put("month", month);
                         data.put("revenue", revenue);
-                        out.print(gson.toJson(data));
                         out.flush();
                         return;
                     } catch (SQLException e) {

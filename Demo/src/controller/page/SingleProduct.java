@@ -95,7 +95,6 @@ public class SingleProduct extends HttpServlet {
                 request.setAttribute("author", reauthor);
                 request.setAttribute("book", book);
                 request.setAttribute("listBook", listBook);
-                System.out.println("VÔ DETAIL NÈ");
 
                 request.getRequestDispatcher("/customer/view/single-product.jsp").forward(request, response);
             }

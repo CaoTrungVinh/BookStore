@@ -45,7 +45,7 @@
                 <div class="error-text text-center">
                     <h1>OPPS! PAGE NOT FOUND</h1>
 
-                    <img src="/public/logo.png">
+                    <img src="./public/logo.png">
 
                     <a href="../../index.jsp">BACK TO HOME PAGE</a>
                 </div>
