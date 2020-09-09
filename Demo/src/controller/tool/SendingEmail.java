@@ -26,7 +26,7 @@ public class SendingEmail extends Thread {
     public SendingEmail() {
 
     }
-    public void sendMailText(String obj, String text) {
+    public void sendMailText(String userEmail, String obj, String text) {
         final String email = "myduyenn218@gmail.com";
         final String password = "ucnwpbwrnuubmziw";
 
@@ -47,7 +47,7 @@ public class SendingEmail extends Thread {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.userEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(userEmail));
             message.setSubject(obj);
             message.setText(text);
 //            message.setSubject("Cảnh báo: Ai đó đang cố tình giả mạo bạn.");
