@@ -181,15 +181,14 @@
         <div class="row" style="display: flex; justify-content: center; ">
             <form class="col-md-7 box" action="<%= Util.fullPath("verify")%>" method="post">
                 <div>
-                    <h1 class="page-title font-weight-normal mb-5">Ký đơn hàng</h1>
-                    <a>
-                        Vui lòng ký xác nhận đơn hàng đã được tải xuống bằng chương trình sau và nhập vào ô sau đây:
-                    </a>
-                    <input name="signature" value=""/>
-
+                    <h3 class="page-title font-weight-normal mb-5">Ký đơn hàng</h3>
+                    <p>
+                        Vui lòng ký xác nhận đơn hàng đã được tải xuống và nhập vào ô sau đây:
+                    </p>
+                    <input style="margin-top: 10px; " name="signature" value="" class="btn-block text-center form-control border-0"/>
 
                 </div>
-                <button id="confirm" type="submit" class="btn-block btn-default text-center form-control border-0">
+                <button id="confirm" type="submit" style="margin-top: 40px" class="btn-block btn-default text-center form-control border-0" >
                     Confirm
                 </button>
 

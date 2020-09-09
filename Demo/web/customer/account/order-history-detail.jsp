@@ -74,7 +74,9 @@
                 <tr>
                     <td>
                         <% if (hdh.getString("status").equals("shipping")) {%>
-                        Đang vận chuyển
+                        <a>Đang vận chuyển</a>
+                        <% } else if(hdh.getString("status").equals("cancel")){%>
+                        <a>Đơn hàng đã hủy</a>
                         <% } else {%>
                         <button type="submit">Hủy đơn hàng</button>
                         </a>
