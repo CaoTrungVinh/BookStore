@@ -3,6 +3,7 @@ package controller.cart;
 import Model.Ordered;
 import Model.User;
 import controller.tool.FileOrder;
+import controller.tool.SendingEmail;
 import controller.tool.VerSign;
 import db.ConnectionDB;
 
@@ -34,9 +35,18 @@ public class Verify extends HttpServlet {
         VerSign verSign = new VerSign();
         boolean resultVerify = verSign.verify(request, Base64.getDecoder().decode(signature.getBytes()), user.getId());
 //save database
+
+
+        int countVeriFail  = 0;
+
+
+
         Connection conn = null;
         try {
             conn = ConnectionDB.getConnection();
+
+            String sqlCount = "SELECT countVerify FROM orders where id=?";
+
             Ordered ordered = (Ordered) request.getSession().getAttribute("ordered");
             String sqlOrder = "UPDATE orders SET verify=? where id=?";
             PreparedStatement pstOrder = conn.prepareStatement(sqlOrder);
@@ -46,6 +56,17 @@ public class Verify extends HttpServlet {
             pstOrder.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }
+
+
+        if (!resultVerify) {
+            countVeriFail ++;
+
+            SendingEmail sendingEmail  = new SendingEmail();
+            String obj =  "Cảnh báo: Ai đó đang cố tình giả mạo bạn.";
+            String text =  "Ai đó đang cố tình giả mạo bạn. Vu lòng kểm tra đăng nhập, nếu là bạn, bạn có thể bỏ qua emal này!";
+
+            sendingEmail.sendMailText(obj, text);
         }
 
 
