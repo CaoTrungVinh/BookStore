@@ -55,7 +55,7 @@ public class SingleProduct extends HttpServlet {
                 pst1.setInt(1, ra);
                 pst1.setInt(2, idInt);
                 pst1.executeUpdate();
-                System.out.println("ok");
+//                System.out.println("ok");
             } else {
 
 
@@ -95,7 +95,7 @@ public class SingleProduct extends HttpServlet {
                 request.setAttribute("author", reauthor);
                 request.setAttribute("book", book);
                 request.setAttribute("listBook", listBook);
-                System.out.println("VÔ DETAIL NÈ");
+//                System.out.println("VÔ DETAIL NÈ");
 
                 request.getRequestDispatcher("/customer/view/single-product.jsp").forward(request, response);
             }

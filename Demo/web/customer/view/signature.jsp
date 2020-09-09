@@ -179,7 +179,7 @@
 <div class="login-account section-padding">
     <div class="container">
         <div class="row" style="display: flex; justify-content: center; ">
-            <form class="col-md-7 box" action="<%= Util.fullPath("cartPay")%>" method="post">
+            <form class="col-md-7 box" action="<%= Util.fullPath("verify")%>" method="post">
                 <div>
                     <h1 class="page-title font-weight-normal mb-5">Ký đơn hàng</h1>
                     <a>
@@ -193,8 +193,7 @@
                     Confirm
                 </button>
 
-                <a id="link" target="_blank" href="<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>"
-                   download='<%= Util.fullPath((String)request.getAttribute("fileinfo"))%>'></a>
+                <a id="link" target="_blank" href="<%= "file?fileName=" + (String)request.getAttribute("fileinfo")%>"></a>
                 <a id="tool" target="_blank" href="signtool://"></a>
 
             </form>

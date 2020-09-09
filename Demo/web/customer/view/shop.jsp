@@ -268,7 +268,7 @@
                                 <% Integer nOfPages = (Integer) request.getAttribute("nOfPages");
 //                                    Integer idType = (Integer) request.getAttribute("idType");
 //                                    Integer idNsx = (Integer) request.getAttribute("idNsx");
-                                    System.out.println(idKm);
+//                                    System.out.println(idKm);
                                     Integer currentPage1 = (Integer) request.getAttribute("currentPage");
 
                                     int start1 = currentPage1;
@@ -281,7 +281,7 @@
                                         url = "list-book?nsx=" + idNsx + "&page=";
                                     }
                                     else if (idKm.equals("km")) {
-                                        System.out.println("ok");
+//                                        System.out.println("ok");
                                         url = "list-book?idKM=" + idKm + "&page=";
                                     }
                                     if ((currentPage1) == nOfPages) {
