@@ -51,33 +51,39 @@
             </tr>
             </thead>
             <tbody>
+
             <%
                 ResultSet detail = (ResultSet) request.getAttribute("detail");
                 while (detail.next()) {
             %>
-            <tr>
-                <td><%= detail.getString("orderDate")%>
-                </td>
-                <td><%= detail.getString("title")%>
-                </td>
-                <td><%= detail.getString("price")%> đ</td>
-            </tr>
-            <% } %>
-            <%
-                ResultSet hdh = (ResultSet) request.getAttribute("hdh");
-                while (hdh.next()) {
-            %>
-            <tr>
-                <td>
-                    <% if (hdh.getString("status").equals("ordered") || hdh.getString("status").equals("shopping cart")) {%>
-                    <a href="#">Hủy đơn hàng</a>
-                    <% } else {%>
-                    <a href="#">Đang vận chuyển</a>
-                    </a>
-                    <% } %>
-                </td>
-            </tr>
-            <% } %>
+            <form action="<%= Util.fullPath("account/order-detail?id="+detail.getString("id_order")) %>"
+                  method="POST" onsubmit="onFormSubmit"
+                  class="tm-edit-product-form">
+                <tr>
+                    <td><%= detail.getString("orderDate")%>
+                    </td>
+                    <td><%= detail.getString("title")%>
+                    </td>
+                    <td><%= detail.getString("price")%> đ</td>
+                </tr>
+                <% } %>
+                <%
+                    ResultSet hdh = (ResultSet) request.getAttribute("hdh");
+                    while (hdh.next()) {
+                %>
+                <tr>
+                    <td>
+                        <% if (hdh.getString("status").equals("shipping")) {%>
+                        Đang vận chuyển
+                        <% } else {%>
+                        <button type="submit">Hủy đơn hàng</button>
+                        </a>
+                        <% } %>
+                    </td>
+                </tr>
+
+                <% } %>
+            </form>
             </tbody>
         </table>
     </div>

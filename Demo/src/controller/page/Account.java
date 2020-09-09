@@ -22,7 +22,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist", "/account/change-key", "/account/order-detail"})
+@WebServlet(urlPatterns = {"/account", "/account/edit", "/account/address", "/account/add-address", "/account/order", "/account/wishlist", "/account/change-key", "/account/order-detail", "/account/order-detail-hdh"})
 //@WebServlet("/account")
 public class Account extends HttpServlet {
 
@@ -39,14 +39,12 @@ public class Account extends HttpServlet {
             e.printStackTrace();
         }
 
-
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String type = request.getParameter("type");
         Model.User user = (Model.User) request.getSession().getAttribute("user");
         request.setAttribute("user", user);
-
 
         if (request.getServletPath().equals("/account") || request.getServletPath().equals("/account/edit")) {
             request.setAttribute("route", "edit");
@@ -59,7 +57,7 @@ public class Account extends HttpServlet {
         } else if (request.getServletPath().equals("/account/order")) {
             try {
                 ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
-                sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
+                sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "'";
                 rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     Statement statement2 = conn.createStatement();
@@ -81,8 +79,7 @@ public class Account extends HttpServlet {
                 e.printStackTrace();
             }
             request.setAttribute("route", "order");
-        }
-        else if (request.getServletPath().equals("/account/order-detail")) {
+        } else if (request.getServletPath().equals("/account/order-detail")) {
             try {
                 ArrayList<Ordered> ordereds = new ArrayList<Ordered>();
                 sql = "SELECT orders.*, statuses.status FROM orders JOIN statuses ON statuses.id = orders.statusID WHERE id_customer = '" + user.getId() + "' AND orders.statusID = 2";
@@ -308,6 +305,23 @@ public class Account extends HttpServlet {
                 }
             }
         }
+        else if (request.getServletPath().equals("/account/order-detail")) {
+            String id = request.getParameter("id");
+            if (id != null && !id.equals("")) {
+                Connection conn = null;
+                try {
+                    conn = ConnectionDB.getConnection();
+                    String sqlhdh = "DELETE FROM orders WHERE id=?";
 
+                    PreparedStatement psthdh = conn.prepareStatement(sqlhdh);
+                    psthdh.setString(1, id);
+                    psthdh.execute();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            response.sendRedirect("/account/order");
+        }
     }
 }

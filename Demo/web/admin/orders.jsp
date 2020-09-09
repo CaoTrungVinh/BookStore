@@ -47,10 +47,6 @@
                             </th>
                             <th class="th-sm">ORDERDATE
                             </th>
-                            <th class="th-sm" style="width: 100px">SUBTOTAL
-                            </th>
-                            <th class="th-sm" style="width: 100px">SHIPPING
-                            </th>
                             <th class="th-sm" style="width: 75px">TOTAL
                             </th>
                             <th class="th-sm">STATUS
@@ -76,12 +72,6 @@
                             </td>
                             <td>
                                 <%= orders.getString(3)%>
-                            </td>
-                            <td>
-                                <%= orders.getString(4)%>
-                            </td>
-                            <td>
-                                <%= orders.getString(5)%>
                             </td>
                             <td>
                                 <%= orders.getString(6)%>
