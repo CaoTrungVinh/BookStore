@@ -179,7 +179,7 @@
 <div class="login-account section-padding">
     <div class="container">
         <div class="row" style="display: flex; justify-content: center; ">
-            <form class="col-md-7 box" action="<%= Util.fullPath("verify")%>" method="post">
+            <form class="col-md-7 box" action="<%= Util.fullPath("cartPay")%>" method="post">
                 <div>
                     <h1 class="page-title font-weight-normal mb-5">Ký đơn hàng</h1>
                     <a>
