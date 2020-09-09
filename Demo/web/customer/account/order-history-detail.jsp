@@ -61,21 +61,24 @@
                 <td><%= detail.getString("title")%>
                 </td>
                 <td><%= detail.getString("price")%> đ</td>
+            </tr>
+            <% } %>
+            <%
+                ResultSet hdh = (ResultSet) request.getAttribute("hdh");
+                while (hdh.next()) {
+            %>
+            <tr>
                 <td>
-                    <% if (detail.getString("statusID").equals(2)) {%>
+                    <% if (hdh.getString("status").equals("ordered") || hdh.getString("status").equals("shopping cart")) {%>
                     <a href="#">Hủy đơn hàng</a>
                     <% } else {%>
-                    <%--                    <a href="#">Đơn vị đang vận chuyển</a>--%>
-                    <a href="#"><%= detail.getString("statusID")%>
+                    <a href="#">Đang vận chuyển</a>
+<%--                    <a href="#"><%= hdh.getString("statusID")%>--%>
                     </a>
                     <% } %>
                 </td>
             </tr>
             <% } %>
-            <tr>
-                <td><a href="#">Hủy đơn hàng</a>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>

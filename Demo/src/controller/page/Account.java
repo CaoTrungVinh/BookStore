@@ -114,6 +114,15 @@ public class Account extends HttpServlet {
                     ResultSet detail = pstdetail.executeQuery();
 
                     request.setAttribute("detail", detail);
+
+                    String sqlHDH = "SELECT * FROM orders JOIN statuses on orders.statusID = statuses.id where orders.id=? ";
+                    PreparedStatement pstHDH = conn.prepareStatement(sqlHDH);
+                    pstHDH.setInt(1, Integer.parseInt(id));
+                    System.out.println(id);
+                    ResultSet hdh = pstHDH.executeQuery();
+
+                    request.setAttribute("detail", detail);
+                    request.setAttribute("hdh", hdh);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
